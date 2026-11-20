@@ -1,0 +1,31 @@
+{
+ "idleMinutes": 120,
+ "teacherIdleMinutes": 45,
+ "disconnectGraceMinutes": 3,
+ "staffIdleHours": 12,
+ "checkSeconds": 30,
+ "maxUploadMB": 2048,
+ "allowFacultyControl": true,
+ "vncPort": 5900,
+ "allowRemoteFaculty": true,
+ "allowFacultyTransfer": true,
+ "transferMaxMB": 500,
+ "transferFolders": [
+  "Lectures",
+  "Handouts",
+  "Media",
+  "Other"
+ ],
+ "systemName": "NUR Smart Lecture Rooms",
+ "agentPingSeconds": 15,
+ "mail": {
+  "host": "",
+  "port": 587,
+  "secure": false,
+  "insecureTls": false,
+  "user": "",
+  "pass": "",
+  "from": "",
+  "to": ""
+ }
+}

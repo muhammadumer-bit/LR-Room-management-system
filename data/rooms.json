@@ -1,0 +1,130 @@
+[
+ {
+  "id": "LR-1-A",
+  "ip": "172.16.103.143",
+  "key": "AG-TRLP-6STC-N45H",
+  "floor": "Ground Floor",
+  "vncPass": "T82AL3FR"
+ },
+ {
+  "id": "LR-2",
+  "ip": "172.16.103.145",
+  "key": "AG-7SBD-KUDY-WHSZ",
+  "floor": "Ground Floor"
+ },
+ {
+  "id": "LR-3",
+  "ip": "172.16.101.44",
+  "key": "AG-MVG4-GJC6-FE2P",
+  "floor": "Ground Floor",
+  "vncPass": "ANJ7NZJX"
+ },
+ {
+  "id": "LR-4",
+  "ip": "172.16.103.142",
+  "key": "AG-7JMH-3NBD-BUES",
+  "floor": "Ground Floor",
+  "vncPass": "NXEECLLS"
+ },
+ {
+  "id": "LR-5",
+  "ip": "172.16.103.181",
+  "key": "AG-EL5Q-LNB4-BTQC",
+  "floor": "Ground Floor"
+ },
+ {
+  "id": "Conference-Room-2",
+  "ip": "172.16.101.186",
+  "key": "AG-79WY-83EG-E65Z",
+  "floor": "Ground Floor",
+  "vncPass": "HNCY56N2"
+ },
+ {
+  "id": "LR-6",
+  "ip": "172.16.101.46",
+  "key": "AG-2YE6-C6QC-2V58",
+  "floor": "First Floor",
+  "vncPass": "PHBNPF84"
+ },
+ {
+  "id": "LR-7",
+  "ip": "172.16.101.47",
+  "key": "AG-2H6L-FVJQ-FU46",
+  "floor": "First Floor"
+ },
+ {
+  "id": "LR-8",
+  "ip": "172.16.102.48",
+  "key": "AG-XWXY-DF32-AC44",
+  "floor": "First Floor",
+  "vncPass": "W9G48F3P"
+ },
+ {
+  "id": "LR-9",
+  "ip": "172.16.101.49",
+  "key": "AG-739Q-ZWZY-G9TN",
+  "floor": "First Floor"
+ },
+ {
+  "id": "LR-10",
+  "ip": "172.16.102.50",
+  "key": "AG-V9KB-LDFR-BLCR",
+  "floor": "First Floor",
+  "vncPass": "BYD7HU88"
+ },
+ {
+  "id": "LR-11",
+  "ip": "172.16.102.146",
+  "key": "AG-XN5U-TE55-8ZTP",
+  "floor": "First Floor",
+  "vncPass": "EW9YAGDJ"
+ },
+ {
+  "id": "LR-12",
+  "ip": "172.16.102.22",
+  "key": "AG-CTR9-8GFL-ZWBN",
+  "floor": "First Floor"
+ },
+ {
+  "id": "LR-13",
+  "ip": "172.16.102.33",
+  "key": "AG-LNPA-2M6X-Y6T7",
+  "floor": "First Floor",
+  "vncPass": "7N2Z7WXX"
+ },
+ {
+  "id": "LR-14",
+  "ip": "172.16.101.124",
+  "key": "AG-KZVX-CPE3-7V53",
+  "floor": "First Floor",
+  "vncPass": "5SMN7QCE"
+ },
+ {
+  "id": "Conference-Room-1",
+  "ip": "172.16.101.15",
+  "key": "AG-JMFD-ANKB-78D5",
+  "floor": "First Floor",
+  "vncPass": "B6NK77RU"
+ },
+ {
+  "id": "Big-Computer-Lab",
+  "ip": "172.16.102.27",
+  "key": "AG-6SFA-DKWN-CHDS",
+  "floor": "First Floor",
+  "vncPass": "ZWAPNT9Q"
+ },
+ {
+  "id": "Small-Computer-Lab",
+  "ip": "172.16.102.26",
+  "key": "AG-NEV4-XCGB-MQ2C",
+  "floor": "First Floor",
+  "vncPass": "BHBC2YNH"
+ },
+ {
+  "id": "Audituram",
+  "ip": "172.16.105.225",
+  "key": "AG-R2TR-NZ3G-R4M2",
+  "floor": "First Floor",
+  "vncPass": "QRQNZB4S"
+ }
+]

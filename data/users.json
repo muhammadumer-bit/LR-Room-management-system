@@ -1,0 +1,370 @@
+[
+ {
+  "user": "admin",
+  "pass": "scrypt$54291298459ea921129df03a5a558ca0$dde83e4f33f7bf2ab073198c30a0c8dd3d0a8a34053abb6fe3695a48c9857d31",
+  "role": "admin",
+  "name": "Administrator"
+ },
+ {
+  "user": "mudassirshafique@niu.edu.pk",
+  "pass": "scrypt$093d985ea53d25582ef0afd08a4f7cb6$5a8a662a4f74904041bdc06cfe6fa44257ca4fbeabc8050b35057aeb26a6cd1a",
+  "role": "teacher",
+  "name": "Mudassir Shafique",
+  "mustChange": true
+ },
+ {
+  "user": "iftikhar.khan@niu.edu.pk",
+  "pass": "scrypt$a6aeb6a72b261b1add4ce6935799cf50$57eaa48653d2e70bb88f6422f677dfa8b4859153bf6d812675c40808cb01fc68",
+  "role": "teacher",
+  "name": "M.Iftikhar Khan"
+ },
+ {
+  "user": "noman.ashraf@niu.edu.pk",
+  "pass": "scrypt$078eef4050aa9e61492d3423fad4d2f7$d5e42c3247a7b2da7741574e86ac4425c4e08f562507c4c0528ce8c142b48a17",
+  "role": "teacher",
+  "name": "Noman Ashraf Ashraf",
+  "mustChange": true
+ },
+ {
+  "user": "ibraheem.ali@niu.edu.pk",
+  "pass": "scrypt$df6525af64d0f7749e679ef03de02d41$747024a5b1e0933712eb41a68a98315eaa23f4e15e3b0bbbbaba9afd514be65d",
+  "role": "teacher",
+  "name": "Syed Muhammad Ibraheem Ali Shah"
+ },
+ {
+  "user": "maroof.hamid@niu.edu.pk",
+  "pass": "scrypt$dbcf0ad384c61386e8dee7159d07fcc1$1992a769c6502726601c1930bb2ff7cffc0ed96448eb1e79bb5fef0d2e9d492b",
+  "role": "teacher",
+  "name": "Maroof Hamid",
+  "mustChange": true
+ },
+ {
+  "user": "areeba.abrar@niu.edu.pk",
+  "pass": "scrypt$8daee656a4b4b7cd17f300f550c12636$347c076f5caef6b4b08f8e0e77d4e29a6f3f4b9f4c12158090b052d16b9b60b4",
+  "role": "teacher",
+  "name": "Areeba Abrar",
+  "mustChange": true
+ },
+ {
+  "user": "areeba.mahmood@niu.edu.pk",
+  "pass": "scrypt$2f8400867d3013f91f89b50b275084c3$3d759ac498b6503dda589c830f27ae4310a4cf91ee9969e09bda08f2148c3fd6",
+  "role": "teacher",
+  "name": "Areeba Mahmood",
+  "mustChange": true
+ },
+ {
+  "user": "fatima.hassan@niu.edu.pk",
+  "pass": "scrypt$b4ab80997c8a20a833e2e47c7de3c9ec$5aa5945ed771d29ac4a1a6a9b50401337412dc481a47205e179d08e938f89709",
+  "role": "teacher",
+  "name": "Fatima Hassan",
+  "mustChange": true
+ },
+ {
+  "user": "aqsa.hafeez@niu.edu.pk",
+  "pass": "scrypt$2d3a1fbfa2cdf25ef93e5c7b2dcddc1e$b2276bd7ec4bf0bee1f8fbacb2afadb5fac6e59cdf741326b10a1c1790962d3a",
+  "role": "teacher",
+  "name": "Aqsa hafeez",
+  "mustChange": true
+ },
+ {
+  "user": "aimen.munir@niu.edu.pk",
+  "pass": "scrypt$4c2cd8bd35b01d69ae84caf362270f7e$adbffde28591ef3dc8da3ec9d59e12589035c185c983bf17321ef33d675a42a6",
+  "role": "teacher",
+  "name": "Aimen Munir",
+  "mustChange": true
+ },
+ {
+  "user": "zain.ulabidin@niu.edu.pk",
+  "pass": "scrypt$bebc264c506e433f28dd7ae5d42902b3$8f103e248aa7129518e29c1c44278492cc4b92996e2495eb02e3b32dd1318d3f",
+  "role": "teacher",
+  "name": "Zain ul abidin",
+  "mustChange": true
+ },
+ {
+  "user": "osama.nasim@niu.edu.pk",
+  "pass": "scrypt$784a08b6aa14c4e6efcb40c341e9d457$83fe3d5ec93bca16aa6c72e1c23090a4ef88cdb02229450798c17973a3ae2072",
+  "role": "teacher",
+  "name": "Muhammad Osama Nasim Mirza",
+  "mustChange": true
+ },
+ {
+  "user": "qazi.yasir@niu.edu.pk",
+  "pass": "scrypt$01a9f0f9ae8a8c32c8294b13e922eab9$455a62910c53e3de4c3c64b5ed392f0b71e2c32868662fb8499434ff3ab5e1fc",
+  "role": "teacher",
+  "name": "Dr. Qazi Yasir Arafat",
+  "mustChange": true
+ },
+ {
+  "user": "ali.abbas@niu.edu.pk",
+  "pass": "scrypt$17cd0d7e44d4929f423c2651f9cf9e90$2e307465e65aa7e6acbb5fe491a50686d156109365ea71cdc85b636cd023a456",
+  "role": "teacher",
+  "name": "Ali Abbas",
+  "mustChange": true
+ },
+ {
+  "user": "saima.naaz@niu.edu.pk",
+  "pass": "scrypt$2543795818a5a822701dd0d5079f3b9f$d9d57b6d3ea324358deccf878fdf3342937cd00713a5b8476fb88fd9c1211b18",
+  "role": "teacher",
+  "name": "Saima naaz"
+ },
+ {
+  "user": "samreen.latif@niu.edu.pk",
+  "pass": "scrypt$cc9ff79ce25b989c941dda46535f37b5$b59f6fc4154d35d7c01d2289230247a3e2c33ab02f784ffb2ffc05b5cb3e0074",
+  "role": "teacher",
+  "name": "Samreen Latif",
+  "mustChange": true
+ },
+ {
+  "user": "saad.akram@niu.edu.pk",
+  "pass": "scrypt$55f3922545fa250af4c39d6c39bf349b$11d1848ff0fc3a1e88ade966d66ff6a6bb7ecebc06cb62e028ddd01f8bcb7fa0",
+  "role": "teacher",
+  "name": "Saad Akram",
+  "mustChange": true
+ },
+ {
+  "user": "muhammad.furqan@niu.edu.pk",
+  "pass": "scrypt$23d9b0317b80a5396d8ac0a2f7b69f36$56bde66f536e19ff37f0f98cb38e211ac7ad7b3b2acc8da3a8e0b3b2f7fd00a9",
+  "role": "teacher",
+  "name": "Muhammad Furqan",
+  "mustChange": true
+ },
+ {
+  "user": "zobia.saleem@niu.edu.pk",
+  "pass": "scrypt$70bd634bbc93d2cf323e9ca99eaa466e$463a431ede8f8da80f00e69e3a53addfa9a8b03879feb8069d91f7c1878a1da0",
+  "role": "teacher",
+  "name": "Zobia Saleem",
+  "mustChange": true
+ },
+ {
+  "user": "shamaila.habib@niu.edu.pk",
+  "pass": "scrypt$3b4bbc3b4f1ad6a6bf90c4a630d57b42$baa3588e572b6667efa402b7e63168710a0f7ac2826c9ae9ee2e30069e5e0498",
+  "role": "teacher",
+  "name": "Shamaila Habib",
+  "mustChange": true
+ },
+ {
+  "user": "kaynat.shahzad@niu.edu.pk",
+  "pass": "scrypt$b50228ac633ebfbc38c201007cdb61b4$60ea4979102414f01abebe54d09eec7442b707d4920130a3a6f9667348844ec3",
+  "role": "teacher",
+  "name": "Kaynat Shahzad",
+  "mustChange": true
+ },
+ {
+  "user": "ayesh.iftikhar@niu.edu.pk",
+  "pass": "scrypt$9059220acbf76ad98fdac0239c6776c1$cd3eb28e0564a6d36d8d8c8606fb9937e53a33c4a5c33a9f6def69b633c8858e",
+  "role": "teacher",
+  "name": "Ayesh Iftikhar"
+ },
+ {
+  "user": "noor.fatima@niu.edu.pk",
+  "pass": "scrypt$f610dc8e24afcd44e73dd47e99aab1fe$fb3a3944bcfcf52c029137003dea7e5806c86988dbe348370172e1dcb0074abc",
+  "role": "teacher",
+  "name": "Noor Fatima"
+ },
+ {
+  "user": "amina.hashmi@niu.edu.pk",
+  "pass": "scrypt$6afa9070c3c44a3595b9da0efc0400fc$5742e27a831eda42cebf482a6a900c7e0bc6c94295d6dd03c52d0be337b358b5",
+  "role": "teacher",
+  "name": "Amina Hashmi"
+ },
+ {
+  "user": "sadaf.noreen@niu.edu.pk",
+  "pass": "scrypt$5d16ea7b35b35d3cf7e123f3df639dbf$b16a8304bb6e6c568e5b0b88ced9ccf063fdabac68b56422ee66c886bce6fe6b",
+  "role": "teacher",
+  "name": "Sadaf Noreen",
+  "mustChange": true
+ },
+ {
+  "user": "sajida.munir@niu.edu.pk",
+  "pass": "scrypt$80ea84ac7202565e7fc958eb15eaab73$1d0e50b64fc2009ca935f6b8f540cf75c7ef79d64633f3f7146a4ae8475499a5",
+  "role": "teacher",
+  "name": "SAJIDA MUNIR",
+  "mustChange": true
+ },
+ {
+  "user": "tayyaba.niaz@niu.edu.pk",
+  "pass": "scrypt$79d2bd0a30d17a967be30f36737c4886$d03976dd85c58098ad2ddae950283bdb06d67886d2b00adefd2e726089d896a9",
+  "role": "teacher",
+  "name": "TAYYABA NIAZ",
+  "mustChange": true
+ },
+ {
+  "user": "shanahil.butt@niu.edu.pk",
+  "pass": "scrypt$e608570ca349b78201f77b02191b849d$64a6944bd3811dcce1beb7128cb55dd539bd5dca95619fead68bf8c84e7d0ebc",
+  "role": "teacher",
+  "name": "Shanahil butt",
+  "mustChange": true
+ },
+ {
+  "user": "ifra.jamil@niu.edu.pk",
+  "pass": "scrypt$c6ca285008e3a9762cf0ad9561229fde$12949ed876cf67948739f3f53f6fd48c13dee789e4c13b3f99a1a1613dd40b54",
+  "role": "teacher",
+  "name": "Ifra Jamil",
+  "mustChange": true
+ },
+ {
+  "user": "ali.hayder@niu.edu.pk",
+  "pass": "scrypt$7e18b9a06b04d0d7b29261f98d973706$95f78d718554fd3c93e5ab82d46c625f71297d4cf7acf6c5e547c489268f2d85",
+  "role": "teacher",
+  "name": "Ali Hyder",
+  "mustChange": true
+ },
+ {
+  "user": "muhammad.tariq@niu.edu.pk",
+  "pass": "scrypt$b9b27a776099b3e8af2a0150a8eb98a1$a0df04f7aae32331e864aec28f291ba513ebb1efdd3efb22862a2a25b71eae71",
+  "role": "teacher",
+  "name": "Dr Muhammad Tariq",
+  "mustChange": true
+ },
+ {
+  "user": "fatima.khan@niu.edu.pk",
+  "pass": "scrypt$c373a2c379e3aaa3f8635092bb37f532$24b098bf761bfe44997336cf94d366d3c2b962d47578d43b5a46f6d38a15c9e1",
+  "role": "teacher",
+  "name": "Fatima Khan",
+  "mustChange": true
+ },
+ {
+  "user": "quratulain.bokhari@niu.edu.pk",
+  "pass": "scrypt$da2b714825306b31f63a0def9190b804$fd203e02a9219ddbcbd3a314e0cd85b2f4aa99a44e05eff2f2e2697d00a9fbdd",
+  "role": "teacher",
+  "name": "Qurat ul Ain Bokhari",
+  "mustChange": true
+ },
+ {
+  "user": "rabia.farooqi@niu.edu.pk",
+  "pass": "scrypt$4a30f87eccdd85ddda0e88fe71d1dde5$b6a4b9f8addf5a5a07a3097da53b76e0a94d6b815735bb7a74357ab563ce732c",
+  "role": "teacher",
+  "name": "Rabia Farooqi",
+  "mustChange": true
+ },
+ {
+  "user": "rabail.bashir@niu.edu.pk",
+  "pass": "scrypt$d56621619f5722410ed49d9a3ee20597$cc2635b51ab577a1c71f44a50ca2ea8dbc44ba67c3fcae5b8b262ea590331a79",
+  "role": "teacher",
+  "name": "Rabail Bashir",
+  "mustChange": true
+ },
+ {
+  "user": "sadia.arshad@niu.edu.pk",
+  "pass": "scrypt$8c0adc1ffb606a8a0fad08c753492b8f$009314e5ef13ff2a0424ea3d8844baa00f6f6aaa72216d2b194124846a3257f1",
+  "role": "teacher",
+  "name": "Sadia Arshad",
+  "mustChange": true
+ },
+ {
+  "user": "nickson.anthony@niu.edu.pk",
+  "pass": "scrypt$f28703a0cf347300277bd4dcaf9cb144$cb9d27b505ba0ee4a60f586b3fbf606b1994f5cf4ec286e70eefd36b3c944667",
+  "role": "teacher",
+  "name": "Nickson Subeston Anthony",
+  "mustChange": true
+ },
+ {
+  "user": "amna.adeel@niu.edu.pk",
+  "pass": "scrypt$11e828712407a58a4c2d7f77e1f3aaf2$24bbbb9cbebeab25bed4e1ed32bef0329be498bd1152a630ad287fd5e3b66be1",
+  "role": "teacher",
+  "name": "Amna Mahmood",
+  "mustChange": true
+ },
+ {
+  "user": "samina.farooqi@niu.edu.pk",
+  "pass": "scrypt$50fa019460e1758d541a38198e98d25e$01320ab14a1e021767012a5b032604a204caa1b1805cbe79d1da4c3a7504eefe",
+  "role": "teacher",
+  "name": "Samina Farooqi",
+  "mustChange": true
+ },
+ {
+  "user": "bushra.ali@niu.edu.pk",
+  "pass": "scrypt$b1347ebe56e2773fc1bc9806c4899480$c40657e8064d19e942779d485957a9da2da0f44d0ebbd8d1138523d34282a8f2",
+  "role": "teacher",
+  "name": "Bushra Ali",
+  "mustChange": true
+ },
+ {
+  "user": "kanwal.karim@niu.edu.pk",
+  "pass": "scrypt$1caf123e359836428a0d0d5a8a32e28a$4518928292bc60a894ff664d92e612360bb8f81c7e4a0b062b8812a15eb2cf9e",
+  "role": "teacher",
+  "name": "Kanwal Karim",
+  "mustChange": true
+ },
+ {
+  "user": "nadia.rasheed@niu.edu.pk",
+  "pass": "scrypt$fd7861a9072ad34af5508773c2d918ab$93ded78c52978ba212e09e331b04f848c53e398afc042228e52f73b11249cff3",
+  "role": "teacher",
+  "name": "Nadia Rasheed",
+  "mustChange": true
+ },
+ {
+  "user": "tabinda.khan@niu.edu.pk",
+  "pass": "scrypt$1f09f36dd1c7be612b22f86bdab6b5f9$96d41e0a0897f8872384a0a30508c74ec4d7c65cc39117043c92163b8bda84a7",
+  "role": "teacher",
+  "name": "Tbinda Khan",
+  "mustChange": true
+ },
+ {
+  "user": "sidra.asad@niu.edu.pk",
+  "pass": "scrypt$3e2e4e1ba0ca69c4b209da9946515905$722899be7d3d49a2cbee45e6f8e38590c643e12df8a7192564c4d7c94e803cc0",
+  "role": "teacher",
+  "name": "Sidra Asad",
+  "mustChange": true
+ },
+ {
+  "user": "anam.jeelani@niu.edu.pk",
+  "pass": "scrypt$f46e7c22a2e2373ee2fe6b79aff73f24$725ed3d4460f1bcdc1e8fb87e718ec2a6abe1afa15859dc59cc32fdecaf67d27",
+  "role": "teacher",
+  "name": "Anam Jeelani",
+  "mustChange": true
+ },
+ {
+  "user": "rizwana.rana@niu.edu.pk",
+  "pass": "scrypt$9ddac48bf98e63000c0a4f1d8633256d$459a71085cc940dfcb62588c3e70ba7403fcbd24df075e61402158f2dd81abdb",
+  "role": "teacher",
+  "name": "Rizwana Rana",
+  "mustChange": true
+ },
+ {
+  "user": "faryall.kemall@niu.edu.pk",
+  "pass": "scrypt$21b933d9dd6046aabd9f02e1643fea49$70d4eec941d724861d04c5f4a83fc1394530a9f97acf72ad4fda595bdade39d7",
+  "role": "teacher",
+  "name": "Faryall Kemall",
+  "mustChange": true
+ },
+ {
+  "user": "maha.zaheer@niu.edu.pk",
+  "pass": "scrypt$5a341af2b3241c3e29701d28702f31ed$037964abaff783b1f4d77e000096db60b3552091f4419dea8db53115e48fb30d",
+  "role": "teacher",
+  "name": "Maha Zaheer"
+ },
+ {
+  "user": "zeest.hashmi@niu.edu.pk",
+  "pass": "scrypt$86fba0d2fb99f7671bca229fa945b99b$6d3d5caae6eb4b2f194b7a60e1ec18c4a445dd8fddf0d89d1ce0f8a28ba468ce",
+  "role": "teacher",
+  "name": "Zeest Hashmi",
+  "mustChange": true
+ },
+ {
+  "user": "ali.tanveer@niu.edu.pk",
+  "pass": "scrypt$a87dd3f54d3e9daa50ccf8d99a3b353c$7607a804ccf459d96c23e2361d7209c65f444e588448308c12b51a47337809b0",
+  "role": "teacher",
+  "name": "Ali Tanveer",
+  "mustChange": true
+ },
+ {
+  "user": "teacher1",
+  "pass": "scrypt$a302938382207dca787212419bfa7b73$44b0418a30f199cfc89568a45ff141bdb415aedbff927959ee87613bc5a05d9a",
+  "role": "teacher",
+  "name": "Teacher 1"
+ },
+ {
+  "user": "teacher2",
+  "pass": "scrypt$09c38cefcf8a4ba1c2b041ec04cde3f7$d814105a70d5b9f9184a4d6d711d9f5ba61e0befdc7cc11edb682008b87ef55a",
+  "role": "teacher",
+  "name": "Teacher 2",
+  "mustChange": true
+ },
+ {
+  "user": "faizan.saleem@niu.edu.pk",
+  "pass": "scrypt$336625e68f4dcbfc69775020a804294d$dee0f4bd43d146c0b710b854c77d1f0292fee4664aa36e5fb8b704f2b1cb1503",
+  "role": "admin",
+  "name": "Muhammad Faizan Saleem"
+ }
+]

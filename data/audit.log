@@ -1,0 +1,1274 @@
+2026-11-18T11:27:48.481Z system Agent at 172.16.101.49 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:27:48.486Z system Agent at 172.16.105.225 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:27:48.775Z system Agent at 172.16.103.181 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:27:55.735Z system Agent at 172.16.105.13 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:28:07.507Z admin signed in from 172.18.35.119
+2026-11-18T11:28:20.948Z admin changed own password
+2026-11-18T11:28:39.975Z admin changed the system logo
+2026-11-18T11:29:08.412Z admin changed the system name to "NUR Smart Lecture"
+2026-11-18T11:33:43.097Z system Agent at 172.16.102.146 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:33:43.602Z system Agent at 172.16.101.186 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:33:43.740Z system Agent at 172.16.103.143 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:33:43.756Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:33:43.791Z system Agent at 172.16.102.22 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:33:44.066Z system Agent at 172.16.101.46 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:33:44.104Z system Agent at 172.16.101.44 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:33:44.115Z system Agent at 172.16.103.142 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:37:38.282Z unknown failed sign-in for "admin" from 172.18.35.119
+2026-11-18T11:37:42.372Z unknown failed sign-in for "admin" from 172.18.35.119
+2026-11-18T11:37:44.150Z admin signed in from 172.16.105.251
+2026-11-18T11:37:44.294Z admin signed in from 172.18.35.119
+2026-11-18T11:38:43.429Z system Agent at 172.16.102.146 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:38:43.983Z system Agent at 172.16.101.186 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:38:44.027Z system Agent at 172.16.102.22 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:38:44.062Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:38:44.070Z system Agent at 172.16.103.143 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:38:44.247Z system Agent at 172.16.101.46 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:38:44.325Z system Agent at 172.16.103.142 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:38:44.336Z system Agent at 172.16.101.44 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:39:00.413Z admin changed the system logo
+2026-11-18T11:42:07.742Z admin changed the system name to "Smart Lectrure Room"
+2026-11-18T11:42:59.757Z admin changed the system name to "NUR Smart Lectrure Room"
+2026-11-18T11:43:43.642Z system Agent at 172.16.102.146 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:43:44.218Z system Agent at 172.16.102.22 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:43:44.273Z system Agent at 172.16.101.186 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:43:44.340Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:43:44.357Z system Agent at 172.16.103.143 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:43:44.384Z system Agent at 172.16.101.46 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:43:44.471Z system Agent at 172.16.103.142 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:43:44.481Z system Agent at 172.16.101.44 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:44:52.069Z admin changed the system name to "NUR Smart Lecture Rooms"
+2026-11-18T11:44:52.094Z admin changed the system name to "NUR Smart Lecture Rooms"
+2026-11-18T11:46:05.048Z admin added room LR-1-A
+2026-11-18T11:46:07.219Z admin downloaded the agent installer for LR-1-A
+2026-11-18T11:47:50.614Z system LR-1-A (172.16.103.143) came online
+2026-11-18T11:47:52.621Z system LR-1-A went offline
+2026-11-18T11:47:53.399Z system LR-1-A (172.16.103.143) came online
+2026-11-18T11:48:24.960Z admin took control of LR-1-A
+2026-11-18T11:48:24.961Z admin started Full access (VNC) of LR-1-A (admin, from 172.16.105.251; password generated)
+2026-11-18T11:48:25.239Z admin VNC link to LR-1-A closed (released by user; 0 s, 12 bytes sent, 14 received)
+2026-11-18T11:48:25.251Z admin remote control of LR-1-A ended (released by user; 0 s, 0 input events)
+2026-11-18T11:48:25.269Z admin released control of LR-1-A
+2026-11-18T11:48:25.281Z admin VNC sign-in problem on LR-1-A: TightVNC on LR-1-A refused every password MCSCMS knows. Run ... (server said: "RFB 004.001")
+2026-11-18T11:48:30.906Z admin took control of LR-1-A
+2026-11-18T11:48:30.907Z admin started remote control of LR-1-A (admin, from 172.16.105.251)
+2026-11-18T11:48:43.856Z system Agent at 172.16.102.146 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:48:44.388Z system Agent at 172.16.102.22 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:48:44.548Z system Agent at 172.16.101.46 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:48:44.554Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:48:44.574Z system Agent at 172.16.101.186 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:48:44.614Z system Agent at 172.16.103.142 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:48:44.624Z system Agent at 172.16.101.44 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:49:36.166Z admin remote control of LR-1-A ended (released by user; 65 s, 495 input events)
+2026-11-18T11:49:36.168Z admin released control of LR-1-A
+2026-11-18T11:49:56.469Z admin uploaded Endocrine_Disorders_Diabetes_Mellitus (2) (1).pptx (slides, 56 KB)
+2026-11-18T11:50:05.300Z admin opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in LR-1-A
+2026-11-18T11:50:21.958Z admin took control of LR-1-A
+2026-11-18T11:50:21.959Z admin started remote control of LR-1-A (admin, from 172.16.105.251)
+2026-11-18T11:50:43.709Z admin remote control of LR-1-A ended (released by user; 22 s, 128 input events)
+2026-11-18T11:50:43.711Z admin released control of LR-1-A
+2026-11-18T11:51:02.552Z admin added room LR-2
+2026-11-18T11:51:04.137Z admin downloaded the agent installer for LR-2
+2026-11-18T11:51:15.484Z admin added room LR-3
+2026-11-18T11:51:17.273Z admin downloaded the agent installer for LR-3
+2026-11-18T11:51:31.276Z admin added room LR-4
+2026-11-18T11:51:33.199Z admin downloaded the agent installer for LR-4
+2026-11-18T11:51:43.282Z admin added room LR-5
+2026-11-18T11:51:45.051Z admin downloaded the agent installer for LR-5
+2026-11-18T11:52:04.756Z admin added room Conference-Room-2
+2026-11-18T11:52:06.678Z admin downloaded the agent installer for Conference-Room-2
+2026-11-18T11:52:42.574Z admin added room LR-6
+2026-11-18T11:52:44.159Z admin downloaded the agent installer for LR-6
+2026-11-18T11:52:57.195Z admin added room LR-7
+2026-11-18T11:52:58.638Z admin downloaded the agent installer for LR-7
+2026-11-18T11:53:12.642Z admin added room LR-8
+2026-11-18T11:53:14.258Z admin downloaded the agent installer for LR-8
+2026-11-18T11:53:26.136Z admin added room LR-9
+2026-11-18T11:53:27.395Z admin downloaded the agent installer for LR-9
+2026-11-18T11:53:40.824Z admin added room LR-10
+2026-11-18T11:53:42.647Z admin downloaded the agent installer for LR-10
+2026-11-18T11:53:44.067Z system Agent at 172.16.102.146 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:53:44.562Z system Agent at 172.16.102.22 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:53:44.678Z system Agent at 172.16.101.46 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:53:44.750Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:53:44.759Z system Agent at 172.16.103.142 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:53:44.769Z system Agent at 172.16.101.44 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:53:44.862Z system Agent at 172.16.101.186 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:53:57.250Z admin added room LR-11
+2026-11-18T11:53:58.653Z admin downloaded the agent installer for LR-11
+2026-11-18T11:54:07.257Z admin added room LR-12
+2026-11-18T11:54:08.793Z admin downloaded the agent installer for LR-12
+2026-11-18T11:54:26.248Z admin added room LR-13
+2026-11-18T11:54:28.354Z admin downloaded the agent installer for LR-13
+2026-11-18T11:54:38.609Z admin added room LR-14
+2026-11-18T11:54:40.459Z admin downloaded the agent installer for LR-14
+2026-11-18T11:54:55.112Z admin added room Conference-Room-1
+2026-11-18T11:54:56.709Z admin downloaded the agent installer for Conference-Room-1
+2026-11-18T11:55:24.914Z admin added room Big-Computer-Lab
+2026-11-18T11:55:26.827Z admin downloaded the agent installer for Big-Computer-Lab
+2026-11-18T11:55:41.846Z admin added room Small-Computer-Lab
+2026-11-18T11:55:43.473Z admin downloaded the agent installer for Small-Computer-Lab
+2026-11-18T11:55:56.029Z admin added room Audituram
+2026-11-18T11:57:56.713Z system Agent at 172.16.103.145 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:58:12.292Z system LR-2 (172.16.103.145) came online
+2026-11-18T11:58:14.305Z system LR-2 went offline
+2026-11-18T11:58:14.972Z system LR-2 (172.16.103.145) came online
+2026-11-18T11:58:44.282Z system Agent at 172.16.102.146 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:58:44.736Z system Agent at 172.16.102.22 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:58:44.827Z system Agent at 172.16.101.46 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:58:44.904Z system Agent at 172.16.103.142 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:58:44.977Z system Agent at 172.16.101.44 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:58:45.027Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:58:45.151Z system Agent at 172.16.101.186 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T11:59:28.930Z system LR-3 (172.16.101.44) came online
+2026-11-18T11:59:30.936Z system LR-3 went offline
+2026-11-18T11:59:31.485Z system LR-3 (172.16.101.44) came online
+2026-11-18T12:00:26.679Z system LR-4 (172.16.103.142) came online
+2026-11-18T12:00:28.684Z system LR-4 went offline
+2026-11-18T12:00:29.330Z system LR-4 (172.16.103.142) came online
+2026-11-18T12:02:35.878Z system LR-5 (172.16.103.181) came online
+2026-11-18T12:02:37.885Z system LR-5 went offline
+2026-11-18T12:02:38.393Z system LR-5 (172.16.103.181) came online
+2026-11-18T12:03:35.094Z system Conference-Room-2 (172.16.101.186) came online
+2026-11-18T12:03:37.093Z system Conference-Room-2 went offline
+2026-11-18T12:03:37.510Z system Conference-Room-2 (172.16.101.186) came online
+2026-11-18T12:03:44.492Z system Agent at 172.16.102.146 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:03:44.924Z system Agent at 172.16.102.22 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:03:44.993Z system Agent at 172.16.101.46 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:03:45.237Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:04:20.902Z system LR-6 (172.16.101.46) came online
+2026-11-18T12:04:22.903Z system LR-6 went offline
+2026-11-18T12:04:23.379Z system LR-6 (172.16.101.46) came online
+2026-11-18T12:05:15.000Z system LR-7 (172.16.101.47) came online
+2026-11-18T12:05:27.094Z system LR-7 (172.16.101.47) came online
+2026-11-18T12:05:29.104Z system LR-7 went offline
+2026-11-18T12:05:31.221Z system LR-7 (172.16.101.47) came online
+2026-11-18T12:06:47.322Z system LR-9 (172.16.101.49) came online
+2026-11-18T12:06:49.337Z system LR-9 went offline
+2026-11-18T12:06:49.972Z system LR-9 (172.16.101.49) came online
+2026-11-18T12:07:41.961Z system LR-10 (172.16.102.50) came online
+2026-11-18T12:07:58.697Z system LR-10 (172.16.102.50) came online
+2026-11-18T12:08:00.699Z system LR-10 went offline
+2026-11-18T12:08:01.745Z system LR-10 (172.16.102.50) came online
+2026-11-18T12:08:44.708Z system Agent at 172.16.102.146 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:08:45.101Z system Agent at 172.16.102.22 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:08:45.451Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:09:11.922Z system LR-11 (172.16.102.146) came online
+2026-11-18T12:09:13.938Z system LR-11 went offline
+2026-11-18T12:09:14.786Z system LR-11 (172.16.102.146) came online
+2026-11-18T12:11:29.143Z system LR-12 (172.16.102.22) came online
+2026-11-18T12:11:31.155Z system LR-12 went offline
+2026-11-18T12:11:31.773Z system LR-12 (172.16.102.22) came online
+2026-11-18T12:13:45.665Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:18:45.850Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:23:46.140Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:28:46.399Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:32:18.556Z system Agent at 172.16.102.48 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:32:28.940Z system LR-8 (172.16.102.48) came online
+2026-11-18T12:32:30.950Z system LR-8 went offline
+2026-11-18T12:32:31.374Z system LR-8 (172.16.102.48) came online
+2026-11-18T12:33:46.596Z system Agent at 172.16.102.33 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:34:28.510Z system LR-13 (172.16.102.33) came online
+2026-11-18T12:34:30.510Z system LR-13 went offline
+2026-11-18T12:34:31.048Z system LR-13 (172.16.102.33) came online
+2026-11-18T12:36:06.268Z system Agent at 172.16.101.15 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:36:21.096Z system Conference-Room-1 (172.16.101.15) came online
+2026-11-18T12:36:23.104Z system Conference-Room-1 went offline
+2026-11-18T12:36:23.518Z system Conference-Room-1 (172.16.101.15) came online
+2026-11-18T12:37:28.147Z system Agent at 172.16.102.26 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T12:37:57.028Z system Small-Computer-Lab (172.16.102.26) came online
+2026-11-18T12:37:59.024Z system Small-Computer-Lab went offline
+2026-11-18T12:37:59.663Z system Small-Computer-Lab (172.16.102.26) came online
+2026-11-18T12:40:52.733Z admin downloaded the agent installer for Audituram
+2026-11-18T12:41:13.482Z system Audituram (172.16.105.225) came online
+2026-11-18T12:41:15.498Z system Audituram went offline
+2026-11-18T12:41:15.936Z system Audituram (172.16.105.225) came online
+2026-11-18T12:42:31.398Z admin created teacher account faizan.saleem@niu.edu.pk
+2026-11-18T12:42:52.249Z faizan.saleem@niu.edu.pk signed in remotely from 172.16.105.251
+2026-11-18T12:43:07.522Z faizan.saleem@niu.edu.pk changed own password
+2026-11-18T12:43:28.133Z faizan.saleem@niu.edu.pk uploaded Endocrine_Disorders_Diabetes_Mellitus (2) (1).pptx (slides, 56 KB)
+2026-11-18T12:43:37.969Z faizan.saleem@niu.edu.pk chose LR-6 to share slides from their own device
+2026-11-18T12:43:46.123Z faizan.saleem@niu.edu.pk opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in LR-6
+2026-11-18T12:43:52.730Z faizan.saleem@niu.edu.pk started Full access (VNC) of LR-6 (teacher, from 172.16.105.251; password generated)
+2026-11-18T12:43:52.861Z faizan.saleem@niu.edu.pk VNC sign-in problem on LR-6: TightVNC on LR-6 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-18T12:43:52.867Z faizan.saleem@niu.edu.pk VNC link to LR-6 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-18T12:43:52.873Z faizan.saleem@niu.edu.pk remote control of LR-6 ended (released by user; 0 s, 0 input events)
+2026-11-18T12:43:57.066Z faizan.saleem@niu.edu.pk started remote control of LR-6 (teacher, from 172.16.105.251)
+2026-11-18T12:44:39.622Z faizan.saleem@niu.edu.pk remote control of LR-6 ended (released by user; 43 s, 320 input events)
+2026-11-18T12:44:56.518Z system Conference-Room-2 went offline
+2026-11-18T12:45:11.501Z faizan.saleem@niu.edu.pk opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in LR-6
+2026-11-18T12:45:15.510Z faizan.saleem@niu.edu.pk started remote control of LR-6 (teacher, from 172.16.105.251)
+2026-11-18T12:45:21.773Z faizan.saleem@niu.edu.pk remote control of LR-6 ended (released by user; 6 s, 76 input events)
+2026-11-18T12:45:34.905Z faizan.saleem@niu.edu.pk file transfer of Endocrine_Disorders_Diabetes_Mellitus (2) (1).pptx to LR-6 failed: That folder is not allowed.
+2026-11-18T12:45:44.976Z faizan.saleem@niu.edu.pk opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in LR-6
+2026-11-18T12:46:10.005Z faizan.saleem@niu.edu.pk full screen on the room display in LR-6
+2026-11-18T12:46:11.875Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:14.411Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:15.116Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:15.711Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:20.177Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:21.166Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:21.802Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:33.203Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:38.272Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:39.150Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:40.240Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:41.149Z faizan.saleem@niu.edu.pk prev in LR-6
+2026-11-18T12:46:43.055Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:44.568Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:45.559Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:46.240Z faizan.saleem@niu.edu.pk prev in LR-6
+2026-11-18T12:46:47.057Z faizan.saleem@niu.edu.pk prev in LR-6
+2026-11-18T12:46:47.782Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:53.819Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:54.299Z faizan.saleem@niu.edu.pk prev in LR-6
+2026-11-18T12:46:55.078Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:46:55.511Z faizan.saleem@niu.edu.pk next in LR-6
+2026-11-18T12:47:15.054Z faizan.saleem@niu.edu.pk opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in LR-6
+2026-11-18T12:47:16.070Z faizan.saleem@niu.edu.pk started remote control of LR-6 (teacher, from 172.16.105.251)
+2026-11-18T12:47:26.192Z faizan.saleem@niu.edu.pk remote control of LR-6 ended (released by user; 10 s, 114 input events)
+2026-11-18T12:47:43.041Z faizan.saleem@niu.edu.pk signed out of LR-6 (signed out)
+2026-11-18T12:52:38.530Z admin created teacher account mudassirshafique@niu.edu.pk
+2026-11-18T12:53:45.141Z faizan.saleem@niu.edu.pk signed in remotely from 172.16.105.251
+2026-11-18T12:53:58.626Z faizan.saleem@niu.edu.pk chose Small-Computer-Lab to share slides from their own device
+2026-11-18T12:54:02.464Z faizan.saleem@niu.edu.pk opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in Small-Computer-Lab
+2026-11-18T12:54:41.849Z faizan.saleem@niu.edu.pk stop in Small-Computer-Lab
+2026-11-18T12:55:55.522Z admin created teacher account iftikhar.khan@niu.edu.pk
+2026-11-18T12:56:58.192Z admin created teacher account noman.ashraf@niu.edu.pk
+2026-11-18T12:58:19.453Z admin created teacher account ibraheem.ali@niu.edu.pk
+2026-11-18T13:00:25.160Z admin created teacher account maroof.hamid@niu.edu.pk
+2026-11-18T13:01:51.609Z admin created teacher account areeba.abrar@niu.edu.pk
+2026-11-18T13:03:25.814Z admin created teacher account areeba.mahmood@niu.edu.pk
+2026-11-18T13:04:13.553Z admin created teacher account fatima.hassan@niu.edu.pk
+2026-11-18T13:04:26.962Z system Conference-Room-1 went offline
+2026-11-18T13:05:25.107Z admin created teacher account aqsa.hafeez@niu.edu.pk
+2026-11-18T13:07:13.911Z admin created teacher account aimen.munir@niu.edu.pk
+2026-11-18T13:08:39.891Z admin created teacher account zain.ulabidin@niu.edu.pk
+2026-11-18T13:10:04.153Z admin created teacher account osama.nasim@niu.edu.pk
+2026-11-18T13:12:30.406Z admin created teacher account qazi.yasir@niu.edu.pk
+2026-11-18T13:13:24.537Z admin created teacher account ali.abbas@niu.edu.pk
+2026-11-18T13:15:06.248Z admin created teacher account saima.naaz@niu.edu.pk
+2026-11-18T13:15:49.173Z admin created teacher account samreen.latif@niu.edu.pk
+2026-11-18T13:16:54.691Z admin created teacher account saad.akram@niu.edu.pk
+2026-11-18T13:17:45.430Z admin created teacher account muhammad.furqan@niu.edu.pk
+2026-11-18T13:32:57.766Z system LR-13 went offline
+2026-11-18T13:32:57.770Z system LR-8 went offline
+2026-11-18T13:32:57.786Z system LR-12 went offline
+2026-11-18T13:32:57.800Z system LR-11 went offline
+2026-11-18T13:32:57.806Z system LR-10 went offline
+2026-11-18T13:32:57.808Z system LR-9 went offline
+2026-11-18T13:32:57.810Z system LR-7 went offline
+2026-11-18T13:32:57.813Z system LR-6 went offline
+2026-11-18T13:33:50.735Z admin created teacher account zobia.saleem@niu.edu.pk
+2026-11-18T13:34:35.388Z admin created teacher account shamaila.habib@niu.edu.pk
+2026-11-18T13:34:50.956Z system LR-9 (172.16.101.49) came online
+2026-11-18T13:40:11.009Z faizan.saleem@niu.edu.pk signed out of Small-Computer-Lab (inactive)
+2026-11-18T13:40:33.794Z admin created teacher account kaynat.shahzad@niu.edu.pk
+2026-11-18T13:43:04.727Z admin created teacher account ayesh.iftikhar@niu.edu.pk
+2026-11-18T13:43:51.048Z admin created teacher account noor.fatima@niu.edu.pk
+2026-11-18T13:44:32.052Z admin created teacher account amina.hashmi@niu.edu.pk
+2026-11-18T13:45:31.900Z admin created teacher account sadaf.noreen@niu.edu.pk
+2026-11-18T13:46:06.753Z admin created teacher account sajida.munir@niu.edu.pk
+2026-11-18T13:49:07.637Z admin created teacher account tayyaba.niaz@niu.edu.pk
+2026-11-18T13:51:16.145Z admin created teacher account shanahil.butt@niu.edu.pk
+2026-11-18T13:52:08.094Z admin created teacher account ifra.jamil@niu.edu.pk
+2026-11-18T13:53:24.664Z admin created teacher account ali.hayder@niu.edu.pk
+2026-11-18T13:54:06.117Z admin created teacher account muhammad.tariq@niu.edu.pk
+2026-11-18T14:04:17.825Z admin created teacher account fatima.khan@niu.edu.pk
+2026-11-18T14:05:14.262Z admin created teacher account quratulain.bokhari@niu.edu.pk
+2026-11-18T14:05:59.886Z admin created teacher account rabia.farooqi@niu.edu.pk
+2026-11-18T14:06:43.840Z admin created teacher account rabail.bashir@niu.edu.pk
+2026-11-18T14:07:14.769Z admin created teacher account sadia.arshad@niu.edu.pk
+2026-11-18T14:08:52.169Z admin created teacher account nickson.anthony@niu.edu.pk
+2026-11-18T14:09:24.661Z admin created teacher account amna.adeel@niu.edu.pk
+2026-11-18T14:10:20.345Z admin created teacher account samina.farooqi@niu.edu.pk
+2026-11-18T14:10:59.335Z admin created teacher account bushra.ali@niu.edu.pk
+2026-11-18T14:15:17.567Z admin created teacher account kanwal.karim@niu.edu.pk
+2026-11-18T14:15:55.303Z admin created teacher account nadia.rasheed@niu.edu.pk
+2026-11-18T14:16:41.674Z admin created teacher account tabinda.khan@niu.edu.pk
+2026-11-18T14:17:19.692Z admin created teacher account sidra.asad@niu.edu.pk
+2026-11-18T14:17:52.481Z admin created teacher account anam.jeelani@niu.edu.pk
+2026-11-18T14:18:39.499Z admin created teacher account rizwana.rana@niu.edu.pk
+2026-11-18T14:22:46.807Z admin created teacher account faryall.kemall@niu.edu.pk
+2026-11-18T14:31:59.470Z system LR-9 went offline
+2026-11-18T14:32:58.967Z faizan.saleem@niu.edu.pk signed in remotely from 172.18.32.146
+2026-11-18T14:33:17.786Z system LR-9 (172.16.101.49) came online
+2026-11-18T14:33:33.858Z faizan.saleem@niu.edu.pk chose Small-Computer-Lab to share slides from their own device
+2026-11-18T14:33:43.748Z faizan.saleem@niu.edu.pk opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in Small-Computer-Lab
+2026-11-18T14:33:49.642Z faizan.saleem@niu.edu.pk started Full access (VNC) of Small-Computer-Lab (teacher, from 172.18.32.146; password generated)
+2026-11-18T14:33:49.914Z faizan.saleem@niu.edu.pk VNC sign-in problem on Small-Computer-Lab: TightVNC on Small-Computer-Lab is not accepting this server ... (server said: "RFB 003.003 Too many security failures")
+2026-11-18T14:33:49.918Z faizan.saleem@niu.edu.pk VNC link to Small-Computer-Lab closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-18T14:33:49.935Z faizan.saleem@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 0 s, 0 input events)
+2026-11-18T14:33:52.126Z faizan.saleem@niu.edu.pk started remote control of Small-Computer-Lab (teacher, from 172.18.32.146)
+2026-11-18T14:34:19.455Z faizan.saleem@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 27 s, 123 input events)
+2026-11-18T14:35:34.679Z faizan.saleem@niu.edu.pk started remote control of Small-Computer-Lab (teacher, from 172.18.32.146)
+2026-11-18T14:35:45.631Z faizan.saleem@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 11 s, 99 input events)
+2026-11-18T14:36:14.913Z faizan.saleem@niu.edu.pk opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in Small-Computer-Lab
+2026-11-18T14:36:55.330Z faizan.saleem@niu.edu.pk signed out of Small-Computer-Lab (released by Administrator)
+2026-11-18T14:36:55.330Z admin released the sign-in of faizan.saleem@niu.edu.pk
+2026-11-18T14:39:16.290Z admin signed out (signed out)
+2026-11-18T14:45:14.891Z system Audituram went offline
+2026-11-18T14:52:00.051Z system LR-5 went offline
+2026-11-18T14:54:15.122Z system LR-1-A went offline
+2026-11-18T14:55:45.166Z system LR-4 went offline
+2026-11-18T14:57:30.225Z system LR-2 went offline
+2026-11-18T15:02:15.355Z system LR-3 went offline
+2026-11-18T15:04:35.587Z system LR-2 (172.16.103.145) came online
+2026-11-18T15:05:45.441Z system LR-2 went offline
+2026-11-18T15:07:31.703Z system LR-4 (172.16.103.142) came online
+2026-11-18T15:08:45.562Z system LR-4 went offline
+2026-11-18T15:10:38.078Z system LR-1-A (172.16.103.143) came online
+2026-11-18T15:11:45.657Z system LR-1-A went offline
+2026-11-18T15:13:18.213Z system LR-5 (172.16.103.181) came online
+2026-11-18T15:14:15.710Z system LR-5 went offline
+2026-11-18T15:17:34.699Z system Conference-Room-2 (172.16.101.186) came online
+2026-11-18T15:18:31.921Z ibraheem.ali@niu.edu.pk signed in remotely from 172.18.32.133
+2026-11-18T15:18:59.309Z ibraheem.ali@niu.edu.pk changed own password
+2026-11-18T15:20:06.320Z ibraheem.ali@niu.edu.pk uploaded IM.pptx (slides, 1407 KB)
+2026-11-18T15:20:35.791Z ibraheem.ali@niu.edu.pk chose Conference-Room-2 to share slides from their own device
+2026-11-18T15:20:47.685Z ibraheem.ali@niu.edu.pk opened "IM" in Conference-Room-2
+2026-11-18T15:20:58.408Z ibraheem.ali@niu.edu.pk started Full access (VNC) of Conference-Room-2 (teacher, from 172.18.32.133; password generated)
+2026-11-18T15:21:00.634Z ibraheem.ali@niu.edu.pk VNC sign-in problem on Conference-Room-2: TightVNC on Conference-Room-2 is not accepting this server r... (server said: "RFB 003.003 Too many security failures")
+2026-11-18T15:21:00.637Z ibraheem.ali@niu.edu.pk VNC link to Conference-Room-2 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-18T15:21:00.716Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 2 s, 0 input events)
+2026-11-18T15:21:05.862Z ibraheem.ali@niu.edu.pk started remote control of Conference-Room-2 (teacher, from 172.18.32.133)
+2026-11-18T15:26:26.632Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 321 s, 1762 input events)
+2026-11-18T15:28:09.894Z ibraheem.ali@niu.edu.pk file transfer of 4. Weekend Program Timetable - Fall 2026 w.e.f 14-11-2026 (Shared on 14-11-2026).pdf to Conference-Room-2 failed: That folder is not allowed.
+2026-11-18T15:28:33.187Z ibraheem.ali@niu.edu.pk file transfer of 3. Weekend Program Timetable - Fall 2026 w.e.f 07-11-2026 (Shared on 07-11-2026).pdf to Conference-Room-2 failed: That folder is not allowed.
+2026-11-18T15:28:49.123Z ibraheem.ali@niu.edu.pk uploaded 4. Weekend Program Timetable - Fall 2026 w.e.f 14-11-2026 (Shared on 14-11-2026).pdf (pdf, 24 KB)
+2026-11-18T15:28:49.842Z ibraheem.ali@niu.edu.pk opened "4. Weekend Program Timetable - Fall 2026 w.e.f 14-11-2026 (Shared on 14-11-2026)" in Conference-Room-2
+2026-11-18T15:29:05.115Z ibraheem.ali@niu.edu.pk full screen on the room display in Conference-Room-2
+2026-11-18T15:31:58.540Z ibraheem.ali@niu.edu.pk stop in Conference-Room-2
+2026-11-18T15:32:07.987Z ibraheem.ali@niu.edu.pk started Full access (VNC) of Conference-Room-2 (teacher, from 172.18.32.133; password generated)
+2026-11-18T15:32:08.428Z ibraheem.ali@niu.edu.pk VNC sign-in problem on Conference-Room-2: TightVNC on Conference-Room-2 is not accepting this server r... (server said: "RFB 003.003 Too many security failures")
+2026-11-18T15:32:08.432Z ibraheem.ali@niu.edu.pk VNC link to Conference-Room-2 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-18T15:32:08.444Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 0 s, 0 input events)
+2026-11-18T15:32:10.498Z ibraheem.ali@niu.edu.pk started remote control of Conference-Room-2 (teacher, from 172.18.32.133)
+2026-11-18T15:33:10.081Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 60 s, 227 input events)
+2026-11-18T15:33:51.082Z ibraheem.ali@niu.edu.pk file transfer of 1.1 PMI_and_Agile_Certifications DONE.pptx to Conference-Room-2 failed: That folder is not allowed.
+2026-11-18T15:34:53.619Z ibraheem.ali@niu.edu.pk opened "IM" in Conference-Room-2
+2026-11-18T15:34:57.353Z ibraheem.ali@niu.edu.pk started remote control of Conference-Room-2 (teacher, from 172.18.32.133)
+2026-11-18T15:37:37.447Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 160 s, 365 input events)
+2026-11-18T15:37:45.885Z ibraheem.ali@niu.edu.pk next in Conference-Room-2
+2026-11-18T15:40:03.363Z ibraheem.ali@niu.edu.pk stop in Conference-Room-2
+2026-11-18T15:40:16.728Z ibraheem.ali@niu.edu.pk deleted lecture "4. Weekend Program Timetable - Fall 2026 w.e.f 14-11-2026 (Shared on 14-11-2026)"
+2026-11-18T15:40:22.725Z ibraheem.ali@niu.edu.pk started Full access (VNC) of Conference-Room-2 (teacher, from 172.18.32.133; password generated)
+2026-11-18T15:40:22.917Z ibraheem.ali@niu.edu.pk VNC sign-in problem on Conference-Room-2: TightVNC on Conference-Room-2 is not accepting this server r... (server said: "RFB 003.003 Too many security failures")
+2026-11-18T15:40:22.923Z ibraheem.ali@niu.edu.pk VNC link to Conference-Room-2 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-18T15:40:22.936Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 0 s, 0 input events)
+2026-11-18T15:40:26.933Z ibraheem.ali@niu.edu.pk started remote control of Conference-Room-2 (teacher, from 172.18.32.133)
+2026-11-18T15:40:44.805Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 18 s, 22 input events)
+2026-11-18T15:40:47.870Z ibraheem.ali@niu.edu.pk started remote control of Conference-Room-2 (teacher, from 172.18.32.133)
+2026-11-18T15:42:57.954Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 130 s, 180 input events)
+2026-11-18T15:44:00.373Z ibraheem.ali@niu.edu.pk disconnected from Conference-Room-2
+2026-11-18T15:44:18.335Z ibraheem.ali@niu.edu.pk chose LR-9 to share slides from their own device
+2026-11-18T15:47:19.224Z ibraheem.ali@niu.edu.pk uploaded 1588246991-chopra3-ppt-ch01.ppt (slides, 338 KB)
+2026-11-18T15:47:19.333Z ibraheem.ali@niu.edu.pk opened "1588246991-chopra3-ppt-ch01" in LR-9
+2026-11-18T15:47:37.697Z ibraheem.ali@niu.edu.pk stop in LR-9
+2026-11-18T15:47:56.456Z ibraheem.ali@niu.edu.pk disconnected from LR-9
+2026-11-18T15:48:09.764Z ibraheem.ali@niu.edu.pk chose Conference-Room-2 to share slides from their own device
+2026-11-18T15:48:26.589Z ibraheem.ali@niu.edu.pk uploaded 1588246991-chopra3-ppt-ch02.ppt (slides, 381 KB)
+2026-11-18T15:48:26.656Z ibraheem.ali@niu.edu.pk opened "1588246991-chopra3-ppt-ch02" in Conference-Room-2
+2026-11-18T15:48:45.222Z ibraheem.ali@niu.edu.pk stop in Conference-Room-2
+2026-11-18T15:49:13.898Z ibraheem.ali@niu.edu.pk uploaded 1588246991-chopra3-ppt-ch04.pdf (pdf, 549 KB)
+2026-11-18T15:49:13.994Z ibraheem.ali@niu.edu.pk opened "1588246991-chopra3-ppt-ch04" in Conference-Room-2
+2026-11-18T15:49:37.143Z ibraheem.ali@niu.edu.pk stop in Conference-Room-2
+2026-11-18T15:49:43.653Z ibraheem.ali@niu.edu.pk started Full access (VNC) of Conference-Room-2 (teacher, from 172.18.32.133; password generated)
+2026-11-18T15:49:43.861Z ibraheem.ali@niu.edu.pk VNC sign-in problem on Conference-Room-2: TightVNC on Conference-Room-2 is not accepting this server r... (server said: "RFB 003.003 Too many security failures")
+2026-11-18T15:49:43.865Z ibraheem.ali@niu.edu.pk VNC link to Conference-Room-2 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-18T15:49:43.890Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 0 s, 0 input events)
+2026-11-18T15:49:54.943Z ibraheem.ali@niu.edu.pk opened "IM" in Conference-Room-2
+2026-11-18T15:50:00.669Z ibraheem.ali@niu.edu.pk next in Conference-Room-2
+2026-11-18T15:50:03.129Z ibraheem.ali@niu.edu.pk next in Conference-Room-2
+2026-11-18T15:50:06.400Z ibraheem.ali@niu.edu.pk started remote control of Conference-Room-2 (teacher, from 172.18.32.133)
+2026-11-18T15:50:25.062Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 19 s, 107 input events)
+2026-11-18T15:50:43.817Z ibraheem.ali@niu.edu.pk started remote control of Conference-Room-2 (teacher, from 172.18.32.133)
+2026-11-18T15:51:15.663Z ibraheem.ali@niu.edu.pk remote control of Conference-Room-2 ended (released by user; 32 s, 88 input events)
+2026-11-18T15:51:43.933Z ibraheem.ali@niu.edu.pk deleted lecture "1588246991-chopra3-ppt-ch04"
+2026-11-18T15:51:46.791Z ibraheem.ali@niu.edu.pk deleted lecture "1588246991-chopra3-ppt-ch02"
+2026-11-18T15:51:50.223Z ibraheem.ali@niu.edu.pk deleted lecture "1588246991-chopra3-ppt-ch01"
+2026-11-18T15:51:53.230Z ibraheem.ali@niu.edu.pk deleted lecture "IM"
+2026-11-18T15:53:40.242Z ibraheem.ali@niu.edu.pk disconnected from Conference-Room-2
+2026-11-18T15:55:11.109Z ibraheem.ali@niu.edu.pk signed out (signed out)
+2026-11-18T15:58:08.403Z system Conference-Room-2 went offline
+2026-11-18T16:01:06.937Z system Agent at 172.16.101.124 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T16:06:07.092Z system Agent at 172.16.101.124 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T16:11:07.251Z system Agent at 172.16.101.124 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-18T16:12:02.318Z system LR-9 went offline
+2026-11-18T23:46:50.298Z admin signed out (expired)
+2026-11-19T03:54:02.655Z system LR-9 (172.16.101.49) came online
+2026-11-19T04:01:02.845Z system LR-9 (172.16.101.49) came online
+2026-11-19T04:01:03.038Z system Small-Computer-Lab (172.16.102.26) came online
+2026-11-19T04:06:21.004Z admin signed in from 172.16.105.251
+2026-11-19T04:06:46.181Z system LR-4 (172.16.103.142) came online
+2026-11-19T04:07:08.018Z system LR-1-A (172.16.103.143) came online
+2026-11-19T04:09:55.035Z system LR-3 (172.16.101.44) came online
+2026-11-19T04:11:16.505Z admin uploaded Autonomic_Nervous_System_Presentation.pptx (slides, 52 KB)
+2026-11-19T04:11:37.281Z admin opened "Autonomic_Nervous_System_Presentation" in LR-3
+2026-11-19T04:11:39.920Z system LR-5 (172.16.103.181) came online
+2026-11-19T04:11:48.153Z admin took control of LR-3
+2026-11-19T04:11:48.155Z admin started Full access (VNC) of LR-3 (admin, from 172.16.105.251; password generated)
+2026-11-19T04:11:48.375Z admin VNC sign-in problem on LR-3: TightVNC on LR-3 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T04:11:48.380Z admin VNC link to LR-3 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T04:11:48.389Z admin remote control of LR-3 ended (released by user; 0 s, 0 input events)
+2026-11-19T04:11:48.398Z admin released control of LR-3
+2026-11-19T04:11:58.663Z admin took control of LR-3
+2026-11-19T04:11:58.664Z admin started remote control of LR-3 (admin, from 172.16.105.251)
+2026-11-19T04:12:03.272Z admin remote control of LR-3 ended (released by user; 5 s, 46 input events)
+2026-11-19T04:12:03.273Z admin released control of LR-3
+2026-11-19T04:17:50.826Z admin uploaded Oral_Communication_Weeks_1_to_3_Slides.pptx (slides, 5722 KB)
+2026-11-19T04:18:02.366Z admin opened "Oral_Communication_Weeks_1_to_3_Slides" in Small-Computer-Lab
+2026-11-19T04:25:21.398Z system LR-13 (172.16.102.33) came online
+2026-11-19T04:32:27.007Z system LR-2 (172.16.103.145) came online
+2026-11-19T04:33:40.860Z system LR-6 (172.16.101.46) came online
+2026-11-19T04:34:22.655Z system LR-7 (172.16.101.47) came online
+2026-11-19T04:35:09.444Z system LR-8 (172.16.102.48) came online
+2026-11-19T04:35:51.056Z system LR-10 (172.16.102.50) came online
+2026-11-19T04:36:40.419Z system LR-11 (172.16.102.146) came online
+2026-11-19T04:37:32.266Z system LR-12 (172.16.102.22) came online
+2026-11-19T04:43:33.132Z system Agent at 172.16.101.124 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T04:45:43.248Z system Audituram (172.16.105.225) came online
+2026-11-19T04:46:46.996Z admin took control of Audituram
+2026-11-19T04:46:46.997Z admin started Full access (VNC) of Audituram (admin, from 172.16.105.251; password generated)
+2026-11-19T04:46:47.082Z admin VNC link to Audituram closed (released by user; 0 s, 12 bytes sent, 14 received)
+2026-11-19T04:46:47.089Z admin remote control of Audituram ended (released by user; 0 s, 0 input events)
+2026-11-19T04:46:47.091Z admin released control of Audituram
+2026-11-19T04:46:47.092Z admin VNC sign-in problem on Audituram: TightVNC on Audituram refused every password MCSCMS knows. R... (server said: "RFB 004.001")
+2026-11-19T04:46:49.358Z admin took control of Audituram
+2026-11-19T04:46:49.359Z admin started remote control of Audituram (admin, from 172.16.105.251)
+2026-11-19T04:47:01.262Z admin remote control of Audituram ended (released by user; 12 s, 142 input events)
+2026-11-19T04:47:01.263Z admin released control of Audituram
+2026-11-19T04:48:33.336Z system Agent at 172.16.101.124 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T04:51:35.963Z system LR-14 (172.16.101.124) came online
+2026-11-19T04:51:37.968Z system LR-14 went offline
+2026-11-19T04:51:38.528Z system LR-14 (172.16.101.124) came online
+2026-11-19T04:57:07.291Z admin next in LR-4
+2026-11-19T04:57:43.836Z system LR-7 went offline
+2026-11-19T04:58:18.443Z admin took control of LR-4
+2026-11-19T04:58:18.444Z admin started Full access (VNC) of LR-4 (admin, from 172.16.105.251; password generated)
+2026-11-19T04:58:18.543Z admin VNC sign-in problem on LR-4: TightVNC on LR-4 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T04:58:18.557Z admin VNC link to LR-4 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T04:58:18.562Z admin remote control of LR-4 ended (released by user; 0 s, 0 input events)
+2026-11-19T04:58:18.564Z admin released control of LR-4
+2026-11-19T04:58:24.200Z admin took control of LR-4
+2026-11-19T04:58:24.201Z admin started remote control of LR-4 (admin, from 172.16.105.251)
+2026-11-19T05:00:57.024Z admin remote control of LR-4 ended (released by user; 153 s, 677 input events)
+2026-11-19T05:00:57.025Z admin released control of LR-4
+2026-11-19T05:01:05.588Z admin took control of LR-4
+2026-11-19T05:01:05.589Z admin started remote control of LR-4 (admin, from 172.16.105.251)
+2026-11-19T05:01:20.617Z admin remote control of LR-4 ended (released by user; 15 s, 98 input events)
+2026-11-19T05:01:20.618Z admin released control of LR-4
+2026-11-19T05:01:47.892Z admin took control of LR-4
+2026-11-19T05:01:47.894Z admin started remote control of LR-4 (admin, from 172.16.105.251)
+2026-11-19T05:02:27.788Z admin remote control of LR-4 ended (released by user; 40 s, 201 input events)
+2026-11-19T05:02:27.790Z admin released control of LR-4
+2026-11-19T05:02:55.711Z admin took control of LR-4
+2026-11-19T05:02:55.715Z admin started remote control of LR-4 (admin, from 172.16.105.251)
+2026-11-19T05:03:40.762Z admin remote control of LR-4 ended (released by user; 45 s, 198 input events)
+2026-11-19T05:03:40.763Z admin released control of LR-4
+2026-11-19T05:03:55.413Z admin took control of Audituram
+2026-11-19T05:03:55.415Z admin started Full access (VNC) of Audituram (admin, from 172.16.105.251; password generated)
+2026-11-19T05:03:55.474Z admin VNC sign-in problem on Audituram: TightVNC on Audituram is not accepting this server right now... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T05:03:55.487Z admin VNC link to Audituram closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T05:03:55.500Z admin remote control of Audituram ended (released by user; 0 s, 0 input events)
+2026-11-19T05:03:55.501Z admin released control of Audituram
+2026-11-19T05:03:59.973Z admin stop in Audituram
+2026-11-19T05:04:01.989Z admin took control of Audituram
+2026-11-19T05:04:01.990Z admin started remote control of Audituram (admin, from 172.16.105.251)
+2026-11-19T05:05:09.936Z admin signed in from 172.18.35.119
+2026-11-19T05:05:17.883Z admin remote control of Audituram ended (control taken by Administrator; 76 s, 304 input events)
+2026-11-19T05:05:17.884Z admin took control of Audituram
+2026-11-19T05:05:17.890Z admin started remote control of Audituram (admin, from 172.18.35.119)
+2026-11-19T05:05:17.896Z admin released control of Audituram
+2026-11-19T05:05:21.219Z admin remote control of Audituram ended (released by user; 3 s, 0 input events)
+2026-11-19T05:05:40.812Z admin took control of Audituram
+2026-11-19T05:05:40.813Z admin started remote control of Audituram (admin, from 172.18.35.119)
+2026-11-19T05:06:32.382Z admin remote control of Audituram ended (released by user; 52 s, 288 input events)
+2026-11-19T05:06:32.384Z admin released control of Audituram
+2026-11-19T05:06:54.155Z admin took control of Audituram
+2026-11-19T05:06:54.156Z admin started remote control of Audituram (admin, from 172.18.35.119)
+2026-11-19T05:07:05.860Z admin remote control of Audituram ended (released by user; 12 s, 73 input events)
+2026-11-19T05:07:05.861Z admin released control of Audituram
+2026-11-19T05:11:39.426Z admin signed in from 172.16.105.251
+2026-11-19T05:12:02.371Z admin uploaded GCLP_session 1.pptx (slides, 374 KB)
+2026-11-19T05:12:56.934Z admin opened "GCLP_session 1" in LR-4
+2026-11-19T05:13:01.966Z admin opened "GCLP_session 1" in LR-4
+2026-11-19T05:13:05.782Z admin took control of LR-4
+2026-11-19T05:13:05.783Z admin started Full access (VNC) of LR-4 (admin, from 172.16.105.251; password generated)
+2026-11-19T05:13:05.840Z admin VNC sign-in problem on LR-4: TightVNC on LR-4 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T05:13:05.847Z admin VNC link to LR-4 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T05:13:05.855Z admin remote control of LR-4 ended (released by user; 0 s, 0 input events)
+2026-11-19T05:13:05.857Z admin released control of LR-4
+2026-11-19T05:13:07.318Z admin took control of LR-4
+2026-11-19T05:13:07.319Z admin started remote control of LR-4 (admin, from 172.16.105.251)
+2026-11-19T05:13:18.398Z admin remote control of LR-4 ended (released by user; 11 s, 113 input events)
+2026-11-19T05:13:18.400Z admin released control of LR-4
+2026-11-19T05:16:13.479Z system Conference-Room-1 (172.16.101.15) came online
+2026-11-19T05:16:48.860Z amina.hashmi@niu.edu.pk signed in remotely from 172.18.48.159
+2026-11-19T05:17:30.901Z amina.hashmi@niu.edu.pk changed own password
+2026-11-19T05:18:03.155Z amina.hashmi@niu.edu.pk uploaded 1. Comprehensive Accessibility -.pptx (slides, 9620 KB)
+2026-11-19T05:18:13.271Z amina.hashmi@niu.edu.pk chose Conference-Room-1 to share slides from their own device
+2026-11-19T05:18:20.920Z amina.hashmi@niu.edu.pk opened "1. Comprehensive Accessibility -" in Conference-Room-1
+2026-11-19T05:18:31.484Z amina.hashmi@niu.edu.pk started Full access (VNC) of Conference-Room-1 (teacher, from 172.18.48.159; password generated)
+2026-11-19T05:18:32.313Z amina.hashmi@niu.edu.pk VNC sign-in problem on Conference-Room-1: TightVNC on Conference-Room-1 is not accepting this server r... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T05:18:32.315Z amina.hashmi@niu.edu.pk VNC link to Conference-Room-1 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T05:18:32.320Z amina.hashmi@niu.edu.pk remote control of Conference-Room-1 ended (released by user; 1 s, 0 input events)
+2026-11-19T05:18:34.701Z amina.hashmi@niu.edu.pk started remote control of Conference-Room-1 (teacher, from 172.18.48.159)
+2026-11-19T05:19:04.051Z amina.hashmi@niu.edu.pk remote control of Conference-Room-1 ended (released by user; 29 s, 115 input events)
+2026-11-19T05:19:10.585Z amina.hashmi@niu.edu.pk next in Conference-Room-1
+2026-11-19T05:19:12.243Z amina.hashmi@niu.edu.pk next in Conference-Room-1
+2026-11-19T05:19:13.131Z amina.hashmi@niu.edu.pk next in Conference-Room-1
+2026-11-19T05:20:12.660Z amina.hashmi@niu.edu.pk stop in Conference-Room-1
+2026-11-19T05:20:37.937Z amina.hashmi@niu.edu.pk disconnected from Conference-Room-1
+2026-11-19T05:20:53.246Z amina.hashmi@niu.edu.pk chose Conference-Room-1 to share slides from their own device
+2026-11-19T05:26:02.291Z admin created teacher account maha.zaheer@niu.edu.pk
+2026-11-19T05:30:04.277Z maha.zaheer@niu.edu.pk signed in remotely from 172.18.32.85
+2026-11-19T05:31:31.646Z maha.zaheer@niu.edu.pk changed own password
+2026-11-19T05:31:54.528Z maha.zaheer@niu.edu.pk uploaded 4.Role of sensory system.ppt (slides, 12672 KB)
+2026-11-19T05:32:01.410Z maha.zaheer@niu.edu.pk chose LR-13 to share slides from their own device
+2026-11-19T05:32:06.523Z maha.zaheer@niu.edu.pk opened "4.Role of sensory system" in LR-13
+2026-11-19T05:32:21.312Z maha.zaheer@niu.edu.pk next in LR-13
+2026-11-19T05:32:27.875Z maha.zaheer@niu.edu.pk prev in LR-13
+2026-11-19T05:32:36.864Z maha.zaheer@niu.edu.pk started Full access (VNC) of LR-13 (teacher, from 172.18.32.85; password generated)
+2026-11-19T05:32:37.446Z maha.zaheer@niu.edu.pk VNC sign-in problem on LR-13: TightVNC on LR-13 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T05:32:37.448Z maha.zaheer@niu.edu.pk VNC link to LR-13 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T05:32:37.469Z maha.zaheer@niu.edu.pk remote control of LR-13 ended (released by user; 1 s, 0 input events)
+2026-11-19T05:32:39.012Z maha.zaheer@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.85)
+2026-11-19T05:35:37.812Z admin stop in Small-Computer-Lab
+2026-11-19T05:48:27.165Z maha.zaheer@niu.edu.pk remote control of LR-13 ended (released by user; 948 s, 144 input events)
+2026-11-19T05:49:21.277Z system LR-12 went offline
+2026-11-19T05:49:26.299Z system LR-12 (172.16.102.22) came online
+2026-11-19T05:52:30.307Z system LR-12 went offline
+2026-11-19T05:52:38.595Z system LR-12 (172.16.102.22) came online
+2026-11-19T05:56:45.435Z system LR-12 went offline
+2026-11-19T05:56:45.437Z system LR-13 went offline
+2026-11-19T05:56:46.316Z system LR-12 (172.16.102.22) came online
+2026-11-19T05:57:06.215Z system LR-13 (172.16.102.33) came online
+2026-11-19T05:57:20.265Z system LR-12 went offline
+2026-11-19T05:57:25.287Z system LR-12 (172.16.102.22) came online
+2026-11-19T06:07:09.263Z faizan.saleem@niu.edu.pk signed in remotely from 172.18.32.146
+2026-11-19T06:07:21.614Z faizan.saleem@niu.edu.pk uploaded Hand Hygiene in OR.pptx (slides, 17825 KB)
+2026-11-19T06:07:40.629Z faizan.saleem@niu.edu.pk chose Small-Computer-Lab to share slides from their own device
+2026-11-19T06:07:44.347Z faizan.saleem@niu.edu.pk opened "Hand Hygiene in OR" in Small-Computer-Lab
+2026-11-19T06:07:53.873Z faizan.saleem@niu.edu.pk stop in Small-Computer-Lab
+2026-11-19T06:07:58.433Z faizan.saleem@niu.edu.pk started Full access (VNC) of Small-Computer-Lab (teacher, from 172.18.32.146; password generated)
+2026-11-19T06:07:58.621Z faizan.saleem@niu.edu.pk VNC sign-in problem on Small-Computer-Lab: TightVNC on Small-Computer-Lab is not accepting this server ... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T06:07:58.637Z faizan.saleem@niu.edu.pk VNC link to Small-Computer-Lab closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T06:07:58.647Z faizan.saleem@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 0 s, 0 input events)
+2026-11-19T06:08:19.643Z faizan.saleem@niu.edu.pk started remote control of Small-Computer-Lab (teacher, from 172.18.32.146)
+2026-11-19T06:09:15.049Z faizan.saleem@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 55 s, 498 input events)
+2026-11-19T06:13:29.203Z amina.hashmi@niu.edu.pk signed out of Conference-Room-1 (inactive)
+2026-11-19T06:17:55.575Z system LR-2 went offline
+2026-11-19T06:20:44.763Z faizan.saleem@niu.edu.pk signed out of Small-Computer-Lab (released by Administrator)
+2026-11-19T06:20:44.764Z admin released the sign-in of faizan.saleem@niu.edu.pk
+2026-11-19T06:30:12.232Z system LR-12 (172.16.102.22) came online
+2026-11-19T06:33:29.420Z maha.zaheer@niu.edu.pk signed out of LR-13 (inactive)
+2026-11-19T06:37:17.786Z unknown failed sign-in for "noor.fatima@niu.edu.pk" from 172.18.32.67
+2026-11-19T06:37:21.681Z unknown failed sign-in for "noor.fatima@niu.edu.pk" from 172.18.32.67
+2026-11-19T06:37:26.405Z unknown failed sign-in for "noor.fatima@niu.edu.pk" from 172.18.32.67
+2026-11-19T06:37:34.618Z noor.fatima@niu.edu.pk signed in remotely from 172.18.32.67
+2026-11-19T06:37:48.007Z noor.fatima@niu.edu.pk changed own password
+2026-11-19T06:37:49.870Z ayesh.iftikhar@niu.edu.pk signed in remotely from 172.18.32.108
+2026-11-19T06:38:03.558Z noor.fatima@niu.edu.pk chose LR-14 to share slides from their own device
+2026-11-19T06:38:15.311Z ayesh.iftikhar@niu.edu.pk changed own password
+2026-11-19T06:38:27.089Z noor.fatima@niu.edu.pk uploaded safety considerations in asthetic surgery.pptx (slides, 427 KB)
+2026-11-19T06:38:27.202Z noor.fatima@niu.edu.pk opened "safety considerations in asthetic surgery" in LR-14
+2026-11-19T06:38:44.310Z noor.fatima@niu.edu.pk next in LR-14
+2026-11-19T06:38:46.831Z noor.fatima@niu.edu.pk prev in LR-14
+2026-11-19T06:38:51.893Z noor.fatima@niu.edu.pk started Full access (VNC) of LR-14 (teacher, from 172.18.32.67; password generated)
+2026-11-19T06:38:52.359Z noor.fatima@niu.edu.pk VNC sign-in problem on LR-14: TightVNC on LR-14 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T06:38:52.364Z noor.fatima@niu.edu.pk VNC link to LR-14 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T06:38:52.369Z noor.fatima@niu.edu.pk remote control of LR-14 ended (released by user; 0 s, 0 input events)
+2026-11-19T06:38:55.738Z noor.fatima@niu.edu.pk started remote control of LR-14 (teacher, from 172.18.32.67)
+2026-11-19T06:39:06.255Z ayesh.iftikhar@niu.edu.pk chose LR-1-A to share slides from their own device
+2026-11-19T06:39:18.289Z noor.fatima@niu.edu.pk remote control of LR-14 ended (released by user; 23 s, 46 input events)
+2026-11-19T06:39:21.281Z noor.fatima@niu.edu.pk started remote control of LR-14 (teacher, from 172.18.32.67)
+2026-11-19T06:39:41.964Z ayesh.iftikhar@niu.edu.pk disconnected from LR-1-A
+2026-11-19T06:39:57.017Z ayesh.iftikhar@niu.edu.pk chose LR-13 to share slides from their own device
+2026-11-19T06:40:12.940Z noor.fatima@niu.edu.pk remote control of LR-14 ended (browser closed or disconnected; 52 s, 219 input events)
+2026-11-19T06:40:32.909Z unknown failed sign-in for "Noor Fatima" from 172.18.32.67
+2026-11-19T06:40:43.891Z unknown failed sign-in for "Noor Fatima" from 172.18.32.67
+2026-11-19T06:41:46.616Z system LR-12 went offline
+2026-11-19T06:41:55.777Z system LR-12 (172.16.102.22) came online
+2026-11-19T06:43:29.549Z noor.fatima@niu.edu.pk signed out of LR-14 (browser closed)
+2026-11-19T06:46:44.560Z faizan.saleem@niu.edu.pk signed in remotely from 172.16.105.251
+2026-11-19T06:46:48.597Z faizan.saleem@niu.edu.pk signed out (signed out)
+2026-11-19T06:46:53.900Z admin signed in from 172.16.105.251
+2026-11-19T06:47:32.982Z ayesh.iftikhar@niu.edu.pk signed out of LR-13 (released by Administrator)
+2026-11-19T06:47:32.983Z admin released the sign-in of ayesh.iftikhar@niu.edu.pk
+2026-11-19T06:47:43.618Z noor.fatima@niu.edu.pk signed in remotely from 172.18.32.67
+2026-11-19T06:47:58.811Z noor.fatima@niu.edu.pk chose LR-12 to share slides from their own device
+2026-11-19T06:48:06.331Z noor.fatima@niu.edu.pk uploaded safety considerations in asthetic surgery.pptx (slides, 427 KB)
+2026-11-19T06:48:06.350Z noor.fatima@niu.edu.pk opened "safety considerations in asthetic surgery" in LR-12
+2026-11-19T06:50:06.469Z noor.fatima@niu.edu.pk stop in LR-12
+2026-11-19T06:50:23.320Z amina.hashmi@niu.edu.pk signed in remotely from 172.18.48.159
+2026-11-19T06:50:26.087Z amina.hashmi@niu.edu.pk deleted lecture "1. Comprehensive Accessibility -"
+2026-11-19T06:50:38.686Z unknown failed sign-in for "ayesh.iftikhar@nir.edu.pk" from 172.18.32.108
+2026-11-19T06:50:55.452Z unknown failed sign-in for "ayesh.iftikhar@nur.edu.pk" from 172.18.32.108
+2026-11-19T06:51:35.156Z ayesh.iftikhar@niu.edu.pk signed in remotely from 172.18.32.108
+2026-11-19T06:51:41.710Z ayesh.iftikhar@niu.edu.pk chose LR-13 to share slides from their own device
+2026-11-19T06:53:29.660Z noor.fatima@niu.edu.pk signed out of LR-12 (browser closed)
+2026-11-19T06:54:04.507Z unknown failed sign-in for "saida.arshad@niu.edu.pk" from 172.18.32.137
+2026-11-19T06:54:10.914Z unknown failed sign-in for "saida.arshad@niu.edu.pk" from 172.18.32.137
+2026-11-19T06:54:33.789Z faizan.saleem@niu.edu.pk signed in remotely from 172.18.32.137
+2026-11-19T06:55:01.680Z faizan.saleem@niu.edu.pk uploaded RM-Quantitative week 2.pdf (pdf, 461 KB)
+2026-11-19T06:55:18.346Z faizan.saleem@niu.edu.pk chose LR-11 to share slides from their own device
+2026-11-19T06:55:21.210Z faizan.saleem@niu.edu.pk opened "RM-Quantitative week 2" in LR-11
+2026-11-19T06:55:41.110Z faizan.saleem@niu.edu.pk started Full access (VNC) of LR-11 (teacher, from 172.18.32.137; password generated)
+2026-11-19T06:55:41.588Z faizan.saleem@niu.edu.pk VNC sign-in problem on LR-11: TightVNC on LR-11 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T06:55:41.594Z faizan.saleem@niu.edu.pk VNC link to LR-11 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T06:55:41.616Z faizan.saleem@niu.edu.pk remote control of LR-11 ended (released by user; 1 s, 0 input events)
+2026-11-19T06:55:43.442Z faizan.saleem@niu.edu.pk started remote control of LR-11 (teacher, from 172.18.32.137)
+2026-11-19T07:00:05.523Z ayesh.iftikhar@niu.edu.pk uploaded 1. Mehran's presentation.pptx (slides, 3067 KB)
+2026-11-19T07:00:49.148Z ayesh.iftikhar@niu.edu.pk stop in LR-13
+2026-11-19T07:00:53.124Z ayesh.iftikhar@niu.edu.pk opened "1. Mehran's presentation" in LR-13
+2026-11-19T07:00:57.963Z ayesh.iftikhar@niu.edu.pk started Full access (VNC) of LR-13 (teacher, from 172.18.32.108; password generated)
+2026-11-19T07:00:58.726Z ayesh.iftikhar@niu.edu.pk VNC sign-in problem on LR-13: TightVNC on LR-13 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T07:00:58.731Z ayesh.iftikhar@niu.edu.pk VNC link to LR-13 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T07:00:58.804Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 1 s, 0 input events)
+2026-11-19T07:01:02.869Z ayesh.iftikhar@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.108)
+2026-11-19T07:01:35.615Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 33 s, 138 input events)
+2026-11-19T07:01:38.909Z admin reset the password of sadia.arshad@niu.edu.pk
+2026-11-19T07:01:39.371Z ayesh.iftikhar@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.108)
+2026-11-19T07:02:13.274Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 34 s, 110 input events)
+2026-11-19T07:02:14.858Z ayesh.iftikhar@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.108)
+2026-11-19T07:02:28.638Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 14 s, 42 input events)
+2026-11-19T07:02:30.956Z ayesh.iftikhar@niu.edu.pk opened "1. Mehran's presentation" in LR-13
+2026-11-19T07:02:36.256Z ayesh.iftikhar@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.108)
+2026-11-19T07:02:45.945Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 10 s, 34 input events)
+2026-11-19T07:02:54.212Z ayesh.iftikhar@niu.edu.pk deleted lecture "1. Mehran's presentation"
+2026-11-19T07:03:01.141Z ayesh.iftikhar@niu.edu.pk uploaded 1. Mehran's presentation.pptx (slides, 3067 KB)
+2026-11-19T07:03:01.243Z ayesh.iftikhar@niu.edu.pk opened "1. Mehran's presentation" in LR-13
+2026-11-19T07:03:05.517Z ayesh.iftikhar@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.108)
+2026-11-19T07:07:56.347Z system LR-7 (172.16.101.47) came online
+2026-11-19T07:10:20.346Z system LR-4 (172.16.103.142) came online
+2026-11-19T07:10:22.350Z system LR-4 went offline
+2026-11-19T07:10:22.981Z system LR-4 (172.16.103.142) came online
+2026-11-19T07:12:43.906Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 578 s, 34 input events)
+2026-11-19T07:12:49.970Z ayesh.iftikhar@niu.edu.pk stop in LR-13
+2026-11-19T07:13:03.291Z ayesh.iftikhar@niu.edu.pk uploaded 2. rama pre-op invest..pptx (slides, 11659 KB)
+2026-11-19T07:13:03.331Z ayesh.iftikhar@niu.edu.pk opened "2. rama pre-op invest." in LR-13
+2026-11-19T07:13:12.303Z ayesh.iftikhar@niu.edu.pk started Full access (VNC) of LR-13 (teacher, from 172.18.32.108; password generated)
+2026-11-19T07:13:12.545Z ayesh.iftikhar@niu.edu.pk VNC sign-in problem on LR-13: TightVNC on LR-13 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T07:13:12.550Z ayesh.iftikhar@niu.edu.pk VNC link to LR-13 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T07:13:12.566Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 0 s, 0 input events)
+2026-11-19T07:13:16.434Z ayesh.iftikhar@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.108)
+2026-11-19T07:16:21.745Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 185 s, 91 input events)
+2026-11-19T07:16:25.021Z ayesh.iftikhar@niu.edu.pk stop in LR-13
+2026-11-19T07:16:27.488Z ayesh.iftikhar@niu.edu.pk opened "2. rama pre-op invest." in LR-13
+2026-11-19T07:16:32.002Z ayesh.iftikhar@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.108)
+2026-11-19T07:22:40.520Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 369 s, 73 input events)
+2026-11-19T07:24:25.575Z admin downloaded the agent installer for LR-2
+2026-11-19T07:25:02.862Z system LR-2: agent from 172.16.103.142 refused, address already used by LR-4
+2026-11-19T07:25:17.694Z system LR-4 went offline
+2026-11-19T07:25:33.612Z system LR-2 (172.16.103.142) came online
+2026-11-19T07:25:44.914Z noor.fatima@niu.edu.pk signed in remotely from 172.18.32.67
+2026-11-19T07:25:49.891Z noor.fatima@niu.edu.pk chose LR-12 to share slides from their own device
+2026-11-19T07:26:07.148Z noor.fatima@niu.edu.pk uploaded iqra kanwal.pptx (slides, 489 KB)
+2026-11-19T07:26:07.164Z noor.fatima@niu.edu.pk opened "iqra kanwal" in LR-12
+2026-11-19T07:26:32.598Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:35.474Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:36.879Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:38.938Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:41.399Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:42.639Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:43.128Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:43.659Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:44.127Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:44.756Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:45.235Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:45.632Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:26:46.186Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:46.384Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:46.575Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:46.717Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:47.081Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:47.222Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:47.361Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:47.503Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:47.630Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:47.762Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:47.873Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:48.001Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:48.154Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:48.276Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:48.414Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:48.551Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:48.678Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T07:26:49.482Z ayesh.iftikhar@niu.edu.pk started Full access (VNC) of LR-13 (teacher, from 172.18.32.108; password generated)
+2026-11-19T07:26:49.630Z ayesh.iftikhar@niu.edu.pk VNC sign-in problem on LR-13: TightVNC on LR-13 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T07:26:49.635Z ayesh.iftikhar@niu.edu.pk VNC link to LR-13 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T07:26:49.648Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 0 s, 0 input events)
+2026-11-19T07:26:50.869Z ayesh.iftikhar@niu.edu.pk started remote control of LR-13 (teacher, from 172.18.32.108)
+2026-11-19T07:26:55.739Z noor.fatima@niu.edu.pk stop in LR-12
+2026-11-19T07:27:27.483Z ayesh.iftikhar@niu.edu.pk remote control of LR-13 ended (released by user; 37 s, 78 input events)
+2026-11-19T07:28:49.434Z admin downloaded the agent installer for LR-4
+2026-11-19T07:29:17.807Z system LR-12 went offline
+2026-11-19T07:29:24.053Z system LR-12 (172.16.102.22) came online
+2026-11-19T07:29:32.821Z system LR-13 went offline
+2026-11-19T07:29:45.807Z system LR-4: agent from 172.16.103.142 refused, address already used by LR-2
+2026-11-19T07:29:49.787Z system LR-13 (172.16.102.33) came online
+2026-11-19T07:30:02.837Z system LR-2 went offline
+2026-11-19T07:30:16.478Z system LR-4 (172.16.103.142) came online
+2026-11-19T07:30:30.220Z noor.fatima@niu.edu.pk signed out of LR-12 (browser closed)
+2026-11-19T07:33:00.262Z amina.hashmi@niu.edu.pk signed out (browser closed)
+2026-11-19T07:35:03.530Z faizan.saleem@niu.edu.pk remote control of LR-11 ended (released by user; 2360 s, 1098 input events)
+2026-11-19T07:35:13.907Z faizan.saleem@niu.edu.pk signed out of LR-11 (signed out)
+2026-11-19T07:39:27.069Z admin signed in from 172.18.32.146
+2026-11-19T07:41:28.938Z noor.fatima@niu.edu.pk signed in remotely from 172.18.32.67
+2026-11-19T07:42:19.120Z noor.fatima@niu.edu.pk chose LR-12 to share slides from their own device
+2026-11-19T07:42:23.836Z noor.fatima@niu.edu.pk opened "iqra kanwal" in LR-12
+2026-11-19T07:43:48.227Z system LR-7 went offline
+2026-11-19T07:44:57.398Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:45:00.447Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:45:31.450Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:51:38.617Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T07:56:03.387Z noor.fatima@niu.edu.pk full screen on the room display in LR-12
+2026-11-19T07:56:04.173Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:01:36.121Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:05:13.678Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:06:09.588Z ayesh.iftikhar@niu.edu.pk disconnected from LR-13
+2026-11-19T08:06:19.520Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:06:22.399Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:06:23.813Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:06:25.702Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T08:06:25.881Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T08:06:26.131Z noor.fatima@niu.edu.pk prev in LR-12
+2026-11-19T08:06:41.039Z ayesh.iftikhar@niu.edu.pk chose LR-10 to share slides from their own device
+2026-11-19T08:06:46.157Z ayesh.iftikhar@niu.edu.pk disconnected from LR-10
+2026-11-19T08:06:57.865Z ayesh.iftikhar@niu.edu.pk signed out (signed out)
+2026-11-19T08:07:01.011Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:07:57.113Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:07:59.260Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:10:37.263Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:10:38.277Z noor.fatima@niu.edu.pk next in LR-12
+2026-11-19T08:12:36.428Z noor.fatima@niu.edu.pk signed in remotely at LR-12 from 172.18.32.67
+2026-11-19T08:12:39.991Z noor.fatima@niu.edu.pk stop in LR-12
+2026-11-19T08:16:30.833Z noor.fatima@niu.edu.pk signed out of LR-12 (browser closed)
+2026-11-19T08:23:39.753Z system Conference-Room-2 (172.16.101.186) came online
+2026-11-19T08:33:08.485Z system Agent at 172.16.102.27 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T08:35:51.265Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-19T08:36:38.836Z iftikhar.khan@niu.edu.pk changed own password
+2026-11-19T08:37:39.059Z iftikhar.khan@niu.edu.pk uploaded Goldfrank’s-Toxicologic-Emergencies-9th-Edition.pdf (pdf, 34290 KB)
+2026-11-19T08:38:04.935Z iftikhar.khan@niu.edu.pk chose LR-3 to share slides from their own device
+2026-11-19T08:38:12.321Z iftikhar.khan@niu.edu.pk opened "Goldfrank’s-Toxicologic-Emergencies-9th-Edition" in LR-3
+2026-11-19T08:38:12.774Z system Agent at 172.16.102.27 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T08:38:24.073Z iftikhar.khan@niu.edu.pk started Full access (VNC) of LR-3 (teacher, from 172.18.32.99; password generated)
+2026-11-19T08:38:24.360Z iftikhar.khan@niu.edu.pk VNC sign-in problem on LR-3: TightVNC on LR-3 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T08:38:24.365Z iftikhar.khan@niu.edu.pk VNC link to LR-3 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T08:38:24.387Z iftikhar.khan@niu.edu.pk remote control of LR-3 ended (released by user; 0 s, 0 input events)
+2026-11-19T08:38:26.910Z iftikhar.khan@niu.edu.pk started remote control of LR-3 (teacher, from 172.18.32.99)
+2026-11-19T08:38:47.218Z iftikhar.khan@niu.edu.pk remote control of LR-3 ended (released by user; 20 s, 102 input events)
+2026-11-19T08:38:51.759Z iftikhar.khan@niu.edu.pk stop in LR-3
+2026-11-19T08:38:56.063Z iftikhar.khan@niu.edu.pk started remote control of LR-3 (teacher, from 172.18.32.99)
+2026-11-19T08:39:49.338Z iftikhar.khan@niu.edu.pk remote control of LR-3 ended (released by user; 53 s, 306 input events)
+2026-11-19T08:39:56.193Z iftikhar.khan@niu.edu.pk signed out of LR-3 (signed out)
+2026-11-19T08:43:14.096Z system Agent at 172.16.102.27 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T08:47:53.640Z saima.naaz@niu.edu.pk signed in remotely from 172.18.32.164
+2026-11-19T08:48:14.565Z system Agent at 172.16.102.27 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T08:48:18.679Z saima.naaz@niu.edu.pk changed own password
+2026-11-19T08:48:57.728Z saima.naaz@niu.edu.pk uploaded W 3-4 - types of Food Packaging Materials.pptx (slides, 1030 KB)
+2026-11-19T08:49:31.044Z saima.naaz@niu.edu.pk chose LR-14 to share slides from their own device
+2026-11-19T08:49:40.104Z saima.naaz@niu.edu.pk opened "W 3-4 - types of Food Packaging Materials" in LR-14
+2026-11-19T08:50:00.278Z saima.naaz@niu.edu.pk started Full access (VNC) of LR-14 (teacher, from 172.18.32.164; password generated)
+2026-11-19T08:50:05.698Z saima.naaz@niu.edu.pk VNC sign-in problem on LR-14: TightVNC on LR-14 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T08:50:05.700Z saima.naaz@niu.edu.pk VNC link to LR-14 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T08:50:05.730Z saima.naaz@niu.edu.pk remote control of LR-14 ended (released by user; 5 s, 0 input events)
+2026-11-19T08:50:15.107Z saima.naaz@niu.edu.pk opened "W 3-4 - types of Food Packaging Materials" in LR-14
+2026-11-19T08:50:23.432Z saima.naaz@niu.edu.pk started remote control of LR-14 (teacher, from 172.18.32.164)
+2026-11-19T08:50:34.084Z saima.naaz@niu.edu.pk remote control of LR-14 ended (released by user; 11 s, 38 input events)
+2026-11-19T08:50:36.853Z saima.naaz@niu.edu.pk opened "W 3-4 - types of Food Packaging Materials" in LR-14
+2026-11-19T08:51:04.966Z saima.naaz@niu.edu.pk opened "W 3-4 - types of Food Packaging Materials" in LR-14
+2026-11-19T08:51:23.899Z saima.naaz@niu.edu.pk uploaded W 3-4 - types of Food Packaging Materials.pptx (slides, 1030 KB)
+2026-11-19T08:51:24.089Z saima.naaz@niu.edu.pk signed out of LR-14 (signed out)
+2026-11-19T08:51:43.284Z unknown failed sign-in for "faizan.saleem@niu.edu.pk" from 172.18.32.164
+2026-11-19T08:51:49.060Z unknown failed sign-in for "faizan.saleem@niu.edu.pk" from 172.18.32.164
+2026-11-19T08:51:55.070Z faizan.saleem@niu.edu.pk signed in remotely from 172.18.32.164
+2026-11-19T08:52:09.255Z faizan.saleem@niu.edu.pk chose LR-14 to share slides from their own device
+2026-11-19T08:52:12.540Z faizan.saleem@niu.edu.pk opened "RM-Quantitative week 2" in LR-14
+2026-11-19T08:52:18.940Z faizan.saleem@niu.edu.pk stop in LR-14
+2026-11-19T08:52:31.250Z faizan.saleem@niu.edu.pk opened "Endocrine_Disorders_Diabetes_Mellitus (2) (1)" in LR-14
+2026-11-19T08:52:42.787Z faizan.saleem@niu.edu.pk started remote control of LR-14 (teacher, from 172.18.32.164)
+2026-11-19T08:52:51.078Z faizan.saleem@niu.edu.pk remote control of LR-14 ended (released by user; 8 s, 39 input events)
+2026-11-19T08:52:57.029Z faizan.saleem@niu.edu.pk opened "Hand Hygiene in OR" in LR-14
+2026-11-19T08:53:15.031Z system Agent at 172.16.102.27 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T08:57:59.988Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-19T08:58:15.544Z system Agent at 172.16.102.27 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T08:58:30.810Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-19T09:01:24.366Z admin uploaded Lec 3) Etiology and Pathogenesis  of cell injury.pptx (slides, 4905 KB)
+2026-11-19T09:01:37.455Z admin opened "Lec 3) Etiology and Pathogenesis  of cell injury" in Audituram
+2026-11-19T09:02:59.049Z system LR-2 (172.16.103.145) came online
+2026-11-19T09:03:15.915Z system Agent at 172.16.102.27 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T09:08:16.297Z system Agent at 172.16.102.27 was refused: unknown Agent ID. If this room got a new ID, run its newest installer on that PC.
+2026-11-19T09:08:22.537Z admin downloaded the agent installer for Small-Computer-Lab
+2026-11-19T09:08:55.864Z admin downloaded the agent installer for Big-Computer-Lab
+2026-11-19T09:09:29.705Z system Big-Computer-Lab (172.16.102.27) came online
+2026-11-19T09:09:31.707Z system Big-Computer-Lab went offline
+2026-11-19T09:09:32.402Z system Big-Computer-Lab (172.16.102.27) came online
+2026-11-19T09:10:12.147Z iftikhar.khan@niu.edu.pk uploaded L-1 Elementary_Sociology.pptx (slides, 77 KB)
+2026-11-19T09:10:17.749Z iftikhar.khan@niu.edu.pk deleted lecture "Goldfrank’s-Toxicologic-Emergencies-9th-Edition"
+2026-11-19T09:10:29.472Z iftikhar.khan@niu.edu.pk chose LR-4 to share slides from their own device
+2026-11-19T09:10:32.635Z iftikhar.khan@niu.edu.pk opened "L-1 Elementary_Sociology" in LR-4
+2026-11-19T09:10:41.320Z iftikhar.khan@niu.edu.pk started Full access (VNC) of LR-4 (teacher, from 172.18.32.99; password generated)
+2026-11-19T09:10:41.540Z iftikhar.khan@niu.edu.pk VNC sign-in problem on LR-4: TightVNC on LR-4 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T09:10:41.546Z iftikhar.khan@niu.edu.pk VNC link to LR-4 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T09:10:41.556Z iftikhar.khan@niu.edu.pk remote control of LR-4 ended (released by user; 0 s, 0 input events)
+2026-11-19T09:10:43.680Z iftikhar.khan@niu.edu.pk started remote control of LR-4 (teacher, from 172.18.32.99)
+2026-11-19T09:11:41.564Z faizan.saleem@niu.edu.pk signed out of LR-14 (released by Administrator)
+2026-11-19T09:11:41.567Z admin released the sign-in of faizan.saleem@niu.edu.pk
+2026-11-19T09:29:36.060Z system LR-13 went offline
+2026-11-19T09:44:02.210Z iftikhar.khan@niu.edu.pk remote control of LR-4 ended (released by user; 1999 s, 340 input events)
+2026-11-19T09:44:05.594Z iftikhar.khan@niu.edu.pk stop in LR-4
+2026-11-19T09:44:13.095Z iftikhar.khan@niu.edu.pk started Full access (VNC) of LR-4 (teacher, from 172.18.32.99; password generated)
+2026-11-19T09:44:13.159Z iftikhar.khan@niu.edu.pk VNC sign-in problem on LR-4: TightVNC on LR-4 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T09:44:13.166Z iftikhar.khan@niu.edu.pk VNC link to LR-4 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T09:44:13.173Z iftikhar.khan@niu.edu.pk remote control of LR-4 ended (released by user; 0 s, 0 input events)
+2026-11-19T09:44:15.481Z iftikhar.khan@niu.edu.pk started remote control of LR-4 (teacher, from 172.18.32.99)
+2026-11-19T09:44:19.621Z iftikhar.khan@niu.edu.pk remote control of LR-4 ended (released by user; 4 s, 40 input events)
+2026-11-19T09:46:25.228Z admin signed out (signed out)
+2026-11-19T09:48:02.182Z iftikhar.khan@niu.edu.pk signed out of LR-4 (browser closed)
+2026-11-19T09:49:46.191Z system LR-12 went offline
+2026-11-19T09:49:47.936Z system LR-12 (172.16.102.22) came online
+2026-11-19T09:49:50.810Z noor.fatima@niu.edu.pk signed in remotely from 172.18.32.67
+2026-11-19T09:49:50.976Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-19T09:50:03.986Z noor.fatima@niu.edu.pk chose LR-10 to share slides from their own device
+2026-11-19T09:50:14.724Z noor.fatima@niu.edu.pk uploaded kashafffffuuuuu.pptx (slides, 1511 KB)
+2026-11-19T09:50:14.765Z noor.fatima@niu.edu.pk opened "kashafffffuuuuu" in LR-10
+2026-11-19T09:50:30.499Z iftikhar.khan@niu.edu.pk chose LR-14 to share slides from their own device
+2026-11-19T09:50:39.424Z noor.fatima@niu.edu.pk started Full access (VNC) of LR-10 (teacher, from 172.18.32.67; password generated)
+2026-11-19T09:50:39.528Z noor.fatima@niu.edu.pk VNC sign-in problem on LR-10: TightVNC on LR-10 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T09:50:39.533Z noor.fatima@niu.edu.pk VNC link to LR-10 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T09:50:39.543Z noor.fatima@niu.edu.pk remote control of LR-10 ended (released by user; 0 s, 0 input events)
+2026-11-19T09:50:41.142Z noor.fatima@niu.edu.pk started remote control of LR-10 (teacher, from 172.18.32.67)
+2026-11-19T09:50:45.574Z iftikhar.khan@niu.edu.pk uploaded Neonatal and Pediatric Physiology and Pathophysiology.docx (doc, 48 KB)
+2026-11-19T09:50:45.595Z iftikhar.khan@niu.edu.pk opened "Neonatal and Pediatric Physiology and Pathophysiology" in LR-14
+2026-11-19T09:50:53.421Z iftikhar.khan@niu.edu.pk started Full access (VNC) of LR-14 (teacher, from 172.18.32.99; password generated)
+2026-11-19T09:50:53.479Z iftikhar.khan@niu.edu.pk VNC sign-in problem on LR-14: TightVNC on LR-14 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T09:50:53.481Z iftikhar.khan@niu.edu.pk VNC link to LR-14 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T09:50:53.519Z iftikhar.khan@niu.edu.pk remote control of LR-14 ended (released by user; 0 s, 0 input events)
+2026-11-19T09:50:54.510Z iftikhar.khan@niu.edu.pk started remote control of LR-14 (teacher, from 172.18.32.99)
+2026-11-19T09:51:07.974Z noor.fatima@niu.edu.pk remote control of LR-10 ended (browser closed or disconnected; 27 s, 226 input events)
+2026-11-19T09:51:27.214Z noor.fatima@niu.edu.pk opened "kashafffffuuuuu" in LR-10
+2026-11-19T09:51:40.095Z noor.fatima@niu.edu.pk deleted lecture "kashafffffuuuuu"
+2026-11-19T09:51:45.653Z noor.fatima@niu.edu.pk signed out of LR-10 (signed out)
+2026-11-19T09:51:48.743Z noor.fatima@niu.edu.pk signed in remotely from 172.18.32.67
+2026-11-19T09:51:51.981Z noor.fatima@niu.edu.pk chose LR-10 to share slides from their own device
+2026-11-19T09:52:01.934Z iftikhar.khan@niu.edu.pk remote control of LR-14 ended (released by user; 67 s, 293 input events)
+2026-11-19T09:52:02.322Z noor.fatima@niu.edu.pk started remote control of LR-10 (teacher, from 172.18.32.67)
+2026-11-19T09:52:24.810Z noor.fatima@niu.edu.pk remote control of LR-10 ended (released by user; 22 s, 110 input events)
+2026-11-19T09:52:31.098Z noor.fatima@niu.edu.pk disconnected from LR-10
+2026-11-19T09:52:35.019Z noor.fatima@niu.edu.pk chose LR-10 to share slides from their own device
+2026-11-19T09:52:43.444Z noor.fatima@niu.edu.pk opened "safety considerations in asthetic surgery" in LR-10
+2026-11-19T09:52:47.861Z noor.fatima@niu.edu.pk next in LR-10
+2026-11-19T09:52:49.815Z noor.fatima@niu.edu.pk prev in LR-10
+2026-11-19T09:52:56.423Z noor.fatima@niu.edu.pk uploaded kashafffffuuuuu.pptx (slides, 1511 KB)
+2026-11-19T09:53:21.299Z noor.fatima@niu.edu.pk stop in LR-10
+2026-11-19T09:53:32.386Z noor.fatima@niu.edu.pk started remote control of LR-10 (teacher, from 172.18.32.67)
+2026-11-19T09:53:42.970Z noor.fatima@niu.edu.pk remote control of LR-10 ended (released by user; 11 s, 12 input events)
+2026-11-19T09:54:37.568Z noor.fatima@niu.edu.pk signed in remotely at LR-10 from 172.18.32.67
+2026-11-19T09:54:39.073Z noor.fatima@niu.edu.pk signed out of LR-10 (signed out)
+2026-11-19T09:54:43.519Z noor.fatima@niu.edu.pk signed in remotely from 172.18.32.67
+2026-11-19T09:54:48.959Z noor.fatima@niu.edu.pk deleted lecture "kashafffffuuuuu"
+2026-11-19T09:54:51.189Z noor.fatima@niu.edu.pk deleted lecture "iqra kanwal"
+2026-11-19T09:55:10.379Z iftikhar.khan@niu.edu.pk full screen on the room display in LR-14
+2026-11-19T09:55:20.668Z iftikhar.khan@niu.edu.pk started remote control of LR-14 (teacher, from 172.18.32.99)
+2026-11-19T09:59:02.336Z noor.fatima@niu.edu.pk signed out (browser closed)
+2026-11-19T10:10:53.594Z admin signed in from 172.18.32.146
+2026-11-19T10:14:25.424Z admin uploaded CH-4Stretchings.ppt (slides, 13464 KB)
+2026-11-19T10:14:31.904Z admin opened "CH-4Stretchings" in LR-11
+2026-11-19T10:14:34.948Z admin opened "CH-4Stretchings" in LR-11
+2026-11-19T10:16:29.203Z admin downloaded the agent installer for LR-13
+2026-11-19T10:19:52.797Z system LR-13 (172.16.102.33) came online
+2026-11-19T10:19:54.803Z system LR-13 went offline
+2026-11-19T10:19:55.890Z system LR-13 (172.16.102.33) came online
+2026-11-19T10:20:17.917Z iftikhar.khan@niu.edu.pk remote control of LR-14 ended (browser closed or disconnected; 1497 s, 4180 input events)
+2026-11-19T10:20:28.697Z iftikhar.khan@niu.edu.pk started remote control of LR-14 (teacher, from 172.18.32.99)
+2026-11-19T10:20:44.966Z iftikhar.khan@niu.edu.pk remote control of LR-14 ended (released by user; 16 s, 68 input events)
+2026-11-19T10:20:51.428Z iftikhar.khan@niu.edu.pk stop in LR-14
+2026-11-19T10:21:53.880Z system LR-7 (172.16.101.47) came online
+2026-11-19T10:33:33.958Z noor.fatima@niu.edu.pk signed in remotely from 172.18.32.67
+2026-11-19T10:33:37.880Z noor.fatima@niu.edu.pk chose LR-8 to share slides from their own device
+2026-11-19T10:33:42.062Z noor.fatima@niu.edu.pk opened "safety considerations in asthetic surgery" in LR-8
+2026-11-19T10:33:46.756Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:33:47.128Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:33:47.532Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:33:48.295Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:34:07.743Z system LR-12 went offline
+2026-11-19T10:34:12.433Z system LR-12 (172.16.102.22) came online
+2026-11-19T10:36:28.432Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:36:28.942Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:36:29.773Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:36:30.204Z noor.fatima@niu.edu.pk prev in LR-8
+2026-11-19T10:36:30.718Z noor.fatima@niu.edu.pk prev in LR-8
+2026-11-19T10:37:17.318Z noor.fatima@niu.edu.pk started Full access (VNC) of LR-8 (teacher, from 172.18.32.67; password generated)
+2026-11-19T10:37:17.425Z noor.fatima@niu.edu.pk VNC sign-in problem on LR-8: TightVNC on LR-8 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T10:37:17.430Z noor.fatima@niu.edu.pk VNC link to LR-8 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T10:37:17.442Z noor.fatima@niu.edu.pk remote control of LR-8 ended (released by user; 0 s, 0 input events)
+2026-11-19T10:37:18.591Z noor.fatima@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.67)
+2026-11-19T10:39:02.892Z iftikhar.khan@niu.edu.pk signed out of LR-14 (browser closed)
+2026-11-19T10:39:09.247Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:40:40.891Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:41:37.949Z system LR-4 went offline
+2026-11-19T10:41:52.952Z system LR-12 went offline
+2026-11-19T10:42:01.868Z system LR-12 (172.16.102.22) came online
+2026-11-19T10:42:09.840Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:42:12.268Z noor.fatima@niu.edu.pk prev in LR-8
+2026-11-19T10:42:14.787Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:42:32.447Z noor.fatima@niu.edu.pk full screen on the room display in LR-8
+2026-11-19T10:43:36.499Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-19T10:43:47.182Z iftikhar.khan@niu.edu.pk chose LR-6 to share slides from their own device
+2026-11-19T10:44:07.696Z iftikhar.khan@niu.edu.pk uploaded Elementary Sociology.docx (doc, 28 KB)
+2026-11-19T10:44:07.709Z iftikhar.khan@niu.edu.pk opened "Elementary Sociology" in LR-6
+2026-11-19T10:44:23.474Z iftikhar.khan@niu.edu.pk started Full access (VNC) of LR-6 (teacher, from 172.18.32.99; password generated)
+2026-11-19T10:44:23.572Z iftikhar.khan@niu.edu.pk VNC sign-in problem on LR-6: TightVNC on LR-6 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T10:44:23.579Z iftikhar.khan@niu.edu.pk VNC link to LR-6 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T10:44:23.583Z iftikhar.khan@niu.edu.pk remote control of LR-6 ended (released by user; 0 s, 0 input events)
+2026-11-19T10:44:30.480Z iftikhar.khan@niu.edu.pk started remote control of LR-6 (teacher, from 172.18.32.99)
+2026-11-19T10:45:12.309Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:47:45.279Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:48:54.475Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:49:05.780Z noor.fatima@niu.edu.pk remote control of LR-8 ended (browser closed or disconnected; 707 s, 110 input events)
+2026-11-19T10:49:50.005Z noor.fatima@niu.edu.pk next in LR-8
+2026-11-19T10:50:21.783Z noor.fatima@niu.edu.pk stop in LR-8
+2026-11-19T10:54:38.295Z system LR-8 went offline
+2026-11-19T10:55:03.105Z noor.fatima@niu.edu.pk signed out of LR-8 (browser closed)
+2026-11-19T11:02:03.165Z system Ended the presentation in Audituram (no activity)
+2026-11-19T11:13:09.195Z iftikhar.khan@niu.edu.pk remote control of LR-6 ended (browser closed or disconnected; 1719 s, 1053 input events)
+2026-11-19T11:13:15.355Z iftikhar.khan@niu.edu.pk started remote control of LR-6 (teacher, from 172.18.32.99)
+2026-11-19T11:20:56.828Z iftikhar.khan@niu.edu.pk remote control of LR-6 ended (released by user; 461 s, 907 input events)
+2026-11-19T11:21:02.373Z iftikhar.khan@niu.edu.pk stop in LR-6
+2026-11-19T11:21:06.672Z iftikhar.khan@niu.edu.pk deleted lecture "Elementary Sociology"
+2026-11-19T11:21:09.425Z iftikhar.khan@niu.edu.pk deleted lecture "L-1 Elementary_Sociology"
+2026-11-19T11:21:14.964Z iftikhar.khan@niu.edu.pk signed out of LR-6 (signed out)
+2026-11-19T11:28:17.098Z system LR-12 went offline
+2026-11-19T11:28:22.105Z system LR-12 (172.16.102.22) came online
+2026-11-19T11:34:37.803Z system LR-6 went offline
+2026-11-19T11:35:39.511Z system LR-7 went offline
+2026-11-19T11:36:05.459Z system LR-13 went offline
+2026-11-19T11:37:09.556Z system LR-12 went offline
+2026-11-19T11:37:24.569Z system LR-11 went offline
+2026-11-19T11:38:09.592Z system LR-10 went offline
+2026-11-19T11:38:24.597Z system LR-9 went offline
+2026-11-19T11:39:09.624Z system Small-Computer-Lab went offline
+2026-11-19T11:39:39.647Z system Big-Computer-Lab went offline
+2026-11-19T11:42:24.731Z system LR-14 went offline
+2026-11-19T11:45:39.844Z system LR-5 went offline
+2026-11-19T11:45:54.845Z system LR-1-A went offline
+2026-11-19T11:46:24.859Z system Conference-Room-2 went offline
+2026-11-19T11:46:54.882Z system LR-2 went offline
+2026-11-19T11:47:24.889Z system LR-3 went offline
+2026-11-19T11:49:54.945Z system Audituram went offline
+2026-11-19T12:00:17.674Z admin took control of Conference-Room-1
+2026-11-19T12:00:17.676Z admin started Full access (VNC) of Conference-Room-1 (admin, from 172.18.32.146; password generated)
+2026-11-19T12:00:17.971Z admin VNC sign-in problem on Conference-Room-1: TightVNC on Conference-Room-1 is not accepting this server r... (server said: "RFB 003.003 Too many security failures")
+2026-11-19T12:00:17.977Z admin VNC link to Conference-Room-1 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-19T12:00:17.985Z admin remote control of Conference-Room-1 ended (released by user; 0 s, 0 input events)
+2026-11-19T12:00:17.990Z admin released control of Conference-Room-1
+2026-11-19T12:00:22.178Z admin took control of Conference-Room-1
+2026-11-19T12:00:22.179Z admin started remote control of Conference-Room-1 (admin, from 172.18.32.146)
+2026-11-19T12:00:32.121Z system Conference-Room-1 went offline
+2026-11-19T12:00:56.005Z admin remote control of Conference-Room-1 ended (browser closed or disconnected; 34 s, 117 input events)
+2026-11-19T14:37:38.498Z system Conference-Room-2 (172.16.101.186) came online
+2026-11-19T15:26:31.692Z system Conference-Room-2 went offline
+2026-11-19T15:27:05.909Z system Conference-Room-2 (172.16.101.186) came online
+2026-11-19T17:05:38.593Z admin signed out (expired)
+2026-11-20T03:56:46.011Z system Audituram (172.16.105.225) came online
+2026-11-20T03:56:57.369Z system LR-5 (172.16.103.181) came online
+2026-11-20T03:56:58.095Z system Big-Computer-Lab (172.16.102.27) came online
+2026-11-20T03:56:58.511Z system LR-3 (172.16.101.44) came online
+2026-11-20T03:56:58.709Z system LR-9 (172.16.101.49) came online
+2026-11-20T03:56:58.875Z system Conference-Room-2 (172.16.101.186) came online
+2026-11-20T03:57:01.487Z system LR-14 (172.16.101.124) came online
+2026-11-20T03:57:13.158Z admin signed in from 172.18.32.146
+2026-11-20T03:58:18.073Z system LR-7 (172.16.101.47) came online
+2026-11-20T03:58:33.213Z system LR-2 (172.16.103.145) came online
+2026-11-20T03:59:37.027Z system LR-1-A (172.16.103.143) came online
+2026-11-20T04:00:23.743Z system LR-6 (172.16.101.46) came online
+2026-11-20T04:00:34.966Z system LR-8 (172.16.102.48) came online
+2026-11-20T04:01:50.857Z system LR-10 (172.16.102.50) came online
+2026-11-20T04:02:26.862Z system LR-12 (172.16.102.22) came online
+2026-11-20T04:02:38.703Z system LR-13 (172.16.102.33) came online
+2026-11-20T04:02:56.715Z system Conference-Room-1 (172.16.101.15) came online
+2026-11-20T04:03:15.212Z system LR-9 went offline
+2026-11-20T04:03:43.361Z system Small-Computer-Lab (172.16.102.26) came online
+2026-11-20T04:04:38.435Z system LR-9 (172.16.101.49) came online
+2026-11-20T04:06:04.955Z system LR-11 (172.16.102.146) came online
+2026-11-20T04:10:17.404Z admin created teacher account zeest.hashmi@niu.edu.pk
+2026-11-20T04:22:26.345Z admin signed in from 172.16.105.251
+2026-11-20T04:22:59.271Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-20T04:23:16.152Z admin uploaded Presentation (1).pptx (slides, 4035 KB)
+2026-11-20T04:23:22.153Z admin opened "Presentation (1)" in LR-14
+2026-11-20T04:24:46.078Z admin uploaded Presentation (1) (3).pptx (slides, 979 KB)
+2026-11-20T04:24:52.171Z admin opened "Presentation (1) (3)" in LR-14
+2026-11-20T04:26:08.039Z admin took control of Big-Computer-Lab
+2026-11-20T04:26:08.041Z admin started Full access (VNC) of Big-Computer-Lab (admin, from 172.16.105.251; password generated)
+2026-11-20T04:26:08.395Z admin VNC sign-in problem on Big-Computer-Lab: TightVNC on Big-Computer-Lab is not accepting this server ri... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T04:26:08.411Z admin VNC link to Big-Computer-Lab closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T04:26:08.417Z admin remote control of Big-Computer-Lab ended (released by user; 0 s, 0 input events)
+2026-11-20T04:26:08.419Z admin released control of Big-Computer-Lab
+2026-11-20T04:26:13.031Z admin took control of Big-Computer-Lab
+2026-11-20T04:26:13.033Z admin started remote control of Big-Computer-Lab (admin, from 172.16.105.251)
+2026-11-20T04:27:45.312Z iftikhar.khan@niu.edu.pk signed out (browser closed)
+2026-11-20T04:31:40.376Z admin remote control of Big-Computer-Lab ended (released by user; 327 s, 954 input events)
+2026-11-20T04:31:40.377Z admin released control of Big-Computer-Lab
+2026-11-20T04:32:06.693Z admin created teacher account ali.tanveer@niu.edu.pk
+2026-11-20T04:32:11.540Z admin removed account av1
+2026-11-20T04:32:15.252Z admin removed account av2
+2026-11-20T04:32:18.828Z admin removed account teacher1
+2026-11-20T04:33:12.370Z admin created teacher account teacher1
+2026-11-20T04:33:29.953Z admin created teacher account teacher2
+2026-11-20T04:33:38.858Z admin removed account faizan.saleem@niu.edu.pk
+2026-11-20T04:33:57.649Z admin created admin account faizan.saleem@niu.edu.pk
+2026-11-20T04:34:21.464Z faizan.saleem@niu.edu.pk signed in from 172.16.105.251
+2026-11-20T04:34:36.523Z faizan.saleem@niu.edu.pk changed own password
+2026-11-20T04:37:29.760Z faizan.saleem@niu.edu.pk signed in from 172.18.32.146
+2026-11-20T04:38:36.774Z teacher1 signed in remotely from 172.18.32.43
+2026-11-20T04:39:04.435Z teacher1 changed own password
+2026-11-20T04:40:09.203Z teacher1 uploaded CH-4Stretchings.ppt (slides, 13464 KB)
+2026-11-20T04:40:17.898Z teacher1 chose Big-Computer-Lab to share slides from their own device
+2026-11-20T04:40:20.441Z teacher1 opened "CH-4Stretchings" in Big-Computer-Lab
+2026-11-20T04:40:35.382Z teacher1 started Full access (VNC) of Big-Computer-Lab (teacher, from 172.18.32.43; password generated)
+2026-11-20T04:40:36.153Z teacher1 VNC sign-in problem on Big-Computer-Lab: TightVNC on Big-Computer-Lab is not accepting this server ri... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T04:40:36.156Z teacher1 VNC link to Big-Computer-Lab closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T04:40:36.172Z teacher1 remote control of Big-Computer-Lab ended (released by user; 1 s, 0 input events)
+2026-11-20T04:40:37.497Z teacher1 started remote control of Big-Computer-Lab (teacher, from 172.18.32.43)
+2026-11-20T04:40:54.524Z teacher1 remote control of Big-Computer-Lab ended (released by user; 17 s, 31 input events)
+2026-11-20T04:41:29.426Z teacher1 opened "CH-4Stretchings" in Big-Computer-Lab
+2026-11-20T04:41:51.410Z teacher1 opened "CH-4Stretchings" in Big-Computer-Lab
+2026-11-20T04:42:12.078Z teacher1 opened "CH-4Stretchings" in Big-Computer-Lab
+2026-11-20T04:42:43.075Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-20T04:42:57.157Z iftikhar.khan@niu.edu.pk uploaded L-1 Geriatric Physiology and Age Related Changes.docx (doc, 35 KB)
+2026-11-20T04:43:02.798Z iftikhar.khan@niu.edu.pk chose Small-Computer-Lab to share slides from their own device
+2026-11-20T04:43:08.029Z iftikhar.khan@niu.edu.pk opened "L-1 Geriatric Physiology and Age Related Changes" in Small-Computer-Lab
+2026-11-20T04:43:17.999Z iftikhar.khan@niu.edu.pk started Full access (VNC) of Small-Computer-Lab (teacher, from 172.18.32.99; password generated)
+2026-11-20T04:43:18.094Z iftikhar.khan@niu.edu.pk VNC sign-in problem on Small-Computer-Lab: TightVNC on Small-Computer-Lab is not accepting this server ... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T04:43:18.099Z iftikhar.khan@niu.edu.pk VNC link to Small-Computer-Lab closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T04:43:18.112Z iftikhar.khan@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 0 s, 0 input events)
+2026-11-20T04:43:20.442Z iftikhar.khan@niu.edu.pk started remote control of Small-Computer-Lab (teacher, from 172.18.32.99)
+2026-11-20T04:43:36.172Z teacher1 signed out of Big-Computer-Lab (released by Muhammad Faizan Saleem)
+2026-11-20T04:43:36.174Z faizan.saleem@niu.edu.pk released the sign-in of teacher1
+2026-11-20T04:45:07.052Z iftikhar.khan@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 107 s, 701 input events)
+2026-11-20T04:45:08.603Z iftikhar.khan@niu.edu.pk started remote control of Small-Computer-Lab (teacher, from 172.18.32.99)
+2026-11-20T05:04:14.403Z faizan.saleem@niu.edu.pk took control of LR-14
+2026-11-20T05:04:14.408Z faizan.saleem@niu.edu.pk started Full access (VNC) of LR-14 (admin, from 172.18.32.146; password generated)
+2026-11-20T05:04:14.748Z faizan.saleem@niu.edu.pk VNC sign-in problem on LR-14: TightVNC on LR-14 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T05:04:14.753Z faizan.saleem@niu.edu.pk VNC link to LR-14 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T05:04:14.769Z faizan.saleem@niu.edu.pk remote control of LR-14 ended (released by user; 0 s, 0 input events)
+2026-11-20T05:04:14.775Z faizan.saleem@niu.edu.pk released control of LR-14
+2026-11-20T05:04:18.792Z faizan.saleem@niu.edu.pk took control of LR-14
+2026-11-20T05:04:18.794Z faizan.saleem@niu.edu.pk started remote control of LR-14 (admin, from 172.18.32.146)
+2026-11-20T05:04:35.914Z faizan.saleem@niu.edu.pk remote control of LR-14 ended (released by user; 17 s, 106 input events)
+2026-11-20T05:04:35.920Z faizan.saleem@niu.edu.pk released control of LR-14
+2026-11-20T05:10:04.160Z faizan.saleem@niu.edu.pk deleted lecture "CH-4Stretchings"
+2026-11-20T05:10:09.574Z faizan.saleem@niu.edu.pk deleted lecture "Endocrine_Disorders_Diabetes_Mellitus (2) (1)"
+2026-11-20T05:10:12.394Z faizan.saleem@niu.edu.pk deleted lecture "Endocrine_Disorders_Diabetes_Mellitus (2) (1)"
+2026-11-20T05:10:15.125Z faizan.saleem@niu.edu.pk deleted lecture "Autonomic_Nervous_System_Presentation"
+2026-11-20T05:10:17.749Z faizan.saleem@niu.edu.pk deleted lecture "Oral_Communication_Weeks_1_to_3_Slides"
+2026-11-20T05:10:20.888Z faizan.saleem@niu.edu.pk deleted lecture "GCLP_session 1"
+2026-11-20T05:10:23.774Z faizan.saleem@niu.edu.pk deleted lecture "4.Role of sensory system"
+2026-11-20T05:10:26.683Z faizan.saleem@niu.edu.pk deleted lecture "Hand Hygiene in OR"
+2026-11-20T05:10:29.802Z faizan.saleem@niu.edu.pk deleted lecture "safety considerations in asthetic surgery"
+2026-11-20T05:10:32.287Z faizan.saleem@niu.edu.pk deleted lecture "safety considerations in asthetic surgery"
+2026-11-20T05:10:37.628Z faizan.saleem@niu.edu.pk deleted lecture "RM-Quantitative week 2"
+2026-11-20T05:10:40.622Z faizan.saleem@niu.edu.pk deleted lecture "1. Mehran's presentation"
+2026-11-20T05:10:43.474Z faizan.saleem@niu.edu.pk deleted lecture "2. rama pre-op invest."
+2026-11-20T05:10:48.461Z faizan.saleem@niu.edu.pk deleted lecture "Presentation (1) (3)"
+2026-11-20T05:10:51.318Z faizan.saleem@niu.edu.pk deleted lecture "W 3-4 - types of Food Packaging Materials"
+2026-11-20T05:10:54.320Z faizan.saleem@niu.edu.pk deleted lecture "W 3-4 - types of Food Packaging Materials"
+2026-11-20T05:10:57.922Z faizan.saleem@niu.edu.pk deleted lecture "Lec 3) Etiology and Pathogenesis  of cell injury"
+2026-11-20T05:11:06.413Z faizan.saleem@niu.edu.pk deleted lecture "Neonatal and Pediatric Physiology and Pathophysiology"
+2026-11-20T05:11:09.949Z faizan.saleem@niu.edu.pk deleted lecture "CH-4Stretchings"
+2026-11-20T05:11:13.401Z faizan.saleem@niu.edu.pk deleted lecture "Presentation (1)"
+2026-11-20T05:12:03.190Z faizan.saleem@niu.edu.pk stop in LR-14
+2026-11-20T05:12:05.449Z faizan.saleem@niu.edu.pk stop in LR-14
+2026-11-20T05:12:12.127Z faizan.saleem@niu.edu.pk stop in LR-14
+2026-11-20T05:12:52.555Z faizan.saleem@niu.edu.pk took control of LR-14
+2026-11-20T05:12:52.558Z faizan.saleem@niu.edu.pk started Full access (VNC) of LR-14 (admin, from 172.18.32.146; password generated)
+2026-11-20T05:12:52.711Z faizan.saleem@niu.edu.pk VNC sign-in problem on LR-14: TightVNC on LR-14 is not accepting this server right now (to... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T05:12:52.715Z faizan.saleem@niu.edu.pk VNC link to LR-14 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T05:12:52.794Z faizan.saleem@niu.edu.pk remote control of LR-14 ended (released by user; 0 s, 0 input events)
+2026-11-20T05:12:52.795Z faizan.saleem@niu.edu.pk released control of LR-14
+2026-11-20T05:12:54.623Z faizan.saleem@niu.edu.pk took control of LR-14
+2026-11-20T05:12:54.650Z faizan.saleem@niu.edu.pk started remote control of LR-14 (admin, from 172.18.32.146)
+2026-11-20T05:13:02.822Z faizan.saleem@niu.edu.pk remote control of LR-14 ended (released by user; 8 s, 51 input events)
+2026-11-20T05:13:02.824Z faizan.saleem@niu.edu.pk released control of LR-14
+2026-11-20T05:13:48.233Z iftikhar.khan@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 1720 s, 816 input events)
+2026-11-20T05:15:59.412Z iftikhar.khan@niu.edu.pk started Full access (VNC) of Small-Computer-Lab (teacher, from 172.18.32.99; password generated)
+2026-11-20T05:15:59.456Z iftikhar.khan@niu.edu.pk VNC sign-in problem on Small-Computer-Lab: TightVNC on Small-Computer-Lab is not accepting this server ... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T05:15:59.462Z iftikhar.khan@niu.edu.pk VNC link to Small-Computer-Lab closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T05:15:59.471Z iftikhar.khan@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 0 s, 0 input events)
+2026-11-20T05:16:01.578Z iftikhar.khan@niu.edu.pk started remote control of Small-Computer-Lab (teacher, from 172.18.32.99)
+2026-11-20T05:24:08.893Z system LR-12 went offline
+2026-11-20T05:24:13.917Z system LR-12 (172.16.102.22) came online
+2026-11-20T05:29:32.341Z system Conference-Room-2 went offline
+2026-11-20T05:30:21.074Z system Conference-Room-2 (172.16.101.186) came online
+2026-11-20T05:36:26.321Z faizan.saleem@niu.edu.pk took control of Audituram
+2026-11-20T05:36:26.328Z faizan.saleem@niu.edu.pk started Full access (VNC) of Audituram (admin, from 172.18.32.146; password generated)
+2026-11-20T05:36:26.428Z faizan.saleem@niu.edu.pk VNC sign-in problem on Audituram: TightVNC on Audituram is not accepting this server right now... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T05:36:26.432Z faizan.saleem@niu.edu.pk VNC link to Audituram closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T05:36:26.447Z faizan.saleem@niu.edu.pk remote control of Audituram ended (released by user; 0 s, 0 input events)
+2026-11-20T05:36:26.449Z faizan.saleem@niu.edu.pk released control of Audituram
+2026-11-20T05:36:29.541Z faizan.saleem@niu.edu.pk stop in Audituram
+2026-11-20T05:36:33.842Z faizan.saleem@niu.edu.pk took control of Audituram
+2026-11-20T05:36:33.849Z faizan.saleem@niu.edu.pk started remote control of Audituram (admin, from 172.18.32.146)
+2026-11-20T05:36:45.455Z faizan.saleem@niu.edu.pk remote control of Audituram ended (released by user; 12 s, 84 input events)
+2026-11-20T05:36:45.456Z faizan.saleem@niu.edu.pk released control of Audituram
+2026-11-20T05:40:11.423Z iftikhar.khan@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 1450 s, 277 input events)
+2026-11-20T05:40:14.824Z iftikhar.khan@niu.edu.pk stop in Small-Computer-Lab
+2026-11-20T05:40:38.758Z iftikhar.khan@niu.edu.pk started Full access (VNC) of Small-Computer-Lab (teacher, from 172.18.32.99; password generated)
+2026-11-20T05:40:38.953Z iftikhar.khan@niu.edu.pk VNC sign-in problem on Small-Computer-Lab: TightVNC on Small-Computer-Lab is not accepting this server ... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T05:40:38.970Z iftikhar.khan@niu.edu.pk VNC link to Small-Computer-Lab closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T05:40:39.014Z iftikhar.khan@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 0 s, 0 input events)
+2026-11-20T05:40:41.018Z iftikhar.khan@niu.edu.pk started remote control of Small-Computer-Lab (teacher, from 172.18.32.99)
+2026-11-20T05:41:01.212Z iftikhar.khan@niu.edu.pk remote control of Small-Computer-Lab ended (released by user; 20 s, 214 input events)
+2026-11-20T05:41:31.271Z iftikhar.khan@niu.edu.pk signed out of Small-Computer-Lab (signed out)
+2026-11-20T05:41:39.280Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-20T05:49:47.835Z system LR-12 went offline
+2026-11-20T05:49:51.652Z system LR-12 (172.16.102.22) came online
+2026-11-20T05:49:55.563Z iftikhar.khan@niu.edu.pk chose LR-8 to share slides from their own device
+2026-11-20T05:50:10.297Z iftikhar.khan@niu.edu.pk uploaded L-1 EMS_Introduction_Presentation.pptx (slides, 48 KB)
+2026-11-20T05:50:10.326Z iftikhar.khan@niu.edu.pk uploaded L-2 Patient_Assessment_Presentation.pptx (slides, 37 KB)
+2026-11-20T05:50:10.346Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:50:14.054Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:50:15.479Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:50:22.969Z iftikhar.khan@niu.edu.pk stop in LR-8
+2026-11-20T05:50:30.036Z iftikhar.khan@niu.edu.pk opened "L-1 EMS_Introduction_Presentation" in LR-8
+2026-11-20T05:50:32.212Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:50:35.277Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:00.364Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:01.317Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:52:02.015Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:52:02.406Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:52:06.781Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:07.488Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:07.961Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:08.166Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:08.371Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:08.523Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:08.680Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:08.853Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:09.015Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:09.196Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:09.338Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:09.519Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:09.677Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:52:24.207Z iftikhar.khan@niu.edu.pk opened "L-1 EMS_Introduction_Presentation" in LR-8
+2026-11-20T05:53:40.301Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:42.412Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:43.031Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:43.600Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:45.034Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:45.707Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:50.260Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:50.434Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:50.657Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:50.837Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:51.817Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:52.792Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:53:57.254Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:01.786Z iftikhar.khan@niu.edu.pk deleted lecture "L-1 EMS_Introduction_Presentation"
+2026-11-20T05:54:03.508Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:54:06.329Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:06.676Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:07.695Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:09.123Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:10.101Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:13.329Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:15.200Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:16.006Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:17.267Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:17.899Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:18.219Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:19.206Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:20.355Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:21.249Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:54:21.989Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:22.427Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:22.606Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:22.831Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:22.998Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:23.220Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:23.387Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:23.572Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:40.546Z iftikhar.khan@niu.edu.pk started Full access (VNC) of LR-8 (teacher, from 172.18.32.99; password generated)
+2026-11-20T05:54:40.610Z iftikhar.khan@niu.edu.pk VNC sign-in problem on LR-8: TightVNC on LR-8 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T05:54:40.617Z iftikhar.khan@niu.edu.pk VNC link to LR-8 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T05:54:40.628Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 0 s, 0 input events)
+2026-11-20T05:54:42.475Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)
+2026-11-20T05:54:44.990Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 3 s, 17 input events)
+2026-11-20T05:54:47.945Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:48.437Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:48.632Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:48.823Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:49.016Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:49.191Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:54:49.369Z iftikhar.khan@niu.edu.pk prev in LR-8
+2026-11-20T05:55:04.758Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:04.905Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:05.249Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:05.464Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:05.571Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:05.930Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:06.097Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:06.265Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:06.455Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:06.629Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:06.815Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:06.972Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:07.159Z iftikhar.khan@niu.edu.pk next in LR-8
+2026-11-20T05:55:10.138Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)
+2026-11-20T05:55:39.797Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 30 s, 327 input events)
+2026-11-20T05:55:41.539Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)
+2026-11-20T05:55:46.986Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 5 s, 12 input events)
+2026-11-20T05:55:50.045Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:56:18.184Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:56:29.085Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)
+2026-11-20T05:56:33.785Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 5 s, 62 input events)
+2026-11-20T05:57:00.721Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:57:03.030Z system Small-Computer-Lab went offline
+2026-11-20T05:57:05.456Z iftikhar.khan@niu.edu.pk signed out of LR-8 (signed out)
+2026-11-20T05:57:08.434Z iftikhar.khan@niu.edu.pk signed in remotely from 172.18.32.99
+2026-11-20T05:57:12.175Z iftikhar.khan@niu.edu.pk chose LR-8 to share slides from their own device
+2026-11-20T05:57:15.295Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:57:49.133Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:58:59.247Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:59:33.084Z system LR-12 went offline
+2026-11-20T05:59:34.892Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T05:59:41.844Z system LR-12 (172.16.102.22) came online
+2026-11-20T05:59:48.186Z iftikhar.khan@niu.edu.pk started Full access (VNC) of LR-8 (teacher, from 172.18.32.99; password generated)
+2026-11-20T05:59:48.233Z iftikhar.khan@niu.edu.pk VNC sign-in problem on LR-8: TightVNC on LR-8 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T05:59:48.241Z iftikhar.khan@niu.edu.pk VNC link to LR-8 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T05:59:48.281Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 0 s, 0 input events)
+2026-11-20T05:59:50.388Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)
+2026-11-20T06:00:03.108Z system LR-7 went offline
+2026-11-20T06:00:18.648Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 28 s, 414 input events)
+2026-11-20T06:00:25.291Z iftikhar.khan@niu.edu.pk deleted lecture "L-2 Patient_Assessment_Presentation"
+2026-11-20T06:00:29.958Z iftikhar.khan@niu.edu.pk uploaded L-2 Patient_Assessment_Presentation.pptx (slides, 37 KB)
+2026-11-20T06:00:29.976Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T06:01:03.882Z iftikhar.khan@niu.edu.pk opened "L-1 Geriatric Physiology and Age Related Changes" in LR-8
+2026-11-20T06:01:12.804Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)
+2026-11-20T06:01:16.389Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 4 s, 21 input events)
+2026-11-20T06:01:19.470Z iftikhar.khan@niu.edu.pk stop in LR-8
+2026-11-20T06:01:22.035Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T06:01:35.613Z iftikhar.khan@niu.edu.pk deleted lecture "L-2 Patient_Assessment_Presentation"
+2026-11-20T06:01:58.265Z iftikhar.khan@niu.edu.pk uploaded 2.Patient_Assessment_20slides.pptx (slides, 48 KB)
+2026-11-20T06:01:58.280Z iftikhar.khan@niu.edu.pk opened "2.Patient_Assessment_20slides" in LR-8
+2026-11-20T06:02:21.384Z iftikhar.khan@niu.edu.pk opened "2.Patient_Assessment_20slides" in LR-8
+2026-11-20T06:02:36.759Z iftikhar.khan@niu.edu.pk deleted lecture "2.Patient_Assessment_20slides"
+2026-11-20T06:02:40.448Z iftikhar.khan@niu.edu.pk disconnected from LR-8
+2026-11-20T06:02:45.516Z iftikhar.khan@niu.edu.pk chose LR-8 to share slides from their own device
+2026-11-20T06:02:51.110Z iftikhar.khan@niu.edu.pk uploaded L-2 Patient_Assessment_Presentation.pptx (slides, 37 KB)
+2026-11-20T06:02:51.127Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T06:03:16.911Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T06:03:33.319Z iftikhar.khan@niu.edu.pk file transfer of L-2 Patient_Assessment_Presentation.pptx to LR-8 failed: That folder is not allowed.
+2026-11-20T06:03:46.569Z iftikhar.khan@niu.edu.pk file transfer of L-2 Patient_Assessment_Presentation.pptx to LR-8 failed: That folder is not allowed.
+2026-11-20T06:04:12.790Z iftikhar.khan@niu.edu.pk opened "L-2 Patient_Assessment_Presentation" in LR-8
+2026-11-20T06:04:20.997Z iftikhar.khan@niu.edu.pk uploaded 2.docx (doc, 17 KB)
+2026-11-20T06:04:21.025Z iftikhar.khan@niu.edu.pk opened "2" in LR-8
+2026-11-20T06:04:27.379Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)
+2026-11-20T06:04:56.875Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 29 s, 477 input events)
+2026-11-20T06:10:10.931Z iftikhar.khan@niu.edu.pk started Full access (VNC) of LR-8 (teacher, from 172.18.32.99; password generated)
+2026-11-20T06:10:10.973Z iftikhar.khan@niu.edu.pk VNC sign-in problem on LR-8: TightVNC on LR-8 is not accepting this server right now (too... (server said: "RFB 003.003 Too many security failures")
+2026-11-20T06:10:10.975Z iftikhar.khan@niu.edu.pk VNC link to LR-8 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
+2026-11-20T06:10:10.979Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 0 s, 0 input events)
+2026-11-20T06:10:13.190Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)

@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture Room Control</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b6b73'/%3E%3Crect x='6' y='9' width='20' height='12' rx='2' fill='none' stroke='white' stroke-width='2'/%3E%3Cpath d='M12 25h8' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#f2f5f4;--surface:#fff;--raise:#f8fafa;--ink:#0e2a2e;--mu:#587073;--line:#dbe4e3;--line2:#c9d6d5;
+  --brand:#0b6b73;--brand-h:#085a61;--brand-soft:#dcefef;--on-brand:#fff;
+  --live:#17895c;--live-soft:#ddf3e8;--amber:#a85f00;--amber-soft:#fdefd3;--danger:#b8342a;--danger-soft:#fbe4e1;--off:#6b7d80;--off-soft:#e9eeee;
+  --stage:#071b1e;--stage-ink:#e6f4f3;--stage-mu:#8fb0b1;
+  --sh:0 1px 2px rgba(10,40,44,.06),0 8px 24px -12px rgba(10,40,44,.14);
+  --ff:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --fd:"Segoe UI Variable Display","Segoe UI Semibold","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --paper:#091a1d;--surface:#102529;--raise:#142d32;--ink:#e5f2f1;--mu:#92adae;--line:#1f3a3f;--line2:#2b4a50;
+  --brand:#3fb7bf;--brand-h:#5cc8cf;--brand-soft:#123a40;--on-brand:#04191b;
+  --live:#4cc995;--live-soft:#0f3a2b;--amber:#f0b04a;--amber-soft:#3a2d10;--danger:#ff8a80;--danger-soft:#40201d;--off:#97aaac;--off-soft:#1a3236;--sh:none}}
+:root[data-theme=dark]{
+  --paper:#091a1d;--surface:#102529;--raise:#142d32;--ink:#e5f2f1;--mu:#92adae;--line:#1f3a3f;--line2:#2b4a50;
+  --brand:#3fb7bf;--brand-h:#5cc8cf;--brand-soft:#123a40;--on-brand:#04191b;
+  --live:#4cc995;--live-soft:#0f3a2b;--amber:#f0b04a;--amber-soft:#3a2d10;--danger:#ff8a80;--danger-soft:#40201d;--off:#97aaac;--off-soft:#1a3236;--sh:none}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--ff);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--fd);font-weight:650;letter-spacing:-.012em}
+button,input,select{font:inherit;color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.mu{color:var(--mu)}.sm{font-size:12.5px}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+svg.i.fill{fill:currentColor;stroke:none}
+
+/* ---------- controls ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:36px;padding:7px 14px;border-radius:9px;border:1px solid var(--line2);background:var(--surface);color:var(--ink);font-weight:550;cursor:pointer;transition:background .12s,border-color .12s,transform .06s;white-space:nowrap}
+.btn:hover{border-color:var(--brand);background:var(--raise)}
+.btn:active{transform:translateY(1px)}
+.btn.pri{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.btn.pri:hover{background:var(--brand-h);border-color:var(--brand-h)}
+.btn.dng{color:var(--danger)}.btn.dng:hover{border-color:var(--danger);background:var(--danger-soft)}
+.btn.dng-solid{background:var(--danger);border-color:var(--danger);color:#fff}
+.btn.ghost{border-color:transparent;background:transparent}.btn.ghost:hover{background:var(--brand-soft);border-color:transparent}
+.btn.s{min-height:30px;padding:4px 10px;font-size:13px;border-radius:8px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;pointer-events:none}
+.btn.icon{padding:0;width:36px}
+input[type=text],input[type=password],input:not([type]),select,textarea{width:100%;min-height:38px;padding:8px 12px;border:1px solid var(--line2);border-radius:9px;background:var(--surface);min-width:0}
+textarea{resize:vertical;font:inherit;display:block}
+input:focus,select:focus,textarea:focus{border-color:var(--brand);outline:2px solid var(--brand-soft);outline-offset:0}
+.fld{display:block;margin-top:14px}.fld>span{display:block;font-weight:550;margin-bottom:5px;font-size:13px}
+.inline{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}.inline>*{flex:1 1 150px}.inline>.btn{flex:0 0 auto}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:2px 10px 2px 8px;border-radius:99px;white-space:nowrap}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.pill.live{background:var(--live-soft);color:var(--live)}.pill.ready{background:var(--brand-soft);color:var(--brand)}
+.pill.help{background:var(--amber-soft);color:var(--amber)}.pill.off{background:var(--off-soft);color:var(--off)}.pill.busy{background:var(--danger-soft);color:var(--danger)}
+.pill.live::before{animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- cards ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);overflow:hidden}
+.card.p{padding:20px}
+.card>header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.card>header h3{font-size:15px}
+.stack>*+*{margin-top:16px}
+.empty{padding:36px 20px;text-align:center;color:var(--mu)}
+.empty b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-weight:600;font-size:12.5px;color:var(--mu);padding:10px 20px;border-bottom:1px solid var(--line);background:var(--raise)}
+td{padding:12px 20px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+.tw{overflow-x:auto}
+.acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+
+/* ---------- sign-in ---------- */
+.gate{min-height:100vh;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)}
+.stage{position:relative;background:var(--stage);color:var(--stage-ink);padding:44px 52px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  background-image:linear-gradient(rgba(143,176,177,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(143,176,177,.07) 1px,transparent 1px);background-size:44px 44px}
+.stage::after{content:"";position:absolute;inset:auto -20% -35% -20%;height:70%;background:radial-gradient(closest-side,rgba(63,183,191,.22),transparent);pointer-events:none}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--fd);font-weight:650;font-size:16px;letter-spacing:-.01em}
+.mark{width:34px;height:34px;border-radius:9px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center}
+.stage .mark{background:#3fb7bf;color:#04191b}
+.mark.img,.stage .mark.img,.side .mark.img{background:#fff;padding:3px;overflow:hidden}.mark.img img{width:100%;height:100%;object-fit:contain;display:block}
+.stage .mark.img{width:56px;height:56px;border-radius:14px}.side .mark.img{width:44px;height:44px}.brand .bn{line-height:1.2}
+.logoprev{width:72px;height:72px;border-radius:14px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;overflow:hidden;flex:none}.logoprev img{width:100%;height:100%;object-fit:contain}
+.screen{position:relative;z-index:1;width:100%;max-width:560px;aspect-ratio:16/9;margin:28px 0;border:1px solid rgba(143,176,177,.35);border-radius:12px;background:linear-gradient(160deg,rgba(18,58,64,.75),rgba(7,27,30,.9));display:grid;place-content:center;text-align:center;gap:6px;box-shadow:0 30px 60px -30px #000}
+.screen small{color:var(--stage-mu);font-size:13px}
+.screen .room{font-family:var(--fd);font-weight:700;font-size:clamp(44px,6.5vw,84px);letter-spacing:.01em;line-height:1;font-variant-numeric:tabular-nums}
+.screen .room.none{color:var(--stage-mu);font-size:clamp(24px,3vw,36px);font-weight:650}
+.lamp{display:inline-flex;align-items:center;gap:8px;justify-content:center;font-weight:600;font-size:13.5px;margin-top:6px}
+.lamp i{width:9px;height:9px;border-radius:50%;background:#78909a}
+.lamp.ok i{background:#4cc995;box-shadow:0 0 0 4px rgba(76,201,149,.18)}.lamp.warn i{background:#f0b04a;box-shadow:0 0 0 4px rgba(240,176,74,.18)}
+.stage ul{margin:0;padding:0;list-style:none;position:relative;z-index:1;display:grid;gap:10px;color:var(--stage-mu);max-width:470px}
+.stage li{display:flex;gap:10px;align-items:flex-start}.stage li svg{margin-top:2px;color:#3fb7bf}
+.formside{display:grid;place-items:center;padding:36px 28px;background:var(--paper)}
+.form{width:100%;max-width:380px}
+.form h1{font-size:28px;line-height:1.15}
+.form .lead{margin:8px 0 22px;color:var(--mu)}
+.form .btn.pri{width:100%;min-height:44px;margin-top:20px;font-size:15px}
+.note{display:flex;gap:10px;margin-top:18px;padding:12px 14px;border-radius:11px;font-size:13px;line-height:1.45}
+.note svg{margin-top:1px}
+.note.err{background:var(--danger-soft);color:var(--danger)}.note.info{background:var(--brand-soft);color:var(--brand)}
+.foot{margin-top:26px;color:var(--mu);font-size:12.5px}
+@media(max-width:860px){.gate{grid-template-columns:1fr}.stage{padding:28px 24px}.screen{margin:18px 0;max-width:420px}.stage ul{display:none}}
+
+/* ---------- staff shell ---------- */
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.side{background:var(--stage);color:var(--stage-ink);padding:20px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.side .brand{padding:4px 8px 18px}.side .mark{background:#3fb7bf;color:#04191b}
+.side nav{display:grid;gap:2px}
+.nav{display:flex;align-items:center;gap:11px;padding:9px 11px;border:0;background:none;border-radius:9px;color:var(--stage-mu);font-weight:550;cursor:pointer;text-align:left;width:100%}
+.nav:hover{background:rgba(143,176,177,.12);color:var(--stage-ink)}
+.nav.on{background:rgba(63,183,191,.18);color:#fff}
+.nav .n{margin-left:auto;background:#f0b04a;color:#2b1c00;border-radius:99px;font-size:11.5px;font-weight:700;padding:0 7px}
+.me{margin-top:auto;border-top:1px solid rgba(143,176,177,.2);padding-top:14px;display:grid;gap:10px}
+.me b{display:block;color:#fff}.me span{font-size:12.5px;color:var(--stage-mu)}
+.me .row{display:flex;gap:8px}.me .btn{background:transparent;border-color:rgba(143,176,177,.35);color:var(--stage-ink);flex:1}.me .btn:hover{background:rgba(143,176,177,.14)}.me .btn.icon{flex:0 0 36px}
+.main{padding:28px 32px 48px;min-width:0}
+.ph{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.ph h1{font-size:24px}.ph p{color:var(--mu);margin-top:2px}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:10px}.side .brand{padding:0 8px}.side nav{display:flex;flex-wrap:wrap}.me{margin:0 0 0 auto;border:0;padding:0;display:flex;align-items:center}.me div{display:none}.main{padding:20px 16px}}
+
+/* ---------- monitor ---------- */
+.facts{display:flex;flex-wrap:wrap;gap:26px;margin-bottom:18px;padding:14px 20px}
+.facts div{display:flex;flex-direction:column}.facts b{font-family:var(--fd);font-size:22px;line-height:1.1}.facts span{color:var(--mu);font-size:12.5px}
+.mon{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:20px;align-items:start}
+@media(max-width:1180px){.mon{grid-template-columns:1fr}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.chip{border:1px solid var(--line2);background:var(--surface);padding:5px 14px;border-radius:99px;cursor:pointer;font-weight:550;color:var(--mu)}
+.chip.on{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.fl{font-family:var(--fd);font-weight:650;font-size:13.5px;color:var(--mu);margin:20px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:9px;cursor:pointer;box-shadow:var(--sh);transition:border-color .12s,box-shadow .12s}
+.tile:hover{border-color:var(--line2)}
+.tile.sel{border-color:var(--brand);box-shadow:0 0 0 2px var(--brand)}
+.scr{aspect-ratio:16/9;background:var(--stage);border-radius:8px;display:grid;place-items:center;color:var(--stage-mu);font-size:12.5px;overflow:hidden}
+.scr img{width:100%;height:100%;object-fit:cover;display:block}
+.tt{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:9px 3px 0}
+.tt b{font-family:var(--fd);font-size:15px}
+.tf{display:flex;justify-content:space-between;gap:8px;margin:3px 3px 2px;font-size:12.5px;color:var(--mu);min-height:20px}
+.tf label{display:inline-flex;gap:5px;align-items:center;cursor:pointer}
+.big{aspect-ratio:16/9;background:var(--stage);border-radius:10px;display:grid;place-items:center;color:var(--stage-mu);overflow:hidden;margin:14px 0}
+.big img{width:100%;height:100%;object-fit:contain}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13px}.kv dt{color:var(--mu)}.kv dd{margin:0}
+.sec{font-weight:650;font-size:13px;margin:18px 0 8px;font-family:var(--fd)}
+.ctl{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.ctl .btn{padding:7px 6px}
+.det{position:sticky;top:20px}
+.bulk{margin-bottom:16px;border-color:var(--brand)}
+
+/* ---------- full screen presenter view ---------- */
+.fsv{position:fixed;inset:0;z-index:30;background:var(--stage);color:var(--stage-ink);display:flex;flex-direction:column;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.fsv-top{display:flex;align-items:center;gap:14px;padding:10px 18px;border-bottom:1px solid rgba(143,176,177,.2);min-height:58px}
+.fsv-top b{font-family:var(--fd);font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}.fsv-top .grow{flex:1}
+.fsv-main{flex:1;min-height:0;display:grid;place-items:center;padding:14px}
+.fsv-scr{width:100%;height:100%;min-height:0;display:grid;place-items:center}
+.fsv-scr img{max-width:100%;max-height:100%;aspect-ratio:16/9;object-fit:contain;border-radius:10px;background:#000;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.fsv-msg{color:var(--stage-mu);text-align:center;font-size:18px;max-width:560px;line-height:1.5}.fsv-msg b{display:block;color:var(--stage-ink);font-size:22px;margin-bottom:6px;font-family:var(--fd)}
+.fsv-count{font-family:var(--fd);font-weight:700;font-size:clamp(48px,12vw,140px);line-height:1;font-variant-numeric:tabular-nums;color:var(--stage-ink)}
+.fsv-bar{padding:12px 18px 18px;border-top:1px solid rgba(143,176,177,.2);display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+.fsv-bar .btn{min-height:52px;padding:10px 22px;font-size:16px}.fsv-bar .btn.nx{min-width:200px}
+.fsv-bar select{max-width:360px;min-height:52px}
+.fsv .btn:not(.pri):not(.dng-solid){background:rgba(143,176,177,.14);border-color:rgba(143,176,177,.4);color:var(--stage-ink)}
+.fsv .btn:not(.pri):hover{background:rgba(143,176,177,.26)}
+.fsv-prog{height:4px;background:rgba(143,176,177,.25)}.fsv-prog i{display:block;height:100%;background:#3fb7bf}
+.fsv-main{position:relative}.fsv-scr img.fsv-slide{width:100%;height:100%;aspect-ratio:auto;object-fit:contain}
+.fsv-nx{position:absolute;right:22px;bottom:22px;width:min(19vw,250px);background:rgba(0,0,0,.6);border:1px solid rgba(143,176,177,.3);border-radius:10px;padding:6px;box-shadow:0 6px 24px rgba(0,0,0,.5)}.fsv-nx span{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#cfe0e0;margin:0 2px 4px}.fsv-nx img{display:block;width:100%;border-radius:5px}
+@media(max-width:900px){.fsv-nx{display:none}}
+.fsv-keys{color:var(--stage-mu);font-size:12.5px;text-align:center;padding-bottom:8px}.fsv-keys kbd{border:1px solid rgba(143,176,177,.4);border-radius:5px;padding:0 6px}
+@media(max-width:640px){.fsv-bar .btn{min-height:48px;padding:8px 14px}.fsv-bar .btn.nx{min-width:0;flex:1 1 40%}.fsv-keys{display:none}}
+
+/* ---------- faculty console ---------- */
+@media(max-width:640px){.bar .fsl{display:none}.bar{gap:8px;padding:0 10px}.bar .brand>span:last-child{display:none}.plate{font-size:14px;padding:5px 10px}.drop{margin:14px}.lec{padding:12px 14px;gap:10px}.pod{padding:16px}}
+.bar{display:flex;align-items:center;gap:16px;padding:0 28px;height:62px;background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.bar .grow{flex:1}
+.plate{display:inline-flex;align-items:center;gap:10px;background:var(--stage);color:var(--stage-ink);border-radius:10px;padding:6px 14px 6px 12px;font-family:var(--fd);font-weight:700;font-size:16px;letter-spacing:.02em}
+.plate i{width:9px;height:9px;border-radius:50%;background:#4cc995;box-shadow:0 0 0 3px rgba(76,201,149,.2)}
+.plate.off i{background:#f0b04a;box-shadow:0 0 0 3px rgba(240,176,74,.2)}
+.plate small{font-family:var(--ff);font-weight:500;color:var(--stage-mu);font-size:12.5px;letter-spacing:0}
+.who{text-align:right;line-height:1.25}.who b{display:block}.who span{color:var(--mu);font-size:12.5px}
+.console{max-width:1180px;margin:0 auto;padding:28px 28px 56px;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:22px;align-items:start}
+@media(max-width:980px){.console{grid-template-columns:1fr;padding:18px 16px}.bar{padding:0 14px}.who{display:none}}
+.drop{display:grid;justify-items:center;gap:6px;text-align:center;padding:22px;border:1.5px dashed var(--line2);border-radius:12px;margin:18px 20px;color:var(--mu);cursor:pointer;transition:background .12s,border-color .12s}
+.drop:hover,.drop.over{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
+.drop b{color:var(--ink)}
+.lec{display:flex;align-items:center;gap:14px;padding:13px 20px;border-top:1px solid var(--line)}
+.lec .ic{width:38px;height:38px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;flex:none}
+.lec .t{flex:1;min-width:0}.lec .t b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lec .t span{color:var(--mu);font-size:12.5px}
+.lec.now{background:var(--live-soft)}.lec.now .ic{background:var(--live);color:#fff}
+.pod{padding:22px}
+.pod .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.now h2{font-size:21px;line-height:1.25;margin:16px 0 4px;overflow-wrap:anywhere}
+.prog{height:8px;border-radius:99px;background:var(--off-soft);overflow:hidden;margin:14px 0 6px}
+.prog i{display:block;height:100%;background:var(--brand);border-radius:99px;transition:width .3s}
+.cnt{display:flex;justify-content:space-between;color:var(--mu);font-size:13px;font-variant-numeric:tabular-nums}
+.next{width:100%;min-height:92px;margin-top:18px;font-size:22px;font-family:var(--fd);font-weight:650;border-radius:14px}
+.next svg{width:26px;height:26px}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.trio .btn{min-height:50px}
+.trio .wide{grid-column:1/-1}
+.keys{margin-top:16px;color:var(--mu);font-size:12.5px;display:flex;gap:14px;flex-wrap:wrap}
+kbd{font:600 11.5px var(--ff);border:1px solid var(--line2);border-bottom-width:2px;border-radius:5px;padding:0 6px;background:var(--raise)}
+.idle{text-align:center;padding:26px 8px 8px}
+.idle .ic{width:60px;height:60px;border-radius:16px;margin:0 auto 14px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center}
+.idle .ic svg{width:28px;height:28px}
+.idle h2{font-size:19px}.idle p{margin-top:6px}
+.banner{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:11px;margin-bottom:16px;font-size:13.5px}
+.banner.warn{background:var(--amber-soft);color:var(--amber)}.banner.err{background:var(--danger-soft);color:var(--danger)}
+
+/* ---------- help requests ---------- */
+.plate.s{font-size:14px;padding:4px 11px 4px 10px}.plate.done i{background:#7d93a0;box-shadow:none}
+.chips.mb{margin-bottom:16px}
+.ticket{padding:18px 20px}.ticket+.ticket{margin-top:14px}
+.ticket.resolved{background:var(--raise)}
+.th{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.th .grow{flex:1}
+.ticket .msg{margin:12px 0 4px;font-size:15px;overflow-wrap:anywhere}
+.ticket .meta{color:var(--mu);font-size:12.5px}
+.thread{margin:14px 0 0;display:grid;gap:8px}
+.cm{padding:9px 12px;border-radius:10px;background:var(--raise);border:1px solid var(--line)}
+.cm.av{background:var(--brand-soft);border-color:transparent}
+.cm p{margin:2px 0 0;overflow-wrap:anywhere;white-space:pre-wrap}
+.cm b{font-size:13px}
+.reply{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.reply input{flex:1 1 240px}
+.hlp .thread{margin-top:10px}.hlp .msg{margin:8px 0 0}
+.cfg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 16px}
+.cfg .full{grid-column:1/-1}
+
+/* ---------- monitoring ---------- */
+.tl{display:flex;justify-content:space-between;gap:8px;margin:7px 3px 0;font-size:12.5px}.tl b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}.tl span{color:var(--mu);white-space:nowrap;font-variant-numeric:tabular-nums}
+.prog.t{height:5px;margin:6px 3px 2px}
+.feed{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.feed li{display:grid;grid-template-columns:44px 1fr;gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:13px}.feed li:first-child{border-top:0}
+.feed time{color:var(--mu);font-variant-numeric:tabular-nums}.feed b{font-weight:600}
+table.nw td{white-space:nowrap}.nw .acts{flex-wrap:nowrap}
+code.aid{font:600 12.5px ui-monospace,"Cascadia Mono",Consolas,monospace;background:var(--raise);border:1px solid var(--line);border-radius:7px;padding:3px 8px;letter-spacing:.02em;white-space:nowrap}
+
+/* ---------- overlays ---------- */
+.toasts{position:fixed;right:20px;bottom:20px;display:grid;gap:10px;z-index:10060;max-width:min(420px,calc(100vw - 40px))}
+.toast{display:flex;gap:10px;align-items:flex-start;background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:11px;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);animation:in .18s ease-out}
+.toast.err{background:var(--danger);color:#fff}.toast.ok svg{color:var(--live)}
+@keyframes in{from{transform:translateY(8px);opacity:0}}
+.modal{position:fixed;inset:0;background:rgba(5,20,22,.55);display:grid;place-items:center;padding:20px;z-index:10050}
+.dlg{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;width:100%;max-width:420px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.dlg h2{font-size:19px;margin-bottom:6px}
+.dlg .acts{margin-top:22px}.dlg .note{margin-top:14px}
+.sk{height:200px;border-radius:14px;background:linear-gradient(90deg,var(--off-soft),var(--raise),var(--off-soft));background-size:200% 100%;animation:sh 1.4s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.rc{position:fixed;inset:0;z-index:9999;background:#0b0d10;display:flex;flex-direction:column;color:#e8eaed}
+.rc-top{display:flex;gap:10px;align-items:center;padding:8px 12px;background:#14181d;border-bottom:1px solid #262b33;flex-wrap:wrap}
+.rc-main{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;cursor:crosshair;user-select:none;-webkit-user-select:none;touch-action:none}
+.rc-main img{width:100%;height:100%;object-fit:contain;display:block;-webkit-user-drag:none}
+.rc-main.vnc{cursor:default}.vnc-box{width:100%;height:100%;background:#0b0d10}.rc-main .rc-wait{color:#9aa0a6}
+.rc-top #rcn{white-space:normal;max-width:min(900px,92vw);line-height:1.3}
+.rc-main{position:relative}.rc-cur{position:absolute;width:16px;height:16px;margin:-8px 0 0 -8px;border:2px solid #fff;border-radius:50%;background:rgba(230,50,50,.85);box-shadow:0 0 0 1px #000;pointer-events:none;display:none}
+.rc{padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.rc-top .btn.s{min-height:34px}.rc-top .grow{flex:1}
+.rc-dr,.rc-keys{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:8px 12px;background:#101419;border-bottom:1px solid #262b33;color:#cfd3d8}
+.rc-dr:empty,.rc-keys:empty{display:none}
+.rc-keys textarea{flex:1 1 240px;min-height:56px;border-radius:8px;border:1px solid #3a414b;background:#0b0d10;color:#e8eaed;padding:8px;font:inherit}
+.rc-kb{position:absolute;left:0;bottom:0;width:1px;height:1px;opacity:0;border:0;padding:0;resize:none;pointer-events:none}
+.rc-top select,.rc-dr select{min-height:34px;max-width:220px}
+@media(max-width:640px){.rc-top{gap:6px;padding:6px 8px}.rc-top>b{display:none}.rc-top .btn.s{padding:5px 9px;font-size:13px}}
+.xf{position:fixed;inset:0;z-index:10040;background:rgba(5,20,22,.62);display:grid;place-items:center;padding:14px;overflow:auto}
+.xf .dlg{max-width:540px;max-height:94vh;overflow:auto}.xf .drop{margin:12px 0}
+.xfi{display:grid;gap:4px;padding:8px 0;border-bottom:1px solid var(--line)}.xfi .nm{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xfbar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}.xfbar i{display:block;height:100%;background:var(--brand);transition:width .15s}
+.xfi.err .sm{color:#b3261e}.xfi.done .sm{color:#1b7a4b}
+.xfr{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line)}.xfr span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+<symbol id="file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol>
+<symbol id="room" viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v16"/><path d="M10 21v-5h4v5M9 9h.01M15 9h.01"/></symbol>
+<symbol id="key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3"/></symbol>
+<symbol id="log" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+<symbol id="users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6"/></symbol>
+<symbol id="play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
+<symbol id="prev" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+<symbol id="nextI" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+<symbol id="blank" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.1A10 10 0 0 1 12 6c6 0 9 6 9 6a15 15 0 0 1-3 3.7M6.6 6.7C3.9 8.5 3 12 3 12s3 6 9 6a9 9 0 0 0 4-1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+<symbol id="stop" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></symbol>
+<symbol id="upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol>
+<symbol id="trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+<symbol id="out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+<symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+<symbol id="down" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></symbol>
+<symbol id="lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+<symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="cog" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+<symbol id="expand" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+<symbol id="shrink" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></symbol>
+<symbol id="pc" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4"/></symbol>
+</defs></svg>
+<div id="app"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script>
+'use strict';
+const $=i=>document.getElementById(i);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ic=(n,c='')=>`<svg class="i ${c}" aria-hidden="true"><use href="#${n}"/></svg>`;
+const S={tok:null,me:null,rooms:[],lects:[],sel:null,tab:'monitor',flt:'all',picked:new Set(),frames:{},logs:[],users:[],sess:[],lq:'',lsel:'',bsel:'',starting:0,lr:null,lrTimer:null,ws:null,offline:false,choices:null,fs:false,fsel:'',deck:{room:'',gen:0,total:0,have:new Set()},opt:null,loginErr:'',loginInfo:false,help:[],hf:'open',mail:null};
+const staff=()=>S.me&&S.me.role!=='teacher';
+const ROLE={teacher:'Faculty',av:'AV operator',admin:'Administrator'};
+
+/* ---------- theme ---------- */
+const setTheme=t=>{if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme;try{t?localStorage.setItem('theme',t):localStorage.removeItem('theme')}catch{}};
+try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch{}
+const toggleTheme=()=>{const dark=document.documentElement.dataset.theme?document.documentElement.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;setTheme(dark?'light':'dark')};
+
+/* ---------- helpers ---------- */
+const toast=(m,k='')=>{const t=document.createElement('div');t.className='toast '+k;t.innerHTML=(k==='ok'?ic('check'):k==='err'?ic('info'):'')+`<span>${esc(m)}</span>`;$('toasts').appendChild(t);setTimeout(()=>t.remove(),k==='err'?6000:3500)};
+const fdate=x=>new Date(x).toLocaleString([], {dateStyle:'medium',timeStyle:'short'});
+const ago=t=>{const s=Math.max(0,(Date.now()-t)/1000|0);return s<60?'just now':s<3600?(s/60|0)+' min ago':s<86400?(s/3600|0)+' h ago':(s/86400|0)+' d ago'};
+const fsize=n=>!n?'':n>1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB';
+const store={get:k=>{try{return sessionStorage.getItem(k)}catch{return null}},set:(k,v)=>{try{sessionStorage.setItem(k,v)}catch{}},del:k=>{try{sessionStorage.removeItem(k)}catch{}}};
+
+async function api(u,o={}){
+  let r,d={};
+  try{r=await fetch(u,{...o,headers:{authorization:'Bearer '+S.tok,'content-type':'application/json',...(o.headers||{})}});d=await r.json().catch(()=>({}))}
+  catch{toast('Cannot reach the server. Check the network connection.','err');return{error:'network'}}
+  if(r.status===401&&S.tok){signedOut('Your sign-in ended. Please sign in again.');return{error:'auth'}}
+  if(d.code==='must_change'){forcePassword();return{error:d.error}}
+  if(!r.ok){toast(d.error||'Something went wrong.','err');return{error:d.error||'failed'}}
+  return d;
+}
+
+function ask({title,text,fields=[],ok='Confirm',danger=false,cancel=true,submit}){
+  return new Promise(res=>{
+    const m=document.createElement('div');m.className='modal';
+    m.innerHTML=`<form class="dlg" role="dialog" aria-modal="true" aria-labelledby="dt"><h2 id="dt">${esc(title)}</h2>${text?`<p class="mu">${esc(text)}</p>`:''}${fields.map(f=>`<label class="fld"><span>${esc(f.label)}</span>${f.type==='select'?`<select name="${f.name}">${f.options.map(([v,l])=>`<option value="${v}">${esc(l)}</option>`).join('')}</select>`:f.type==='textarea'?`<textarea name="${f.name}" rows="3" maxlength="${f.max||500}" placeholder="${esc(f.ph||'')}"></textarea>`:`<input name="${f.name}" type="${f.type||'text'}" value="${esc(f.value||'')}" placeholder="${esc(f.ph||'')}" autocomplete="${f.ac||'off'}">`}</label>`).join('')}<div class="note err" hidden></div><div class="acts">${cancel?'<button type="button" class="btn" data-x>Cancel</button>':''}<button class="btn ${danger?'dng-solid':'pri'}">${esc(ok)}</button></div></form>`;
+    document.body.appendChild(m);
+    const f=m.querySelector('form'),err=m.querySelector('.note'),close=v=>{m.remove();document.removeEventListener('keydown',esc_);res(v)};
+    const esc_=e=>{if(e.key==='Escape'&&cancel)close(null)};document.addEventListener('keydown',esc_);
+    m.querySelector('[data-x]')&&(m.querySelector('[data-x]').onclick=()=>close(null));
+    f.onsubmit=async e=>{e.preventDefault();const v=Object.fromEntries(new FormData(f));if(submit){const b=f.querySelector('.btn:last-child');b.disabled=true;const msg=await submit(v);b.disabled=false;if(msg){err.hidden=false;err.textContent=msg;return}}close(v||true)};
+    (f.querySelector('input,select,textarea')||f.querySelector('.btn:last-child')).focus();
+  });
+}
+const confirmBox=(title,text,ok,danger=true)=>ask({title,text,ok,danger});
+
+/* ---------- lecture files ---------- */
+const KL={slides:'Slides',pdf:'PDF',video:'Video',audio:'Audio',image:'Image',doc:'Document',other:'File'};
+// Any lecture file may be uploaded except programs, scripts, shortcuts, macro files and web pages (the server enforces this too).
+const BLOCKED=new Set(('exe msi msp bat cmd com scr pif ps1 psm1 psd1 vbs vbe js jse wsf wsh hta jar lnk url reg dll sys cpl msc inf gadget application appx appxbundle msix msixbundle apk sh bash py pyw rb pl php docm xlsm pptm dotm xltm potm ppsm ppam xlam xll sldm iso img vhd vhdx dmg chm svg html htm xhtml mht mhtml swf xap crx scf').split(' '));
+const fileProblem=f=>{const m=/\.([A-Za-z0-9]{1,8})$/.exec(f.name);if(!m)return 'it needs a normal extension, for example .pptx, .pdf or .mp4.';if(BLOCKED.has(m[1].toLowerCase()))return `.${m[1].toLowerCase()} files (programs, scripts, macro files, web pages) cannot be uploaded.`;const mx=(S.me&&S.me.maxUploadMB||2048)*1048576;if(f.size>mx)return `it is larger than ${Math.round(mx/1048576)} MB.`;return ''};
+const isMedia=r=>!!(r&&r.session&&(r.session.kind==='video'||r.session.kind==='audio'));
+
+/* ---------- full screen presenter view ---------- */
+function enterFs(){S.fs=true;const r0=S.rooms[0];if(r0&&r0.online&&r0.session&&(!r0.owner||r0.owner.user===S.me.user))cmd('fullscreen');if(S.me.remote&&r0&&r0.online)cmd('stream',null,{hi:true});try{const e=document.documentElement,f=e.requestFullscreen||e.webkitRequestFullscreen;if(f)Promise.resolve(f.call(e)).catch(()=>{})}catch{}paint()}
+function exitFs(){const was=S.fs;S.fs=false;{const r1=S.rooms[0];if(was&&S.me&&S.me.remote&&r1&&r1.online)cmd('stream',null,{hi:false})}try{if(document.fullscreenElement||document.webkitFullscreenElement){const x=document.exitFullscreen||document.webkitExitFullscreen;x&&Promise.resolve(x.call(document)).catch(()=>{})}}catch{}if(was&&S.tok)paint()}
+['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,()=>{if(S.fs&&!S.rc&&!document.fullscreenElement&&!document.webkitFullscreenElement)exitFs()}));   // closing the remote desktop must not throw the teacher out of the presenter view; leaving full screen never touches the lecture on the room PC
+
+/* ---------- boot / auth ---------- */
+const BR={name:'Lecture Room Control',logo:0};
+const brandMark=()=>`<span class="mark ${BR.logo?'img':''}">${BR.logo?`<img src="/logo?v=${BR.logo}" alt="">`:ic('monitor')}</span>`;
+function applyBrand(){document.title=BR.name;const l=document.querySelector('link[rel=icon]');if(l&&BR.logo){l.type='image/png';l.href='/logo?v='+BR.logo}}
+async function loadBrand(){try{const d=await(await fetch('/api/branding',{cache:'no-store'})).json();BR.name=d.name||BR.name;BR.logo=d.logo|0}catch{}applyBrand()}
+async function start(){
+  await loadBrand();
+  const t=store.get('tok');
+  if(t){S.tok=t;const r=await fetch('/api/me',{headers:{authorization:'Bearer '+t}});if(r.ok){S.me=await r.json();return boot()}S.tok=null;store.del('tok')}
+  showLogin();
+}
+function showLogin(msg='',info=false){
+  S.loginErr=msg;S.loginInfo=info;render();loadLr();clearInterval(S.lrTimer);S.lrTimer=setInterval(()=>{if(!S.tok)loadLr()},8000);
+}
+async function loadLr(){try{S.lr=await fetch('/api/lr').then(r=>r.json())}catch{S.lr=null}if(!S.tok)paintLr()}
+function signedOut(msg){
+  rcGone();S.tok=null;S.me=null;store.del('tok');
+  try{S.ws&&(S.ws.onclose=null,S.ws.close())}catch{}
+  exitFs();S.ws=null;S.rooms=[];S.choices=null;S.sel=null;S.selOff=0;S.picked.clear();S.tab='monitor';S.starting=0;S.offline=false;S.help=[];
+  showLogin(msg||'',true);
+}
+async function doLogin(e){
+  e.preventDefault();const f=e.target,b=f.querySelector('.btn.pri');b.disabled=true;
+  let d;try{const r=await fetch('/api/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({user:f.user.value,pass:f.pass.value})});d=await r.json();d.ok=r.ok}catch{d={error:'Cannot reach the server. Check the network connection.'}}
+  b.disabled=false;
+  if(!d.ok){S.loginErr=d.error||'Sign-in failed.';S.loginInfo=false;paintLoginErr();f.pass.value='';f.pass.focus();loadLr();return}
+  S.tok=d.token;S.me=d;store.set('tok',d.token);clearInterval(S.lrTimer);boot();
+}
+async function doLogout(){await api('/api/logout',{method:'POST',body:'{}'});signedOut('You have signed out.')}
+
+async function boot(){
+  S.tab='monitor';S.starting=0;render();
+  if(S.me.mustChange){await forcePassword();return}
+  await loadLects();connect();
+}
+let forcing=null;
+function forcePassword(){
+  if(forcing)return forcing;
+  forcing=changePassword(true).then(()=>{forcing=null;if(S.tok){loadLects();connect()}});return forcing;
+}
+async function changePassword(force=false){
+  const v=await ask({title:force?'Set a new password':'Change password',text:force?'You are using a temporary password. Choose a new one to continue.':'Enter your current password, then a new one.',
+    fields:[{name:'old',label:'Current password',type:'password',ac:'current-password'},{name:'pass',label:'New password (8+ characters)',type:'password',ac:'new-password'},{name:'again',label:'Repeat new password',type:'password',ac:'new-password'}],
+    ok:'Save password',cancel:!force,
+    submit:async v=>{if(v.pass!==v.again)return 'The two new passwords do not match.';const r=await fetch('/api/password',{method:'POST',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify({old:v.old,pass:v.pass})});const d=await r.json();return r.ok?null:d.error}});
+  if(v){S.me.mustChange=false;toast('Password updated','ok')}
+  else if(force){return changePassword(true)}
+}
+async function loadLects(){const d=await api('/api/lectures');if(Array.isArray(d)){S.lects=d;if(S.tok)paint()}}
+
+/* ---------- live connection ---------- */
+function connect(){
+  if(!S.tok||S.me.mustChange)return;
+  try{S.ws&&(S.ws.onclose=null,S.ws.close())}catch{}
+  const ws=S.ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws?token='+S.tok);
+  ws.onopen=()=>{if(S.offline){S.offline=false;paint()}
+    if(S.rc){S.rc.ready=0;S.rc.msg='Reconnected to the server. Resuming…';S.rc.cls='help';cmd(S.rc.vnc?'vncstart':'rcstart',S.rc.room);rcBar()}};   // a dropped connection must not silently end remote control
+  ws.onmessage=e=>{const d=JSON.parse(e.data);
+    if(d.t==='rooms'){S.rooms=d.rooms;S.choices=d.choices||[];if(!staff()&&S.me)S.me.room=S.rooms[0]?S.rooms[0].id:null;if(!S.rooms.some(r=>r.id===S.sel))S.sel=null;if(!S.sel&&!S.selOff&&staff())S.sel=S.rooms[0]&&S.rooms[0].id||null;if(!staff()&&!S.sel)S.sel=S.rooms[0]&&S.rooms[0].id||null;
+      if(S.starting&&S.rooms.some(r=>r.session))S.starting=0;if(S.rc)rcCheck();paint();if(S.xf)xfPaintList()}
+    else if(d.t==='deck'){S.deck={room:d.room,gen:d.gen,total:d.total,have:new Set(d.have)};if(S.fs)paint()}
+    else if(d.t==='help'){S.help=d.tickets;paint()}
+    else if(d.t==='note'){toast(d.m,'ok')}
+    else if(d.t==='rcfail'){rcClose(d.m)}
+    else if(d.t==='vnc'){vncStart(d)}
+    else if(d.t==='rcready'){if(S.rc&&S.rc.room===d.room){S.rc.ready=1;S.rc.lost=0;S.rc.msg='Connected: your mouse and keyboard work on '+d.room;S.rc.cls='live';rcBar()}}
+    else if(d.t==='xres'){xfResult(d)}
+    else if(d.t==='cur'){rcCur(d)}
+    else if(d.t==='err'){S.starting=0;S.opt=null;toast(d.m,'err');paint()}
+    else if(d.t==='frame'){S.frames[d.room]=d.data;document.querySelectorAll('[data-f="'+d.room+'"]').forEach(i=>i.src='data:image/jpeg;base64,'+d.data)}
+    else if(d.t==='bye'){const m={replaced:'This account was signed in again on another screen.',inactive:'You were signed out after a period of inactivity.','browser closed':'Your sign-in expired.','signed out':'You have signed out.'};
+      signedOut(m[d.why]||(/^released/.test(d.why)?'AV staff ended this sign-in.':d.why==='password reset'?'Your password was reset. Sign in with the new one.':'Your sign-in ended.'))}};
+  ws.onclose=e=>{if(!S.tok)return;if(e.code===4003)return signedOut('Your sign-in ended. Please sign in again.');S.offline=true;paint();setTimeout(()=>{if(S.tok&&S.ws===ws)connect()},2000)};
+}
+/* full-quality slide pictures: PowerPoint on the room PC draws them, this device shows them and follows the room's slide */
+const realIdx=r=>{const s=r&&r.session;return s?(s.idx||s.slide||1):1};
+function curIdx(r){const o=S.opt;if(o&&(o.room!==r.id||realIdx(r)!==o.from||o.until<Date.now()))S.opt=null;return S.opt?S.opt.idx:realIdx(r)}
+function optTo(n,room){const r=S.rooms.find(x=>x.id===room);if(!r||!r.session||!r.session.total||!S.ws||S.ws.readyState!==1)return;   // never show a slide the room PC was not told about
+  S.opt={room,idx:Math.max(1,Math.min(r.session.total,n)),from:realIdx(r),until:Date.now()+1500};paint()}
+const optNav=d=>{const r=S.rooms[0];if(r&&r.session&&r.session.total)optTo(curIdx(r)+d,r.id)};
+const slideUrl=(r,n)=>`/api/slide/${encodeURIComponent(r.id)}/${n}?g=${S.deck.gen}&t=${S.tok}`;
+const cmd=(a,room,extra={})=>{if(!S.ws||S.ws.readyState!==1)return toast('Not connected to the server yet.','err');S.ws.send(JSON.stringify({room:room||S.sel,a,...extra}))};
+
+/* ---------- remote control: the mouse and keyboard of the room PC, like Remote Desktop ---------- */
+const RC_KEYS=[['Esc','Escape'],['Tab','Tab'],['Del','Delete'],['Home','Home'],['End','End'],['PgUp','PageUp'],['PgDn','PageDown'],['←','ArrowLeft'],['↑','ArrowUp'],['↓','ArrowDown'],['→','ArrowRight'],['F5','F5'],['F11','F11']];
+const RC_COMBOS=[['Copy',['ControlLeft','KeyC']],['Paste',['ControlLeft','KeyV']],['Cut',['ControlLeft','KeyX']],['Select all',['ControlLeft','KeyA']],['Undo',['ControlLeft','KeyZ']],['Save',['ControlLeft','KeyS']],['Alt+Tab',['AltLeft','Tab']],['Close window',['AltLeft','F4']]];
+const RC_PAD=' '.repeat(12);   // the hidden keyboard field always holds a little text, so a phone keyboard's Backspace has something to delete
+function rcSend(e){const r=S.rc;if(!r||r.vnc||!S.ws||S.ws.readyState!==1)return;S.ws.send(JSON.stringify({room:r.room,a:'input',e}))}
+function rcGone(){const r=S.rc;if(r){r.closing=1;clearTimeout(r.tm);clearTimeout(r.chk);try{r.rfb&&r.rfb.disconnect()}catch{}}S.rc=null;const el=$('rc');el&&el.remove();try{navigator.keyboard&&navigator.keyboard.unlock&&navigator.keyboard.unlock()}catch{}}
+function rcTap(codes){codes.forEach(c=>rcSend({k:'kd',c}));codes.slice().reverse().forEach(c=>rcSend({k:'ku',c}))}
+const rcMods=()=>[...S.rc.mod].map(m=>m+'Left');
+function rcKey(code){rcTap([...rcMods(),code]);if(S.rc.mod.size){S.rc.mod.clear();rcBar()}}
+function rcText(t){   // typed text from a phone keyboard or pasted: Ctrl / Alt armed on screen turn a single letter into a shortcut
+  const r=S.rc,m=rcMods();
+  if(m.length&&t.length===1&&/[a-z0-9]/i.test(t)){rcTap([...m,/\d/.test(t)?'Digit'+t:'Key'+t.toUpperCase()]);r.mod.clear();rcBar();return}
+  t.split('\n').forEach((seg,i)=>{if(i)rcTap(['Enter']);for(let p=0;p<seg.length;p+=200)rcSend({k:'tx',t:seg.slice(p,p+200)})});
+}
+function rcKbInput(ev){   // soft keyboard: send only what changed compared with the last value
+  const kb=ev.target,v=kb.value,p=S.rc?S.rc.kbPrev:'';if(!S.rc)return;
+  let c=0;while(c<v.length&&c<p.length&&v[c]===p[c])c++;
+  for(let i=p.length;i>c;i--)rcTap(['Backspace']);
+  if(v.length>c)rcText(v.slice(c));
+  S.rc.kbPrev=v;
+  if(!ev.isComposing&&(v.length<RC_PAD.length-6||v.length>RC_PAD.length+40)){kb.value=RC_PAD;S.rc.kbPrev=RC_PAD}
+}
+/* ---------- Full access over VNC (noVNC) ---------- */
+function vncKeysTray(){
+  return `<div class="rc-keys"><button class="btn s" data-a="vncCad">Ctrl+Alt+Del</button><button class="btn s" data-a="vncKey" data-k="65307">Esc</button><button class="btn s" data-a="vncKey" data-k="65289">Tab</button><button class="btn s" data-a="vncKey" data-k="65293">Enter</button>
+   ${staff()?'<button class="btn s" data-a="vncKey" data-k="65515">Start</button>':''}<button class="btn s ${S.rc.txt?'pri':''}" data-a="rcTxt">Type text…</button></div>
+   ${S.rc.txt?'<div class="rc-keys"><textarea id="rctext" data-rcfree rows="2" placeholder="Type or paste text here, then press Send. It is typed on the room PC."></textarea><button class="btn s pri" data-a="rcSendTxt">Send</button></div>':''}`;
+}
+function vncType(t){const f=S.rc&&S.rc.rfb;if(!f)return;for(const ch of String(t).slice(0,2000)){const cp=ch.codePointAt(0);f.sendKey(ch==='\n'?65293:cp<256?cp:0x01000000+cp,null)}f.focus()}
+async function vncStart(d){
+  const q=S.rc;if(!q||!q.vnc||q.room!==d.room)return;
+  try{
+    const {default:RFB}=await import('/vendor/novnc/core/rfb.js');
+    const box=$('vncbox');if(!box||S.rc!==q)return;
+    try{q.rfb&&q.rfb.disconnect()}catch{}
+    if(!RFB.arrowSet){   // TightVNC sends no pointer shape at first: show a normal mouse arrow instead of nothing or a dot
+      const W=12,H=19,c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');
+      g.beginPath();[[0,0],[0,16],[4,12],[7,18],[9,17],[6,11],[11,11]].forEach(([x,y],i)=>i?g.lineTo(x+.5,y+.5):g.moveTo(x+.5,y+.5));g.closePath();
+      g.fillStyle='#fff';g.fill();g.strokeStyle='#000';g.lineWidth=1.2;g.stroke();
+      RFB.cursors.none={rgbaPixels:new Uint8Array(g.getImageData(0,0,W,H).data),w:W,h:H,hotx:0,hoty:0};RFB.arrowSet=1;
+    }
+    const rfb=q.rfb=new RFB(box,(location.protocol==='https:'?'wss://':'ws://')+location.host+'/vnc?ticket='+d.ticket,{credentials:{password:d.pass}});
+    rfb.scaleViewport=true;rfb.background='#0b0d10';rfb.focusOnClick=true;rfb.qualityLevel=6;rfb.compressionLevel=2;
+    rfb.addEventListener('connect',()=>{q.ready=1;q.lost=0;q.msg='Connected: your mouse and keyboard work on '+d.room;q.cls='live';rcBar();rfb.focus()});
+    rfb.addEventListener('credentialsrequired',()=>rfb.sendCredentials({password:d.pass}));
+    rfb.addEventListener('securityfailure',()=>{if(S.rc===q)rcClose('The room PC did not accept the VNC password. Press Full access again: the older remote control is used until this room\'s VNC installer is run again on that PC.')});
+    rfb.addEventListener('disconnect',e=>{if(S.rc===q&&!q.closing&&q.rfb===rfb)rcClose(e.detail&&e.detail.clean?'The Full access session ended.':'The link to the room PC was lost.')});
+  }catch(e){if(S.rc===q)rcClose('The VNC viewer could not start ('+(e&&e.message||e)+'). Run npm install on the server and reload this page.')}
+}
+function rcOpen(room){
+  const r=S.rooms.find(x=>x.id===room);
+  if(S.rc)return;
+  if(!r||!r.online)return toast('This room is not online.','err');
+  if(!S.ws||S.ws.readyState!==1)return toast('Not connected to the server yet.','err');
+  if(staff())cmd('take',room);          // staff must hold the room first; the server refuses input otherwise
+  const vnc=!!r.vnc;   // VNC (TightVNC on the PC) when the server can reach it, otherwise the older remote control
+  cmd(vnc?'vncstart':'rcstart',room);
+  S.rc={vnc,room,down:new Set(),mv:null,tm:0,mod:new Set(),pres:false,keys:false,txt:false,drag:false,ready:0,kbPrev:RC_PAD,mon:0,lost:0,msg:'',cls:'',sig:{}};
+  rcDraw();
+  S.rc.chk=setTimeout(()=>{if(S.rc&&S.rc.room===room&&!S.rc.ready){S.rc.msg=S.rc.vnc?'The VNC service on the room PC has not answered. Check that TightVNC is running there.':'The room PC has not answered. Run its Installer once, then try again.';S.rc.cls='help';rcBar()}},S.rc.vnc?10000:5000);
+  try{if(!document.fullscreenElement&&!document.webkitFullscreenElement){const el=$('rc'),p=(el.requestFullscreen||el.webkitRequestFullscreen).call(el);p&&p.catch&&p.catch(()=>{})}   // already in the presenter's full screen: stay in it
+    if(navigator.keyboard&&navigator.keyboard.lock)navigator.keyboard.lock().catch(()=>{})}catch{}   // lets Esc, Tab and shortcuts reach the room PC in full screen (Chrome / Edge)
+}
+function rcDraw(){
+  let el=$('rc');if(!el){el=document.createElement('div');el.id='rc';el.className='rc';document.body.appendChild(el)}
+  const id=S.rc.room;
+  el.innerHTML=`<div id="rctop" class="rc-top"></div><div id="rcdr"></div><div class="rc-main ${S.rc.vnc?'vnc':''}" id="rcscr">${S.rc.vnc?'<div id="vncbox" class="vnc-box"></div>':`<img data-f="${esc(id)}" alt="Screen of ${esc(id)}" draggable="false" ${S.frames[id]?`src="data:image/jpeg;base64,${S.frames[id]}"`:''}><div id="rccur" class="rc-cur"></div>`}</div><div id="rckeys"></div><textarea id="rckb" class="rc-kb" aria-label="Keyboard input for the room PC" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-rcfree></textarea>`;
+  const kb=$('rckb');kb.value=RC_PAD;kb.addEventListener('input',rcKbInput);
+  if(!S.rc.vnc)rcTouch($('rcscr'));rcBar();
+}
+function rcBar(){   // top bar, presentation drawer and key tray: re-drawn only when they changed, so a click is never lost
+  const q=S.rc;if(!q||!$('rctop'))return;
+  const id=q.room,r=S.rooms.find(x=>x.id===id)||{},mons=r.mons||1,msg=q.msg||('Connecting to '+id+'…');
+  const more=q.more?`<button class="btn s ${q.pres?'pri':''}" data-a="rcPres" title="Next, previous, full screen, end lecture">Presentation</button>
+   ${S.me.xfer?`<button class="btn s" data-a="xfOpen" data-id="${esc(id)}">Files</button>`:''}
+   <button class="btn s ${q.keys?'pri':''}" data-a="rcKeys">Keys</button>
+   ${q.vnc?'':`<button class="btn s ${q.drag?'pri':''}" data-a="rcDrag" title="Touch screens: one finger drags">Drag</button>
+   <button class="btn s" data-a="rcDbl">Double-click</button>`}
+   ${mons>1&&!q.vnc?`<select data-c="rcmon" data-rcfree aria-label="Display"><option value="0">Display: auto</option>${Array.from({length:mons},(_,i)=>`<option value="${i+1}" ${q.mon===i+1?'selected':''}>Display ${i+1}</option>`).join('')}</select>`:''}
+   <button class="btn s" data-a="rcFull">${ic('expand')}Full screen</button>`:'';
+  const top=`<span class="plate s ${r.online?'':'off'}"><i></i>${esc(id)}</span><b>Full access</b><span class="pill ${q.cls||''}" id="rcst">${esc(msg)}</span><span class="pill" id="rcn"></span><span class="grow"></span>
+   ${q.vnc?'':'<button class="btn s" data-a="rcKb" title="On-screen keyboard (phones and tablets)">Keyboard</button>'}
+   <button class="btn s ${q.more?'pri':''}" data-a="rcMore">${q.more?'Less':'More'}</button>${more}
+   <button class="btn s dng" data-a="rcClose" title="${staff()?'Let go of the room PC':'Stop controlling the PC. The lecture keeps running.'}">${staff()?'Release control':'Exit'}</button>`;
+  const dr=q.pres?rcDrawer(r):'',ky=q.keys?rcKeysTray():'';
+  if(q.sig.top!==top){$('rctop').innerHTML=top;q.sig.top=top;rcNote()}
+  if(q.sig.dr!==dr&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#rcdr'))){$('rcdr').innerHTML=dr;q.sig.dr=dr}
+  if(q.sig.ky!==ky&&!(document.activeElement&&document.activeElement.id==='rctext')){$('rckeys').innerHTML=ky;q.sig.ky=ky}
+}
+function rcDrawer(r){   // presentation controls without leaving the remote desktop
+  const s=r.session,mine=!r.owner||r.owner.user===S.me.user;let h='<div class="rc-dr">';
+  if(!mine)return h+`<span>${esc(r.owner.name)} has control of the lecture.</span></div>`;
+  if(s){
+    if(s.total>0){const idx=realIdx(r);h+=`<select data-c="rcgoto" data-rcfree aria-label="Go to slide">${Array.from({length:s.total},(_,i)=>`<option value="${i+1}" ${i+1===idx?'selected':''}>Slide ${i+1}</option>`).join('')}</select><button class="btn s" data-a="rcCmd" data-c="prev">${ic('prev')}Previous</button><button class="btn s pri" data-a="rcCmd" data-c="next">Next ${ic('nextI')}</button><button class="btn s" data-a="rcCmd" data-c="blank">${ic('blank')}Blank</button>`}
+    else if(isMedia(r))h+=`<button class="btn s pri" data-a="rcCmd" data-c="playpause">${ic('play','fill')}Play / Pause</button>`;
+    h+=`<span class="pill live">${esc(String(s.lecture||''))}${s.total?' · slide '+s.slide+' of '+s.total:''}</span>`;
+    h+=s.full?`<button class="btn s" data-a="rcCmd" data-c="exitfull" title="The lecture keeps running in a window on the room PC">Exit presentation full screen</button>`:`<button class="btn s" data-a="rcCmd" data-c="fullscreen">${ic('expand')}Full screen on room</button>`;
+    h+=`<button class="btn s dng" data-a="rcEnd">${ic('stop')}End lecture</button>`;
+  }else{
+    const o=S.lects.map(l=>`<option value="${l.id}" ${l.id===S.fsel?'selected':''}>${esc(l.title)} (${KL[l.kind]||'File'})</option>`).join('');
+    h+='<span>No lecture running.</span>'+(S.lects.length?`<select data-c="fsel" data-rcfree aria-label="Lecture">${o}</select><button class="btn s pri" data-a="rcPresent">${ic('play','fill')}Present</button>`:'');
+  }
+  return h+'</div>';
+}
+function rcKeysTray(){
+  if(S.rc.vnc)return vncKeysTray();
+  const m=S.rc.mod;
+  return `<div class="rc-keys">${['Control','Alt','Shift'].map(x=>`<button class="btn s ${m.has(x)?'pri':''}" data-a="rcMod" data-m="${x}" title="Arm ${x}, then tap a key or type a letter">${x==='Control'?'Ctrl':x}</button>`).join('')}
+   ${RC_KEYS.map(([l,c])=>`<button class="btn s" data-a="rcVKey" data-k="${c}">${l}</button>`).join('')}
+   ${RC_COMBOS.map(([l],i)=>`<button class="btn s" data-a="rcCombo" data-i="${i}">${l}</button>`).join('')}
+   ${staff()?'<button class="btn s" data-a="rcVKey" data-k="MetaLeft">Start</button>':''}
+   <button class="btn s ${S.rc.txt?'pri':''}" data-a="rcTxt">Paste text…</button></div>
+   ${S.rc.txt?'<div class="rc-keys"><textarea id="rctext" data-rcfree rows="2" placeholder="Type or paste text here, then press Send. It is typed on the room PC."></textarea><button class="btn s pri" data-a="rcSendTxt">Send</button></div>':''}`;
+}
+function rcCur(d){const q=S.rc;if(!q||q.room!==d.room)return;q.n=d.n;q.err=d.err;q.cur=d.cur;rcNote();rcCursor()}
+function rcNote(){const q=S.rc,e=$('rcn');if(!q||!e)return;if(q.vnc){e.style.display='none';return}e.textContent=q.err?'PC says: '+q.err:'Inputs received by the PC: '+(q.n||0);e.className='pill '+(q.err?'help':'')}
+function rcCursor(){   // red ring = where the pointer really is on the room PC
+  const q=S.rc,c=$('rccur'),img=document.querySelector('#rcscr img'),m=$('rcscr');
+  if(!c)return;if(!q||!img||!m||!q.cur){c.style.display='none';return}
+  const b=img.getBoundingClientRect(),mb=m.getBoundingClientRect(),nw=img.naturalWidth||16,nh=img.naturalHeight||9,sc=Math.min(b.width/nw,b.height/nh),w=nw*sc,h=nh*sc;
+  c.style.display='block';c.style.left=(b.left-mb.left+(b.width-w)/2+q.cur[0]*w)+'px';c.style.top=(b.top-mb.top+(b.height-h)/2+q.cur[1]*h)+'px'}
+function rcClose(msg){
+  const r=S.rc;if(!r)return;
+  rcSend({k:'rel'});
+  if(S.ws&&S.ws.readyState===1){S.ws.send(JSON.stringify({room:r.room,a:'rcstop'}));if(staff())S.ws.send(JSON.stringify({room:r.room,a:'release'}))}
+  rcGone();
+  try{if(document.fullscreenElement&&!S.fs)document.exitFullscreen()}catch{}
+  if(msg)toast(msg,'err');paint();
+}
+function rcCheck(){
+  const q=S.rc,r=S.rooms.find(x=>x.id===q.room);
+  if(!r)return rcClose('This room is no longer available. Remote control ended.');
+  if(r.owner&&r.owner.user!==S.me.user)return rcClose(r.owner.name+' took control of this room.');
+  if(!r.online){if(!q.lost)q.lost=Date.now();q.msg='The room PC stopped answering. Waiting for it to come back…';q.cls='help'}   // a short network blink must not end the session; the server resumes it by itself
+  rcBar();
+}
+setInterval(()=>{const q=S.rc;if(q&&q.lost&&Date.now()-q.lost>45000)rcClose('The room PC did not come back. Remote control ended.')},5000);
+const rcIn=ev=>S.rc&&!S.rc.vnc&&ev.target.closest&&ev.target.closest('#rcscr');
+function rcPos(ev){   // where on the room's screen is the pointer? (the picture is letterboxed inside its box)
+  const img=document.querySelector('#rcscr img');if(!img)return null;
+  const b=img.getBoundingClientRect(),nw=img.naturalWidth||16,nh=img.naturalHeight||9,sc=Math.min(b.width/nw,b.height/nh),w=nw*sc,h=nh*sc,
+    x=(ev.clientX-(b.left+(b.width-w)/2))/w,y=(ev.clientY-(b.top+(b.height-h)/2))/h;
+  return x<0||y<0||x>1||y>1?null:{x:+x.toFixed(4),y:+y.toFixed(4)};
+}
+function rcMove(p){const r=S.rc;r.mv=p;if(!r.tm)r.tm=setTimeout(()=>{r.tm=0;r.mv&&rcSend({k:'mv',...r.mv})},25)}
+document.addEventListener('mousemove',ev=>{if(!rcIn(ev))return;const p=rcPos(ev);if(!p)return;rcMove(p)});
+document.addEventListener('mousedown',ev=>{if(!rcIn(ev))return;ev.preventDefault();if(ev.button>2)return;const p=rcPos(ev);if(!p)return;S.rc.down.add(ev.button);rcSend({k:'md',b:ev.button,...p})});
+document.addEventListener('mouseup',ev=>{if(!S.rc||!S.rc.down.has(ev.button))return;S.rc.down.delete(ev.button);rcSend({k:'mu',b:ev.button,...(rcPos(ev)||S.rc.mv||{x:.5,y:.5})})});
+document.addEventListener('contextmenu',ev=>{if(rcIn(ev))ev.preventDefault()});
+document.addEventListener('wheel',ev=>{if(!rcIn(ev))return;ev.preventDefault();rcSend({k:ev.shiftKey?'wx':'wh',dy:ev.deltaY||ev.deltaX})},{passive:false});
+['keydown','keyup'].forEach(t=>document.addEventListener(t,ev=>{
+  if(!S.rc||S.rc.vnc||$('xf'))return;   // in VNC mode noVNC reads the keyboard itself
+  if(ev.target.closest&&ev.target.closest('[data-rcfree]'))return;   // typing in the paste box or a drop-down is not sent to the PC
+  if(!ev.code||ev.code==='Unidentified')return;   // phone keyboards report no key code: their text arrives through the keyboard field instead
+  ev.preventDefault();ev.stopImmediatePropagation();rcSend({k:t==='keydown'?'kd':'ku',c:ev.code})},true));   // every key goes to the room PC while remote control is open
+window.addEventListener('blur',()=>{S.rc&&rcSend({k:'rel'})});   // switching windows must never leave a key stuck down on the PC
+/* touch: tap = click, two quick taps = double-click, hold = right-click, one finger = move the pointer (or drag when Drag is on), two fingers = scroll */
+function rcTouch(el){
+  const T={tap:0};const mid=ev=>({x:(ev.touches[0].clientX+ev.touches[1].clientX)/2,y:(ev.touches[0].clientY+ev.touches[1].clientY)/2});
+  el.addEventListener('touchstart',ev=>{ev.preventDefault();const r=S.rc;if(!r)return;
+    if(ev.touches.length>=2){clearTimeout(T.lp);T.two=true;const m=mid(ev);T.x=m.x;T.y=m.y;T.ax=0;T.ay=0;return}
+    const t=ev.touches[0];T.two=false;T.moved=false;T.lpDone=false;T.down=false;T.sx=t.clientX;T.sy=t.clientY;T.p=rcPos(t);
+    clearTimeout(T.lp);T.lp=setTimeout(()=>{if(!T.moved&&!T.two&&T.p&&S.rc){T.lpDone=true;rcSend({k:'mv',...T.p});rcSend({k:'md',b:2,...T.p});rcSend({k:'mu',b:2,...T.p});try{navigator.vibrate&&navigator.vibrate(25)}catch{}}},550)},{passive:false});
+  el.addEventListener('touchmove',ev=>{ev.preventDefault();const r=S.rc;if(!r)return;
+    if(ev.touches.length>=2){if(!T.two)return;const m=mid(ev);T.ay+=T.y-m.y;T.ax+=T.x-m.x;T.x=m.x;T.y=m.y;
+      if(Math.abs(T.ay)>=20){rcSend({k:'wh',dy:T.ay*3});T.ay=0}if(Math.abs(T.ax)>=20){rcSend({k:'wx',dy:T.ax*3});T.ax=0}return}
+    if(T.two)return;const t=ev.touches[0];
+    if(!T.moved){if(Math.hypot(t.clientX-T.sx,t.clientY-T.sy)<10)return;T.moved=true;clearTimeout(T.lp);if(r.drag&&T.p){rcSend({k:'mv',...T.p});rcSend({k:'md',b:0,...T.p});T.down=true;r.down.add(0)}}
+    const p=rcPos(t);if(p){T.p=p;rcMove(p)}},{passive:false});
+  const end=ev=>{ev.preventDefault();clearTimeout(T.lp);const r=S.rc;if(!r||ev.touches.length>0)return;
+    if(T.two){T.two=false;return}
+    if(T.down){rcSend({k:'mu',b:0,...(T.p||r.mv||{x:.5,y:.5})});r.down.delete(0);T.down=false;return}
+    if(ev.type==='touchend'&&!T.moved&&!T.lpDone&&T.p){rcSend({k:'mv',...T.p});rcSend({k:'md',b:0,...T.p});rcSend({k:'mu',b:0,...T.p});r.mv=T.p}};
+  el.addEventListener('touchend',end,{passive:false});el.addEventListener('touchcancel',end,{passive:false});
+}
+
+/* ---------- file transfer: send files from this device to a folder on the room PC, then open them there ---------- */
+function xfOpen(room){
+  if(!room||$('xf'))return;
+  S.xf={room,folder:(S.me.xfolders||['Lectures'])[0],files:null,items:[],busy:false};
+  const el=document.createElement('div');el.id='xf';el.className='xf';document.body.appendChild(el);xfDraw();xfList();
+}
+function xfClose(){S.xf=null;const el=$('xf');el&&el.remove()}
+function xfDraw(){
+  const x=S.xf,el=$('xf');if(!x||!el)return;
+  el.innerHTML=`<div class="dlg" role="dialog" aria-label="Send files to the room PC"><h2>Send files to ${esc(x.room)}</h2>
+   <p class="mu sm">Saved on the room PC in <b>MCSCMS Files › ${esc(x.folder)}</b>, in a folder just for you. Slides, PDF, Word, Excel, text, images, audio and video, up to ${S.me.xmaxMB||500} MB each. Programs and scripts are never accepted.</p>
+   <label class="sm" for="xffolder">Save in</label><select id="xffolder" data-c="xffolder">${(S.me.xfolders||['Lectures']).map(f=>`<option ${f===x.folder?'selected':''}>${esc(f)}</option>`).join('')}</select>
+   <label class="drop" id="xfdrop"><input type="file" id="xfin" hidden multiple>${ic('upload')}<span><b>Choose files to send</b></span><span class="sm">or drop them here</span></label>
+   <div id="xfitems" aria-live="polite"></div>
+   <div class="sec" style="margin-top:12px">Already on the room PC (${esc(x.folder)})</div><div id="xflist"></div>
+   <div class="acts"><button class="btn" data-a="xfClose">Close</button></div></div>`;
+  xfPaintItems();xfPaintList();
+}
+function xfPaintItems(){
+  const el=$('xfitems');if(!el||!S.xf)return;
+  const txt=i=>i.st==='wait'?'Waiting…':i.st==='up'?'Uploading '+i.pct+'%':i.st==='saving'?'Saving on the room PC…':i.msg||'';
+  el.innerHTML=S.xf.items.slice(-6).map(i=>`<div class="xfi ${i.st}"><div class="nm">${esc(i.name)}</div><div class="xfbar"><i style="width:${i.st==='done'?100:i.st==='saving'?100:i.pct}%"></i></div><div class="sm">${esc(txt(i))}</div></div>`).join('');
+}
+function xfPaintList(){
+  const el=$('xflist'),x=S.xf;if(!el||!x)return;
+  const r=S.rooms.find(y=>y.id===x.room);
+  if(x.files===null)el.innerHTML='<p class="mu sm">Loading…</p>';
+  else if(!x.files.length)el.innerHTML='<p class="mu sm">Nothing here yet.</p>';
+  else el.innerHTML=x.files.map((f,i)=>`<div class="xfr"><span title="${esc(f.name)}">${esc(f.name)} <small class="mu">${fsize(f.size)}</small></span><button class="btn s" data-a="xfOpenFile" data-i="${i}" ${r&&r.online?'':'disabled'}>Open on room PC</button></div>`).join('');
+}
+function xfList(){const x=S.xf;if(x){x.files=null;xfPaintList();cmd('xlist',x.room,{folder:x.folder})}}
+function xfResult(d){
+  const x=S.xf;
+  if(d.op==='xlist'){if(x&&x.room===d.room&&x.folder===d.folder){x.files=d.ok?(d.files||[]):[];xfPaintList();if(!d.ok)toast(d.error||'Could not read the folder on the room PC.','err')}return}
+  if(d.op==='xopen'){d.ok?toast(`Opened ${d.name} on ${d.room}.${S.me.ctl&&!S.rc?' Use Full access to PC to work with it.':''}`,'ok'):toast(d.error||'The room PC could not open that file.','err')}
+}
+async function xfSend(files){
+  const x=S.xf;if(!x)return;
+  for(const f of files){
+    const it={name:f.name,pct:0,st:'wait',msg:''};x.items.push(it);xfPaintItems();
+    const why=fileProblem(f);if(why){it.st='err';it.msg=why;xfPaintItems();continue}
+    if(f.size>(S.me.xmaxMB||500)*1048576){it.st='err';it.msg=`it is larger than ${S.me.xmaxMB||500} MB.`;xfPaintItems();continue}
+    await new Promise(res=>{
+      const q=new XMLHttpRequest();q.open('POST',`/api/rooms/${encodeURIComponent(x.room)}/transfer?folder=${encodeURIComponent(x.folder)}`);
+      q.setRequestHeader('authorization','Bearer '+S.tok);q.setRequestHeader('x-filename',encodeURIComponent(f.name));
+      q.upload.onprogress=e=>{if(e.lengthComputable){it.pct=Math.round(e.loaded/e.total*100);it.st=it.pct>=100?'saving':'up';xfPaintItems()}};
+      q.onload=()=>{let d={};try{d=JSON.parse(q.responseText)}catch{}
+        if(q.status===401){signedOut('Your sign-in ended. Please sign in again.');return res()}
+        if(q.status===200&&d.ok){it.st='done';it.name=d.name||f.name;it.pct=100;it.msg='Saved on '+x.room+' in '+d.folder;if(S.xf===x)xfList()}else{it.st='err';it.msg=d.error||'The upload failed.'}
+        xfPaintItems();res()};
+      q.onerror=()=>{it.st='err';it.msg='Network error. Check the connection and try again.';xfPaintItems();res()};
+      q.send(f);
+    });
+  }
+}
+['dragover','dragenter'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#xfdrop');if(d){e.preventDefault();d.classList.add('over')}}));
+['dragleave','drop'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#xfdrop');if(d){d.classList.remove('over');if(ev==='drop'){e.preventDefault();xfSend([...e.dataTransfer.files])}}}));
+
+/* ---------- rendering ---------- */
+function render(){
+  const app=$('app');
+  if(!S.tok){app.innerHTML=loginView();paintLr();paintLoginErr();const u=$('u');u&&u.focus();return}
+  app.innerHTML=staff()?staffShell():facultyShell();paint();
+}
+function paint(){ // refresh only the live region, and keep whatever people were typing
+  if(!S.tok)return;
+  const el=$('live');if(!el)return render();
+  const a=document.activeElement,keep={};
+  el.querySelectorAll('[name]').forEach(n=>{if(n.type!=='checkbox'&&n.type!=='file')keep[n.name]=n.value});
+  const fname=a&&el.contains(a)?a.name:null,pos=fname&&a.selectionStart;
+  if(staff()){el.innerHTML=staffTab();const b=$('offline');if(b)b.hidden=!S.offline;
+    const n=$('navhelp'),c=S.help.filter(t=>t.status==='open').length;if(n){n.textContent=c;n.hidden=!c}}
+  else{el.innerHTML=facultyConsole();const p=$('plate'),r=S.rooms[0];if(p){p.classList.toggle('off',!(r&&r.online));const t=$('plateTxt');if(t)t.textContent=r?r.id:'No room selected'}
+    const w=$('whoSub');if(w)w.textContent=r?(S.me.remote?'Sharing to '+r.id:'Signed in on '+r.id):'Signed in on this device'}
+  for(const k in keep){const n=el.querySelector(`[name="${k}"]`);if(n&&n.type!=='file'&&n.value!==keep[k])n.value=keep[k]}
+  if(fname){const n=el.querySelector(`[name="${fname}"]`);if(n){n.focus();try{n.setSelectionRange(pos,pos)}catch{}}}
+}
+
+/* sign-in screen */
+const loginView=()=>`<div class="gate"><section class="stage" aria-label="This computer">
+ <div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div>
+ <div class="screen"><small id="lrCap">Checking this computer…</small><div class="room none" id="lrName">&nbsp;</div><div class="lamp" id="lrLamp"><i></i><span id="lrTxt"></span></div></div>
+ <ul><li>${ic('lock')}<span>Sign in on the lecture room PC, or from your own phone or laptop and pick the room.</span></li><li>${ic('play')}<span>Your slides open on the projector of that one room only, with no cables and nobody else needed.</span></li></ul></section>
+ <section class="formside"><form class="form" onsubmit="doLogin(event)"><h1>Sign in</h1><p class="lead">Use your college account.</p>
+ <label class="fld"><span>Username or email</span><input id="u" name="user" autocomplete="username" autocapitalize="none" spellcheck="false" required></label>
+ <label class="fld"><span>Password</span><input id="p" name="pass" type="password" autocomplete="current-password" required></label>
+ <div id="lerr"></div><button class="btn pri">Sign in</button>
+ <p class="foot" id="lfoot">AV staff and administrators can sign in from any device.</p></form></section></div>`;
+function paintLr(){
+  const n=$('lrName');if(!n)return;const l=S.lr,cap=$('lrCap'),lamp=$('lrLamp'),txt=$('lrTxt');
+  if(!l){cap.textContent='Server unreachable';n.textContent='—';n.className='room none';lamp.className='lamp warn';txt.textContent='Check the network connection';return}
+  const ft=$('lfoot');if(ft)ft.textContent=!l.room&&l.remote?'Faculty: sign in here, then choose the lecture room to share your slides to. AV staff and administrators can sign in from any device.':'AV staff and administrators can sign in from any device.';
+  if(!l.room){cap.textContent='This device';n.textContent=l.remote?'Your own device':'Not a lecture room PC';n.className='room none';lamp.className=l.remote?'lamp ok':'lamp';txt.textContent=l.remote?'Sign in, then choose a lecture room':`Address ${l.ip}`;return}
+  cap.textContent='This computer is';n.textContent=l.room;n.className='room';
+  if(!l.online){lamp.className='lamp warn';txt.textContent='Agent not running. Call AV staff'}
+  else if(l.busy){lamp.className='lamp warn';txt.textContent='In use by another login'}
+  else{lamp.className='lamp ok';txt.textContent='Ready for your lecture'}
+}
+function paintLoginErr(){const e=$('lerr');if(!e)return;e.innerHTML=S.loginErr?`<div class="note ${S.loginInfo?'info':'err'}" role="alert">${ic('info')}<span>${esc(S.loginErr)}</span></div>`:''}
+
+/* faculty */
+const facultyShell=()=>{const r=S.rooms[0];return `<header class="bar"><div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div><span id="plate" class="plate off" title="${S.me.remote?'Your slides go only to the lecture room you choose':'You are signed in on this lecture room PC'}"><i></i><span id="plateTxt">${esc(S.me.room||'No room selected')}</span></span><div class="grow"></div>
+ <div class="who"><b>${esc(S.me.name)}</b><span id="whoSub">${S.me.room?(S.me.remote?'Sharing to ':'Signed in on ')+esc(S.me.room):'Signed in on this device'}</span></div>
+ <button class="btn s" data-a="fs" title="Full screen presenter view (F)">${ic('expand')}<span class="fsl">Full screen</span></button><button class="btn icon ghost" data-a="theme" title="Switch light or dark">${ic('moon')}</button><button class="btn s" data-a="pw">${ic('lock')}Password</button><button class="btn s" data-a="logout">${ic('out')}Sign out</button></header>
+ <div id="offline" class="banner err" style="margin:16px 28px 0" ${S.offline?'':'hidden'}>${ic('info')}<span>Connection to the server was lost. Reconnecting…</span></div><div id="live"></div>`};
+function roomPicker(){
+  const L=S.choices||[],floors=[...new Set(L.map(x=>x.floor))],free=L.filter(x=>x.online&&!x.busy).length;
+  const row=x=>{const st=!x.online?['Offline','off']:x.busy?['In use','busy']:['Available','ready'];
+    return `<div class="lec"><span class="ic">${ic('room')}</span><div class="t"><b>${esc(x.id)}</b><span>${esc(x.floor)}</span></div><span class="pill ${st[1]}">${st[0]}</span><button class="btn s pri" data-a="pickRoom" data-id="${esc(x.id)}" ${x.online&&!x.busy?'':'disabled'}>Select</button></div>`};
+  return `<section class="card" aria-label="Choose a lecture room"><header><h3>Choose a lecture room</h3><span class="mu sm">${free} available</span></header>
+    <div class="pod" style="padding-bottom:8px"><div class="note info" style="margin:0">${ic('info')}<span>Your slides open on the room you select and on no other room. Only rooms that are online and free can be selected.</span></div></div>
+    ${L.length?floors.map(f=>`<div class="fl" style="margin:12px 20px 4px">${esc(f)}</div>`+L.filter(x=>x.floor===f).map(row).join('')).join(''):'<div class="empty"><b>No lecture rooms yet</b>Ask AV staff to add one.</div>'}</section>`;
+}
+function presenterView(r){
+  const remote=!!S.me.remote,exit=`<button class="btn s" data-a="fsx" title="Closes this view only. The lecture keeps running on the room PC.">${ic('shrink')}Exit full screen</button>`;
+  if(!r)return `<div class="fsv"><div class="fsv-top"><b>Full screen</b><span class="grow"></span>${exit}</div><div class="fsv-main"><div class="fsv-msg"><b>Choose a lecture room first</b>Exit full screen, select a lecture room, then come back.</div></div></div>`;
+  const mine=!r.owner||r.owner.user===S.me.user,s=r.session,pres=mine&&!!s,taken=!!r.owner&&!mine,slides=pres&&s.total>0,media=pres&&isMedia(r),starting=S.starting&&Date.now()-S.starting<20000&&!pres;
+  const dk=S.deck,deckOn=slides&&dk.room===r.id&&dk.total>0,idx=slides?curIdx(r):0,ready=deckOn&&dk.have.has(idx),prep=slides&&r.online&&(!deckOn||dk.have.size<dk.total);
+  let scr;
+  if(ready&&r.online)scr=`<img class="fsv-slide" src="${slideUrl(r,idx)}" alt="Slide ${idx} of ${s.total}" decoding="async">`;
+  else if(!r.online)scr=`<div class="fsv-msg"><b>The computer in ${esc(r.id)} is not responding</b>Please call AV staff. Your login stays active.</div>`;
+  else if(remote)scr=`<img data-f="${esc(r.id)}" alt="Live screen of ${esc(r.id)}" ${S.frames[r.id]?`src="data:image/jpeg;base64,${S.frames[r.id]}"`:''}>`;
+  else if(slides)scr=`<div class="fsv-msg"><div class="fsv-count">${s.slide} / ${s.total}</div>Showing on the ${esc(r.id)} projector</div>`;
+  else scr=`<div class="fsv-msg"><b>${pres?esc(String(s.lecture||'')):'Ready when you are'}</b>${pres?'Showing on the '+esc(r.id)+' projector':'Choose a lecture below. It opens on the '+esc(r.id)+' projector.'}</div>`;
+  let bar;
+  if(pres){
+    bar=(slides?`<select data-c="gotosel" aria-label="Go to slide" title="Go to slide">${Array.from({length:s.total},(_,i)=>`<option value="${i+1}" ${i+1===idx?'selected':''}>Slide ${i+1}</option>`).join('')}</select><button class="btn" data-a="ctl" data-c="prev">${ic('prev')}Previous</button><button class="btn pri nx" data-a="ctl" data-c="next">Next slide ${ic('nextI')}</button><button class="btn" data-a="ctl" data-c="blank">${ic('blank')}Blank</button>`
+      :media?`<button class="btn" data-a="key" data-k="left">« Back</button><button class="btn pri nx" data-a="ctl" data-c="playpause">${ic('play','fill')}Play / Pause</button><button class="btn" data-a="key" data-k="right">Forward »</button><button class="btn" data-a="key" data-k="voldown">Vol −</button><button class="btn" data-a="key" data-k="volup">Vol +</button><button class="btn" data-a="key" data-k="mute">Mute</button>`
+      :`<button class="btn" data-a="key" data-k="pgup">Page up</button><button class="btn pri nx" data-a="key" data-k="pgdn">Page down</button><button class="btn" data-a="key" data-k="up">Scroll up</button><button class="btn" data-a="key" data-k="down">Scroll down</button>`)
+      +(s.full?'':`<button class="btn" data-a="ctl" data-c="fullscreen" title="Make the lecture fill the room display">${ic('expand')}Full screen on room</button>`)+`<button class="btn dng" data-a="ctl" data-c="stop">${ic('stop')}End lecture</button>`}
+  else{
+    const opts=S.lects.map(l=>`<option value="${l.id}" ${l.id===S.fsel?'selected':''}>${esc(l.title)} (${KL[l.kind]||'File'})</option>`).join('');
+    bar=`<select name="fsel" data-c="fsel" aria-label="Lecture">${opts||'<option value="">No lectures uploaded</option>'}</select>
+      <button class="btn pri nx" data-a="fsPresent" ${!S.lects.length||!r.online||taken||starting?'disabled':''}>${ic('play','fill')}${starting?'Starting…':'Present'}</button>
+      <label class="btn"><input type="file" id="upf" hidden multiple>${ic('upload')}Upload</label>`}
+  if(remote&&r.online&&!taken){if(S.me.ctl)bar+=`<button class="btn" data-a="rcOpen" data-id="${esc(r.id)}" title="Use your mouse and keyboard (or touch) on the room PC">Full access to PC</button>`;if(S.me.xfer)bar+=`<button class="btn" data-a="xfOpen" data-id="${esc(r.id)}" title="Send files from this device to the room PC and open them there">${ic('upload')}Send files</button>`}
+  const pct=slides?Math.round(s.slide/s.total*100):0;
+  return `<div class="fsv" role="dialog" aria-label="Presenter view"><div class="fsv-top"><span class="plate s ${r.online?'':'off'}"><i></i>${esc(r.id)}</span><b>${pres?esc(String(s.lecture||'')):'No lecture running'}</b>
+    ${slides?`<span class="pill live">Slide ${s.slide} of ${s.total}</span>`:pres?'<span class="pill live">Presenting</span>':''}${pres&&s.full?`<span class="pill live">Full screen on ${esc(r.id)}</span>`:''}${prep?`<span class="pill">Preparing slides${deckOn?' '+dk.have.size+'/'+dk.total:''}…</span>`:''}${taken?`<span class="pill help">${esc(r.owner.name)} has control</span>`:''}<span class="grow"></span>${exit}</div>
+    ${slides?`<div class="fsv-prog"><i style="width:${pct}%"></i></div>`:''}
+    <div class="fsv-main"><div class="fsv-scr">${scr}</div>${ready&&idx<s.total&&dk.have.has(idx+1)?`<div class="fsv-nx"><span>Next</span><img src="${slideUrl(r,idx+1)}" alt="Next slide"></div>`:''}</div>
+    <div class="fsv-bar">${bar}</div>${slides?'<div class="fsv-keys"><kbd>→</kbd> <kbd>↓</kbd> next &nbsp; <kbd>←</kbd> <kbd>↑</kbd> previous &nbsp; <kbd>B</kbd> blank &nbsp; <kbd>Esc</kbd> exit</div>':pres?'<div class="fsv-keys">Keyboard: <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>Page up/down</kbd> <kbd>Space</kbd> work on the room PC &nbsp; <kbd>Esc</kbd> exit</div>':''}</div>`;
+}
+function facultyConsole(){
+  const r=S.rooms[0],remote=!!S.me.remote;
+  if(!r&&!(remote&&S.choices))return `<div class="console"><div class="sk"></div><div class="sk"></div></div>`;
+  if(S.fs)return presenterView(r);
+  const mine=!r||!r.owner||r.owner.user===S.me.user,pres=!!r&&mine&&!!r.session,starting=!!r&&S.starting&&Date.now()-S.starting<20000&&!pres;
+  const taken=!!r&&r.owner&&!mine,pdf=pres&&!r.session.total,media=pres&&isMedia(r);
+  const banner=!r?'':!r.online?`<div class="banner err">${ic('info')}<span><b>The computer in ${esc(r.id)} is not responding.</b> Please call AV staff. Your login stays active.</span></div>`
+    :taken?`<div class="banner warn">${ic('info')}<span><b>${esc(r.owner.name)} has taken control of this room.</b> Slide controls are paused until they hand it back.</span></div>`:'';
+  const list=S.lects.length?S.lects.map(l=>{const now=pres&&r.lecture===l.id;
+    return `<div class="lec ${now?'now':''}"><span class="ic">${ic(l.kind==='video'||l.kind==='audio'?'play':'file')}</span><div class="t"><b>${esc(l.title)}</b><span>${KL[l.kind]||'File'} · ${fdate(l.at)}${l.size?' · '+fsize(l.size):''}</span></div>
+    <button class="btn s" data-a="delLect" data-id="${l.id}" title="Delete this lecture" aria-label="Delete ${esc(l.title)}" ${pres?'disabled':''}>${ic('trash')}</button>
+    <button class="btn s pri" data-a="open" data-id="${l.id}" ${!r||!r.online||taken||pres||starting?'disabled':''} ${r?'':'title="Choose a lecture room first"'}>${ic('play','fill')}Present</button></div>`}).join('')
+    :`<div class="empty"><b>No lectures yet</b>Upload slides, a PDF, a video or any lecture file to begin.</div>`;
+  let pod='';
+  if(r&&pres){const s=r.session,pct=s.total?Math.round(s.slide/s.total*100):0;
+    pod=`<div class="pod"><div class="top"><span class="pill live">Presenting</span><span class="mu sm">${esc(r.id)} projector</span></div>
+    <div class="now"><h2>${esc(String(s.lecture||''))}</h2></div>
+    ${pdf?`${media?`<button class="btn pri next" data-a="ctl" data-c="playpause" style="margin-top:14px">${ic('play','fill')}Play / Pause</button>`:''}<div class="note info" style="margin-top:12px">${ic('info')}<span>${media?'This file plays in the media player on the PC. Use Play / Pause here. For volume, seeking or full screen use the mouse or keyboard on the PC.':'This file opens on the PC and cannot be paged from here. Use the mouse or keyboard on the PC to move through it.'}</span></div>`
+    :`<div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="${s.total}" aria-valuenow="${s.slide}"><i style="width:${pct}%"></i></div><div class="cnt"><span>Slide ${s.slide} of ${s.total}</span><span>${pct}%</span></div>
+    <button class="btn pri next" data-a="ctl" data-c="next">Next slide ${ic('nextI')}</button>
+    <div class="trio"><button class="btn" data-a="ctl" data-c="prev">${ic('prev')}Previous</button><button class="btn" data-a="ctl" data-c="blank">${ic('blank')}Blank screen</button></div>`}
+    <div class="trio"><button class="btn dng wide" data-a="ctl" data-c="stop">${ic('stop')}End lecture</button></div>
+    ${pdf||remote?'':`<div class="keys"><span><kbd>→</kbd> next</span><span><kbd>←</kbd> previous</span><span><kbd>B</kbd> blank</span></div>`}</div>`}
+  else if(r)pod=`<div class="pod"><div class="idle"><div class="ic">${ic(starting?'play':'monitor')}</div><h2>${starting?'Starting your lecture…':'Ready when you are'}</h2><p class="mu">${starting?'Opening it on the '+esc(r.id)+' projector. This takes a few seconds.':'Choose a lecture from your list. It opens on the '+esc(r.id)+' projector.'}</p></div>
+    <div class="acts" style="justify-content:center;margin-top:12px"><span class="pill ${r.online?(r.assist?'help':'ready'):'off'}">${!r.online?'Computer offline':r.assist?'AV help requested':'Ready'}</span></div></div>`;
+  // Remote (own phone or laptop): shows which room receives the slides, with a live view of that room's screen.
+  const share=remote&&r?`<section class="card p" aria-label="Connected lecture room"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div><b>${esc(r.id)}</b><div class="mu sm">${esc(r.floor||'')} · slides from your device go to this room only</div></div><button class="btn s" data-a="leaveRoom" ${pres?'disabled title="End your lecture first"':''}>Change room</button></div>
+    <div class="scr" style="margin-top:12px">${r.online?`<img data-f="${esc(r.id)}" alt="Live screen of ${esc(r.id)}" ${S.frames[r.id]?`src="data:image/jpeg;base64,${S.frames[r.id]}"`:''}>`:'Computer offline'}</div>${r.online&&(S.me.ctl||S.me.xfer)?`<div class="acts" style="justify-content:flex-start;margin-top:12px">${S.me.ctl?`<button class="btn s pri" data-a="rcOpen" data-id="${esc(r.id)}" title="Use your mouse and keyboard (or touch) on the room PC">Full access to PC</button>`:''}${S.me.xfer?`<button class="btn s" data-a="xfOpen" data-id="${esc(r.id)}">${ic('upload')}Send files</button>`:''}</div>`:''}</section>`:'';
+  const dropTxt=r?`Drop slides, a PDF, a video or any lecture file here, or click to browse. It opens on the ${esc(r.id)} projector at once.`:'Choose a lecture room on the right. Files you upload now are kept in your list, ready to present.';
+  return `<div class="console"><div class="stack"><section class="card" aria-label="My lectures"><header><h3>My lectures</h3><span class="mu sm">${S.lects.length} file${S.lects.length===1?'':'s'}</span></header>
+    <label class="drop" id="drop"><input type="file" id="upf" hidden multiple>${ic('upload')}<span><b>${r?'Upload and present':'Upload'}</b></span><span class="sm">${dropTxt}</span></label>${list}</section></div>
+    <aside class="stack">${r?share+banner+`<section class="card" aria-label="Podium controls">${pod}</section>`+avCard(r):roomPicker()}</aside></div>`;
+}
+
+/* staff */
+const NAVS=()=>[['monitor','Live monitor','monitor'],['lectures','Lectures','file'],['help','Help requests','bell'],['rooms','Lecture rooms','room'],['sessions','Sign-ins','key'],['logs','Activity log','log'],...(S.me.role==='admin'?[['users','Users','users'],['settings','Settings','cog']]:[])];
+const staffShell=()=>`<div class="shell"><aside class="side"><div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div>
+ <nav>${NAVS().map(([k,l,i])=>`<button class="nav ${S.tab===k?'on':''}" data-a="go" data-t="${k}">${ic(i)}${l}${k==='help'?'<span class="n" id="navhelp" hidden></span>':''}</button>`).join('')}</nav>
+ <div class="me"><div><b>${esc(S.me.name)}</b><span>${ROLE[S.me.role]}</span></div><div class="row"><button class="btn s" data-a="pw">${ic('lock')}Password</button><button class="btn s icon" data-a="theme" title="Switch light or dark">${ic('moon')}</button><button class="btn s icon" data-a="logout" title="Sign out" aria-label="Sign out">${ic('out')}</button></div></div></aside>
+ <main class="main"><div id="offline" class="banner err" ${S.offline?'':'hidden'}>${ic('info')}<span>Connection to the server was lost. Reconnecting…</span></div><div id="live"></div></main></div>`;
+function staffTab(){return {monitor,lectures,rooms:roomsTab,sessions:sessionsTab,logs:logsTab,users:usersTab,help:helpTab,settings:settingsTab}[S.tab]()}
+const head=(t,p,right='')=>`<div class="ph"><div><h1>${t}</h1><p>${p}</p></div><div>${right}</div></div>`;
+const dur=ms=>{const m=Math.max(1,Math.round(ms/60000));return m<60?m+' min':(m/60|0)+' h '+(m%60)+' min'};
+const rst=r=>!r.online?['Offline','off']:r.assist?['Needs help','help']:r.session?['Presenting','live']:r.faculty?['Signed in','ready']:['Idle','ready'];
+const cls=r=>r.session?'Lecture in progress':r.faculty?'Faculty signed in':'Free';
+
+function monitor(){
+  const R=S.rooms,f={all:()=>1,online:r=>r.online,offline:r=>!r.online,help:r=>r.assist}[S.flt],V=R.filter(f),floors=[...new Set(V.map(r=>r.floor))],x=R.find(r=>r.id===S.sel);
+  const tile=r=>{const[s,c]=rst(r);return `<div class="tile ${r.id===S.sel?'sel':''}" data-a="sel" data-id="${r.id}"><div class="scr">${r.online?`<img data-f="${r.id}" alt="Live screen of ${esc(r.id)}" ${S.frames[r.id]?`src="data:image/jpeg;base64,${S.frames[r.id]}"`:''}>`:'No signal'}</div>
+   <div class="tt"><b>${esc(r.id)}</b><span class="pill ${c}">${s}</span></div>${r.session?`<div class="tl"><b title="${esc(r.session.lecture)}">${esc(r.session.lecture)}</b><span>${r.session.total?r.session.slide+' / '+r.session.total:(KL[r.session.kind]||'File')}</span></div>${r.session.total?`<div class="prog t"><i style="width:${Math.round(r.session.slide/r.session.total*100)}%"></i></div>`:''}`:''}<div class="tf"><span>${r.faculty?esc(r.faculty.name):'No one signed in'}</span>${r.online?`<label data-a="stop-prop"><input type="checkbox" data-a="pick" data-id="${r.id}" ${S.picked.has(r.id)?'checked':''}> Select</label>`:''}</div></div>`};
+  const opts=v=>S.lects.map(l=>`<option value="${l.id}" ${l.id===v?'selected':''}>${esc(l.title)} · ${esc(l.by)}</option>`).join(''),lo=opts(S.bsel),lo2=opts(S.lsel);
+  return head('Live monitor','Every lecture room PC, updated live.')+
+  `<div class="card facts"><div><b>${R.length}</b><span>Lecture rooms</span></div><div><b>${R.filter(r=>r.online).length}</b><span>Online</span></div><div><b>${R.filter(r=>r.faculty).length}</b><span>Faculty signed in</span></div><div><b>${R.filter(r=>r.session).length}</b><span>Presenting</span></div><div><b>${R.filter(r=>r.assist).length}</b><span>Need help</span></div></div>
+  <div class="mon"><section><div class="chips">${[['all','All'],['online','Online'],['offline','Offline'],['help','Needs help']].map(([k,l])=>`<button class="chip ${S.flt===k?'on':''}" data-a="flt" data-k="${k}">${l}</button>`).join('')}</div>
+  ${floors.map(n=>`<div class="fl">${esc(n)}</div><div class="grid">${V.filter(r=>r.floor===n).map(tile).join('')}</div>`).join('')||`<div class="card empty" style="margin-top:12px"><b>No lecture rooms to show</b>${R.length?'Try another filter.':'Add a lecture room under Lecture rooms.'}</div>`}</section>
+  <aside class="det">${S.picked.size?`<div class="card p bulk"><b>${S.picked.size} room${S.picked.size>1?'s':''} selected</b><div class="inline" style="margin-top:10px"><select data-c="bsel" aria-label="Lecture">${lo}</select></div><div class="acts" style="justify-content:flex-start;margin-top:10px"><button class="btn pri s" data-a="bulk" data-c="open">Present to all</button><button class="btn s" data-a="bulk" data-c="blank">Blank</button><button class="btn s" data-a="bulk" data-c="stop">Stop</button><button class="btn s" data-a="bulk" data-c="clear-sel">Clear</button></div></div>`:''}${x?detail(x,lo2):'<div class="card empty"><b>Select a lecture room</b>Its live screen and controls appear here.</div>'}</aside></div>`;
+}
+function detail(x,lo){const[s,c]=rst(x);
+  return `<div class="card p"><div class="tt" style="margin:0"><h2>${esc(x.id)}</h2><span class="pill ${c}">${s}</span><button class="btn s" data-a="closeDet" aria-label="Close" title="Close" style="margin-left:auto;padding:2px 10px;font-size:18px;line-height:1.2">&times;</button></div>
+  <div class="big">${x.online?`<img data-f="${x.id}" alt="Live screen of ${esc(x.id)}" ${S.frames[x.id]?`src="data:image/jpeg;base64,${S.frames[x.id]}"`:''}>`:`Computer offline${x.problem?'<small style="display:block;margin-top:6px;padding:0 12px">'+esc(x.problem)+'</small>':''}`}</div>
+  <dl class="kv"><dt>Floor</dt><dd>${esc(x.floor)}</dd><dt>Agent ID</dt><dd><code class="aid">${esc(x.agentId||'')}</code></dd><dt>PC address</dt><dd>${esc(x.ip)||'<span class="mu">Not seen yet</span>'}</dd><dt>Signed in</dt><dd>${x.faculty?`<b>${esc(x.faculty.name)}</b>`:'<span class="mu">No one</span>'}</dd><dt>In control</dt><dd>${x.owner?esc(x.owner.name):'<span class="mu">No one</span>'}</dd>
+  <dt>Showing</dt><dd>${x.session?esc(String(x.session.lecture||''))+(x.session.total?` (slide ${x.session.slide} of ${x.session.total})`:''):'<span class="mu">Nothing</span>'}</dd>${x.session&&x.started?`<dt>Running for</dt><dd>${dur(Date.now()-x.started)}</dd>`:''}</dl>
+  ${x.online?`<div class="sec">Present a lecture</div><div class="inline"><select data-c="lsel" aria-label="Lecture">${lo||'<option value="">No lectures uploaded</option>'}</select><button class="btn pri" data-a="open-staff" ${S.lects.length?'':'disabled'}>${ic('play','fill')}Start</button></div>
+  <div class="sec">Controls</div><div class="ctl"><button class="btn" data-a="ctl" data-c="prev" title="Previous">${ic('prev')}</button><button class="btn pri" data-a="ctl" data-c="next" title="Next">${ic('nextI')}</button><button class="btn" data-a="ctl" data-c="blank" title="Blank screen">${ic('blank')}</button><button class="btn" data-a="ctl" data-c="playpause" title="Play / pause a video">${ic('play','fill')}</button><button class="btn dng" data-a="ctl" data-c="stop" title="Stop">${ic('stop')}</button></div>
+  <div class="acts" style="justify-content:flex-start;margin-top:12px">${x.owner&&x.owner.user===S.me.user?`<button class="btn s pri" data-a="rcOpen" data-id="${x.id}">Full access to PC</button><button class="btn s" data-a="rcRelease" data-id="${x.id}">Release control</button>`:`<button class="btn s pri" data-a="rcOpen" data-id="${x.id}">Full access to PC</button>`}<button class="btn s" data-a="xfOpen" data-id="${x.id}" title="Send files to this room PC and open them there">Send files</button>${x.rc&&!(x.owner&&x.owner.user===S.me.user)?`<span class="pill help">${esc(x.rc.name)} is controlling</span>`:''}${x.assist?'<button class="btn s" data-a="go" data-t="help">View help request</button>':''}${x.faculty?`<button class="btn s dng" data-a="releaseRoom" data-id="${x.id}">Release faculty sign-in</button>`:''}</div>`
+  :'<p class="mu" style="margin-top:6px">This computer is not connected. Check that it is switched on and the agent is running.</p>'}
+  <div class="sec">Recent activity</div>${(x.events&&x.events.length)?`<ul class="feed">${x.events.slice().reverse().slice(0,8).map(e=>`<li><time>${new Date(e.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</time><span><b>${esc(e.who)}</b> · ${esc(e.text)}</span></li>`).join('')}</ul>`:'<p class="mu sm">Nothing yet today.</p>'}</div>`}
+
+
+/* help requests */
+const CAT={display:'Projector or display',sound:'Sound or microphone',pc:'PC or software',slides:'Slides will not open',other:'Something else'};
+const thread=t=>t.comments&&t.comments.length?`<div class="thread">${t.comments.map(c=>`<div class="cm ${c.role==='teacher'?'':'av'}"><b>${esc(c.by)}</b><span class="mu sm"> · ${ago(c.at)}${c.role==='teacher'?'':' · AV'}</span><p>${esc(c.text)}</p></div>`).join('')}</div>`:'';
+function avCard(r){
+  const t=S.help[0],show=t&&(t.status==='open'||Date.now()-(t.resolvedAt||0)<2*3600e3);
+  let body;
+  if(!show)body=`<div class="inline" style="align-items:center"><div class="sm mu" style="flex:1 1 200px">Projector, sound or PC not working?</div><button class="btn s" data-a="helpNew" ${r.online?'':'disabled'}>${ic('bell')}Request AV help</button></div>`;
+  else if(t.status==='open')body=`<div class="th"><span class="pill help">AV help requested</span><span class="grow"></span><span class="meta">${ago(t.at)}</span></div><p class="msg"><b>${CAT[t.category]}</b>${t.message?' · '+esc(t.message):''}</p>${thread(t)}<div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" data-a="helpNote" data-id="${t.id}">Add a note</button></div>`;
+  else body=`<div class="th"><span class="pill live">Resolved</span><span class="grow"></span><span class="meta">${esc(t.resolvedBy||'AV staff')} · ${ago(t.resolvedAt)}</span></div><p class="msg"><b>${CAT[t.category]}</b></p>${thread(t)}<div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" data-a="helpNew">${ic('bell')}Request AV help again</button></div>`;
+  return `<section class="card p hlp" aria-label="AV help">${body}</section>`;
+}
+function helpTab(){
+  const L=S.help,open=L.filter(t=>t.status==='open'),list=S.hf==='open'?open:S.hf==='resolved'?L.filter(t=>t.status==='resolved'):L;
+  const card=t=>`<article class="card ticket ${t.status}"><div class="th"><span class="plate s ${t.status==='open'?'':'done'}"><i></i>${esc(t.room)}</span><span class="pill ${t.status==='open'?'help':'live'}">${t.status==='open'?'Open':'Resolved'}</span><b>${CAT[t.category]}</b><span class="grow"></span><span class="meta">#${t.id} · ${ago(t.at)}</span></div>
+  <p class="msg">${t.message?esc(t.message):'<span class="mu">No details given.</span>'}</p><div class="meta">${esc(t.name)}${t.floor?' · '+esc(t.floor):''} · ${fdate(t.at)}${t.mail?' · '+esc(t.mail):''}</div>${thread(t)}
+  ${t.status==='open'?`<div class="reply"><input name="cm${t.id}" placeholder="Add a comment for the faculty member" maxlength="1000" data-c="draft" data-id="${t.id}" aria-label="Comment"><button class="btn" data-a="hcomment" data-id="${t.id}" id="cb${t.id}">Add comment</button><button class="btn pri" data-a="hresolve" data-id="${t.id}">${ic('check')}Resolve</button></div>`
+  :`<div class="meta" style="margin-top:12px">Resolved by <b>${esc(t.resolvedBy||'')}</b> · ${fdate(t.resolvedAt)} <button class="btn s" data-a="hreopen" data-id="${t.id}" style="margin-left:8px">Reopen</button></div>`}</article>`;
+  return head('Help requests','Requests from lecture rooms. Add a comment, then resolve the request once the problem is fixed.')+
+  `<div class="chips mb">${[['open',`Open (${open.length})`],['resolved','Resolved'],['all','All']].map(([k,l])=>`<button class="chip ${S.hf===k?'on':''}" data-a="hf" data-k="${k}">${l}</button>`).join('')}</div>`+
+  (list.map(card).join('')||`<div class="card empty"><b>${S.hf==='open'?'No open requests':'Nothing here yet'}</b>${S.hf==='open'?'New requests from lecture rooms appear here and are emailed to AV staff.':''}</div>`);
+}
+const SUGGEST=['NUR SmartLecture','LectureLink','ClassCast','NIU LectureHub','Lecture Room Control'];
+function brandCard(){return `<section class="card p" style="margin-bottom:16px"><h3>Branding</h3><p class="mu" style="margin:4px 0 0">The name and logo appear on the sign-in screen, the side bar and the browser tab.</p>
+  <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:14px"><div class="logoprev">${BR.logo?`<img src="/logo?v=${BR.logo}" alt="Current logo">`:ic('monitor')}</div>
+  <div class="acts" style="justify-content:flex-start"><label class="btn"><input type="file" id="logoin" accept="image/png,image/jpeg,image/webp" hidden>${ic('upload')}${BR.logo?'Change logo':'Upload logo'}</label>${BR.logo?'<button class="btn dng" data-a="logoDel">Remove logo</button>':''}</div>
+  <span class="mu sm">PNG, JPG or WebP, up to 2 MB. A square picture with a transparent or white background looks best.</span></div>
+  <form data-submit="saveName" class="inline" style="margin-top:16px"><label class="fld" style="margin:0;min-width:260px"><span>System name</span><input name="name" value="${esc(BR.name)}" maxlength="60" list="sysnames" required></label><datalist id="sysnames">${SUGGEST.map(n=>`<option value="${esc(n)}">`).join('')}</datalist><button class="btn pri">Save name</button></form></section>`}
+function settingsTab(){
+  const m=S.mail;if(!m)return head('Settings','')+brandCard()+'<div class="sk"></div>';
+  return head('Settings','Branding, and email for AV help requests (each new request is emailed to the addresses below).')+brandCard()+
+  `<form class="card p" data-submit="saveMail"><h3>Email server</h3><p class="mu" style="margin:4px 0 0">Use your college mail server (SMTP). Gmail and Outlook need an app password.</p>
+  <div class="cfg"><label class="fld"><span>Mail server</span><input name="host" value="${esc(m.host)}" placeholder="smtp.college.edu.pk"></label><label class="fld"><span>Port</span><input name="port" value="${esc(m.port)}" inputmode="numeric" placeholder="587"></label>
+  <label class="fld"><span>Security</span><select name="secure"><option value="" ${m.secure?'':'selected'}>STARTTLS or none (port 587 / 25)</option><option value="1" ${m.secure?'selected':''}>SSL/TLS (port 465)</option></select></label>
+  <label class="fld"><span>Username</span><input name="user" value="${esc(m.user)}" autocomplete="off"></label><label class="fld"><span>Password</span><input name="pass" type="password" autocomplete="new-password" placeholder="${m.hasPass?'Saved. Leave blank to keep it':''}"></label>
+  <label class="fld"><span>Send from</span><input name="from" value="${esc(m.from)}" placeholder="AV Support <av@college.edu.pk>"></label>
+  <label class="fld full" style="display:flex;gap:10px;align-items:flex-start;font-weight:400"><input type="checkbox" name="insecureTls" ${m.insecureTls?'checked':''} style="width:auto;min-height:0;margin-top:3px"><span style="font-weight:400">Trust the mail server's certificate even if it is self-signed or expired. Use this only if the server is on the college network and sending fails with a certificate error.</span></label>
+  <label class="fld full"><span>Send help requests to (separate several with commas)</span><input name="to" value="${esc(m.to)}" placeholder="av1@college.edu.pk, av2@college.edu.pk"></label></div>
+  <div class="acts" style="justify-content:flex-start;margin-top:20px"><button class="btn pri">Save settings</button><button type="button" class="btn" data-a="testMail">Send test email</button></div>
+  <p class="mu sm" style="margin-top:14px">The mail password is stored in data/config.json on the server. Keep that folder private.</p></form>`;
+}
+
+function lectures(){
+  return head('Lectures','Upload and manage lecture files: slides, PDFs, videos and more.')+`<div class="stack"><section class="card"><label class="drop" id="drop"><input type="file" id="upf" hidden multiple>${ic('upload')}<span><b>Upload lectures</b></span><span class="sm">Drop slides, PDFs, videos or any lecture files here, or click to browse</span></label></section>
+  <section class="card"><header><h3>Library</h3><span class="mu sm">${S.lects.length} file${S.lects.length===1?'':'s'}</span></header><div class="tw"><table><tr><th>Title</th><th>Type</th><th>Uploaded by</th><th>Date</th><th>Size</th><th></th></tr>${S.lects.map(l=>`<tr><td><b>${esc(l.title)}</b></td><td>${KL[l.kind]||'File'}</td><td>${esc(l.by)}</td><td>${fdate(l.at)}</td><td>${fsize(l.size)}</td><td class="r"><button class="btn s dng" data-a="delLect" data-id="${l.id}">${ic('trash')}Delete</button></td></tr>`).join('')||'<tr><td colspan="6"><div class="empty"><b>No lectures yet</b>Uploaded files appear here.</div></td></tr>'}</table></div></section></div>`}
+
+function roomsTab(){
+  return head('Lecture rooms','Every lecture room has a name and its own Agent ID. Once its PC is set up, it appears on the monitor by itself.')+
+  `<div class="stack"><section class="card p"><h3>Add a lecture room</h3><p class="mu" style="margin:4px 0 0">Enter a name. The system creates the room's unique Agent ID and an installer for its PC.</p>
+  <form data-submit="addRoom" class="inline" style="margin-top:14px"><label class="fld" style="margin:0"><span>Room name</span><input name="id" placeholder="LR-3" required maxlength="20"></label><label class="fld" style="margin:0"><span>Floor</span><input name="floor" list="fl" placeholder="Ground"></label><button class="btn pri">Add room</button></form></section>
+  <section class="card"><header><h3>Lecture rooms</h3><span class="mu sm">${S.rooms.length}</span></header><div class="tw"><table class="nw"><tr><th>Room</th><th>Floor</th><th>Agent ID</th><th>Status</th><th>Faculty</th><th></th></tr>${S.rooms.map(r=>{const[s,c]=rst(r);return `<tr><td><b>${esc(r.id)}</b></td><td>${esc(r.floor)}</td><td><code class="aid">${esc(r.agentId||'')}</code> <button class="btn s ghost" data-a="copyId" data-id="${esc(r.agentId||'')}" title="Copy Agent ID" aria-label="Copy Agent ID">Copy</button></td><td><span class="pill ${c}">${s}</span><div class="mu sm" style="margin-top:3px">${r.ip?'PC '+esc(r.ip):'Not set up yet'}${!r.online&&r.seen?' · last seen '+ago(r.seen):''}</div>${!r.online&&r.problem?'<div class="sm" style="color:var(--danger);margin-top:3px;max-width:320px">'+esc(r.problem)+'</div>':''}</td><td>${r.faculty?esc(r.faculty.name):'<span class="mu">—</span>'}</td>
+  <td class="r"><div class="acts"><button class="btn s" data-a="installer" data-id="${r.id}">${ic('down')}Installer</button><button class="btn s" data-a="vncInstaller" data-id="${r.id}" title="Installs TightVNC for Full access">${ic('down')}VNC${r.online?(r.vnc?' ✓':' ✗'):''}</button><button class="btn s" data-a="editRoom" data-id="${r.id}">Edit</button><button class="btn s" data-a="newKey" data-id="${r.id}">New ID</button><button class="btn s dng" data-a="delRoom" data-id="${r.id}">Remove</button></div></td></tr>`}).join('')||'<tr><td colspan="6"><div class="empty"><b>No lecture rooms yet</b>Add the first one above.</div></td></tr>'}</table></div></section>
+  <section class="card p"><h3>Set up a lecture room PC</h3><ol class="mu" style="margin:8px 0 0;padding-left:20px;line-height:1.8"><li>Add the room above, then press <b>Installer</b> on its row.</li><li>Copy the file to that PC and double-click it. It installs the agent with the room's Agent ID and puts a <b>Lecture Room Login</b> shortcut on the desktop.</li><li>The room shows <b>Online</b> here within seconds. Faculty open the shortcut, sign in, upload a lecture and present.</li></ol></section></div><datalist id="fl">${[...new Set(S.rooms.map(r=>r.floor))].map(f=>`<option value="${esc(f)}">`).join('')}</datalist>`}
+
+function sessionsTab(){
+  return head('Sign-ins','Who is signed in, and where. A faculty login belongs to one lecture room at a time.',`<button class="btn" data-a="refresh">Refresh</button>`)+
+  `<section class="card"><div class="tw"><table><tr><th>Person</th><th>Role</th><th>Lecture room</th><th>Since</th><th>Last active</th><th>Status</th><th></th></tr>${S.sess.map(s=>`<tr><td><b>${esc(s.name)}</b><div class="mu sm">${esc(s.user)}</div></td><td>${ROLE[s.role]}</td><td>${s.room?esc(s.room)+'<div class="mu sm">'+esc(s.ip)+(s.remote?' · own device':'')+'</div>':s.remote?'<span class="mu">Choosing a room · '+esc(s.ip)+'</span>':'<span class="mu">Any device</span>'}</td><td>${fdate(s.since)}</td><td>${ago(s.last)}</td><td><span class="pill ${s.presenting?'live':s.online?'ready':'off'}">${s.presenting?'Presenting':s.online?'Active':'Page closed'}</span></td>
+  <td class="r">${s.sid===S.me.sid?'':`<button class="btn s dng" data-a="release" data-id="${s.sid}">Release</button>`}</td></tr>`).join('')||'<tr><td colspan="7"><div class="empty"><b>No one is signed in</b></div></td></tr>'}</table></div></section>`}
+
+function logsTab(){
+  const q=S.lq.toLowerCase(),L=S.logs.filter(l=>!q||(l.u+' '+l.m).toLowerCase().includes(q));
+  return head('Activity log','Sign-ins, uploads, presentation commands and room connections.',`<div class="acts"><button class="btn" data-a="logs">Refresh</button><button class="btn" data-a="dlLog">${ic('down')}Download full log</button></div>`)+
+  `<section class="card"><header><input id="lq" placeholder="Search the log" value="${esc(S.lq)}" data-c="lq" style="max-width:320px"><span class="mu sm">${L.length} entries${L.length>200?', showing 200':''}</span></header><div class="tw"><table><tr><th>Time</th><th>User</th><th>Activity</th></tr>${L.slice(0,200).map(l=>`<tr><td style="white-space:nowrap">${l.t?fdate(l.t):''}</td><td>${esc(l.u)}</td><td>${esc(l.m)}</td></tr>`).join('')||'<tr><td colspan="3"><div class="empty"><b>No entries</b></div></td></tr>'}</table></div></section>`}
+
+function usersTab(){
+  return head('Users','Faculty can sign in on a lecture room PC, or from their own phone or laptop and choose a room.')+
+  `<div class="stack"><section class="card p"><h3>Create an account</h3><p class="mu" style="margin:4px 0 0">The person must choose a new password the first time they sign in.</p>
+  <form data-submit="addUser" class="inline" style="margin-top:14px"><label class="fld" style="margin:0"><span>Username or email</span><input name="user" required autocomplete="off" placeholder="name@college.edu"></label><label class="fld" style="margin:0"><span>Full name</span><input name="name" placeholder="Dr. Ahmed" autocomplete="off"></label><label class="fld" style="margin:0"><span>Temporary password</span><input name="pass" type="password" required autocomplete="new-password"></label>
+  <label class="fld" style="margin:0"><span>Role</span><select name="role"><option value="teacher">Faculty</option><option value="av">AV operator</option><option value="admin">Administrator</option></select></label><button class="btn pri">Create account</button></form></section>
+  <section class="card"><header><h3>Accounts</h3><span class="mu sm">${S.users.length}</span></header><div class="tw"><table><tr><th>Username</th><th>Name</th><th>Role</th><th>Signed in at</th><th></th></tr>${S.users.map(u=>`<tr><td><b>${esc(u.user)}</b>${u.mustChange?' <span class="pill help">Temporary password</span>':''}</td><td>${esc(u.name)}</td><td>${ROLE[u.role]}</td><td>${u.room?esc(u.room):'<span class="mu">—</span>'}</td><td class="r"><div class="acts"><button class="btn s" data-a="resetPw" data-id="${esc(u.user)}">Reset password</button><button class="btn s dng" data-a="delUser" data-id="${esc(u.user)}">Remove</button></div></td></tr>`).join('')}</table></div></section></div>`}
+
+/* ---------- actions ---------- */
+async function uploadFiles(files,present=false){
+  const ok=[],ids=[];
+  for(const f of files){
+    const why=fileProblem(f);if(why){toast(`${f.name}: ${why}`,'err');continue}
+    toast(`Uploading ${f.name}…`);
+    try{const r=await fetch('/api/lectures',{method:'POST',headers:{authorization:'Bearer '+S.tok,'x-filename':encodeURIComponent(f.name)},body:f});const d=await r.json();
+      if(r.status===401)return signedOut('Your sign-in ended. Please sign in again.');if(!r.ok)toast(d.error||'Upload failed','err');else{ok.push(f.name);ids.push(d.id)}}catch{toast(`${f.name}: upload failed. Check the network connection and the file size.`,'err')}
+  }
+  if(ok.length){await loadLects();
+    if(present){S.starting=Date.now();cmd('open',null,{lecture:ids[ids.length-1]});paint();setTimeout(()=>{if(S.tok)paint()},20500)}
+    else toast(ok.length===1?`${ok[0]} uploaded`:`${ok.length} lectures uploaded`,'ok')}
+}
+const canPresentNow=()=>{const r=S.rooms[0];return !staff()&&!!r&&r.online&&!r.session&&(!r.owner||r.owner.user===S.me.user)};
+const A={
+  theme:toggleTheme,logout:doLogout,pw:()=>changePassword(false),
+  fs:()=>enterFs(),fsx:()=>exitFs(),
+  fsPresent:()=>{const l=S.fsel||(S.lects[0]&&S.lects[0].id);if(!l)return toast('Upload a lecture first.','err');A.open({dataset:{id:l}})},
+  key:b=>cmd('key',null,{k:b.dataset.k}),
+  pickRoom:async b=>{b.disabled=true;const d=await api('/api/remote/room',{method:'POST',body:JSON.stringify({room:b.dataset.id})});if(d.ok){S.me.room=d.room;toast('Connected to '+d.room+'. Your slides will open there only.','ok')}else b.disabled=false},
+  leaveRoom:async()=>{const d=await api('/api/remote/leave',{method:'POST',body:'{}'});if(d.ok)S.me.room=null},
+  hf:b=>{S.hf=b.dataset.k;paint()},
+  helpNew:async()=>{const v=await ask({title:'Request AV help',text:'AV staff are notified at once and are also emailed.',fields:[{name:'category',label:'What is the problem?',type:'select',options:Object.entries(CAT)},{name:'message',label:'Details (optional)',type:'textarea',ph:'e.g. The projector shows no signal'}],ok:'Send request',submit:async v=>{const r=await fetch('/api/help',{method:'POST',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify(v)});const d=await r.json().catch(()=>({}));return r.ok?null:d.error||'Could not send the request.'}});if(v)toast('AV staff have been notified','ok')},
+  helpNote:async b=>{const v=await ask({title:'Add a note',fields:[{name:'text',label:'Note for AV staff',type:'textarea',max:1000}],ok:'Send note',submit:async v=>{const r=await fetch('/api/help/'+b.dataset.id+'/comments',{method:'POST',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify(v)});const d=await r.json().catch(()=>({}));return r.ok?null:d.error}});if(v)toast('Note sent','ok')},
+  hcomment:async b=>{const i=document.querySelector(`[name="cm${b.dataset.id}"]`),text=i&&i.value.trim();if(!text)return toast('Write a comment first.','err');const d=await api('/api/help/'+b.dataset.id+'/comments',{method:'POST',body:JSON.stringify({text})});if(d.ok){const j=document.querySelector(`[name="cm${b.dataset.id}"]`);if(j)j.value='';toast('Comment added','ok')}},
+  hresolve:async b=>{const i=document.querySelector(`[name="cm${b.dataset.id}"]`),draft=i?i.value.trim():'';const v=await ask({title:'Resolve this request?',text:'The faculty member is told it is resolved.',fields:[{name:'note',label:'Note for the faculty member (optional)',type:'textarea',max:1000}],ok:'Mark as resolved',submit:async v=>{const r=await fetch('/api/help/'+b.dataset.id+'/resolve',{method:'POST',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify({note:v.note||draft})});const d=await r.json().catch(()=>({}));return r.ok?null:d.error}});if(v)toast('Request resolved','ok')},
+  hreopen:async b=>{const d=await api('/api/help/'+b.dataset.id+'/reopen',{method:'POST',body:'{}'});if(d.ok){toast('Request reopened','ok');S.hf='open'}},
+  logoDel:async()=>{const d=await api('/api/settings/logo',{method:'DELETE'});if(d.ok){await loadBrand();toast('Logo removed','ok');render()}},
+  testMail:async b=>{const f=document.querySelector('[data-submit=saveMail]');if(!await saveMail(f))return;b.disabled=true;const r=await fetch('/api/settings/mail/test',{method:'POST',headers:{authorization:'Bearer '+S.tok}});const d=await r.json().catch(()=>({}));b.disabled=false;r.ok?toast('Test email sent to '+d.to,'ok'):toast(d.error||'Could not send the test email.','err')},
+
+  go:async b=>{S.tab=b.dataset.t;if(S.tab==='logs')await A.logs();if(S.tab==='users')await loadUsers();if(S.tab==='sessions')await A.refresh();if(S.tab==='lectures')await loadLects();if(S.tab==='settings')await loadMail();render()},
+  flt:b=>{S.flt=b.dataset.k;paint()},sel:b=>{S.sel=b.dataset.id;S.selOff=0;paint()},closeDet:()=>{S.sel=null;S.selOff=1;paint()},
+  'stop-prop':()=>{},
+  pick:b=>{b.checked?S.picked.add(b.dataset.id):S.picked.delete(b.dataset.id);paint()},
+  open:b=>{S.starting=Date.now();cmd('open',null,{lecture:b.dataset.id,full:!!S.fs});paint();setTimeout(()=>{if(S.tok)paint()},20500)},
+  'open-staff':()=>{const l=S.lsel||(S.lects[0]&&S.lects[0].id);if(!l)return toast('Upload a lecture first.','err');cmd('open',S.sel,{lecture:l})},
+  rcOpen:b=>rcOpen(b.dataset.id),rcClose:()=>rcClose(),rcRelease:b=>cmd('release',b.dataset.id),
+  rcFull:()=>{const el=$('rc');if(!el)return;try{document.fullscreenElement?document.exitFullscreen():(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}catch{}},
+  ctl:b=>{const c=b.dataset.c;if(!staff()&&(c==='next'||c==='prev'))optNav(c==='next'?1:-1);cmd(c,S.sel)},
+  bulk:b=>{const c=b.dataset.c;if(c==='clear-sel'){S.picked.clear();return paint()}const l=S.bsel||(S.lects[0]&&S.lects[0].id);if(c==='open'&&!l)return toast('Upload a lecture first.','err');S.picked.forEach(r=>cmd(c,r,{lecture:l}))},
+  delLect:async b=>{const l=S.lects.find(x=>x.id===b.dataset.id);if(!await confirmBox('Delete this lecture?',`"${l?l.title:''}" will be removed permanently.`,'Delete'))return;const d=await api('/api/lectures/'+b.dataset.id,{method:'DELETE'});if(d.ok){toast('Lecture deleted','ok');loadLects()}},
+  delRoom:async b=>{if(!await confirmBox('Remove '+b.dataset.id+'?','Faculty will no longer be able to sign in on this PC, and any current sign-in ends.','Remove room'))return;const d=await api('/api/rooms/'+b.dataset.id,{method:'DELETE'});if(d.ok)toast('Room removed','ok')},
+  editRoom:async b=>{const r=S.rooms.find(x=>x.id===b.dataset.id);const v=await ask({title:'Edit '+r.id,fields:[{name:'floor',label:'Floor',value:r.floor}],ok:'Save changes',submit:async v=>{const d=await fetch('/api/rooms/'+r.id,{method:'PUT',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify(v)}).then(x=>x.json());return d.error||null}});if(v)toast('Room updated','ok')},
+  copyId:b=>{const t=b.dataset.id,ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch{}ta.remove();toast(ok?'Agent ID copied':'Copy it by hand: '+t,ok?'ok':'')},
+  newKey:async b=>{if(!await confirmBox('Create a new Agent ID for '+b.dataset.id+'?','The agent on that PC disconnects until you run its new installer.','Create new ID'))return;const d=await api('/api/rooms/'+b.dataset.id+'/rekey',{method:'POST',body:'{}'});if(d.ok)toast('New Agent ID created. Download and run the installer on that PC again.','ok')},
+  vncInstaller:async b=>{const r=await fetch('/api/vnc-installer?room='+b.dataset.id,{headers:{authorization:'Bearer '+S.tok}});if(!r.ok){let m='Not allowed';try{m=(await r.json()).error||m}catch{}return toast(m,'err')}const a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download='install-vnc-'+b.dataset.id+'.bat';a.click();toast('VNC installer downloaded. Run it on that PC as administrator.','ok')},
+  installer:async b=>{const r=await fetch('/api/installer?room='+b.dataset.id,{headers:{authorization:'Bearer '+S.tok}});if(!r.ok)return toast('Not allowed','err');const a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download='install-agent-'+b.dataset.id+'.bat';a.click();toast('Installer downloaded','ok')},
+  release:async b=>{if(!await confirmBox('Release this sign-in?','The person is signed out at once, and any lecture they are presenting ends.','Release sign-in'))return;const d=await api('/api/sessions/'+b.dataset.id,{method:'DELETE'});if(d.ok){toast('Sign-in released','ok');A.refresh().then(paint)}},
+  releaseRoom:async b=>{const r=S.rooms.find(x=>x.id===b.dataset.id);if(!await confirmBox('Release '+(r&&r.faculty?r.faculty.name:'faculty')+'?','They are signed out of '+b.dataset.id+' and their lecture ends.','Release sign-in'))return;const list=await api('/api/sessions');const s=Array.isArray(list)&&list.find(x=>x.room===b.dataset.id);if(!s)return;const d=await api('/api/sessions/'+s.sid,{method:'DELETE'});if(d.ok)toast('Sign-in released','ok')},
+  refresh:async()=>{const d=await api('/api/sessions');if(Array.isArray(d))S.sess=d;if(S.tab==='sessions')paint()},
+  logs:async()=>{const d=await api('/api/logs');if(Array.isArray(d))S.logs=d;if(S.tab==='logs')paint()},
+  dlLog:async()=>{const r=await fetch('/api/logs?download=1',{headers:{authorization:'Bearer '+S.tok}});const a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download='audit-log.txt';a.click()},
+  resetPw:async b=>{const v=await ask({title:'Reset password for '+b.dataset.id,text:'They will be signed out and must choose a new password at their next sign-in.',fields:[{name:'pass',label:'Temporary password (8+ characters)',type:'password',ac:'new-password'}],ok:'Reset password',submit:async v=>{const d=await fetch('/api/users/'+encodeURIComponent(b.dataset.id)+'/password',{method:'PUT',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify(v)}).then(x=>x.json());return d.error||null}});if(v){toast('Password reset','ok');loadUsers().then(paint)}},
+  delUser:async b=>{if(!await confirmBox('Remove '+b.dataset.id+'?','The account is deleted and any current sign-in ends.','Remove account'))return;const d=await api('/api/users/'+encodeURIComponent(b.dataset.id),{method:'DELETE'});if(d.ok){toast('Account removed','ok');loadUsers().then(paint)}},
+};
+async function loadMail(){const d=await api('/api/settings/mail');if(d&&!d.error)S.mail=d}
+async function saveMail(f){const v=Object.fromEntries(new FormData(f));const d=await api('/api/settings/mail',{method:'PUT',body:JSON.stringify({...v,secure:!!v.secure,insecureTls:!!v.insecureTls})});if(d.ok){await loadMail();return true}return false}
+async function loadUsers(){const d=await api('/api/users');if(Array.isArray(d))S.users=d}
+const SUBMIT={
+  async saveName(f){const d=await api('/api/settings/name',{method:'PUT',body:JSON.stringify({name:f.name.value})});if(d.ok){await loadBrand();toast('System name saved','ok');render()}},
+  async saveMail(f){if(await saveMail(f)){toast('Settings saved','ok');f.pass.value='';paint()}},
+  async addRoom(f){const id=f.id.value.trim(),d=await api('/api/rooms',{method:'POST',body:JSON.stringify({id,floor:f.floor.value.trim()||'Ground'})});if(d.ok){f.reset();const v=await ask({title:id+' added',text:'Agent ID: '+d.agentId+'. Download the installer and run it on the lecture room PC.',ok:'Download installer',danger:false});if(v)A.installer({dataset:{id}})}},
+  async addUser(f){const d=await api('/api/users',{method:'POST',body:JSON.stringify({user:f.user.value.trim(),name:f.name.value.trim(),pass:f.pass.value,role:f.role.value})});if(d.ok){toast('Account created','ok');f.reset();await loadUsers();paint()}},
+};
+
+/* ---------- events ---------- */
+Object.assign(A,{
+  rcMore:()=>{S.rc.more=!S.rc.more;if(!S.rc.more){S.rc.pres=false;S.rc.keys=false}rcBar()},
+  rcPres:()=>{S.rc.pres=!S.rc.pres;rcBar()},
+  rcKeys:()=>{S.rc.keys=!S.rc.keys;rcBar()},
+  rcTxt:()=>{S.rc.txt=!S.rc.txt;rcBar();const t=$('rctext');t&&t.focus()},
+  rcSendTxt:()=>{const t=$('rctext');if(t&&t.value){S.rc.vnc?vncType(t.value):rcText(t.value);t.value=''}},
+  vncCad:()=>{S.rc.rfb&&S.rc.rfb.sendCtrlAltDel()},
+  vncKey:b=>{S.rc.rfb&&S.rc.rfb.sendKey(+b.dataset.k,null);S.rc.rfb&&S.rc.rfb.focus()},
+  rcKb:()=>{const k=$('rckb');if(!k)return;if(document.activeElement===k)k.blur();else k.focus({preventScroll:true})},
+  rcDrag:()=>{S.rc.drag=!S.rc.drag;rcBar();toast(S.rc.drag?'Drag mode on: on a touch screen one finger now drags.':'Drag mode off.')},
+  rcDbl:()=>{rcSend({k:'dbl',...(S.rc.mv||{x:.5,y:.5})})},
+  rcMod:b=>{const m=S.rc.mod,x=b.dataset.m;m.has(x)?m.delete(x):m.add(x);rcBar()},
+  rcVKey:b=>rcKey(b.dataset.k),
+  rcCombo:b=>rcTap(RC_COMBOS[+b.dataset.i][1]),
+  rcCmd:b=>cmd(b.dataset.c,S.rc.room),
+  rcEnd:async()=>{if(await confirmBox('End the lecture?','The lecture closes on the room PC. Remote control stays on.','End lecture'))cmd('stop',S.rc.room)},
+  rcPresent:()=>{const l=S.fsel||(S.lects[0]&&S.lects[0].id);if(!l)return toast('Upload a lecture first.','err');S.starting=Date.now();cmd('open',S.rc.room,{lecture:l,full:true})},
+  xfOpen:b=>xfOpen(b.dataset.id),xfClose:()=>xfClose(),
+  xfOpenFile:b=>{const x=S.xf,f=x&&x.files&&x.files[+b.dataset.i];if(f)cmd('xopen',x.room,{folder:x.folder,name:f.name})},
+});
+document.addEventListener('change',async e=>{
+  const t=e.target;if(!t||t.id!=='logoin'||!t.files||!t.files[0])return;
+  const f=t.files[0];t.value='';
+  if(!/^image\/(png|jpeg|webp)$/.test(f.type)||f.size>2*1024*1024)return toast('Choose a PNG, JPG or WebP picture of at most 2 MB.','err');
+  const d=await api('/api/settings/logo',{method:'PUT',headers:{'content-type':f.type},body:f});
+  if(d.ok){await loadBrand();toast('Logo saved','ok');render()}
+});
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.id==='xfin'){xfSend([...t.files]);t.value=''}
+  else if(t.dataset.c==='xffolder'&&S.xf){S.xf.folder=t.value;xfDraw();xfList()}
+  else if(t.dataset.c==='rcmon'&&S.rc){S.rc.mon=+t.value;cmd('mon',S.rc.room,{n:+t.value})}
+  else if(t.dataset.c==='rcgoto'&&S.rc){cmd('goto',S.rc.room,{n:+t.value});t.blur()}
+});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-a]');if(!b)return;
+  if(b.dataset.a==='stop-prop'){e.stopPropagation();return}
+  if(b.dataset.a==='pick'){e.stopPropagation();A.pick(b);return}
+  if(b.matches('label.drop,[data-a="drop"]'))return;
+  const f=A[b.dataset.a];if(f){e.preventDefault();f(b)}
+});
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.id==='upf'){uploadFiles([...t.files],canPresentNow());t.value=''}
+  if(t.dataset.c==='gotosel'){const r=S.rooms[0];if(r){optTo(+t.value,r.id);cmd('goto',null,{n:+t.value})}t.blur();return}
+  if(t.dataset.c==='fsel')S.fsel=t.value;if(t.dataset.c==='lsel')S.lsel=t.value;if(t.dataset.c==='bsel')S.bsel=t.value;
+});
+document.addEventListener('input',e=>{if(e.target.dataset.c==='lq'){S.lq=e.target.value;const el=e.target,p=el.selectionStart;paint();const n=$('lq');n.focus();n.setSelectionRange(p,p)}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.c==='draft'){e.preventDefault();const b=$('cb'+e.target.dataset.id);b&&b.click()}});
+document.addEventListener('submit',e=>{const n=e.target.dataset.submit;if(n&&SUBMIT[n]){e.preventDefault();SUBMIT[n](e.target)}});
+['dragover','dragenter'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#drop');if(d){e.preventDefault();d.classList.add('over')}}));
+['dragleave','drop'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#drop');if(d){d.classList.remove('over');if(ev==='drop'){e.preventDefault();uploadFiles([...e.dataTransfer.files],canPresentNow())}}}));
+document.addEventListener('keydown',e=>{
+  if(S.rc)return;
+  if(!S.tok||!S.me||e.target.closest('input,select,textarea,.modal')||e.ctrlKey||e.metaKey||e.altKey)return;
+  const k=e.key;
+  if(!staff()){if(k==='Escape'&&S.fs){exitFs();return}if(k==='f'||k==='F'){e.preventDefault();S.fs?exitFs():enterFs();return}}
+  const r=staff()?(S.tab==='monitor'&&S.rooms.find(x=>x.id===S.sel)):S.rooms[0];if(!r||!r.session)return;
+  if(!r.session.total){
+    if(k===' '&&isMedia(r)){e.preventDefault();cmd('playpause',staff()?S.sel:null);return}
+    const KM={ArrowRight:'right',ArrowLeft:'left',ArrowUp:'up',ArrowDown:'down',PageUp:'pgup',PageDown:'pgdn',Home:'home',End:'end',' ':'space'};
+    if(!staff()&&S.fs&&KM[k]){e.preventDefault();cmd('key',null,{k:KM[k]})}
+    return}
+  if(k==='ArrowRight'||k==='PageDown'||k===' '||(k==='ArrowDown'&&S.fs&&!staff())){e.preventDefault();if(!staff())optNav(1);cmd('next',staff()?S.sel:null)}
+  else if(k==='ArrowLeft'||k==='PageUp'||(k==='ArrowUp'&&S.fs&&!staff())){e.preventDefault();if(!staff())optNav(-1);cmd('prev',staff()?S.sel:null)}
+  else if(k==='b'||k==='B'){cmd('blank',staff()?S.sel:null)}
+});
+setInterval(()=>{if(S.tok&&staff()&&S.tab==='sessions')A.refresh()},10000);
+start();
+</script>
+</body>
+</html>
