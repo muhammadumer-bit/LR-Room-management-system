@@ -9,7 +9,7 @@ import asyncio, base64, io, json, logging, os, re, sys, tempfile, threading, tim
 from logging.handlers import RotatingFileHandler
 from concurrent.futures import ThreadPoolExecutor
 
-AGENT_VER = 15   # raised with every agent change; the server updates older agents by itself (see self_update)
+AGENT_VER = 17   # raised with every agent change; the server updates older agents by itself (see self_update)
 HERE = os.path.dirname(os.path.abspath(__file__))
 log = logging.getLogger('agent'); log.setLevel(logging.INFO)
 try: log.addHandler(RotatingFileHandler(os.path.join(HERE, 'agent.log'), maxBytes=500_000, backupCount=1, encoding='utf-8'))
@@ -56,21 +56,42 @@ def ws_connect(url):
     return websockets.connect(url, **kw)
 
 def download(url, dest):
-    with _opener.open(url, timeout=60) as r, open(dest, 'wb') as f:
+    # Large videos need a long window; use a generous socket timeout and keep reading until done.
+    with _opener.open(url, timeout=900) as r, open(dest, 'wb') as f:
         while True:
             b = r.read(1 << 20)
             if not b: break
             f.write(b)
 
 def cleanup():
+    """Delete lecture files left in temp. Retry later if Word/PowerPoint/PDF still holds a lock."""
     global curfile
-    if curfile: leftovers.append(curfile)
-    curfile = None
-    for f in leftovers[:]:   # do not leave lectures on the lecture room PC (a file still open in a player is removed on a later pass)
+    if curfile:
+        if curfile not in leftovers: leftovers.append(curfile)
+        curfile = None
+    for f in leftovers[:]:
         try:
             if os.path.exists(f): os.remove(f)
             leftovers.remove(f)
-        except Exception: pass
+            log.info('Removed lecture file from this PC: %s', f)
+        except Exception:
+            pass
+
+def cleanup_later():
+    cleanup()
+    for _ in range(12):   # apps often keep the file locked for a few seconds after WM_CLOSE
+        if not leftovers: return
+        time.sleep(1.5)
+        cleanup()
+
+def close_window(h):
+    """Ask a lecture window (PDF, Word, video player, …) to close so the file can be deleted."""
+    try:
+        import win32con, win32gui
+        if h and win32gui.IsWindow(h):
+            win32gui.PostMessage(h, win32con.WM_CLOSE, 0, 0)
+    except Exception as e:
+        log.warning('Could not close lecture window: %r', e)
 
 def find_window(stem):
     """Top-level visible window whose title contains the lecture's file name (VLC, Windows Media Player, Acrobat, Edge ...)."""
@@ -152,9 +173,12 @@ def exit_full():
     pc_full = False; log.info('Left full screen on the room display (the lecture stays open)')
 
 def close_current():
-    """Close whatever is open (slide show or PDF) so a new lecture never stacks on an old one."""
-    global pres, pdf_name, media_open, pc_full, open_seq, hi, cap_hwnd, deck_gen
-    pc_full = False; open_seq += 1; hi = False; cap_hwnd = None; deck_gen += 1   # a new deck_gen also stops any slide export still running for the old lecture
+    """Close the lecture on screen and remove its file from this PC (End lecture / new open)."""
+    global ppt, pres, pdf_name, media_open, pc_full, open_seq, hi, cap_hwnd, deck_gen, curfile
+    pc_full = False; open_seq += 1; hi = False; deck_gen += 1   # a new deck_gen also stops any slide export still running for the old lecture
+    hwnd, stem = cap_hwnd, None
+    if pdf_name: stem = os.path.splitext(pdf_name)[0]
+    elif curfile: stem = os.path.splitext(os.path.basename(curfile))[0]
     if media_open:
         try: media_key(0xB2)   # media 'stop' key: stops the video in the PC's player
         except Exception: pass
@@ -164,9 +188,20 @@ def close_current():
         except Exception: pass
         try: pres.Close()
         except Exception: pass
+        try:
+            if ppt is not None and ppt.Presentations.Count == 0:
+                ppt.Quit(); ppt = None
+        except Exception:
+            ppt = None
         pres = None
-    pdf_name = None
-    cleanup()
+    # Close PDF / Word / Excel / media windows opened with the default app so the file unlocks
+    if hwnd: close_window(hwnd)
+    if stem:
+        h = find_window(stem)
+        if h and h != hwnd: close_window(h)
+    pdf_name = None; cap_hwnd = None
+    log.info('Ended lecture on this PC; removing the local file')
+    threading.Thread(target=cleanup_later, daemon=True).start()
 
 def media_key(vk):
     import ctypes
@@ -422,8 +457,14 @@ XROOT = os.path.join(os.environ.get('PUBLIC') or 'C:\\Users\\Public', 'Documents
 XOK = set(('.ppt .pptx .pps .ppsx .pdf .doc .docx .xls .xlsx .odt .ods .odp .rtf .txt .csv .jpg .jpeg .png .gif .bmp .webp .tif .tiff ' + ' '.join(MEDIA)).split())
 _FOLDER = re.compile(r'^[A-Za-z0-9 _-]{1,30}$'); _USER = re.compile(r'^[A-Za-z0-9_-][A-Za-z0-9 _.-]{0,59}$')
 
+def xuser(user):
+    """Folder name for the sender. Email usernames become safe names (no @)."""
+    u = re.sub(r'[^A-Za-z0-9_.-]+', '_', str(user or '')).strip('._-')[:60]
+    return u or 'user'
+
 def xdir(folder, user):
-    if not _FOLDER.match(str(folder or '')) or not _USER.match(str(user or '')): raise ValueError('That folder is not allowed.')
+    user = xuser(user)
+    if not _FOLDER.match(str(folder or '')) or not _USER.match(user): raise ValueError('That folder is not allowed.')
     root = os.path.realpath(XROOT); d = os.path.realpath(os.path.join(root, folder, user))
     if os.path.commonpath([root, d]) != root or d == root: raise ValueError('That folder is not allowed.')
     return d
@@ -545,6 +586,7 @@ async def run():
                         if time.time() - last >= 0.9:   # about every second: the slide counter stays live (and the server hears from us), even when slides are changed on the PC itself
                             st = await get_state(); last = time.time()
                             if st is not None: await ws.send(json.dumps({'t': 'state', 'state': st}))
+                            if leftovers: await loop.run_in_executor(None, cleanup)   # finish deleting files that were still locked after End lecture
                         await asyncio.sleep(0.06 if ctl else 0.4 if hi and not pres else 1)   # remote control: about 7 pictures a second
                 async def reader():
                     async for m in ws:

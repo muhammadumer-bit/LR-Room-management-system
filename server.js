@@ -354,6 +354,24 @@ app.post('/api/users', auth(['admin']), (q, r) => {
   users.push({ user: b.user, pass: hashPw(String(b.pass)), role: b.role, name: String(b.name || b.user).slice(0, 60), mustChange: true });
   wr('users.json', users); audit(q.u.user, `created ${b.role} account ${b.user}`); r.json({ ok: 1 });
 });
+app.put('/api/users/:u', auth(['admin']), (q, r) => {
+  const x = users.find(y => y.user === q.params.u), b = q.body || {}, bad = m => r.status(400).json({ error: m });
+  if (!x) return r.status(404).json({ error: 'Account not found.' });
+  const name = String(b.name || '').trim().slice(0, 60);
+  if (!name) return bad('Enter a full name.');
+  if (!['teacher', 'av', 'admin'].includes(b.role)) return bad('Choose a role.');
+  if (x.user === q.u.user && b.role !== x.role) return bad('You cannot change your own role. Ask another administrator.');
+  if (x.role === 'admin' && b.role !== 'admin' && users.filter(u => u.role === 'admin').length < 2) return bad('Keep at least one administrator account.');
+  const prev = x.role;
+  x.name = name;
+  if (prev !== b.role) {
+    x.role = b.role;
+    sessionsOf(x.user).forEach(s => endSession(s, 'role changed'));
+  }
+  wr('users.json', users);
+  audit(q.u.user, `updated ${x.user} (name "${name}"${prev !== b.role ? ', role ' + prev + ' → ' + b.role : ''})`);
+  push(); r.json({ ok: 1 });
+});
 app.put('/api/users/:u/password', auth(['admin']), (q, r) => {
   const x = users.find(y => y.user === q.params.u), pw = String((q.body || {}).pass || '');
   if (!x || pw.length < MIN_PW) return r.status(400).json({ error: `Password must be at least ${MIN_PW} characters.` });
@@ -453,23 +471,44 @@ app.post('/api/help/:id/reopen', auth(['admin', 'av']), (q, r) => {
 });
 
 /* email settings (admin) */
-/* ---------- branding: system name + logo (data/logo.png|jpg|webp) ---------- */
+/* ---------- branding: system name + logo + login background (data/logo.* , data/loginbg.*) ---------- */
 const LOGO_TYPES = { png: 'image/png', jpg: 'image/jpeg', webp: 'image/webp' };
-const logoFile = () => Object.keys(LOGO_TYPES).map(e => path.join(D, 'logo.' + e)).find(f => fs.existsSync(f));
-const brandInfo = () => { const f = logoFile(); return { name: String(CFG.systemName || DEFAULTS.systemName), logo: f ? Math.round(fs.statSync(f).mtimeMs) : 0 }; };
+const brandFile = prefix => Object.keys(LOGO_TYPES).map(e => path.join(D, prefix + '.' + e)).find(f => fs.existsSync(f));
+const logoFile = () => brandFile('logo');
+const loginBgFile = () => brandFile('loginbg');
+const brandInfo = () => {
+  const logo = logoFile(), bg = loginBgFile();
+  return {
+    name: String(CFG.systemName || DEFAULTS.systemName),
+    logo: logo ? Math.round(fs.statSync(logo).mtimeMs) : 0,
+    bg: bg ? Math.round(fs.statSync(bg).mtimeMs) : 0,
+  };
+};
 const logoKind = b => b.length > 12 && b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47 ? 'png' : b.length > 12 && b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff ? 'jpg' : b.length > 12 && b.toString('latin1', 0, 4) === 'RIFF' && b.toString('latin1', 8, 12) === 'WEBP' ? 'webp' : '';
-app.get('/api/branding', (q, r) => { r.set('Cache-Control', 'no-store'); r.json(brandInfo()); });   // public: the sign-in screen needs it
-app.get('/logo', (q, r) => {
-  const f = logoFile(); if (!f) return r.status(404).end();
-  r.set({ 'Content-Type': LOGO_TYPES[path.extname(f).slice(1)], 'Cache-Control': 'public, max-age=31536000, immutable', 'Content-Security-Policy': "default-src 'none'" }); r.send(fs.readFileSync(f));
-});
-app.put('/api/settings/logo', auth(['admin']), express.raw({ type: () => true, limit: '2mb' }), (q, r) => {
+const sendBrandImg = (q, r, f) => {
+  if (!f) return r.status(404).end();
+  r.set({ 'Content-Type': LOGO_TYPES[path.extname(f).slice(1)], 'Cache-Control': 'public, max-age=31536000, immutable', 'Content-Security-Policy': "default-src 'none'" });
+  r.send(fs.readFileSync(f));
+};
+const putBrandImg = (prefix, maxMb, label) => (q, r) => {
   const b = q.body, kind = Buffer.isBuffer(b) ? logoKind(b) : '';
-  if (!kind) return r.status(400).json({ error: 'Choose a PNG, JPG or WebP picture of at most 2 MB.' });
-  for (const e in LOGO_TYPES) try { fs.unlinkSync(path.join(D, 'logo.' + e)); } catch { }
-  fs.writeFileSync(path.join(D, 'logo.' + kind), b); audit(q.u.user, 'changed the system logo'); r.json({ ok: 1, ...brandInfo() });
-});
-app.delete('/api/settings/logo', auth(['admin']), (q, r) => { for (const e in LOGO_TYPES) try { fs.unlinkSync(path.join(D, 'logo.' + e)); } catch { } audit(q.u.user, 'removed the system logo'); r.json({ ok: 1, ...brandInfo() }); });
+  if (!kind) return r.status(400).json({ error: `Choose a PNG, JPG or WebP picture of at most ${maxMb} MB.` });
+  if (b.length > maxMb * 1024 * 1024) return r.status(400).json({ error: `That picture is too large. Use at most ${maxMb} MB.` });
+  for (const e in LOGO_TYPES) try { fs.unlinkSync(path.join(D, prefix + '.' + e)); } catch { }
+  fs.writeFileSync(path.join(D, prefix + '.' + kind), b);
+  audit(q.u.user, `changed the ${label}`); r.json({ ok: 1, ...brandInfo() });
+};
+const delBrandImg = (prefix, label) => (q, r) => {
+  for (const e in LOGO_TYPES) try { fs.unlinkSync(path.join(D, prefix + '.' + e)); } catch { }
+  audit(q.u.user, `removed the ${label}`); r.json({ ok: 1, ...brandInfo() });
+};
+app.get('/api/branding', (q, r) => { r.set('Cache-Control', 'no-store'); r.json(brandInfo()); });   // public: the sign-in screen needs it
+app.get('/logo', (q, r) => sendBrandImg(q, r, logoFile()));
+app.get('/loginbg', (q, r) => sendBrandImg(q, r, loginBgFile()));
+app.put('/api/settings/logo', auth(['admin']), express.raw({ type: () => true, limit: '2mb' }), putBrandImg('logo', 2, 'system logo'));
+app.delete('/api/settings/logo', auth(['admin']), delBrandImg('logo', 'system logo'));
+app.put('/api/settings/loginbg', auth(['admin']), express.raw({ type: () => true, limit: '6mb' }), putBrandImg('loginbg', 6, 'sign-in background picture'));
+app.delete('/api/settings/loginbg', auth(['admin']), delBrandImg('loginbg', 'sign-in background picture'));
 app.put('/api/settings/name', auth(['admin']), (q, r) => {
   const n = String((q.body || {}).name || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, 60);
   CFG.systemName = n || DEFAULTS.systemName; wr('config.json', CFG); audit(q.u.user, 'changed the system name to "' + CFG.systemName + '"'); r.json({ ok: 1, ...brandInfo() });
@@ -607,9 +646,14 @@ fs.mkdirSync(xdir, { recursive: true });
 const xpending = new Map();   // token -> { room, file, exp }
 const xreq = new Map();       // request id -> { room, done, t }
 const cleanName = n => { n = path.basename(String(n)).replace(/[\u0000-\u001f<>:"/\\|?*]/g, '_').replace(/^[. ]+|[. ]+$/g, '').slice(0, 120); return /^(con|prn|aux|nul|com\d|lpt\d)(\..*)?$/i.test(n) ? '_' + n : n; };
+const cleanUser = n => { n = String(n || '').replace(/[^A-Za-z0-9_.-]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 60); return n || 'user'; };   // email usernames must become a safe folder name (no @)
 const MAGIC = { '.pdf': '%PDF', '.png': '\x89PNG', '.jpg': '\xff\xd8', '.jpeg': '\xff\xd8', '.gif': 'GIF8', '.bmp': 'BM', '.pptx': 'PK', '.ppsx': 'PK', '.docx': 'PK', '.xlsx': 'PK', '.odt': 'PK', '.ods': 'PK', '.odp': 'PK' };
 const looksLike = (ext, head) => !MAGIC[ext] || head.toString('latin1').startsWith(MAGIC[ext]);
 function xdrop(token) { const p = xpending.get(token); xpending.delete(token); if (p) fs.unlink(p.file, () => { }); }
+function failRoomXfers(roomId, error) {
+  for (const [, x] of [...xreq]) if (x.room === roomId) try { x.done({ ok: false, error: error || 'The room PC disconnected. Please send the file again.' }); } catch { }
+  const L = live[roomId]; if (L) L.xbusy = 0;
+}
 app.get('/xfer/:token', (q, r) => {
   const room = rooms.find(x => x.key === String(q.query.key || '')), p = xpending.get(q.params.token);
   if (!room || !p || p.room !== room.id || !agents[room.id] || p.exp < Date.now()) return r.sendStatus(403);
@@ -624,7 +668,7 @@ app.post('/api/rooms/:id/transfer', auth(), (q, r) => {
   if (!room || !L) return refuse(404, 'Unknown lecture room.');
   if (!agents[id]) return refuse(409, `The computer in ${id} is offline.`);
   if (L.owner && L.owner.user !== u.user) return refuse(409, `${L.owner.name} is in control of ${id}.${staff ? ' Press Take control first.' : ''}`);
-  if (L.xbusy && Date.now() - L.xbusy < 300000) return refuse(409, `Another file is being sent to ${id}. Please wait a moment.`);
+  if (L.xbusy && Date.now() - L.xbusy < 300000) return refuse(409, `Another file is being sent to ${id}. Please wait a moment, then try again.`);
   const folder = String(q.query.folder || '');
   if (!XFOLDERS.includes(folder)) return refuse(400, 'Choose one of the allowed folders.');
   let t; try { t = decodeURIComponent(q.headers['x-filename'] || ''); } catch { t = ''; }
@@ -633,7 +677,7 @@ app.post('/api/rooms/:id/transfer', auth(), (q, r) => {
   if (+q.headers['content-length'] > XMAX) return refuse(413, `The file is larger than ${CFG.transferMaxMB || 500} MB.`);
   const token = crypto.randomBytes(18).toString('hex'), file = path.join(xdir, token + ext), out = fs.createWriteStream(file + '.part');
   let n = 0, dead = false;
-  const drop = () => { dead = true; out.destroy(); fs.unlink(file + '.part', () => { }); L.xbusy = 0; };
+  const drop = () => { dead = true; try { out.destroy(); } catch { } fs.unlink(file + '.part', () => { }); L.xbusy = 0; };
   L.xbusy = Date.now();
   q.on('data', c => { n += c.length; if (n > XMAX && !dead) { q.unpipe(out); drop(); refuse(413, `The file is larger than ${CFG.transferMaxMB || 500} MB.`); } });
   q.on('aborted', drop); q.on('error', drop);
@@ -641,21 +685,26 @@ app.post('/api/rooms/:id/transfer', auth(), (q, r) => {
   out.on('finish', () => {
     if (dead) return;
     const bad = m => { fs.unlink(file + '.part', () => { }); L.xbusy = 0; return refuse(400, m); };
-    if (!n) return bad('The file is empty.');
-    const head = Buffer.alloc(8); try { const fd = fs.openSync(file + '.part', 'r'); fs.readSync(fd, head, 0, 8, 0); fs.closeSync(fd); } catch { }
-    if (!looksLike(ext, head)) { audit(u.user, `refused ${t}: content does not match ${ext}`); return bad(`This file does not look like a real ${ext} file.`); }
-    fs.renameSync(file + '.part', file);
+    try {
+      if (!n) return bad('The file is empty.');
+      const head = Buffer.alloc(8); try { const fd = fs.openSync(file + '.part', 'r'); fs.readSync(fd, head, 0, 8, 0); fs.closeSync(fd); } catch { }
+      if (!looksLike(ext, head)) { audit(u.user, `refused ${t}: content does not match ${ext}`); return bad(`This file does not look like a real ${ext} file.`); }
+      fs.renameSync(file + '.part', file);
+    } catch (e) { fs.unlink(file + '.part', () => { }); L.xbusy = 0; return refuse(500, 'The file could not be saved on the server.'); }
     xpending.set(token, { room: id, file, exp: Date.now() + 600000 });
     const rid = crypto.randomBytes(6).toString('hex'), ag = agents[id];
+    let settled = false;
     const done = d => {
+      if (settled) return; settled = true;
       xreq.delete(rid); xdrop(token); L.xbusy = 0;
+      if (r.headersSent) return;
       if (!d.ok) { audit(u.user, `file transfer of ${t} to ${id} failed: ${oneLine(d.error || '')}`); return r.status(502).json({ error: d.error || 'The room PC could not save the file.' }); }
       audit(u.user, `sent ${d.name} (${Math.round(n / 1024)} KB) to ${id} folder ${folder}`); evt(id, u.name, `Sent a file to the room PC: ${d.name}`);
       r.json({ ok: 1, name: d.name, folder });
     };
     xreq.set(rid, { room: id, done, t: Date.now() });
     if (!ag) return done({ ok: false, error: `The computer in ${id} went offline.` });
-    send(ag, { t: 'cmd', a: 'xsave', id: rid, folder, user: cleanName(u.user), name: t, size: n, url: `/xfer/${token}?key=${room.key}` });
+    send(ag, { t: 'cmd', a: 'xsave', id: rid, folder, user: cleanUser(u.user), name: t, size: n, url: `/xfer/${token}?key=${room.key}` });
     setTimeout(() => { const x = xreq.get(rid); if (x) x.done({ ok: false, error: `The computer in ${id} did not confirm the file. Check that it is online and try again.` }); }, 240000);
   });
   q.pipe(out);
@@ -739,8 +788,9 @@ function agentConnection(ws, key, ip) {
   }
   if (agents[room.id] && agents[room.id] !== ws) agents[room.id].close();
   const L = live[room.id] = live[room.id] || {};
+  failRoomXfers(room.id, `The computer in ${room.id} reconnected. Please send the file again.`);
   clearDeck(room.id, true);
-  agents[room.id] = ws; L.online = true; L.seen = Date.now(); L.owner = null; L.session = null; L.serve = null; L.problem = null; L.ver = 0; setTimeout(() => probeVnc(room.id), 300);
+  agents[room.id] = ws; L.online = true; L.seen = Date.now(); L.owner = null; L.session = null; L.serve = null; L.problem = null; L.ver = 0; L.xbusy = 0; setTimeout(() => probeVnc(room.id), 300);
   ws.alive = true; ws.on('pong', () => { ws.alive = true; });
   push(); console.log('Agent online:', room.id, ip); audit('system', `${room.id} (${ip}) came online`); evt(room.id, 'System', 'PC came online');
   ws.on('message', m => {
@@ -773,7 +823,8 @@ function agentConnection(ws, key, ip) {
   ws.on('close', () => {
     if (agents[room.id] !== ws) return;
     delete agents[room.id]; L.rc = null; audit('system', `${room.id} went offline`); evt(room.id, 'System', 'PC went offline');
-    L.online = false; L.session = null; L.owner = null; L.lecture = null; L.serve = null; clearDeck(room.id); push();
+    failRoomXfers(room.id, `The computer in ${room.id} went offline. Please try again when it is online.`);
+    L.online = false; L.session = null; L.owner = null; L.lecture = null; L.serve = null; L.xbusy = 0; clearDeck(room.id); push();
   });
 }
 
@@ -787,13 +838,19 @@ function cmd(ws, c) {
   if (!L || !rooms.some(x => x.id === roomId)) return deny(`${roomId || 'This room'} is not connected. Please call AV staff.`);
   if (!a) return deny('The computer in this lecture room is offline. Please call AV staff.');
   if (c.a === 'take' && staff) { uis.forEach(w => w.rc === roomId && w.s !== s && (endRc(w, `control taken by ${u.name}`), send(w, { t: 'rcfail', m: `${u.name} took control of this room.` }))); L.owner = { user: u.user, name: u.name }; audit(u.user, 'took control of ' + roomId); evt(roomId, u.name, 'Took control of the room'); return push(); }
-  if (L.owner && L.owner.user !== u.user) return c.a === 'input' ? undefined : deny(`${L.owner.name} is in control of this room.${staff ? ' Press Take control to continue.' : ''}`);
+  // Staff may always End lecture (closes the file on the LR PC) even if someone else holds control; other commands still need Take control
+  if (L.owner && L.owner.user !== u.user && !(staff && c.a === 'stop')) return c.a === 'input' ? undefined : deny(`${L.owner.name} is in control of this room.${staff ? ' Press Take control to continue.' : ''}`);
   if (c.a === 'release' && staff) { if (L.owner && L.owner.user === u.user) { if (ws.rc === roomId) endRc(ws, 'control released'); L.owner = null; audit(u.user, 'released control of ' + roomId); evt(roomId, u.name, 'Released control of the room'); push(); } return; }
   /* Remote control: the mouse and keyboard of the room PC (like Remote Desktop). Staff must hold Take control; a faculty login only ever acts on its own room,
      and only a socket that started remote control of THIS room (rcstart) can send input to it. */
   if (c.a === 'rcstart' || c.a === 'vncstart' || c.a === 'input' || c.a === 'mon') {
     const allowed = staff || (s.remote && CFG.allowFacultyControl);
     if ((c.a === 'rcstart' || c.a === 'vncstart') && !allowed) return deny('Remote control of the room PC is switched off for faculty. Please ask AV staff.');
+    // Full access itself takes control for staff — first click must not fail with "Press Take control first"
+    if ((c.a === 'rcstart' || c.a === 'vncstart') && staff && !(L.owner && L.owner.user === u.user)) {
+      uis.forEach(w => w.rc === roomId && w.s !== s && (endRc(w, `control taken by ${u.name}`), send(w, { t: 'rcfail', m: `${u.name} took control of this room.` })));
+      L.owner = { user: u.user, name: u.name }; audit(u.user, 'took control of ' + roomId); evt(roomId, u.name, 'Took control of the room');
+    }
     if (!allowed || (staff && !(L.owner && L.owner.user === u.user))) return c.a === 'rcstart' || c.a === 'vncstart' ? deny('Press Take control first.') : undefined;
     if (c.a === 'vncstart') {
       if (!L.vnc) return send(ws, { t: 'rcfail', m: `VNC is not reachable on ${roomId}. Run this room's VNC installer once on that PC (Lecture rooms tab).` });
@@ -835,8 +892,14 @@ function cmd(ws, c) {
     const name = c.a === 'xopen' ? cleanName(c.name || '') : '', ext = path.extname(name).toLowerCase();
     if (c.a === 'xopen' && (!XEXT.has(ext) || BLOCKED.has(ext))) return deny('That file type cannot be opened from here.');
     const rid = crypto.randomBytes(6).toString('hex');
-    xreq.set(rid, { room: roomId, t: Date.now(), done: d => { xreq.delete(rid); send(ws, { t: 'xres', room: roomId, op: c.a, folder, name: d.name || name, ok: d.ok, error: d.error, files: d.files }); } });
-    L.last = Date.now(); send(a, { t: 'cmd', a: c.a, id: rid, folder, user: cleanName(u.user), name });
+    let settled = false;
+    const done = d => {
+      if (settled) return; settled = true; xreq.delete(rid);
+      send(ws, { t: 'xres', room: roomId, op: c.a, folder, name: d.name || name, ok: d.ok, error: d.error, files: d.files });
+    };
+    xreq.set(rid, { room: roomId, t: Date.now(), done });
+    L.last = Date.now(); send(a, { t: 'cmd', a: c.a, id: rid, folder, user: cleanUser(u.user), name });
+    setTimeout(() => { const x = xreq.get(rid); if (x) x.done({ ok: false, error: `The computer in ${roomId} did not answer. Please try again.` }); }, 60000);
     if (c.a === 'xopen') { audit(u.user, `opened ${name} on ${roomId} (folder ${folder})`); evt(roomId, u.name, `Opened ${name} on the room PC`); }
     return;
   }
@@ -866,7 +929,7 @@ function cmd(ws, c) {
 setInterval(() => {
   const now = Date.now();
   for (const [t, p] of xpending) if (p.exp < now) xdrop(t);
-  for (const [k, x] of xreq) if (now - x.t > 300000) xreq.delete(k);
+  for (const [, x] of [...xreq]) if (now - x.t > 300000) try { x.done({ ok: false, error: 'Timed out waiting for the room PC. Please try again.' }); } catch { }
   for (const id in live) {
     const L = live[id];
     if (!agents[id] || !L.session || !L.owner || now - L.last <= IDLE) continue;

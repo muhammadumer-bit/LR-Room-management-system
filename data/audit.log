@@ -1272,3 +1272,18 @@
 2026-11-20T06:10:10.975Z iftikhar.khan@niu.edu.pk VNC link to LR-8 closed (the PC closed the link; 0 s, 0 bytes sent, 46 received)
 2026-11-20T06:10:10.979Z iftikhar.khan@niu.edu.pk remote control of LR-8 ended (released by user; 0 s, 0 input events)
 2026-11-20T06:10:13.190Z iftikhar.khan@niu.edu.pk started remote control of LR-8 (teacher, from 172.18.32.99)
+2026-11-20T07:24:32.847Z admin signed in from 172.18.32.59
+2026-11-20T08:22:44.847Z admin signed in from 172.18.32.59
+2026-11-20T08:26:04.223Z admin signed out (signed out)
+2026-11-20T08:26:15.129Z admin signed in from 172.18.32.59
+2026-11-20T08:31:09.695Z admin reset the password of faizan.saleem@niu.edu.pk
+2026-11-20T08:31:17.760Z admin updated faizan.saleem@niu.edu.pk (name "Muhammad Faizan Saleem", role admin → teacher)
+2026-11-20T08:31:25.084Z admin signed out (signed out)
+2026-11-20T08:31:37.800Z faizan.saleem@niu.edu.pk signed in remotely from 172.18.32.59
+2026-11-20T08:31:54.564Z faizan.saleem@niu.edu.pk changed own password
+2026-11-20T08:39:25.528Z unknown failed sign-in for "faizan.saleem@niu.edu.pk" from 172.18.32.59
+2026-11-20T08:39:28.028Z faizan.saleem@niu.edu.pk signed in remotely from 172.18.32.59
+2026-11-20T08:54:16.395Z faizan.saleem@niu.edu.pk signed out (signed out)
+2026-11-20T08:54:31.785Z admin signed in from 172.18.32.59
+2026-11-20T08:54:49.154Z admin signed out (signed out)
+2026-11-20T09:19:55.813Z admin signed in from 172.18.32.59

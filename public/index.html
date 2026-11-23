@@ -28,6 +28,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--ff);-webkit-font-smoothing:antialiased}
+body.nav-lock{overflow:hidden}
 h1,h2,h3,p{margin:0}
 h1,h2,h3{font-family:var(--fd);font-weight:650;letter-spacing:-.012em}
 button,input,select{font:inherit;color:inherit}
@@ -79,59 +80,137 @@ td.r,th.r{text-align:right}
 .acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 
 /* ---------- sign-in ---------- */
-.gate{min-height:100vh;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)}
-.stage{position:relative;background:var(--stage);color:var(--stage-ink);padding:44px 52px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
-  background-image:linear-gradient(rgba(143,176,177,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(143,176,177,.07) 1px,transparent 1px);background-size:44px 44px}
-.stage::after{content:"";position:absolute;inset:auto -20% -35% -20%;height:70%;background:radial-gradient(closest-side,rgba(63,183,191,.22),transparent);pointer-events:none}
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--fd);font-weight:650;font-size:16px;letter-spacing:-.01em}
-.mark{width:34px;height:34px;border-radius:9px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center}
-.stage .mark{background:#3fb7bf;color:#04191b}
-.mark.img,.stage .mark.img,.side .mark.img{background:#fff;padding:3px;overflow:hidden}.mark.img img{width:100%;height:100%;object-fit:contain;display:block}
-.stage .mark.img{width:56px;height:56px;border-radius:14px}.side .mark.img{width:44px;height:44px}.brand .bn{line-height:1.2}
-.logoprev{width:72px;height:72px;border-radius:14px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;overflow:hidden;flex:none}.logoprev img{width:100%;height:100%;object-fit:contain}
-.screen{position:relative;z-index:1;width:100%;max-width:560px;aspect-ratio:16/9;margin:28px 0;border:1px solid rgba(143,176,177,.35);border-radius:12px;background:linear-gradient(160deg,rgba(18,58,64,.75),rgba(7,27,30,.9));display:grid;place-content:center;text-align:center;gap:6px;box-shadow:0 30px 60px -30px #000}
-.screen small{color:var(--stage-mu);font-size:13px}
-.screen .room{font-family:var(--fd);font-weight:700;font-size:clamp(44px,6.5vw,84px);letter-spacing:.01em;line-height:1;font-variant-numeric:tabular-nums}
-.screen .room.none{color:var(--stage-mu);font-size:clamp(24px,3vw,36px);font-weight:650}
-.lamp{display:inline-flex;align-items:center;gap:8px;justify-content:center;font-weight:600;font-size:13.5px;margin-top:6px}
+.gate{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.9fr)}
+.stage{position:relative;color:var(--stage-ink);padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate;
+  background:linear-gradient(145deg,#052022 0%,#0a353a 42%,#0b6b73 100%)}
+.stage-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;animation:gateIn .9s ease both}
+.stage-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(105deg,rgba(4,22,24,.55) 0%,rgba(4,22,24,.28) 45%,rgba(4,22,24,.72) 100%),linear-gradient(to top,rgba(4,18,20,.82) 0%,rgba(4,18,20,.15) 42%,rgba(4,18,20,.35) 100%)}
+.stage.has-photo .stage-veil{background:linear-gradient(105deg,rgba(4,22,24,.42) 0%,rgba(4,22,24,.18) 48%,rgba(4,22,24,.7) 100%),linear-gradient(to top,rgba(4,18,20,.88) 0%,rgba(4,18,20,.2) 48%,transparent 100%)}
+.stage-copy{position:relative;z-index:2;max-width:560px;animation:gateUp .7s .12s ease both}
+.stage-logo{display:block;width:min(148px,28vw);height:auto;max-height:148px;object-fit:contain;filter:drop-shadow(0 10px 28px rgba(0,0,0,.35));margin-bottom:22px}
+.stage-mark{width:88px;height:88px;border-radius:22px;background:rgba(63,183,191,.95);color:#04191b;display:grid;place-items:center;margin-bottom:22px;box-shadow:0 16px 40px -18px #000}
+.stage-mark svg{width:40px;height:40px}
+.stage-name{font-family:var(--fd);font-weight:700;font-size:clamp(34px,5.2vw,54px);line-height:1.05;letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
+.stage-lead{margin:0;max-width:34ch;font-size:clamp(15px,1.7vw,18px);line-height:1.45;color:rgba(230,244,243,.88)}
+.stage-room{position:relative;z-index:2;margin-top:clamp(28px,5vh,48px);padding-top:18px;border-top:1px solid rgba(230,244,243,.18);max-width:560px;animation:gateUp .7s .22s ease both}
+.stage-room small{display:block;color:rgba(143,176,177,.95);font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.stage-room .room{font-family:var(--fd);font-weight:700;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+.stage-room .room.none{font-size:clamp(18px,2.4vw,24px);font-weight:650;color:rgba(230,244,243,.72)}
+.lamp{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;margin-top:8px;color:rgba(230,244,243,.9)}
 .lamp i{width:9px;height:9px;border-radius:50%;background:#78909a}
 .lamp.ok i{background:#4cc995;box-shadow:0 0 0 4px rgba(76,201,149,.18)}.lamp.warn i{background:#f0b04a;box-shadow:0 0 0 4px rgba(240,176,74,.18)}
-.stage ul{margin:0;padding:0;list-style:none;position:relative;z-index:1;display:grid;gap:10px;color:var(--stage-mu);max-width:470px}
-.stage li{display:flex;gap:10px;align-items:flex-start}.stage li svg{margin-top:2px;color:#3fb7bf}
-.formside{display:grid;place-items:center;padding:36px 28px;background:var(--paper)}
-.form{width:100%;max-width:380px}
-.form h1{font-size:28px;line-height:1.15}
-.form .lead{margin:8px 0 22px;color:var(--mu)}
-.form .btn.pri{width:100%;min-height:44px;margin-top:20px;font-size:15px}
+@keyframes gateIn{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+@keyframes gateUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--fd);font-weight:650;font-size:16px;letter-spacing:-.01em}
+.mark{width:34px;height:34px;border-radius:9px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;flex:none;overflow:hidden}
+.mark.img{background:transparent;padding:0;box-shadow:none}
+.mark.img img{width:100%;height:100%;object-fit:contain;display:block}
+.side .mark.img{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.92);padding:4px}
+.bar .mark.img{width:36px;height:36px;border-radius:9px;background:#fff;padding:3px}
+.brand .bn{line-height:1.2}
+.logoprev,.bgprev{width:88px;height:88px;border-radius:14px;border:1px solid var(--line);background:var(--raise);display:grid;place-items:center;overflow:hidden;flex:none}
+.bgprev{width:160px;height:96px}.logoprev img,.bgprev img{width:100%;height:100%;object-fit:contain;display:block}.bgprev img{object-fit:cover}
+.formside{display:grid;place-items:center;padding:clamp(28px,5vw,48px) 28px;background:
+  radial-gradient(1200px 500px at 100% -10%,rgba(11,107,115,.1),transparent 55%),
+  radial-gradient(800px 420px at 0% 110%,rgba(11,107,115,.08),transparent 50%),
+  var(--paper)}
+.form{width:100%;max-width:400px;animation:gateUp .65s .08s ease both}
+.form-brand{display:none;align-items:center;gap:12px;margin-bottom:22px}
+.form-brand img{width:52px;height:52px;object-fit:contain;display:block}
+.form-brand .bn{font-family:var(--fd);font-weight:700;font-size:18px;letter-spacing:-.02em;line-height:1.2}
+.form h1{font-size:clamp(26px,3vw,32px);line-height:1.15;letter-spacing:-.02em}
+.form .lead{margin:8px 0 22px;color:var(--mu);font-size:15px}
+.form .btn.pri{width:100%;min-height:46px;margin-top:20px;font-size:15px}
 .note{display:flex;gap:10px;margin-top:18px;padding:12px 14px;border-radius:11px;font-size:13px;line-height:1.45}
 .note svg{margin-top:1px}
 .note.err{background:var(--danger-soft);color:var(--danger)}.note.info{background:var(--brand-soft);color:var(--brand)}
 .foot{margin-top:26px;color:var(--mu);font-size:12.5px}
-@media(max-width:860px){.gate{grid-template-columns:1fr}.stage{padding:28px 24px}.screen{margin:18px 0;max-width:420px}.stage ul{display:none}}
+@media(max-width:900px){
+  .gate{grid-template-columns:1fr}
+  .stage{min-height:42vh;padding:28px 22px 32px;justify-content:flex-end}
+  .stage-name{font-size:clamp(28px,8vw,40px)}
+  .form-brand{display:flex}
+}
+@media(prefers-reduced-motion:reduce){.stage-photo,.stage-copy,.stage-room,.form{animation:none}}
 
 /* ---------- staff shell ---------- */
-.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
-.side{background:var(--stage);color:var(--stage-ink);padding:20px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
-.side .brand{padding:4px 8px 18px}.side .mark{background:#3fb7bf;color:#04191b}
+.shell{display:grid;grid-template-columns:var(--side-w,232px) minmax(0,1fr);min-height:100vh;transition:grid-template-columns .22s ease}
+.shell.nav-collapsed{--side-w:72px}
+.work{min-width:0;display:flex;flex-direction:column;min-height:100vh}
+.side{background:var(--stage);color:var(--stage-ink);padding:16px 12px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh;z-index:30;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain}
+.side-head{display:flex;align-items:center;gap:6px;padding:2px 2px 14px;min-height:44px}
+.side-head .brand{padding:0;flex:1;min-width:0;overflow:hidden}
+.side-head .bn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.side .mark{background:#3fb7bf;color:#04191b;flex:none}
+.side .nav-toggle,.side .side-close{background:transparent;border-color:rgba(143,176,177,.35);color:var(--stage-ink);flex:none}
+.side .nav-toggle:hover,.side .side-close:hover{background:rgba(143,176,177,.14);border-color:rgba(143,176,177,.45)}
+.side-close{display:none}
 .side nav{display:grid;gap:2px}
-.nav{display:flex;align-items:center;gap:11px;padding:9px 11px;border:0;background:none;border-radius:9px;color:var(--stage-mu);font-weight:550;cursor:pointer;text-align:left;width:100%}
+.nav{display:flex;align-items:center;gap:11px;padding:9px 11px;border:0;background:none;border-radius:9px;color:var(--stage-mu);font-weight:550;cursor:pointer;text-align:left;width:100%;min-height:40px}
 .nav:hover{background:rgba(143,176,177,.12);color:var(--stage-ink)}
 .nav.on{background:rgba(63,183,191,.18);color:#fff}
-.nav .n{margin-left:auto;background:#f0b04a;color:#2b1c00;border-radius:99px;font-size:11.5px;font-weight:700;padding:0 7px}
+.nav .nl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav .n{margin-left:auto;background:#f0b04a;color:#2b1c00;border-radius:99px;font-size:11.5px;font-weight:700;padding:0 7px;flex:none}
 .me{margin-top:auto;border-top:1px solid rgba(143,176,177,.2);padding-top:14px;display:grid;gap:10px}
 .me b{display:block;color:#fff}.me span{font-size:12.5px;color:var(--stage-mu)}
 .me .row{display:flex;gap:8px}.me .btn{background:transparent;border-color:rgba(143,176,177,.35);color:var(--stage-ink);flex:1}.me .btn:hover{background:rgba(143,176,177,.14)}.me .btn.icon{flex:0 0 36px}
-.main{padding:28px 32px 48px;min-width:0}
+.me .who{min-width:0}.me .who b,.me .who span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.scrim{display:none;position:fixed;inset:0;background:rgba(5,20,22,.48);z-index:25;border:0;padding:0;cursor:pointer}
+.topbar{display:none;align-items:center;gap:10px;padding:10px 16px;min-height:56px;background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.topbar .brand{min-width:0}.topbar .bn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+.topbar .grow{flex:1}
+.main{padding:28px 32px 48px;min-width:0;flex:1}
 .ph{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
 .ph h1{font-size:24px}.ph p{color:var(--mu);margin-top:2px}
-@media(max-width:900px){.shell{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:10px}.side .brand{padding:0 8px}.side nav{display:flex;flex-wrap:wrap}.me{margin:0 0 0 auto;border:0;padding:0;display:flex;align-items:center}.me div{display:none}.main{padding:20px 16px}}
+
+/* desktop collapsed: icon rail */
+.shell.nav-collapsed .side{padding:14px 10px}
+.shell.nav-collapsed .side-head{justify-content:center;padding-bottom:10px}
+.shell.nav-collapsed .side-head .brand,.shell.nav-collapsed .nav .nl,.shell.nav-collapsed .me .who,.shell.nav-collapsed .me .btn:not(.icon){display:none}
+.shell.nav-collapsed .nav{justify-content:center;padding:10px;gap:0}
+.shell.nav-collapsed .nav .n{position:absolute;top:4px;right:4px;margin:0;padding:0 5px;font-size:10px;min-width:16px;text-align:center}
+.shell.nav-collapsed .nav{position:relative}
+.shell.nav-collapsed .me .row{justify-content:center}
+
+@media(max-width:960px){
+  .shell,.shell.nav-collapsed{grid-template-columns:1fr;--side-w:0px}
+  .side{position:fixed;inset:0 auto 0 0;width:min(300px,88vw);height:100%;height:100dvh;transform:translateX(-105%);transition:transform .22s ease;box-shadow:none;padding:14px 12px 20px}
+  .shell.nav-open .side{transform:translateX(0);box-shadow:12px 0 40px rgba(0,0,0,.28)}
+  .shell.nav-open .scrim{display:block}
+  .side-close{display:inline-flex}
+  .side-head .nav-toggle{display:none}
+  .shell.nav-collapsed .side-head .brand,.shell.nav-collapsed .nav .nl,.shell.nav-collapsed .me .who,.shell.nav-collapsed .me .btn:not(.icon){display:revert}
+  .shell.nav-collapsed .side-head .brand{display:flex}
+  .shell.nav-collapsed .nav{justify-content:flex-start;padding:9px 11px;gap:11px;position:static}
+  .shell.nav-collapsed .nav .n{position:static;margin-left:auto;padding:0 7px;font-size:11.5px}
+  .topbar{display:flex}
+  .main{padding:18px 14px 36px}
+  .ph{margin-bottom:14px}.ph h1{font-size:20px}
+  .ctl{grid-template-columns:repeat(3,1fr)}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+  th,td{padding:10px 12px}
+  .det{position:static}
+}
+@media(max-width:640px){
+  .ctl{grid-template-columns:repeat(2,1fr)}
+  .inline>*{flex:1 1 100%}.inline>.btn{flex:1 1 auto}
+  .acts{justify-content:stretch}.acts .btn{flex:1 1 auto}
+}
 
 /* ---------- monitor ---------- */
-.facts{display:flex;flex-wrap:wrap;gap:26px;margin-bottom:18px;padding:14px 20px}
-.facts div{display:flex;flex-direction:column}.facts b{font-family:var(--fd);font-size:22px;line-height:1.1}.facts span{color:var(--mu);font-size:12.5px}
-.mon{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:20px;align-items:start}
-@media(max-width:1180px){.mon{grid-template-columns:1fr}}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-bottom:18px;padding:6px 8px;align-items:stretch}
+.facts.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.facts>div{display:flex;flex-direction:column;gap:4px;padding:16px 18px;min-width:0;border-right:1px solid var(--line)}
+.facts>div:last-child{border-right:0}
+.facts b{font-family:var(--fd);font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.facts span{color:var(--mu);font-size:12.5px;line-height:1.3}
+@media(max-width:1100px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}.facts>div{border-bottom:1px solid var(--line);padding:14px 16px}.facts>div:nth-child(3n){border-right:0}.facts>div:nth-child(n+4){border-bottom:0}.facts b{font-size:22px}}
+@media(max-width:640px){.facts,.facts.cols-3{grid-template-columns:repeat(2,minmax(0,1fr));padding:4px 6px}.facts>div{padding:12px;border-right:0!important;border-bottom:1px solid var(--line)}.facts>div:nth-child(odd){border-right:1px solid var(--line)!important}.facts>div:nth-last-child(-n+2){border-bottom:0}.facts.cols-3>div:last-child{grid-column:1/-1;border-right:0!important}.facts b{font-size:20px}}
+.mon{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start}
+.mon.has-det{grid-template-columns:minmax(0,1fr) 400px}
+@media(max-width:1180px){.mon,.mon.has-det{grid-template-columns:1fr}}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
 .chip{border:1px solid var(--line2);background:var(--surface);padding:5px 14px;border-radius:99px;cursor:pointer;font-weight:550;color:var(--mu)}
 .chip.on{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
 .fl{font-family:var(--fd);font-weight:650;font-size:13.5px;color:var(--mu);margin:20px 0 10px}
@@ -175,16 +254,17 @@ td.r,th.r{text-align:right}
 @media(max-width:640px){.fsv-bar .btn{min-height:48px;padding:8px 14px}.fsv-bar .btn.nx{min-width:0;flex:1 1 40%}.fsv-keys{display:none}}
 
 /* ---------- faculty console ---------- */
-@media(max-width:640px){.bar .fsl{display:none}.bar{gap:8px;padding:0 10px}.bar .brand>span:last-child{display:none}.plate{font-size:14px;padding:5px 10px}.drop{margin:14px}.lec{padding:12px 14px;gap:10px}.pod{padding:16px}}
+@media(max-width:640px){.bar .fsl{display:none}.bar{gap:6px;padding:8px 10px;height:auto;min-height:56px;flex-wrap:wrap}.bar .brand>span:last-child{display:none}.plate{font-size:13px;padding:5px 10px;max-width:100%}.drop{margin:14px}.lec{padding:12px 14px;gap:10px;flex-wrap:wrap}.lec .acts,.lec .btn{margin-left:0}.pod{padding:16px}.trio{grid-template-columns:1fr}.next{min-height:72px;font-size:18px}}
 .bar{display:flex;align-items:center;gap:16px;padding:0 28px;height:62px;background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-.bar .grow{flex:1}
-.plate{display:inline-flex;align-items:center;gap:10px;background:var(--stage);color:var(--stage-ink);border-radius:10px;padding:6px 14px 6px 12px;font-family:var(--fd);font-weight:700;font-size:16px;letter-spacing:.02em}
-.plate i{width:9px;height:9px;border-radius:50%;background:#4cc995;box-shadow:0 0 0 3px rgba(76,201,149,.2)}
+.bar .grow{flex:1;min-width:8px}
+.plate{display:inline-flex;align-items:center;gap:10px;background:var(--stage);color:var(--stage-ink);border-radius:10px;padding:6px 14px 6px 12px;font-family:var(--fd);font-weight:700;font-size:16px;letter-spacing:.02em;max-width:min(100%,280px);min-width:0}
+.plate #plateTxt,.plate span:not(i){overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.plate i{width:9px;height:9px;border-radius:50%;background:#4cc995;box-shadow:0 0 0 3px rgba(76,201,149,.2);flex:none}
 .plate.off i{background:#f0b04a;box-shadow:0 0 0 3px rgba(240,176,74,.2)}
 .plate small{font-family:var(--ff);font-weight:500;color:var(--stage-mu);font-size:12.5px;letter-spacing:0}
-.who{text-align:right;line-height:1.25}.who b{display:block}.who span{color:var(--mu);font-size:12.5px}
+.who{text-align:right;line-height:1.25;min-width:0}.who b{display:block}.who span{color:var(--mu);font-size:12.5px}
 .console{max-width:1180px;margin:0 auto;padding:28px 28px 56px;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:22px;align-items:start}
-@media(max-width:980px){.console{grid-template-columns:1fr;padding:18px 16px}.bar{padding:0 14px}.who{display:none}}
+@media(max-width:980px){.console{grid-template-columns:1fr;padding:18px 16px}.bar{padding:0 14px}.bar .who{display:none}}
 .drop{display:grid;justify-items:center;gap:6px;text-align:center;padding:22px;border:1.5px dashed var(--line2);border-radius:12px;margin:18px 20px;color:var(--mu);cursor:pointer;transition:background .12s,border-color .12s}
 .drop:hover,.drop.over{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
 .drop b{color:var(--ink)}
@@ -210,6 +290,22 @@ kbd{font:600 11.5px var(--ff);border:1px solid var(--line2);border-bottom-width:
 .idle h2{font-size:19px}.idle p{margin-top:6px}
 .banner{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:11px;margin-bottom:16px;font-size:13.5px}
 .banner.warn{background:var(--amber-soft);color:var(--amber)}.banner.err{background:var(--danger-soft);color:var(--danger)}
+.banner .grow{flex:1}.banner .btn{flex:none;margin-top:-2px}
+.lock-badge{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:11px;background:var(--live-soft);color:var(--live);font-weight:600;margin-bottom:14px}
+.lock-badge b{font-family:var(--fd);font-size:16px;color:var(--ink)}.lock-badge span{font-weight:500;color:var(--mu);font-size:12.5px}
+.room-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 12px}
+.room-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:6px 14px;border-radius:10px;border:1px solid var(--line2);background:var(--surface);cursor:pointer;font-weight:550}
+.room-chip:hover{border-color:var(--brand)}.room-chip:disabled{opacity:.45;cursor:not-allowed}
+.room-chip .pill{pointer-events:none}
+.quick-present{margin:0 20px 14px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--raise);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.quick-present .t{flex:1;min-width:0}.quick-present .t b{display:block}.quick-present .t span{color:var(--mu);font-size:12.5px}
+.xf-hist{margin-top:12px}.xf-hist .xfr{padding:6px 0}
+.rc-tip{padding:8px 12px;background:#1a3a2e;border-bottom:1px solid #2a4a40;color:#c8f0dc;font-size:13px;display:flex;gap:10px;align-items:flex-start}
+.rc-tip .grow{flex:1}.rc-tip .btn{flex:none}
+.fsv-rot{display:none;text-align:center;color:var(--stage-mu);font-size:12.5px;padding:6px 12px}
+.fsv-time{font-variant-numeric:tabular-nums;font-weight:650;color:var(--stage-mu);font-size:13px}
+@media(max-width:640px) and (orientation:portrait){.fsv-rot{display:block}}
+@media(max-width:640px){.lec .btn,.trio .btn,.quick-present .btn{min-height:44px;padding:8px 14px}.room-chip{min-height:44px;flex:1 1 calc(50% - 8px);justify-content:center}}
 
 /* ---------- help requests ---------- */
 .plate.s{font-size:14px;padding:4px 11px 4px 10px}.plate.done i{background:#7d93a0;box-shadow:none}
@@ -298,6 +394,8 @@ code.aid{font:600 12.5px ui-monospace,"Cascadia Mono",Consolas,monospace;backgro
 <symbol id="expand" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
 <symbol id="shrink" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></symbol>
 <symbol id="pc" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
 </defs></svg>
 <div id="app"></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
@@ -307,7 +405,7 @@ code.aid{font:600 12.5px ui-monospace,"Cascadia Mono",Consolas,monospace;backgro
 const $=i=>document.getElementById(i);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ic=(n,c='')=>`<svg class="i ${c}" aria-hidden="true"><use href="#${n}"/></svg>`;
-const S={tok:null,me:null,rooms:[],lects:[],sel:null,tab:'monitor',flt:'all',picked:new Set(),frames:{},logs:[],users:[],sess:[],lq:'',lsel:'',bsel:'',starting:0,lr:null,lrTimer:null,ws:null,offline:false,choices:null,fs:false,fsel:'',deck:{room:'',gen:0,total:0,have:new Set()},opt:null,loginErr:'',loginInfo:false,help:[],hf:'open',mail:null};
+const S={tok:null,me:null,rooms:[],lects:[],sel:null,tab:'monitor',flt:'all',picked:new Set(),frames:{},logs:[],users:[],sess:[],lq:'',lqL:'',uq:'',ur:'all',lsel:'',bsel:'',lecRoom:'',starting:0,lr:null,lrTimer:null,ws:null,offline:false,choices:null,fs:false,fsel:'',deck:{room:'',gen:0,total:0,have:new Set()},opt:null,loginErr:'',loginInfo:false,help:[],hf:'open',mail:null,navOpen:false,navCollapsed:false,xfHist:[],rcTip:false};
 const staff=()=>S.me&&S.me.role!=='teacher';
 const ROLE={teacher:'Faculty',av:'AV operator',admin:'Administrator'};
 
@@ -315,6 +413,27 @@ const ROLE={teacher:'Faculty',av:'AV operator',admin:'Administrator'};
 const setTheme=t=>{if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme;try{t?localStorage.setItem('theme',t):localStorage.removeItem('theme')}catch{}};
 try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch{}
 const toggleTheme=()=>{const dark=document.documentElement.dataset.theme?document.documentElement.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;setTheme(dark?'light':'dark')};
+
+/* ---------- staff sidebar ---------- */
+const navNarrow=()=>matchMedia('(max-width:960px)').matches;
+try{S.navCollapsed=localStorage.getItem('navCollapsed')==='1'}catch{}
+function applyNav(){
+  const sh=document.querySelector('.shell');if(!sh)return;
+  const narrow=navNarrow();
+  if(!narrow)S.navOpen=false;
+  sh.classList.toggle('nav-open',!!S.navOpen);
+  sh.classList.toggle('nav-collapsed',!!S.navCollapsed&&!narrow);
+  document.body.classList.toggle('nav-lock',!!(narrow&&S.navOpen));
+  const open=narrow?!!S.navOpen:!S.navCollapsed;
+  document.querySelectorAll('[data-a="navToggle"]').forEach(b=>{
+    b.setAttribute('aria-expanded',open?'true':'false');
+    b.setAttribute('aria-label',narrow?(open?'Close menu':'Open menu'):(open?'Collapse sidebar':'Expand sidebar'));
+    b.title=b.getAttribute('aria-label');
+  });
+}
+function toggleNav(){if(navNarrow())S.navOpen=!S.navOpen;else{S.navCollapsed=!S.navCollapsed;try{localStorage.setItem('navCollapsed',S.navCollapsed?'1':'0')}catch{}}applyNav()}
+function closeNav(){if(!S.navOpen)return;S.navOpen=false;applyNav()}
+matchMedia('(max-width:960px)').addEventListener('change',()=>{S.navOpen=false;applyNav()});
 
 /* ---------- helpers ---------- */
 const toast=(m,k='')=>{const t=document.createElement('div');t.className='toast '+k;t.innerHTML=(k==='ok'?ic('check'):k==='err'?ic('info'):'')+`<span>${esc(m)}</span>`;$('toasts').appendChild(t);setTimeout(()=>t.remove(),k==='err'?6000:3500)};
@@ -336,7 +455,7 @@ async function api(u,o={}){
 function ask({title,text,fields=[],ok='Confirm',danger=false,cancel=true,submit}){
   return new Promise(res=>{
     const m=document.createElement('div');m.className='modal';
-    m.innerHTML=`<form class="dlg" role="dialog" aria-modal="true" aria-labelledby="dt"><h2 id="dt">${esc(title)}</h2>${text?`<p class="mu">${esc(text)}</p>`:''}${fields.map(f=>`<label class="fld"><span>${esc(f.label)}</span>${f.type==='select'?`<select name="${f.name}">${f.options.map(([v,l])=>`<option value="${v}">${esc(l)}</option>`).join('')}</select>`:f.type==='textarea'?`<textarea name="${f.name}" rows="3" maxlength="${f.max||500}" placeholder="${esc(f.ph||'')}"></textarea>`:`<input name="${f.name}" type="${f.type||'text'}" value="${esc(f.value||'')}" placeholder="${esc(f.ph||'')}" autocomplete="${f.ac||'off'}">`}</label>`).join('')}<div class="note err" hidden></div><div class="acts">${cancel?'<button type="button" class="btn" data-x>Cancel</button>':''}<button class="btn ${danger?'dng-solid':'pri'}">${esc(ok)}</button></div></form>`;
+    m.innerHTML=`<form class="dlg" role="dialog" aria-modal="true" aria-labelledby="dt"><h2 id="dt">${esc(title)}</h2>${text?`<p class="mu">${esc(text)}</p>`:''}${fields.map(f=>`<label class="fld"><span>${esc(f.label)}</span>${f.type==='select'?`<select name="${f.name}">${f.options.map(([v,l])=>`<option value="${v}" ${String(f.value??'')===String(v)?'selected':''}>${esc(l)}</option>`).join('')}</select>`:f.type==='textarea'?`<textarea name="${f.name}" rows="3" maxlength="${f.max||500}" placeholder="${esc(f.ph||'')}"></textarea>`:`<input name="${f.name}" type="${f.type||'text'}" value="${esc(f.value||'')}" placeholder="${esc(f.ph||'')}" autocomplete="${f.ac||'off'}" ${f.ro?'readonly':''} ${f.max?`maxlength="${f.max}"`:''}>`}</label>`).join('')}<div class="note err" hidden></div><div class="acts">${cancel?'<button type="button" class="btn" data-x>Cancel</button>':''}<button class="btn ${danger?'dng-solid':'pri'}">${esc(ok)}</button></div></form>`;
     document.body.appendChild(m);
     const f=m.querySelector('form'),err=m.querySelector('.note'),close=v=>{m.remove();document.removeEventListener('keydown',esc_);res(v)};
     const esc_=e=>{if(e.key==='Escape'&&cancel)close(null)};document.addEventListener('keydown',esc_);
@@ -360,10 +479,11 @@ function exitFs(){const was=S.fs;S.fs=false;{const r1=S.rooms[0];if(was&&S.me&&S
 ['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,()=>{if(S.fs&&!S.rc&&!document.fullscreenElement&&!document.webkitFullscreenElement)exitFs()}));   // closing the remote desktop must not throw the teacher out of the presenter view; leaving full screen never touches the lecture on the room PC
 
 /* ---------- boot / auth ---------- */
-const BR={name:'Lecture Room Control',logo:0};
-const brandMark=()=>`<span class="mark ${BR.logo?'img':''}">${BR.logo?`<img src="/logo?v=${BR.logo}" alt="">`:ic('monitor')}</span>`;
+const BR={name:'Lecture Room Control',logo:0,bg:0};
+const brandMark=()=>`<span class="mark ${BR.logo?'img':''}" aria-hidden="true">${BR.logo?`<img src="/logo?v=${BR.logo}" alt="">`:ic('monitor')}</span>`;
+const brandLogoHero=()=>BR.logo?`<img class="stage-logo" src="/logo?v=${BR.logo}" alt="${esc(BR.name)}">`:`<span class="stage-mark" aria-hidden="true">${ic('monitor')}</span>`;
 function applyBrand(){document.title=BR.name;const l=document.querySelector('link[rel=icon]');if(l&&BR.logo){l.type='image/png';l.href='/logo?v='+BR.logo}}
-async function loadBrand(){try{const d=await(await fetch('/api/branding',{cache:'no-store'})).json();BR.name=d.name||BR.name;BR.logo=d.logo|0}catch{}applyBrand()}
+async function loadBrand(){try{const d=await(await fetch('/api/branding',{cache:'no-store'})).json();BR.name=d.name||BR.name;BR.logo=d.logo|0;BR.bg=d.bg|0}catch{}applyBrand()}
 async function start(){
   await loadBrand();
   const t=store.get('tok');
@@ -375,7 +495,7 @@ function showLogin(msg='',info=false){
 }
 async function loadLr(){try{S.lr=await fetch('/api/lr').then(r=>r.json())}catch{S.lr=null}if(!S.tok)paintLr()}
 function signedOut(msg){
-  rcGone();S.tok=null;S.me=null;store.del('tok');
+  rcGone();xfClose();S.tok=null;S.me=null;store.del('tok');
   try{S.ws&&(S.ws.onclose=null,S.ws.close())}catch{}
   exitFs();S.ws=null;S.rooms=[];S.choices=null;S.sel=null;S.selOff=0;S.picked.clear();S.tab='monitor';S.starting=0;S.offline=false;S.help=[];
   showLogin(msg||'',true);
@@ -415,14 +535,15 @@ function connect(){
   try{S.ws&&(S.ws.onclose=null,S.ws.close())}catch{}
   const ws=S.ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws?token='+S.tok);
   ws.onopen=()=>{if(S.offline){S.offline=false;paint()}
-    if(S.rc){S.rc.ready=0;S.rc.msg='Reconnected to the server. Resuming…';S.rc.cls='help';cmd(S.rc.vnc?'vncstart':'rcstart',S.rc.room);rcBar()}};   // a dropped connection must not silently end remote control
+    if(S.rc){S.rc.ready=0;S.rc.msg='Reconnected to the server. Resuming…';S.rc.cls='help';cmd(S.rc.vnc?'vncstart':'rcstart',S.rc.room);rcBar()}
+    if(S.xf)xfList()};   // a dropped connection must not silently end remote control or leave Files stuck on Loading…
   ws.onmessage=e=>{const d=JSON.parse(e.data);
     if(d.t==='rooms'){S.rooms=d.rooms;S.choices=d.choices||[];if(!staff()&&S.me)S.me.room=S.rooms[0]?S.rooms[0].id:null;if(!S.rooms.some(r=>r.id===S.sel))S.sel=null;if(!S.sel&&!S.selOff&&staff())S.sel=S.rooms[0]&&S.rooms[0].id||null;if(!staff()&&!S.sel)S.sel=S.rooms[0]&&S.rooms[0].id||null;
-      if(S.starting&&S.rooms.some(r=>r.session))S.starting=0;if(S.rc)rcCheck();paint();if(S.xf)xfPaintList()}
+      if(S.starting&&S.rooms.some(r=>r.session))S.starting=0;if(S.rc)rcCheck();paint();if(S.xf){if(S.xf.files===null)xfList();else xfPaintList()}}
     else if(d.t==='deck'){S.deck={room:d.room,gen:d.gen,total:d.total,have:new Set(d.have)};if(S.fs)paint()}
     else if(d.t==='help'){S.help=d.tickets;paint()}
     else if(d.t==='note'){toast(d.m,'ok')}
-    else if(d.t==='rcfail'){rcClose(d.m)}
+    else if(d.t==='rcfail'){rcFail(d.m)}
     else if(d.t==='vnc'){vncStart(d)}
     else if(d.t==='rcready'){if(S.rc&&S.rc.room===d.room){S.rc.ready=1;S.rc.lost=0;S.rc.msg='Connected: your mouse and keyboard work on '+d.room;S.rc.cls='live';rcBar()}}
     else if(d.t==='xres'){xfResult(d)}
@@ -487,34 +608,59 @@ async function vncStart(d){
     rfb.scaleViewport=true;rfb.background='#0b0d10';rfb.focusOnClick=true;rfb.qualityLevel=6;rfb.compressionLevel=2;
     rfb.addEventListener('connect',()=>{q.ready=1;q.lost=0;q.msg='Connected: your mouse and keyboard work on '+d.room;q.cls='live';rcBar();rfb.focus()});
     rfb.addEventListener('credentialsrequired',()=>rfb.sendCredentials({password:d.pass}));
-    rfb.addEventListener('securityfailure',()=>{if(S.rc===q)rcClose('The room PC did not accept the VNC password. Press Full access again: the older remote control is used until this room\'s VNC installer is run again on that PC.')});
-    rfb.addEventListener('disconnect',e=>{if(S.rc===q&&!q.closing&&q.rfb===rfb)rcClose(e.detail&&e.detail.clean?'The Full access session ended.':'The link to the room PC was lost.')});
-  }catch(e){if(S.rc===q)rcClose('The VNC viewer could not start ('+(e&&e.message||e)+'). Run npm install on the server and reload this page.')}
+    rfb.addEventListener('securityfailure',()=>{if(S.rc===q)rcFail('The room PC did not accept the VNC password.')});
+    rfb.addEventListener('disconnect',e=>{if(S.rc===q&&!q.closing&&q.rfb===rfb){if(q.ready)rcClose(e.detail&&e.detail.clean?'The Full access session ended.':'The link to the room PC was lost.');else rcFail('The VNC link to the room PC closed before it was ready.')}});
+  }catch(e){if(S.rc===q)rcFail('The VNC viewer could not start ('+(e&&e.message||e)+').')}
+}
+/** VNC password miss / unreachable: try the next saved password, then fall back to agent remote control — no second click needed. */
+function rcFail(m){
+  const q=S.rc;if(!q||q.closing)return;
+  if(q.failLock&&Date.now()-q.failLock<2000)return;   // securityfailure + server rcfail often arrive together
+  q.failLock=Date.now();
+  const retryPw=/password|Press Full access again|did not accept|TightVNC|VNC/i.test(m||'');
+  if(q.vnc&&retryPw&&(q.vncTries||0)<4){
+    q.vncTries=(q.vncTries||0)+1;q.ready=0;
+    q.msg='Trying another way to reach the room PC…';q.cls='help';rcBar();
+    try{q.rfb&&(q.closing=1,q.rfb.disconnect(),q.closing=0)}catch{}q.rfb=null;
+    cmd('vncstart',q.room);return;
+  }
+  if(q.vnc&&!q.fellBack){
+    q.fellBack=1;q.vnc=false;q.ready=0;q.vncTries=0;
+    q.msg='Connecting with backup control…';q.cls='help';
+    try{q.rfb&&(q.closing=1,q.rfb.disconnect(),q.closing=0)}catch{}q.rfb=null;
+    clearTimeout(q.chk);rcDraw();
+    cmd('rcstart',q.room);
+    q.chk=setTimeout(()=>{if(S.rc&&S.rc.room===q.room&&!S.rc.ready){S.rc.msg='The room PC has not answered. Run its Installer once, then try again.';S.rc.cls='help';rcBar()}},5000);
+    toast('Using backup Full access (agent).','ok');return;
+  }
+  rcClose(m);
 }
 function rcOpen(room){
   const r=S.rooms.find(x=>x.id===room);
   if(S.rc)return;
   if(!r||!r.online)return toast('This room is not online.','err');
   if(!S.ws||S.ws.readyState!==1)return toast('Not connected to the server yet.','err');
-  if(staff())cmd('take',room);          // staff must hold the room first; the server refuses input otherwise
-  const vnc=!!r.vnc;   // VNC (TightVNC on the PC) when the server can reach it, otherwise the older remote control
+  // Prefer VNC when reachable; if it fails, rcFail falls back to agent RC automatically
+  const vnc=!!r.vnc&&!r.vncAuthBad;
   cmd(vnc?'vncstart':'rcstart',room);
-  S.rc={vnc,room,down:new Set(),mv:null,tm:0,mod:new Set(),pres:false,keys:false,txt:false,drag:false,ready:0,kbPrev:RC_PAD,mon:0,lost:0,msg:'',cls:'',sig:{}};
+  S.rc={vnc,room,down:new Set(),mv:null,tm:0,mod:new Set(),pres:false,keys:false,txt:false,drag:false,ready:0,kbPrev:RC_PAD,mon:0,lost:0,msg:'',cls:'',sig:{},vncTries:0,fellBack:0};
   rcDraw();
-  S.rc.chk=setTimeout(()=>{if(S.rc&&S.rc.room===room&&!S.rc.ready){S.rc.msg=S.rc.vnc?'The VNC service on the room PC has not answered. Check that TightVNC is running there.':'The room PC has not answered. Run its Installer once, then try again.';S.rc.cls='help';rcBar()}},S.rc.vnc?10000:5000);
+  S.rc.chk=setTimeout(()=>{if(S.rc&&S.rc.room===room&&!S.rc.ready){if(S.rc.vnc&&!S.rc.fellBack)rcFail('The VNC service on the room PC has not answered.');else{S.rc.msg='The room PC has not answered. Run its Installer once, then try again.';S.rc.cls='help';rcBar()}}},S.rc.vnc?8000:5000);
   try{if(!document.fullscreenElement&&!document.webkitFullscreenElement){const el=$('rc'),p=(el.requestFullscreen||el.webkitRequestFullscreen).call(el);p&&p.catch&&p.catch(()=>{})}   // already in the presenter's full screen: stay in it
     if(navigator.keyboard&&navigator.keyboard.lock)navigator.keyboard.lock().catch(()=>{})}catch{}   // lets Esc, Tab and shortcuts reach the room PC in full screen (Chrome / Edge)
+  if(!staff()&&!rcTipSeen())S.rcTip=true;
 }
 function rcDraw(){
   let el=$('rc');if(!el){el=document.createElement('div');el.id='rc';el.className='rc';document.body.appendChild(el)}
   const id=S.rc.room;
-  el.innerHTML=`<div id="rctop" class="rc-top"></div><div id="rcdr"></div><div class="rc-main ${S.rc.vnc?'vnc':''}" id="rcscr">${S.rc.vnc?'<div id="vncbox" class="vnc-box"></div>':`<img data-f="${esc(id)}" alt="Screen of ${esc(id)}" draggable="false" ${S.frames[id]?`src="data:image/jpeg;base64,${S.frames[id]}"`:''}><div id="rccur" class="rc-cur"></div>`}</div><div id="rckeys"></div><textarea id="rckb" class="rc-kb" aria-label="Keyboard input for the room PC" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-rcfree></textarea>`;
+  el.innerHTML=`<div id="rctip"></div><div id="rctop" class="rc-top"></div><div id="rcdr"></div><div class="rc-main ${S.rc.vnc?'vnc':''}" id="rcscr">${S.rc.vnc?'<div id="vncbox" class="vnc-box"></div>':`<img data-f="${esc(id)}" alt="Screen of ${esc(id)}" draggable="false" ${S.frames[id]?`src="data:image/jpeg;base64,${S.frames[id]}"`:''}><div id="rccur" class="rc-cur"></div>`}</div><div id="rckeys"></div><textarea id="rckb" class="rc-kb" aria-label="Keyboard input for the room PC" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-rcfree></textarea>`;
   const kb=$('rckb');kb.value=RC_PAD;kb.addEventListener('input',rcKbInput);
   if(!S.rc.vnc)rcTouch($('rcscr'));rcBar();
 }
 function rcBar(){   // top bar, presentation drawer and key tray: re-drawn only when they changed, so a click is never lost
   const q=S.rc;if(!q||!$('rctop'))return;
   const id=q.room,r=S.rooms.find(x=>x.id===id)||{},mons=r.mons||1,msg=q.msg||('Connecting to '+id+'…');
+  const tipEl=$('rctip');if(tipEl)tipEl.innerHTML=S.rcTip?`<div class="rc-tip"><span class="grow"><b>Quick guide:</b> move the mouse and type as on a normal PC. Use <b>Files</b> (or drop / Ctrl+V) to send slides or video. <b>Exit</b> leaves control but keeps the lecture running.</span><button class="btn s" data-a="rcTipOk">Got it</button></div>`:'';
   const more=q.more?`<button class="btn s ${q.pres?'pri':''}" data-a="rcPres" title="Next, previous, full screen, end lecture">Presentation</button>
    ${S.me.xfer?`<button class="btn s" data-a="xfOpen" data-id="${esc(id)}">Files</button>`:''}
    <button class="btn s ${q.keys?'pri':''}" data-a="rcKeys">Keys</button>
@@ -620,7 +766,9 @@ function rcTouch(el){
 
 /* ---------- file transfer: send files from this device to a folder on the room PC, then open them there ---------- */
 function xfOpen(room){
-  if(!room||$('xf'))return;
+  if(!room)return;
+  if($('xf')){if(S.xf&&S.xf.room===room)return;xfClose()}
+  if(!S.me||!S.me.xfer)return toast('Sending files to the room PC is not available for this account.','err');
   S.xf={room,folder:(S.me.xfolders||['Lectures'])[0],files:null,items:[],busy:false};
   const el=document.createElement('div');el.id='xf';el.className='xf';document.body.appendChild(el);xfDraw();xfList();
 }
@@ -628,9 +776,9 @@ function xfClose(){S.xf=null;const el=$('xf');el&&el.remove()}
 function xfDraw(){
   const x=S.xf,el=$('xf');if(!x||!el)return;
   el.innerHTML=`<div class="dlg" role="dialog" aria-label="Send files to the room PC"><h2>Send files to ${esc(x.room)}</h2>
-   <p class="mu sm">Saved on the room PC in <b>MCSCMS Files › ${esc(x.folder)}</b>, in a folder just for you. Slides, PDF, Word, Excel, text, images, audio and video, up to ${S.me.xmaxMB||500} MB each. Programs and scripts are never accepted.</p>
+   <p class="mu sm">Saved on the room PC in <b>MCSCMS Files › ${esc(x.folder)}</b>, in a folder just for you. Slides, PDF, Word, Excel, text, images, audio and video, up to ${S.me.xmaxMB||500} MB each. Programs and scripts are never accepted. You can also drop or paste files while Full access is open.</p>
    <label class="sm" for="xffolder">Save in</label><select id="xffolder" data-c="xffolder">${(S.me.xfolders||['Lectures']).map(f=>`<option ${f===x.folder?'selected':''}>${esc(f)}</option>`).join('')}</select>
-   <label class="drop" id="xfdrop"><input type="file" id="xfin" hidden multiple>${ic('upload')}<span><b>Choose files to send</b></span><span class="sm">or drop them here</span></label>
+   <label class="drop" id="xfdrop"><input type="file" id="xfin" hidden multiple>${ic('upload')}<span><b>Choose files to send</b></span><span class="sm">or drop them here · paste also works (Ctrl+V)</span></label>
    <div id="xfitems" aria-live="polite"></div>
    <div class="sec" style="margin-top:12px">Already on the room PC (${esc(x.folder)})</div><div id="xflist"></div>
    <div class="acts"><button class="btn" data-a="xfClose">Close</button></div></div>`;
@@ -639,7 +787,7 @@ function xfDraw(){
 function xfPaintItems(){
   const el=$('xfitems');if(!el||!S.xf)return;
   const txt=i=>i.st==='wait'?'Waiting…':i.st==='up'?'Uploading '+i.pct+'%':i.st==='saving'?'Saving on the room PC…':i.msg||'';
-  el.innerHTML=S.xf.items.slice(-6).map(i=>`<div class="xfi ${i.st}"><div class="nm">${esc(i.name)}</div><div class="xfbar"><i style="width:${i.st==='done'?100:i.st==='saving'?100:i.pct}%"></i></div><div class="sm">${esc(txt(i))}</div></div>`).join('');
+  el.innerHTML=S.xf.items.slice(-8).map(i=>`<div class="xfi ${i.st}"><div class="nm">${esc(i.name)}</div><div class="xfbar"><i style="width:${i.st==='done'?100:i.st==='saving'?100:i.pct}%"></i></div><div class="sm">${esc(txt(i))}</div></div>`).join('');
 }
 function xfPaintList(){
   const el=$('xflist'),x=S.xf;if(!el||!x)return;
@@ -655,8 +803,14 @@ function xfResult(d){
   if(d.op==='xopen'){d.ok?toast(`Opened ${d.name} on ${d.room}.${S.me.ctl&&!S.rc?' Use Full access to PC to work with it.':''}`,'ok'):toast(d.error||'The room PC could not open that file.','err')}
 }
 async function xfSend(files){
-  const x=S.xf;if(!x)return;
-  for(const f of files){
+  const list=[...files].filter(Boolean);if(!list.length)return;
+  let x=S.xf;
+  if(!x){
+    const room=(S.rc&&S.rc.room)||(!staff()&&S.me&&S.me.room)||null;
+    if(!room)return toast('Connect to a lecture room first, then send files.','err');
+    xfOpen(room);x=S.xf;if(!x)return;
+  }
+  for(const f of list){
     const it={name:f.name,pct:0,st:'wait',msg:''};x.items.push(it);xfPaintItems();
     const why=fileProblem(f);if(why){it.st='err';it.msg=why;xfPaintItems();continue}
     if(f.size>(S.me.xmaxMB||500)*1048576){it.st='err';it.msg=`it is larger than ${S.me.xmaxMB||500} MB.`;xfPaintItems();continue}
@@ -666,21 +820,41 @@ async function xfSend(files){
       q.upload.onprogress=e=>{if(e.lengthComputable){it.pct=Math.round(e.loaded/e.total*100);it.st=it.pct>=100?'saving':'up';xfPaintItems()}};
       q.onload=()=>{let d={};try{d=JSON.parse(q.responseText)}catch{}
         if(q.status===401){signedOut('Your sign-in ended. Please sign in again.');return res()}
-        if(q.status===200&&d.ok){it.st='done';it.name=d.name||f.name;it.pct=100;it.msg='Saved on '+x.room+' in '+d.folder;if(S.xf===x)xfList()}else{it.st='err';it.msg=d.error||'The upload failed.'}
+        if(q.status===200&&d.ok){it.st='done';it.name=d.name||f.name;it.pct=100;it.msg='Saved on '+x.room+' in '+d.folder;pushXfHist(x.room,it.name);toast(it.name+' saved on '+x.room,'ok');try{navigator.vibrate&&navigator.vibrate(30)}catch{}if(S.xf===x)xfList()}
+        else{it.st='err';it.msg=d.error||(q.status===409?'Another file is still being sent. Wait a few seconds and try again.':'The upload failed.')}
         xfPaintItems();res()};
       q.onerror=()=>{it.st='err';it.msg='Network error. Check the connection and try again.';xfPaintItems();res()};
-      q.send(f);
+      q.ontimeout=()=>{it.st='err';it.msg='Timed out. Check that the room PC is online and try again.';xfPaintItems();res()};
+      q.timeout=300000;q.send(f);
     });
   }
 }
-['dragover','dragenter'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#xfdrop');if(d){e.preventDefault();d.classList.add('over')}}));
-['dragleave','drop'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#xfdrop');if(d){d.classList.remove('over');if(ev==='drop'){e.preventDefault();xfSend([...e.dataTransfer.files])}}}));
+function xfTakeFiles(e){
+  const cd=e.clipboardData||e.dataTransfer;if(!cd)return null;
+  const out=[];if(cd.files&&cd.files.length)out.push(...cd.files);
+  if(!out.length&&cd.items)for(const it of cd.items){if(it.kind==='file'){const f=it.getAsFile();if(f)out.push(f)}}
+  return out.length?out:null;
+}
+['dragover','dragenter'].forEach(ev=>document.addEventListener(ev,e=>{
+  const d=e.target.closest&&(e.target.closest('#xfdrop')||e.target.closest('#rc'));
+  if(d){e.preventDefault();if(d.id==='xfdrop')d.classList.add('over')}
+}));
+['dragleave','drop'].forEach(ev=>document.addEventListener(ev,e=>{
+  const drop=e.target.closest&&e.target.closest('#xfdrop'),rc=e.target.closest&&e.target.closest('#rc');
+  if(drop){drop.classList.remove('over');if(ev==='drop'){e.preventDefault();xfSend([...e.dataTransfer.files])}}
+  else if(rc&&ev==='drop'){const files=xfTakeFiles(e);if(files){e.preventDefault();e.stopPropagation();xfSend(files)}}
+}));
+document.addEventListener('paste',e=>{
+  if(e.target.closest('input,textarea,[contenteditable]'))return;
+  const files=xfTakeFiles(e);if(!files)return;
+  if($('xf')||$('rc')||(S.me&&S.me.xfer&&(S.rc||(!staff()&&S.me.room)))){e.preventDefault();xfSend(files)}
+});
 
 /* ---------- rendering ---------- */
 function render(){
   const app=$('app');
-  if(!S.tok){app.innerHTML=loginView();paintLr();paintLoginErr();const u=$('u');u&&u.focus();return}
-  app.innerHTML=staff()?staffShell():facultyShell();paint();
+  if(!S.tok){document.body.classList.remove('nav-lock');app.innerHTML=loginView();paintLr();paintLoginErr();const u=$('u');u&&u.focus();return}
+  app.innerHTML=staff()?staffShell():facultyShell();if(staff())applyNav();paint();
 }
 function paint(){ // refresh only the live region, and keep whatever people were typing
   if(!S.tok)return;
@@ -690,18 +864,23 @@ function paint(){ // refresh only the live region, and keep whatever people were
   const fname=a&&el.contains(a)?a.name:null,pos=fname&&a.selectionStart;
   if(staff()){el.innerHTML=staffTab();const b=$('offline');if(b)b.hidden=!S.offline;
     const n=$('navhelp'),c=S.help.filter(t=>t.status==='open').length;if(n){n.textContent=c;n.hidden=!c}}
-  else{el.innerHTML=facultyConsole();const p=$('plate'),r=S.rooms[0];if(p){p.classList.toggle('off',!(r&&r.online));const t=$('plateTxt');if(t)t.textContent=r?r.id:'No room selected'}
+  else{el.innerHTML=facultyConsole();const p=$('plate'),r=S.rooms[0],showing=r&&r.session&&(!r.owner||r.owner.user===S.me.user);if(p){p.classList.toggle('off',!(r&&r.online));const t=$('plateTxt');if(t)t.textContent=r?(showing?'Showing on ':'')+r.id:'No room selected'}
     const w=$('whoSub');if(w)w.textContent=r?(S.me.remote?'Sharing to '+r.id:'Signed in on '+r.id):'Signed in on this device'}
   for(const k in keep){const n=el.querySelector(`[name="${k}"]`);if(n&&n.type!=='file'&&n.value!==keep[k])n.value=keep[k]}
   if(fname){const n=el.querySelector(`[name="${fname}"]`);if(n){n.focus();try{n.setSelectionRange(pos,pos)}catch{}}}
 }
 
 /* sign-in screen */
-const loginView=()=>`<div class="gate"><section class="stage" aria-label="This computer">
- <div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div>
- <div class="screen"><small id="lrCap">Checking this computer…</small><div class="room none" id="lrName">&nbsp;</div><div class="lamp" id="lrLamp"><i></i><span id="lrTxt"></span></div></div>
- <ul><li>${ic('lock')}<span>Sign in on the lecture room PC, or from your own phone or laptop and pick the room.</span></li><li>${ic('play')}<span>Your slides open on the projector of that one room only, with no cables and nobody else needed.</span></li></ul></section>
- <section class="formside"><form class="form" onsubmit="doLogin(event)"><h1>Sign in</h1><p class="lead">Use your college account.</p>
+const loginView=()=>`<div class="gate"><section class="stage${BR.bg?' has-photo':''}" aria-label="${esc(BR.name)}">
+ ${BR.bg?`<img class="stage-photo" src="/loginbg?v=${BR.bg}" alt="">`:''}
+ <div class="stage-veil" aria-hidden="true"></div>
+ <div class="stage-copy">${brandLogoHero()}<h1 class="stage-name">${esc(BR.name)}</h1>
+ <p class="stage-lead">Present to the lecture room projector from this PC, or from your own phone or laptop.</p></div>
+ <div class="stage-room"><small id="lrCap">Checking this computer…</small><div class="room none" id="lrName">&nbsp;</div><div class="lamp" id="lrLamp"><i></i><span id="lrTxt"></span></div></div>
+</section>
+ <section class="formside"><form class="form" onsubmit="doLogin(event)">
+ <div class="form-brand">${BR.logo?`<img src="/logo?v=${BR.logo}" alt="">`:`<span class="mark">${ic('monitor')}</span>`}<span class="bn">${esc(BR.name)}</span></div>
+ <h1>Sign in</h1><p class="lead">Use your college account.</p>
  <label class="fld"><span>Username or email</span><input id="u" name="user" autocomplete="username" autocapitalize="none" spellcheck="false" required></label>
  <label class="fld"><span>Password</span><input id="p" name="pass" type="password" autocomplete="current-password" required></label>
  <div id="lerr"></div><button class="btn pri">Sign in</button>
@@ -718,18 +897,29 @@ function paintLr(){
 }
 function paintLoginErr(){const e=$('lerr');if(!e)return;e.innerHTML=S.loginErr?`<div class="note ${S.loginInfo?'info':'err'}" role="alert">${ic('info')}<span>${esc(S.loginErr)}</span></div>`:''}
 
+/* faculty helpers */
+const prefRoom=()=>{try{return localStorage.getItem('mcscmsPrefRoom')||''}catch{return ''}};
+const setPrefRoom=id=>{try{id?localStorage.setItem('mcscmsPrefRoom',id):localStorage.removeItem('mcscmsPrefRoom')}catch{}};
+const rcTipSeen=()=>{try{return localStorage.getItem('mcscmsRcTip')==='1'}catch{return true}};
+const rcTipMark=()=>{try{localStorage.setItem('mcscmsRcTip','1')}catch{};S.rcTip=false};
+const lectElapsed=r=>{if(!r||!r.started)return '';const s=Math.max(0,(Date.now()-r.started)/1000|0),m=s/60|0,ss=s%60;return String(m).padStart(2,'0')+':'+String(ss).padStart(2,'0')};
+const facultyPreflight=r=>{if(S.offline)return 'Connection to the server was lost. Wait until it reconnects, then try again.';if(!r)return 'Choose a lecture room first.';if(!r.online)return `The computer in ${r.id} is offline. Call AV staff, or press Retry.`;if(r.owner&&r.owner.user!==S.me.user)return `${r.owner.name} has control of this room.`;return ''};
+const pushXfHist=(room,name)=>{S.xfHist=[{room,name,at:Date.now()},...S.xfHist.filter(x=>!(x.room===room&&x.name===name))].slice(0,8)};
+
 /* faculty */
-const facultyShell=()=>{const r=S.rooms[0];return `<header class="bar"><div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div><span id="plate" class="plate off" title="${S.me.remote?'Your slides go only to the lecture room you choose':'You are signed in on this lecture room PC'}"><i></i><span id="plateTxt">${esc(S.me.room||'No room selected')}</span></span><div class="grow"></div>
+const facultyShell=()=>{const r=S.rooms[0],pres=r&&r.session&&(!r.owner||r.owner.user===S.me.user);return `<header class="bar"><div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div><span id="plate" class="plate ${r&&r.online?'':'off'}" title="${S.me.remote?'Your slides go only to the lecture room you choose':'You are signed in on this lecture room PC'}"><i></i><span id="plateTxt">${pres?'Showing on ':''}${esc(S.me.room||'No room selected')}</span></span><div class="grow"></div>
  <div class="who"><b>${esc(S.me.name)}</b><span id="whoSub">${S.me.room?(S.me.remote?'Sharing to ':'Signed in on ')+esc(S.me.room):'Signed in on this device'}</span></div>
  <button class="btn s" data-a="fs" title="Full screen presenter view (F)">${ic('expand')}<span class="fsl">Full screen</span></button><button class="btn icon ghost" data-a="theme" title="Switch light or dark">${ic('moon')}</button><button class="btn s" data-a="pw">${ic('lock')}Password</button><button class="btn s" data-a="logout">${ic('out')}Sign out</button></header>
- <div id="offline" class="banner err" style="margin:16px 28px 0" ${S.offline?'':'hidden'}>${ic('info')}<span>Connection to the server was lost. Reconnecting…</span></div><div id="live"></div>`};
+ <div id="offline" class="banner err" style="margin:16px 28px 0" ${S.offline?'':'hidden'}>${ic('info')}<span class="grow">Connection to the server was lost. Reconnecting…</span><button class="btn s" data-a="retryLink">Retry</button></div><div id="live"></div>`};
 function roomPicker(){
-  const L=S.choices||[],floors=[...new Set(L.map(x=>x.floor))],free=L.filter(x=>x.online&&!x.busy).length;
+  const L=S.choices||[],floors=[...new Set(L.map(x=>x.floor))],free=L.filter(x=>x.online&&!x.busy),pref=prefRoom();
+  const sorted=[...L].sort((a,b)=>(a.id===pref?-1:0)-(b.id===pref?-1:0)||String(a.floor).localeCompare(String(b.floor))||String(a.id).localeCompare(String(b.id)));
   const row=x=>{const st=!x.online?['Offline','off']:x.busy?['In use','busy']:['Available','ready'];
-    return `<div class="lec"><span class="ic">${ic('room')}</span><div class="t"><b>${esc(x.id)}</b><span>${esc(x.floor)}</span></div><span class="pill ${st[1]}">${st[0]}</span><button class="btn s pri" data-a="pickRoom" data-id="${esc(x.id)}" ${x.online&&!x.busy?'':'disabled'}>Select</button></div>`};
-  return `<section class="card" aria-label="Choose a lecture room"><header><h3>Choose a lecture room</h3><span class="mu sm">${free} available</span></header>
-    <div class="pod" style="padding-bottom:8px"><div class="note info" style="margin:0">${ic('info')}<span>Your slides open on the room you select and on no other room. Only rooms that are online and free can be selected.</span></div></div>
-    ${L.length?floors.map(f=>`<div class="fl" style="margin:12px 20px 4px">${esc(f)}</div>`+L.filter(x=>x.floor===f).map(row).join('')).join(''):'<div class="empty"><b>No lecture rooms yet</b>Ask AV staff to add one.</div>'}</section>`;
+    return `<div class="lec"><span class="ic">${ic('room')}</span><div class="t"><b>${esc(x.id)}${x.id===pref?' · preferred':''}</b><span>${esc(x.floor)}</span></div><span class="pill ${st[1]}">${st[0]}</span><button class="btn s pri" data-a="pickRoom" data-id="${esc(x.id)}" ${x.online&&!x.busy?'':'disabled'}>Select</button></div>`};
+  const chips=free.length?`<div class="room-chips">${free.map(x=>`<button class="room-chip" data-a="pickRoom" data-id="${esc(x.id)}"><b>${esc(x.id)}</b><span class="pill ready">Free</span>${x.id===pref?'<span class="mu sm">preferred</span>':''}</button>`).join('')}</div>`:'';
+  return `<section class="card" aria-label="Choose a lecture room"><header><h3>Choose a lecture room</h3><span class="mu sm">${free.length} available</span></header>
+    <div class="pod" style="padding-bottom:8px"><div class="note info" style="margin:0">${ic('info')}<span>Your slides open on the room you select and on no other room. Tap a free room below for a quick start.</span></div></div>
+    ${chips}${L.length?floors.map(f=>`<div class="fl" style="margin:12px 20px 4px">${esc(f)}</div>`+sorted.filter(x=>x.floor===f).map(row).join('')).join(''):'<div class="empty"><b>No lecture rooms yet</b>Ask AV staff to add one.</div>'}</section>`;
 }
 function presenterView(r){
   const remote=!!S.me.remote,exit=`<button class="btn s" data-a="fsx" title="Closes this view only. The lecture keeps running on the room PC.">${ic('shrink')}Exit full screen</button>`;
@@ -754,9 +944,11 @@ function presenterView(r){
       <button class="btn pri nx" data-a="fsPresent" ${!S.lects.length||!r.online||taken||starting?'disabled':''}>${ic('play','fill')}${starting?'Starting…':'Present'}</button>
       <label class="btn"><input type="file" id="upf" hidden multiple>${ic('upload')}Upload</label>`}
   if(remote&&r.online&&!taken){if(S.me.ctl)bar+=`<button class="btn" data-a="rcOpen" data-id="${esc(r.id)}" title="Use your mouse and keyboard (or touch) on the room PC">Full access to PC</button>`;if(S.me.xfer)bar+=`<button class="btn" data-a="xfOpen" data-id="${esc(r.id)}" title="Send files from this device to the room PC and open them there">${ic('upload')}Send files</button>`}
-  const pct=slides?Math.round(s.slide/s.total*100):0;
+  const pct=slides?Math.round(s.slide/s.total*100):0,elapsed=pres?lectElapsed(r):'';
+  if(pres)bar=bar.replace('data-a="ctl" data-c="stop"','data-a="endLect"');
   return `<div class="fsv" role="dialog" aria-label="Presenter view"><div class="fsv-top"><span class="plate s ${r.online?'':'off'}"><i></i>${esc(r.id)}</span><b>${pres?esc(String(s.lecture||'')):'No lecture running'}</b>
-    ${slides?`<span class="pill live">Slide ${s.slide} of ${s.total}</span>`:pres?'<span class="pill live">Presenting</span>':''}${pres&&s.full?`<span class="pill live">Full screen on ${esc(r.id)}</span>`:''}${prep?`<span class="pill">Preparing slides${deckOn?' '+dk.have.size+'/'+dk.total:''}…</span>`:''}${taken?`<span class="pill help">${esc(r.owner.name)} has control</span>`:''}<span class="grow"></span>${exit}</div>
+    ${pres?`<span class="pill live">Showing on ${esc(r.id)}</span>`:''}${slides?`<span class="pill live">Slide ${s.slide} of ${s.total}</span>`:pres?'<span class="pill live">Presenting</span>':''}${elapsed?`<span class="fsv-time" title="Running time">${elapsed}</span>`:''}${pres&&s.full?`<span class="pill live">Full screen on ${esc(r.id)}</span>`:''}${prep?`<span class="pill">Preparing slides${deckOn?' '+dk.have.size+'/'+dk.total:''}…</span>`:''}${taken?`<span class="pill help">${esc(r.owner.name)} has control</span>`:''}<span class="grow"></span>${exit}</div>
+    <div class="fsv-rot">Rotate your phone sideways for a wider presenter view</div>
     ${slides?`<div class="fsv-prog"><i style="width:${pct}%"></i></div>`:''}
     <div class="fsv-main"><div class="fsv-scr">${scr}</div>${ready&&idx<s.total&&dk.have.has(idx+1)?`<div class="fsv-nx"><span>Next</span><img src="${slideUrl(r,idx+1)}" alt="Next slide"></div>`:''}</div>
     <div class="fsv-bar">${bar}</div>${slides?'<div class="fsv-keys"><kbd>→</kbd> <kbd>↓</kbd> next &nbsp; <kbd>←</kbd> <kbd>↑</kbd> previous &nbsp; <kbd>B</kbd> blank &nbsp; <kbd>Esc</kbd> exit</div>':pres?'<div class="fsv-keys">Keyboard: <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> <kbd>Page up/down</kbd> <kbd>Space</kbd> work on the room PC &nbsp; <kbd>Esc</kbd> exit</div>':''}</div>`;
@@ -766,41 +958,58 @@ function facultyConsole(){
   if(!r&&!(remote&&S.choices))return `<div class="console"><div class="sk"></div><div class="sk"></div></div>`;
   if(S.fs)return presenterView(r);
   const mine=!r||!r.owner||r.owner.user===S.me.user,pres=!!r&&mine&&!!r.session,starting=!!r&&S.starting&&Date.now()-S.starting<20000&&!pres;
-  const taken=!!r&&r.owner&&!mine,pdf=pres&&!r.session.total,media=pres&&isMedia(r);
-  const banner=!r?'':!r.online?`<div class="banner err">${ic('info')}<span><b>The computer in ${esc(r.id)} is not responding.</b> Please call AV staff. Your login stays active.</span></div>`
+  const taken=!!r&&r.owner&&!mine,pdf=pres&&!r.session.total,media=pres&&isMedia(r),canGo=!!r&&r.online&&!taken&&!pres&&!starting;
+  const recent=[...S.lects].sort((a,b)=>String(b.at).localeCompare(String(a.at)));
+  const last=recent[0];
+  const banner=S.offline?`<div class="banner err">${ic('info')}<span class="grow"><b>Reconnecting to the server…</b> Your room choice stays. Presentation controls wait until the link returns.</span><button class="btn s" data-a="retryLink">Retry</button></div>`
+    :!r?'':!r.online?`<div class="banner err">${ic('info')}<span class="grow"><b>The computer in ${esc(r.id)} is not responding.</b> Check the PC is on, or call AV staff. Your login stays active.</span><button class="btn s" data-a="retryLink">Retry</button></div>`
     :taken?`<div class="banner warn">${ic('info')}<span><b>${esc(r.owner.name)} has taken control of this room.</b> Slide controls are paused until they hand it back.</span></div>`:'';
-  const list=S.lects.length?S.lects.map(l=>{const now=pres&&r.lecture===l.id;
+  const lock=r&&(pres||canGo||starting)?`<div class="lock-badge">${ic('monitor')}<div><b>${pres?'Showing on ':'Ready on '}${esc(r.id)}</b><span>${pres?'Slides go only to this projector':starting?'Opening on this projector…':'Files you present open only here'}</span></div></div>`:'';
+  const quick=canGo&&last?`<div class="quick-present"><div class="t"><b>Present last file</b><span>${esc(last.title)} · ${KL[last.kind]||'File'}</span></div><button class="btn pri" data-a="open" data-id="${last.id}">${ic('play','fill')}Present on ${esc(r.id)}</button></div>`:'';
+  const row=l=>{const now=pres&&r&&r.lecture===l.id;
     return `<div class="lec ${now?'now':''}"><span class="ic">${ic(l.kind==='video'||l.kind==='audio'?'play':'file')}</span><div class="t"><b>${esc(l.title)}</b><span>${KL[l.kind]||'File'} · ${fdate(l.at)}${l.size?' · '+fsize(l.size):''}</span></div>
     <button class="btn s" data-a="delLect" data-id="${l.id}" title="Delete this lecture" aria-label="Delete ${esc(l.title)}" ${pres?'disabled':''}>${ic('trash')}</button>
-    <button class="btn s pri" data-a="open" data-id="${l.id}" ${!r||!r.online||taken||pres||starting?'disabled':''} ${r?'':'title="Choose a lecture room first"'}>${ic('play','fill')}Present</button></div>`}).join('')
+    <button class="btn s pri" data-a="open" data-id="${l.id}" ${canGo?'':'disabled'} ${r?'':'title="Choose a lecture room first"'}>${ic('play','fill')}Present</button></div>`};
+  const list=recent.length?(recent.length>5?`<div class="fl" style="margin:8px 20px 0">Recent</div>${recent.slice(0,5).map(row).join('')}<div class="fl" style="margin:14px 20px 0">All files</div>${recent.slice(5).map(row).join('')}`:recent.map(row).join(''))
     :`<div class="empty"><b>No lectures yet</b>Upload slides, a PDF, a video or any lecture file to begin.</div>`;
   let pod='';
-  if(r&&pres){const s=r.session,pct=s.total?Math.round(s.slide/s.total*100):0;
-    pod=`<div class="pod"><div class="top"><span class="pill live">Presenting</span><span class="mu sm">${esc(r.id)} projector</span></div>
+  if(r&&pres){const s=r.session,pct=s.total?Math.round(s.slide/s.total*100):0,elapsed=lectElapsed(r);
+    pod=`<div class="pod"><div class="top"><span class="pill live">Presenting</span><span class="mu sm">${esc(r.id)} · ${elapsed||'just started'}</span></div>
     <div class="now"><h2>${esc(String(s.lecture||''))}</h2></div>
     ${pdf?`${media?`<button class="btn pri next" data-a="ctl" data-c="playpause" style="margin-top:14px">${ic('play','fill')}Play / Pause</button>`:''}<div class="note info" style="margin-top:12px">${ic('info')}<span>${media?'This file plays in the media player on the PC. Use Play / Pause here. For volume, seeking or full screen use the mouse or keyboard on the PC.':'This file opens on the PC and cannot be paged from here. Use the mouse or keyboard on the PC to move through it.'}</span></div>`
     :`<div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="${s.total}" aria-valuenow="${s.slide}"><i style="width:${pct}%"></i></div><div class="cnt"><span>Slide ${s.slide} of ${s.total}</span><span>${pct}%</span></div>
     <button class="btn pri next" data-a="ctl" data-c="next">Next slide ${ic('nextI')}</button>
     <div class="trio"><button class="btn" data-a="ctl" data-c="prev">${ic('prev')}Previous</button><button class="btn" data-a="ctl" data-c="blank">${ic('blank')}Blank screen</button></div>`}
-    <div class="trio"><button class="btn dng wide" data-a="ctl" data-c="stop">${ic('stop')}End lecture</button></div>
+    <div class="trio"><button class="btn dng wide" data-a="endLect">${ic('stop')}End lecture</button></div>
     ${pdf||remote?'':`<div class="keys"><span><kbd>→</kbd> next</span><span><kbd>←</kbd> previous</span><span><kbd>B</kbd> blank</span></div>`}</div>`}
-  else if(r)pod=`<div class="pod"><div class="idle"><div class="ic">${ic(starting?'play':'monitor')}</div><h2>${starting?'Starting your lecture…':'Ready when you are'}</h2><p class="mu">${starting?'Opening it on the '+esc(r.id)+' projector. This takes a few seconds.':'Choose a lecture from your list. It opens on the '+esc(r.id)+' projector.'}</p></div>
+  else if(r)pod=`<div class="pod"><div class="idle"><div class="ic">${ic(starting?'play':'monitor')}</div><h2>${starting?'Starting your lecture…':'Ready when you are'}</h2><p class="mu">${starting?'Opening it on the '+esc(r.id)+' projector. This takes a few seconds.':last?'Press Present on a file, or use Present last file above.':'Upload a lecture, then press Present. It opens on the '+esc(r.id)+' projector.'}</p></div>
     <div class="acts" style="justify-content:center;margin-top:12px"><span class="pill ${r.online?(r.assist?'help':'ready'):'off'}">${!r.online?'Computer offline':r.assist?'AV help requested':'Ready'}</span></div></div>`;
-  // Remote (own phone or laptop): shows which room receives the slides, with a live view of that room's screen.
-  const share=remote&&r?`<section class="card p" aria-label="Connected lecture room"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div><b>${esc(r.id)}</b><div class="mu sm">${esc(r.floor||'')} · slides from your device go to this room only</div></div><button class="btn s" data-a="leaveRoom" ${pres?'disabled title="End your lecture first"':''}>Change room</button></div>
-    <div class="scr" style="margin-top:12px">${r.online?`<img data-f="${esc(r.id)}" alt="Live screen of ${esc(r.id)}" ${S.frames[r.id]?`src="data:image/jpeg;base64,${S.frames[r.id]}"`:''}>`:'Computer offline'}</div>${r.online&&(S.me.ctl||S.me.xfer)?`<div class="acts" style="justify-content:flex-start;margin-top:12px">${S.me.ctl?`<button class="btn s pri" data-a="rcOpen" data-id="${esc(r.id)}" title="Use your mouse and keyboard (or touch) on the room PC">Full access to PC</button>`:''}${S.me.xfer?`<button class="btn s" data-a="xfOpen" data-id="${esc(r.id)}">${ic('upload')}Send files</button>`:''}</div>`:''}</section>`:'';
-  const dropTxt=r?`Drop slides, a PDF, a video or any lecture file here, or click to browse. It opens on the ${esc(r.id)} projector at once.`:'Choose a lecture room on the right. Files you upload now are kept in your list, ready to present.';
+  const pref=prefRoom()=== (r&&r.id);
+  const hist=(S.xfHist||[]).filter(x=>r&&x.room===r.id);
+  const histBox=hist.length?`<div class="xf-hist"><div class="sec" style="margin:0 0 6px">Recently sent to this room</div>${hist.map(x=>`<div class="xfr"><span>${esc(x.name)}</span><button class="btn s" data-a="xfOpen" data-id="${esc(r.id)}">Send more</button></div>`).join('')}</div>`:'';
+  const share=remote&&r?`<section class="card p" aria-label="Connected lecture room"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><b>${esc(r.id)}</b><div class="mu sm">${esc(r.floor||'')} · slides from your device go to this room only</div></div><div class="acts" style="margin:0"><button class="btn s" data-a="prefRoom" data-id="${esc(r.id)}">${pref?'Preferred room':'Remember room'}</button><button class="btn s" data-a="leaveRoom" ${pres?'disabled title="End your lecture first"':''}>Change room</button></div></div>
+    <div class="scr" style="margin-top:12px">${r.online?`<img data-f="${esc(r.id)}" alt="Live screen of ${esc(r.id)}" ${S.frames[r.id]?`src="data:image/jpeg;base64,${S.frames[r.id]}"`:''}>`:'Computer offline'}</div>${r.online&&(S.me.ctl||S.me.xfer)?`<div class="acts" style="justify-content:flex-start;margin-top:12px;flex-wrap:wrap">${S.me.ctl?`<button class="btn s pri" data-a="rcOpen" data-id="${esc(r.id)}" title="Use your mouse and keyboard (or touch) on the room PC">Full access to PC</button>`:''}${S.me.xfer?`<button class="btn s" data-a="xfOpen" data-id="${esc(r.id)}">${ic('upload')}Send files</button>`:''}<span class="mu sm">Tip: drop or paste files (Ctrl+V) to send them to this PC</span></div>`:''}${histBox}</section>`:'';
+  const dropTxt=r?`Drop slides, a PDF, a video or any lecture file here. It uploads and opens on the ${esc(r.id)} projector at once — no new tab.`:'Choose a lecture room on the right. Files you upload now are kept in your list, ready to present.';
   return `<div class="console"><div class="stack"><section class="card" aria-label="My lectures"><header><h3>My lectures</h3><span class="mu sm">${S.lects.length} file${S.lects.length===1?'':'s'}</span></header>
-    <label class="drop" id="drop"><input type="file" id="upf" hidden multiple>${ic('upload')}<span><b>${r?'Upload and present':'Upload'}</b></span><span class="sm">${dropTxt}</span></label>${list}</section></div>
-    <aside class="stack">${r?share+banner+`<section class="card" aria-label="Podium controls">${pod}</section>`+avCard(r):roomPicker()}</aside></div>`;
+    <label class="drop" id="drop"><input type="file" id="upf" hidden multiple>${ic('upload')}<span><b>${r?'Upload and present':'Upload'}</b></span><span class="sm">${dropTxt}</span></label>${quick}${list}</section></div>
+    <aside class="stack">${r?lock+share+banner+`<section class="card" aria-label="Podium controls">${pod}</section>`+avCard(r):roomPicker()}</aside></div>`;
 }
+
 
 /* staff */
 const NAVS=()=>[['monitor','Live monitor','monitor'],['lectures','Lectures','file'],['help','Help requests','bell'],['rooms','Lecture rooms','room'],['sessions','Sign-ins','key'],['logs','Activity log','log'],...(S.me.role==='admin'?[['users','Users','users'],['settings','Settings','cog']]:[])];
-const staffShell=()=>`<div class="shell"><aside class="side"><div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div>
- <nav>${NAVS().map(([k,l,i])=>`<button class="nav ${S.tab===k?'on':''}" data-a="go" data-t="${k}">${ic(i)}${l}${k==='help'?'<span class="n" id="navhelp" hidden></span>':''}</button>`).join('')}</nav>
- <div class="me"><div><b>${esc(S.me.name)}</b><span>${ROLE[S.me.role]}</span></div><div class="row"><button class="btn s" data-a="pw">${ic('lock')}Password</button><button class="btn s icon" data-a="theme" title="Switch light or dark">${ic('moon')}</button><button class="btn s icon" data-a="logout" title="Sign out" aria-label="Sign out">${ic('out')}</button></div></div></aside>
- <main class="main"><div id="offline" class="banner err" ${S.offline?'':'hidden'}>${ic('info')}<span>Connection to the server was lost. Reconnecting…</span></div><div id="live"></div></main></div>`;
+const staffShell=()=>`<div class="shell${S.navOpen?' nav-open':''}${S.navCollapsed?' nav-collapsed':''}"><button type="button" class="scrim" data-a="navClose" aria-label="Close menu" tabindex="-1"></button>
+ <aside class="side" id="side" aria-label="Main navigation">
+ <div class="side-head"><button type="button" class="btn icon nav-toggle" data-a="navToggle" aria-controls="side" aria-expanded="true">${ic('menu')}</button>
+ <div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div>
+ <button type="button" class="btn icon side-close" data-a="navClose" aria-label="Close menu">${ic('x')}</button></div>
+ <nav>${NAVS().map(([k,l,i])=>`<button type="button" class="nav ${S.tab===k?'on':''}" data-a="go" data-t="${k}" title="${esc(l)}">${ic(i)}<span class="nl">${l}</span>${k==='help'?'<span class="n" id="navhelp" hidden></span>':''}</button>`).join('')}</nav>
+ <div class="me"><div class="who"><b>${esc(S.me.name)}</b><span>${ROLE[S.me.role]}</span></div><div class="row"><button type="button" class="btn s" data-a="pw">${ic('lock')}Password</button><button type="button" class="btn s icon" data-a="theme" title="Switch light or dark">${ic('moon')}</button><button type="button" class="btn s icon" data-a="logout" title="Sign out" aria-label="Sign out">${ic('out')}</button></div></div></aside>
+ <div class="work"><header class="topbar"><button type="button" class="btn icon" data-a="navToggle" aria-controls="side" aria-expanded="false">${ic('menu')}</button>
+ <div class="brand">${brandMark()}<span class="bn">${esc(BR.name)}</span></div><div class="grow"></div>
+ <button type="button" class="btn icon ghost" data-a="theme" title="Switch light or dark">${ic('moon')}</button>
+ <button type="button" class="btn icon ghost" data-a="logout" title="Sign out" aria-label="Sign out">${ic('out')}</button></header>
+ <main class="main"><div id="offline" class="banner err" ${S.offline?'':'hidden'}>${ic('info')}<span>Connection to the server was lost. Reconnecting…</span></div><div id="live"></div></main></div></div>`;
 function staffTab(){return {monitor,lectures,rooms:roomsTab,sessions:sessionsTab,logs:logsTab,users:usersTab,help:helpTab,settings:settingsTab}[S.tab]()}
 const head=(t,p,right='')=>`<div class="ph"><div><h1>${t}</h1><p>${p}</p></div><div>${right}</div></div>`;
 const dur=ms=>{const m=Math.max(1,Math.round(ms/60000));return m<60?m+' min':(m/60|0)+' h '+(m%60)+' min'};
@@ -812,11 +1021,12 @@ function monitor(){
   const tile=r=>{const[s,c]=rst(r);return `<div class="tile ${r.id===S.sel?'sel':''}" data-a="sel" data-id="${r.id}"><div class="scr">${r.online?`<img data-f="${r.id}" alt="Live screen of ${esc(r.id)}" ${S.frames[r.id]?`src="data:image/jpeg;base64,${S.frames[r.id]}"`:''}>`:'No signal'}</div>
    <div class="tt"><b>${esc(r.id)}</b><span class="pill ${c}">${s}</span></div>${r.session?`<div class="tl"><b title="${esc(r.session.lecture)}">${esc(r.session.lecture)}</b><span>${r.session.total?r.session.slide+' / '+r.session.total:(KL[r.session.kind]||'File')}</span></div>${r.session.total?`<div class="prog t"><i style="width:${Math.round(r.session.slide/r.session.total*100)}%"></i></div>`:''}`:''}<div class="tf"><span>${r.faculty?esc(r.faculty.name):'No one signed in'}</span>${r.online?`<label data-a="stop-prop"><input type="checkbox" data-a="pick" data-id="${r.id}" ${S.picked.has(r.id)?'checked':''}> Select</label>`:''}</div></div>`};
   const opts=v=>S.lects.map(l=>`<option value="${l.id}" ${l.id===v?'selected':''}>${esc(l.title)} · ${esc(l.by)}</option>`).join(''),lo=opts(S.bsel),lo2=opts(S.lsel);
+  const det=(S.picked.size?`<div class="card p bulk"><b>${S.picked.size} room${S.picked.size>1?'s':''} selected</b><div class="inline" style="margin-top:10px"><select data-c="bsel" aria-label="Lecture">${lo}</select></div><div class="acts" style="justify-content:flex-start;margin-top:10px"><button class="btn pri s" data-a="bulk" data-c="open">Present to all</button><button class="btn s" data-a="bulk" data-c="blank">Blank</button><button class="btn s" data-a="bulk" data-c="stop">Stop</button><button class="btn s" data-a="bulk" data-c="clear-sel">Clear</button></div></div>`:'')+(x?detail(x,lo2):'');
   return head('Live monitor','Every lecture room PC, updated live.')+
   `<div class="card facts"><div><b>${R.length}</b><span>Lecture rooms</span></div><div><b>${R.filter(r=>r.online).length}</b><span>Online</span></div><div><b>${R.filter(r=>r.faculty).length}</b><span>Faculty signed in</span></div><div><b>${R.filter(r=>r.session).length}</b><span>Presenting</span></div><div><b>${R.filter(r=>r.assist).length}</b><span>Need help</span></div></div>
-  <div class="mon"><section><div class="chips">${[['all','All'],['online','Online'],['offline','Offline'],['help','Needs help']].map(([k,l])=>`<button class="chip ${S.flt===k?'on':''}" data-a="flt" data-k="${k}">${l}</button>`).join('')}</div>
+  <div class="mon${det?' has-det':''}"><section><div class="chips">${[['all','All'],['online','Online'],['offline','Offline'],['help','Needs help']].map(([k,l])=>`<button class="chip ${S.flt===k?'on':''}" data-a="flt" data-k="${k}">${l}</button>`).join('')}</div>
   ${floors.map(n=>`<div class="fl">${esc(n)}</div><div class="grid">${V.filter(r=>r.floor===n).map(tile).join('')}</div>`).join('')||`<div class="card empty" style="margin-top:12px"><b>No lecture rooms to show</b>${R.length?'Try another filter.':'Add a lecture room under Lecture rooms.'}</div>`}</section>
-  <aside class="det">${S.picked.size?`<div class="card p bulk"><b>${S.picked.size} room${S.picked.size>1?'s':''} selected</b><div class="inline" style="margin-top:10px"><select data-c="bsel" aria-label="Lecture">${lo}</select></div><div class="acts" style="justify-content:flex-start;margin-top:10px"><button class="btn pri s" data-a="bulk" data-c="open">Present to all</button><button class="btn s" data-a="bulk" data-c="blank">Blank</button><button class="btn s" data-a="bulk" data-c="stop">Stop</button><button class="btn s" data-a="bulk" data-c="clear-sel">Clear</button></div></div>`:''}${x?detail(x,lo2):'<div class="card empty"><b>Select a lecture room</b>Its live screen and controls appear here.</div>'}</aside></div>`;
+  ${det?`<aside class="det">${det}</aside>`:''}</div>`;
 }
 function detail(x,lo){const[s,c]=rst(x);
   return `<div class="card p"><div class="tt" style="margin:0"><h2>${esc(x.id)}</h2><span class="pill ${c}">${s}</span><button class="btn s" data-a="closeDet" aria-label="Close" title="Close" style="margin-left:auto;padding:2px 10px;font-size:18px;line-height:1.2">&times;</button></div>
@@ -824,7 +1034,7 @@ function detail(x,lo){const[s,c]=rst(x);
   <dl class="kv"><dt>Floor</dt><dd>${esc(x.floor)}</dd><dt>Agent ID</dt><dd><code class="aid">${esc(x.agentId||'')}</code></dd><dt>PC address</dt><dd>${esc(x.ip)||'<span class="mu">Not seen yet</span>'}</dd><dt>Signed in</dt><dd>${x.faculty?`<b>${esc(x.faculty.name)}</b>`:'<span class="mu">No one</span>'}</dd><dt>In control</dt><dd>${x.owner?esc(x.owner.name):'<span class="mu">No one</span>'}</dd>
   <dt>Showing</dt><dd>${x.session?esc(String(x.session.lecture||''))+(x.session.total?` (slide ${x.session.slide} of ${x.session.total})`:''):'<span class="mu">Nothing</span>'}</dd>${x.session&&x.started?`<dt>Running for</dt><dd>${dur(Date.now()-x.started)}</dd>`:''}</dl>
   ${x.online?`<div class="sec">Present a lecture</div><div class="inline"><select data-c="lsel" aria-label="Lecture">${lo||'<option value="">No lectures uploaded</option>'}</select><button class="btn pri" data-a="open-staff" ${S.lects.length?'':'disabled'}>${ic('play','fill')}Start</button></div>
-  <div class="sec">Controls</div><div class="ctl"><button class="btn" data-a="ctl" data-c="prev" title="Previous">${ic('prev')}</button><button class="btn pri" data-a="ctl" data-c="next" title="Next">${ic('nextI')}</button><button class="btn" data-a="ctl" data-c="blank" title="Blank screen">${ic('blank')}</button><button class="btn" data-a="ctl" data-c="playpause" title="Play / pause a video">${ic('play','fill')}</button><button class="btn dng" data-a="ctl" data-c="stop" title="Stop">${ic('stop')}</button></div>
+  <div class="sec">Controls</div><div class="ctl"><button class="btn" data-a="ctl" data-c="prev" data-id="${esc(x.id)}" title="Previous">${ic('prev')}</button><button class="btn pri" data-a="ctl" data-c="next" data-id="${esc(x.id)}" title="Next">${ic('nextI')}</button><button class="btn" data-a="ctl" data-c="blank" data-id="${esc(x.id)}" title="Blank screen">${ic('blank')}</button><button class="btn" data-a="ctl" data-c="playpause" data-id="${esc(x.id)}" title="Play / pause a video">${ic('play','fill')}</button><button class="btn dng" data-a="endLect" data-id="${esc(x.id)}" title="End lecture and remove file from this PC">${ic('stop')}</button></div>
   <div class="acts" style="justify-content:flex-start;margin-top:12px">${x.owner&&x.owner.user===S.me.user?`<button class="btn s pri" data-a="rcOpen" data-id="${x.id}">Full access to PC</button><button class="btn s" data-a="rcRelease" data-id="${x.id}">Release control</button>`:`<button class="btn s pri" data-a="rcOpen" data-id="${x.id}">Full access to PC</button>`}<button class="btn s" data-a="xfOpen" data-id="${x.id}" title="Send files to this room PC and open them there">Send files</button>${x.rc&&!(x.owner&&x.owner.user===S.me.user)?`<span class="pill help">${esc(x.rc.name)} is controlling</span>`:''}${x.assist?'<button class="btn s" data-a="go" data-t="help">View help request</button>':''}${x.faculty?`<button class="btn s dng" data-a="releaseRoom" data-id="${x.id}">Release faculty sign-in</button>`:''}</div>`
   :'<p class="mu" style="margin-top:6px">This computer is not connected. Check that it is switched on and the agent is running.</p>'}
   <div class="sec">Recent activity</div>${(x.events&&x.events.length)?`<ul class="feed">${x.events.slice().reverse().slice(0,8).map(e=>`<li><time>${new Date(e.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</time><span><b>${esc(e.who)}</b> · ${esc(e.text)}</span></li>`).join('')}</ul>`:'<p class="mu sm">Nothing yet today.</p>'}</div>`}
@@ -842,21 +1052,38 @@ function avCard(r){
   return `<section class="card p hlp" aria-label="AV help">${body}</section>`;
 }
 function helpTab(){
-  const L=S.help,open=L.filter(t=>t.status==='open'),list=S.hf==='open'?open:S.hf==='resolved'?L.filter(t=>t.status==='resolved'):L;
+  const L=S.help,open=L.filter(t=>t.status==='open'),resolved=L.filter(t=>t.status==='resolved'),list=S.hf==='open'?open:S.hf==='resolved'?resolved:L;
   const card=t=>`<article class="card ticket ${t.status}"><div class="th"><span class="plate s ${t.status==='open'?'':'done'}"><i></i>${esc(t.room)}</span><span class="pill ${t.status==='open'?'help':'live'}">${t.status==='open'?'Open':'Resolved'}</span><b>${CAT[t.category]}</b><span class="grow"></span><span class="meta">#${t.id} · ${ago(t.at)}</span></div>
   <p class="msg">${t.message?esc(t.message):'<span class="mu">No details given.</span>'}</p><div class="meta">${esc(t.name)}${t.floor?' · '+esc(t.floor):''} · ${fdate(t.at)}${t.mail?' · '+esc(t.mail):''}</div>${thread(t)}
   ${t.status==='open'?`<div class="reply"><input name="cm${t.id}" placeholder="Add a comment for the faculty member" maxlength="1000" data-c="draft" data-id="${t.id}" aria-label="Comment"><button class="btn" data-a="hcomment" data-id="${t.id}" id="cb${t.id}">Add comment</button><button class="btn pri" data-a="hresolve" data-id="${t.id}">${ic('check')}Resolve</button></div>`
   :`<div class="meta" style="margin-top:12px">Resolved by <b>${esc(t.resolvedBy||'')}</b> · ${fdate(t.resolvedAt)} <button class="btn s" data-a="hreopen" data-id="${t.id}" style="margin-left:8px">Reopen</button></div>`}</article>`;
-  return head('Help requests','Requests from lecture rooms. Add a comment, then resolve the request once the problem is fixed.')+
-  `<div class="chips mb">${[['open',`Open (${open.length})`],['resolved','Resolved'],['all','All']].map(([k,l])=>`<button class="chip ${S.hf===k?'on':''}" data-a="hf" data-k="${k}">${l}</button>`).join('')}</div>`+
+  return head('Help requests','Requests from lecture rooms. Add a comment, then resolve the request once the problem is fixed.',`<button class="btn" data-a="dlHelp" ${L.length?'':'disabled'} title="Download all help requests for Excel">${ic('down')}Download Excel</button>`)+
+  `<div class="card facts cols-3"><div><b>${open.length}</b><span>Open</span></div><div><b>${resolved.length}</b><span>Resolved</span></div><div><b>${L.length}</b><span>All requests</span></div></div>
+  <div class="chips mb">${[['open',`Open (${open.length})`],['resolved',`Resolved (${resolved.length})`],['all',`All (${L.length})`]].map(([k,l])=>`<button class="chip ${S.hf===k?'on':''}" data-a="hf" data-k="${k}">${l}</button>`).join('')}</div>`+
   (list.map(card).join('')||`<div class="card empty"><b>${S.hf==='open'?'No open requests':'Nothing here yet'}</b>${S.hf==='open'?'New requests from lecture rooms appear here and are emailed to AV staff.':''}</div>`);
 }
+function dlHelpExcel(){
+  const L=S.help;if(!L.length)return toast('No help requests to download.','err');
+  const cell=v=>{const s=String(v??'');return /[",\n\r]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s};
+  const when=t=>t?new Date(t).toLocaleString():'';
+  const rows=[['ID','Status','Room','Floor','Category','Details','Requested by','Username','Opened at','Resolved by','Resolved at','Comments','Mail note'],
+    ...L.map(t=>[t.id,t.status==='open'?'Open':'Resolved',t.room||'',t.floor||'',CAT[t.category]||t.category||'',t.message||'',t.name||'',t.user||'',when(t.at),t.resolvedBy||'',when(t.resolvedAt),(t.comments||[]).map(c=>`${c.by||''}: ${c.text||''}`).join(' | '),t.mail||''])];
+  const csv='\ufeff'+rows.map(r=>r.map(cell).join(',')).join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  a.download='help-requests-'+new Date().toISOString().slice(0,10)+'.csv';a.click();URL.revokeObjectURL(a.href);
+  toast('Excel file downloaded','ok');
+}
 const SUGGEST=['NUR SmartLecture','LectureLink','ClassCast','NIU LectureHub','Lecture Room Control'];
-function brandCard(){return `<section class="card p" style="margin-bottom:16px"><h3>Branding</h3><p class="mu" style="margin:4px 0 0">The name and logo appear on the sign-in screen, the side bar and the browser tab.</p>
-  <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:14px"><div class="logoprev">${BR.logo?`<img src="/logo?v=${BR.logo}" alt="Current logo">`:ic('monitor')}</div>
-  <div class="acts" style="justify-content:flex-start"><label class="btn"><input type="file" id="logoin" accept="image/png,image/jpeg,image/webp" hidden>${ic('upload')}${BR.logo?'Change logo':'Upload logo'}</label>${BR.logo?'<button class="btn dng" data-a="logoDel">Remove logo</button>':''}</div>
-  <span class="mu sm">PNG, JPG or WebP, up to 2 MB. A square picture with a transparent or white background looks best.</span></div>
-  <form data-submit="saveName" class="inline" style="margin-top:16px"><label class="fld" style="margin:0;min-width:260px"><span>System name</span><input name="name" value="${esc(BR.name)}" maxlength="60" list="sysnames" required></label><datalist id="sysnames">${SUGGEST.map(n=>`<option value="${esc(n)}">`).join('')}</datalist><button class="btn pri">Save name</button></form></section>`}
+function brandCard(){return `<section class="card p" style="margin-bottom:16px"><h3>Branding</h3><p class="mu" style="margin:4px 0 0">Logo, system name and the sign-in background picture. Changes show on the login screen at once.</p>
+  <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px"><div class="logoprev">${BR.logo?`<img src="/logo?v=${BR.logo}" alt="Current logo">`:ic('monitor')}</div>
+  <div style="flex:1;min-width:200px"><b style="display:block;margin-bottom:6px">Logo</b>
+  <div class="acts" style="justify-content:flex-start"><label class="btn"><input type="file" id="logoin" accept="image/png,image/jpeg,image/webp" hidden>${ic('upload')}${BR.logo?'Change logo':'Upload logo'}</label>${BR.logo?'<button class="btn dng" data-a="logoDel">Remove</button>':''}</div>
+  <p class="mu sm" style="margin-top:8px">PNG, JPG or WebP, up to 2 MB. Square with a transparent background looks best.</p></div></div>
+  <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)"><div class="bgprev">${BR.bg?`<img src="/loginbg?v=${BR.bg}" alt="Sign-in background">`:`<span class="mu sm">No picture</span>`}</div>
+  <div style="flex:1;min-width:200px"><b style="display:block;margin-bottom:6px">Sign-in background</b>
+  <div class="acts" style="justify-content:flex-start"><label class="btn"><input type="file" id="bgin" accept="image/png,image/jpeg,image/webp" hidden>${ic('upload')}${BR.bg?'Change picture':'Upload picture'}</label>${BR.bg?'<button class="btn dng" data-a="bgDel">Remove</button>':''}</div>
+  <p class="mu sm" style="margin-top:8px">Any campus / lecture-hall photo. PNG, JPG or WebP, up to 6 MB. Fills the left side of the sign-in screen.</p></div></div>
+  <form data-submit="saveName" class="inline" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)"><label class="fld" style="margin:0;min-width:260px"><span>System name</span><input name="name" value="${esc(BR.name)}" maxlength="60" list="sysnames" required></label><datalist id="sysnames">${SUGGEST.map(n=>`<option value="${esc(n)}">`).join('')}</datalist><button class="btn pri">Save name</button></form></section>`}
 function settingsTab(){
   const m=S.mail;if(!m)return head('Settings','')+brandCard()+'<div class="sk"></div>';
   return head('Settings','Branding, and email for AV help requests (each new request is emailed to the addresses below).')+brandCard()+
@@ -871,9 +1098,39 @@ function settingsTab(){
   <p class="mu sm" style="margin-top:14px">The mail password is stored in data/config.json on the server. Keep that folder private.</p></form>`;
 }
 
+function startOnRoom(lectureId,roomId){
+  const id=roomId||S.lecRoom,r=S.rooms.find(x=>x.id===id);
+  if(!id)return toast('Choose a lecture room first.','err');
+  if(!r)return toast('That lecture room was not found.','err');
+  if(!r.online)return toast(id+' is offline. Start the agent on that PC first.','err');
+  if(!lectureId)return toast('Choose a lecture file first.','err');
+  S.lecRoom=id;S.sel=id;S.starting=Date.now();
+  cmd('open',id,{lecture:lectureId});
+  toast('Opening on '+id+' — stays in this window.','ok');
+  paint();setTimeout(()=>{if(S.tok)paint()},20500);
+}
 function lectures(){
-  return head('Lectures','Upload and manage lecture files: slides, PDFs, videos and more.')+`<div class="stack"><section class="card"><label class="drop" id="drop"><input type="file" id="upf" hidden multiple>${ic('upload')}<span><b>Upload lectures</b></span><span class="sm">Drop slides, PDFs, videos or any lecture files here, or click to browse</span></label></section>
-  <section class="card"><header><h3>Library</h3><span class="mu sm">${S.lects.length} file${S.lects.length===1?'':'s'}</span></header><div class="tw"><table><tr><th>Title</th><th>Type</th><th>Uploaded by</th><th>Date</th><th>Size</th><th></th></tr>${S.lects.map(l=>`<tr><td><b>${esc(l.title)}</b></td><td>${KL[l.kind]||'File'}</td><td>${esc(l.by)}</td><td>${fdate(l.at)}</td><td>${fsize(l.size)}</td><td class="r"><button class="btn s dng" data-a="delLect" data-id="${l.id}">${ic('trash')}Delete</button></td></tr>`).join('')||'<tr><td colspan="6"><div class="empty"><b>No lectures yet</b>Uploaded files appear here.</div></td></tr>'}</table></div></section></div>`}
+  const online=S.rooms.filter(r=>r.online),room=S.rooms.find(r=>r.id===S.lecRoom),q=S.lqL.trim().toLowerCase();
+  const list=!q?S.lects:S.lects.filter(l=>(l.title+' '+l.by+' '+(KL[l.kind]||'')+' '+(l.kind||'')).toLowerCase().includes(q));
+  const roomOpts=`<option value="">Choose a lecture room…</option>`+S.rooms.map(r=>{const[s]=rst(r);return `<option value="${esc(r.id)}" ${S.lecRoom===r.id?'selected':''} ${r.online?'':'disabled'}>${esc(r.id)}${r.floor?' · '+esc(r.floor):''} · ${s}</option>`}).join('');
+  const canGo=!!(room&&room.online),pres=room&&room.session,busy=room&&room.owner;
+  const status=!S.lecRoom?'<span class="mu sm">Pick a room, then press Present on a file. It opens on that PC and projector — no new browser tab.</span>'
+    :!room?'<span class="mu sm">Room not found.</span>':!room.online?`<span class="pill off">Offline</span><span class="mu sm">${esc(S.lecRoom)} is not connected.</span>`
+    :pres?`<span class="pill live">Presenting</span><span class="mu sm">${esc(String(room.session.lecture||''))}${room.session.total?` · slide ${room.session.slide}/${room.session.total}`:''}</span>`
+    :busy?`<span class="pill help">${esc(room.owner.name)} has control</span>`:`<span class="pill ready">Ready</span><span class="mu sm">${esc(S.lecRoom)} will show the lecture you start.</span>`;
+  const preview=room?`<div class="scr" style="margin-top:12px">${room.online?`<img data-f="${esc(room.id)}" alt="Live screen of ${esc(room.id)}" ${S.frames[room.id]?`src="data:image/jpeg;base64,${S.frames[room.id]}"`:''}>`:'No signal'}</div>
+    ${room.online?`<div class="acts" style="justify-content:flex-start;margin-top:10px;flex-wrap:wrap"><button class="btn s" data-a="ctl" data-c="prev" data-id="${esc(room.id)}" title="Previous">${ic('prev')}</button><button class="btn s pri" data-a="ctl" data-c="next" data-id="${esc(room.id)}" title="Next">${ic('nextI')}</button><button class="btn s" data-a="ctl" data-c="blank" data-id="${esc(room.id)}">${ic('blank')}Blank</button><button class="btn s dng" data-a="endLect" data-id="${esc(room.id)}">${ic('stop')}End</button><button class="btn s" data-a="rcOpen" data-id="${esc(room.id)}">Full access to PC</button></div>`:''}`:'';
+  const dropTxt=canGo?`Drop a file to upload and present it on ${esc(S.lecRoom)} at once.`:'Drop slides, PDFs, videos or any lecture files here, or click to browse. Choose a room above to present after upload.';
+  const row=l=>`<tr><td><b>${esc(l.title)}</b></td><td>${KL[l.kind]||'File'}</td><td>${esc(l.by)}</td><td>${fdate(l.at)}</td><td>${fsize(l.size)}</td><td class="r"><div class="acts"><button class="btn s pri" data-a="lecPresent" data-id="${l.id}" ${canGo?'':'disabled'} title="${canGo?'Open on '+S.lecRoom:'Choose an online lecture room first'}">${ic('play','fill')}Present</button><button class="btn s dng" data-a="delLect" data-id="${l.id}">${ic('trash')}Delete</button></div></td></tr>`;
+  return head('Lectures','Upload files here, choose a lecture room, and start the presentation on that PC — all in this same window.')+
+  `<div class="stack"><section class="card p"><h3>Present to a lecture room</h3><p class="mu" style="margin:4px 0 12px">The file opens on the room PC and projector. You stay on this page; nothing opens in a new browser tab.</p>
+  <div class="inline" style="align-items:flex-end"><label class="fld" style="margin:0;flex:1 1 240px"><span>Lecture room</span><select data-c="lecRoom" aria-label="Lecture room">${roomOpts}</select></label>
+  <span class="mu sm" style="flex:0 0 auto">${online.length} online · ${S.rooms.length} total</span></div>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px">${status}</div>${preview}</section>
+  <section class="card"><label class="drop" id="drop"><input type="file" id="upf" hidden multiple>${ic('upload')}<span><b>${canGo?'Upload and present':'Upload lectures'}</b></span><span class="sm">${dropTxt}</span></label></section>
+  <section class="card"><header style="flex-wrap:wrap"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex:1;min-width:0"><h3>Library</h3><input id="lqL" placeholder="Search lectures" value="${esc(S.lqL)}" data-c="lqL" style="max-width:240px" aria-label="Search lectures"></div><span class="mu sm">${list.length} file${list.length===1?'':'s'}</span></header>
+  <div class="tw"><table><tr><th>Title</th><th>Type</th><th>Uploaded by</th><th>Date</th><th>Size</th><th></th></tr>${list.map(row).join('')||`<tr><td colspan="6"><div class="empty"><b>${S.lects.length?'No lectures match':'No lectures yet'}</b>${S.lects.length?'Try another search.':'Upload a file above to begin.'}</div></td></tr>`}</table></div></section></div>`;
+}
 
 function roomsTab(){
   return head('Lecture rooms','Every lecture room has a name and its own Agent ID. Once its PC is set up, it appears on the monitor by itself.')+
@@ -894,11 +1151,20 @@ function logsTab(){
   `<section class="card"><header><input id="lq" placeholder="Search the log" value="${esc(S.lq)}" data-c="lq" style="max-width:320px"><span class="mu sm">${L.length} entries${L.length>200?', showing 200':''}</span></header><div class="tw"><table><tr><th>Time</th><th>User</th><th>Activity</th></tr>${L.slice(0,200).map(l=>`<tr><td style="white-space:nowrap">${l.t?fdate(l.t):''}</td><td>${esc(l.u)}</td><td>${esc(l.m)}</td></tr>`).join('')||'<tr><td colspan="3"><div class="empty"><b>No entries</b></div></td></tr>'}</table></div></section>`}
 
 function usersTab(){
-  return head('Users','Faculty can sign in on a lecture room PC, or from their own phone or laptop and choose a room.')+
-  `<div class="stack"><section class="card p"><h3>Create an account</h3><p class="mu" style="margin:4px 0 0">The person must choose a new password the first time they sign in.</p>
-  <form data-submit="addUser" class="inline" style="margin-top:14px"><label class="fld" style="margin:0"><span>Username or email</span><input name="user" required autocomplete="off" placeholder="name@college.edu"></label><label class="fld" style="margin:0"><span>Full name</span><input name="name" placeholder="Dr. Ahmed" autocomplete="off"></label><label class="fld" style="margin:0"><span>Temporary password</span><input name="pass" type="password" required autocomplete="new-password"></label>
+  const U=S.users,q=S.uq.trim().toLowerCase(),mine=S.me&&S.me.user;
+  const nT=U.filter(u=>u.role==='teacher').length,nA=U.filter(u=>u.role==='av').length,nAd=U.filter(u=>u.role==='admin').length,nTmp=U.filter(u=>u.mustChange).length,nIn=U.filter(u=>u.room).length;
+  let list=S.ur==='tmp'?U.filter(u=>u.mustChange):S.ur==='in'?U.filter(u=>u.room):S.ur==='all'?U:U.filter(u=>u.role===S.ur);
+  if(q)list=list.filter(u=>(u.user+' '+u.name+' '+(ROLE[u.role]||'')).toLowerCase().includes(q));
+  const row=u=>`<tr><td><b>${esc(u.user)}</b>${u.user===mine?' <span class="pill ready">You</span>':''}${u.mustChange?' <span class="pill help">Temporary password</span>':''}</td><td>${esc(u.name)}</td><td>${ROLE[u.role]||u.role}</td><td>${u.room?`<span class="pill live">${esc(u.room)}</span>`:'<span class="mu">—</span>'}</td><td class="r"><div class="acts"><button class="btn s" data-a="editUser" data-id="${esc(u.user)}">Edit</button><button class="btn s" data-a="resetPw" data-id="${esc(u.user)}">Reset password</button><button class="btn s dng" data-a="delUser" data-id="${esc(u.user)}" ${u.user===mine?'disabled title="You cannot remove your own account"':''}>Remove</button></div></td></tr>`;
+  return head('Users','Create accounts, edit name and role, reset passwords, or remove people who no longer need access.')+
+  `<div class="card facts"><div><b>${U.length}</b><span>All accounts</span></div><div><b>${nT}</b><span>Faculty</span></div><div><b>${nA}</b><span>AV operators</span></div><div><b>${nAd}</b><span>Administrators</span></div><div><b>${nTmp}</b><span>Temporary password</span></div></div>
+  <div class="stack"><section class="card p"><h3>Create an account</h3><p class="mu" style="margin:4px 0 0">The person must choose a new password the first time they sign in. Faculty can use a lecture room PC, or their own phone or laptop and pick a room.</p>
+  <form data-submit="addUser" class="inline" style="margin-top:14px"><label class="fld" style="margin:0"><span>Username or email</span><input name="user" required autocomplete="off" placeholder="name@college.edu"></label><label class="fld" style="margin:0"><span>Full name</span><input name="name" placeholder="Dr. Ahmed" autocomplete="off" maxlength="60"></label><label class="fld" style="margin:0"><span>Temporary password</span><input name="pass" type="password" required autocomplete="new-password"></label>
   <label class="fld" style="margin:0"><span>Role</span><select name="role"><option value="teacher">Faculty</option><option value="av">AV operator</option><option value="admin">Administrator</option></select></label><button class="btn pri">Create account</button></form></section>
-  <section class="card"><header><h3>Accounts</h3><span class="mu sm">${S.users.length}</span></header><div class="tw"><table><tr><th>Username</th><th>Name</th><th>Role</th><th>Signed in at</th><th></th></tr>${S.users.map(u=>`<tr><td><b>${esc(u.user)}</b>${u.mustChange?' <span class="pill help">Temporary password</span>':''}</td><td>${esc(u.name)}</td><td>${ROLE[u.role]}</td><td>${u.room?esc(u.room):'<span class="mu">—</span>'}</td><td class="r"><div class="acts"><button class="btn s" data-a="resetPw" data-id="${esc(u.user)}">Reset password</button><button class="btn s dng" data-a="delUser" data-id="${esc(u.user)}">Remove</button></div></td></tr>`).join('')}</table></div></section></div>`}
+  <section class="card"><header style="flex-wrap:wrap"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex:1;min-width:0"><h3>Accounts</h3><input id="uq" placeholder="Search name or username" value="${esc(S.uq)}" data-c="uq" style="max-width:260px" aria-label="Search accounts"></div><span class="mu sm">${list.length} shown${nIn?` · ${nIn} signed in`:''}</span></header>
+  <div class="chips" style="padding:12px 20px 0">${[['all','All'],['teacher','Faculty'],['av','AV'],['admin','Admin'],['tmp','Temporary password'],['in','Signed in']].map(([k,l])=>`<button class="chip ${S.ur===k?'on':''}" data-a="ur" data-k="${k}">${l}</button>`).join('')}</div>
+  <div class="tw"><table><tr><th>Username</th><th>Name</th><th>Role</th><th>Signed in at</th><th></th></tr>${list.map(row).join('')||'<tr><td colspan="5"><div class="empty"><b>No accounts match</b>Try another search or filter.</div></td></tr>'}</table></div></section></div>`;
+}
 
 /* ---------- actions ---------- */
 async function uploadFiles(files,present=false){
@@ -910,17 +1176,29 @@ async function uploadFiles(files,present=false){
       if(r.status===401)return signedOut('Your sign-in ended. Please sign in again.');if(!r.ok)toast(d.error||'Upload failed','err');else{ok.push(f.name);ids.push(d.id)}}catch{toast(`${f.name}: upload failed. Check the network connection and the file size.`,'err')}
   }
   if(ok.length){await loadLects();
-    if(present){S.starting=Date.now();cmd('open',null,{lecture:ids[ids.length-1]});paint();setTimeout(()=>{if(S.tok)paint()},20500)}
+    if(present){
+      if(staff())startOnRoom(ids[ids.length-1],S.lecRoom);
+      else{S.starting=Date.now();cmd('open',null,{lecture:ids[ids.length-1]});paint();setTimeout(()=>{if(S.tok)paint()},20500)}
+    }
     else toast(ok.length===1?`${ok[0]} uploaded`:`${ok.length} lectures uploaded`,'ok')}
 }
 const canPresentNow=()=>{const r=S.rooms[0];return !staff()&&!!r&&r.online&&!r.session&&(!r.owner||r.owner.user===S.me.user)};
+const canStaffPresent=()=>{const r=S.rooms.find(x=>x.id===S.lecRoom);return staff()&&S.tab==='lectures'&&!!r&&r.online};
 const A={
   theme:toggleTheme,logout:doLogout,pw:()=>changePassword(false),
   fs:()=>enterFs(),fsx:()=>exitFs(),
   fsPresent:()=>{const l=S.fsel||(S.lects[0]&&S.lects[0].id);if(!l)return toast('Upload a lecture first.','err');A.open({dataset:{id:l}})},
   key:b=>cmd('key',null,{k:b.dataset.k}),
-  pickRoom:async b=>{b.disabled=true;const d=await api('/api/remote/room',{method:'POST',body:JSON.stringify({room:b.dataset.id})});if(d.ok){S.me.room=d.room;toast('Connected to '+d.room+'. Your slides will open there only.','ok')}else b.disabled=false},
+  pickRoom:async b=>{b.disabled=true;const d=await api('/api/remote/room',{method:'POST',body:JSON.stringify({room:b.dataset.id})});if(d.ok){S.me.room=d.room;if(!prefRoom())setPrefRoom(d.room);toast('Connected to '+d.room+'. Your slides will open there only.','ok');try{navigator.vibrate&&navigator.vibrate(20)}catch{}}else b.disabled=false},
   leaveRoom:async()=>{const d=await api('/api/remote/leave',{method:'POST',body:'{}'});if(d.ok)S.me.room=null},
+  prefRoom:b=>{const on=prefRoom()===b.dataset.id;setPrefRoom(on?'':b.dataset.id);toast(on?'Preferred room cleared':'Preferred room saved: '+b.dataset.id,'ok');paint()},
+  retryLink:()=>{if(S.tok)connect();toast('Checking the connection…')},
+  endLect:async b=>{
+    const room=staff()?(b&&b.dataset.id)||S.sel||S.lecRoom||(S.rc&&S.rc.room)||null:null;
+    if(staff()&&!room)return toast('Select a lecture room first.','err');
+    if(!await confirmBox('End the lecture?','This closes the slide or document on the room PC and removes that file from the computer. Your login stays active.','End lecture'))return;
+    S.starting=0;cmd('stop',room);toast('Lecture ended — file closed on the room PC.','ok');paint();
+  },
   hf:b=>{S.hf=b.dataset.k;paint()},
   helpNew:async()=>{const v=await ask({title:'Request AV help',text:'AV staff are notified at once and are also emailed.',fields:[{name:'category',label:'What is the problem?',type:'select',options:Object.entries(CAT)},{name:'message',label:'Details (optional)',type:'textarea',ph:'e.g. The projector shows no signal'}],ok:'Send request',submit:async v=>{const r=await fetch('/api/help',{method:'POST',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify(v)});const d=await r.json().catch(()=>({}));return r.ok?null:d.error||'Could not send the request.'}});if(v)toast('AV staff have been notified','ok')},
   helpNote:async b=>{const v=await ask({title:'Add a note',fields:[{name:'text',label:'Note for AV staff',type:'textarea',max:1000}],ok:'Send note',submit:async v=>{const r=await fetch('/api/help/'+b.dataset.id+'/comments',{method:'POST',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify(v)});const d=await r.json().catch(()=>({}));return r.ok?null:d.error}});if(v)toast('Note sent','ok')},
@@ -928,18 +1206,23 @@ const A={
   hresolve:async b=>{const i=document.querySelector(`[name="cm${b.dataset.id}"]`),draft=i?i.value.trim():'';const v=await ask({title:'Resolve this request?',text:'The faculty member is told it is resolved.',fields:[{name:'note',label:'Note for the faculty member (optional)',type:'textarea',max:1000}],ok:'Mark as resolved',submit:async v=>{const r=await fetch('/api/help/'+b.dataset.id+'/resolve',{method:'POST',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify({note:v.note||draft})});const d=await r.json().catch(()=>({}));return r.ok?null:d.error}});if(v)toast('Request resolved','ok')},
   hreopen:async b=>{const d=await api('/api/help/'+b.dataset.id+'/reopen',{method:'POST',body:'{}'});if(d.ok){toast('Request reopened','ok');S.hf='open'}},
   logoDel:async()=>{const d=await api('/api/settings/logo',{method:'DELETE'});if(d.ok){await loadBrand();toast('Logo removed','ok');render()}},
+  bgDel:async()=>{const d=await api('/api/settings/loginbg',{method:'DELETE'});if(d.ok){await loadBrand();toast('Sign-in picture removed','ok');render()}},
   testMail:async b=>{const f=document.querySelector('[data-submit=saveMail]');if(!await saveMail(f))return;b.disabled=true;const r=await fetch('/api/settings/mail/test',{method:'POST',headers:{authorization:'Bearer '+S.tok}});const d=await r.json().catch(()=>({}));b.disabled=false;r.ok?toast('Test email sent to '+d.to,'ok'):toast(d.error||'Could not send the test email.','err')},
 
-  go:async b=>{S.tab=b.dataset.t;if(S.tab==='logs')await A.logs();if(S.tab==='users')await loadUsers();if(S.tab==='sessions')await A.refresh();if(S.tab==='lectures')await loadLects();if(S.tab==='settings')await loadMail();render()},
+  navToggle:()=>toggleNav(),navClose:()=>closeNav(),
+  go:async b=>{S.tab=b.dataset.t;S.navOpen=false;if(S.tab==='logs')await A.logs();if(S.tab==='users')await loadUsers();if(S.tab==='sessions')await A.refresh();if(S.tab==='lectures')await loadLects();if(S.tab==='settings')await loadMail();render()},
   flt:b=>{S.flt=b.dataset.k;paint()},sel:b=>{S.sel=b.dataset.id;S.selOff=0;paint()},closeDet:()=>{S.sel=null;S.selOff=1;paint()},
   'stop-prop':()=>{},
   pick:b=>{b.checked?S.picked.add(b.dataset.id):S.picked.delete(b.dataset.id);paint()},
-  open:b=>{S.starting=Date.now();cmd('open',null,{lecture:b.dataset.id,full:!!S.fs});paint();setTimeout(()=>{if(S.tok)paint()},20500)},
+  open:b=>{const r=S.rooms[0],why=!staff()?facultyPreflight(r):'';if(why)return toast(why,'err');S.starting=Date.now();cmd('open',null,{lecture:b.dataset.id,full:!!S.fs});toast(r?'Opening on '+r.id+'…':'Starting…','ok');try{navigator.vibrate&&navigator.vibrate(25)}catch{}paint();setTimeout(()=>{if(S.tok)paint()},20500)},
   'open-staff':()=>{const l=S.lsel||(S.lects[0]&&S.lects[0].id);if(!l)return toast('Upload a lecture first.','err');cmd('open',S.sel,{lecture:l})},
-  rcOpen:b=>rcOpen(b.dataset.id),rcClose:()=>rcClose(),rcRelease:b=>cmd('release',b.dataset.id),
+  lecPresent:b=>startOnRoom(b.dataset.id,S.lecRoom),
+  rcOpen:b=>{rcOpen(b.dataset.id);if(!staff()&&!rcTipSeen()){S.rcTip=true;setTimeout(()=>S.rc&&rcBar(),50)}},
+  rcClose:()=>rcClose(),rcRelease:b=>cmd('release',b.dataset.id),
+  rcTipOk:()=>{rcTipMark();rcBar()},
   rcFull:()=>{const el=$('rc');if(!el)return;try{document.fullscreenElement?document.exitFullscreen():(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}catch{}},
-  ctl:b=>{const c=b.dataset.c;if(!staff()&&(c==='next'||c==='prev'))optNav(c==='next'?1:-1);cmd(c,S.sel)},
-  bulk:b=>{const c=b.dataset.c;if(c==='clear-sel'){S.picked.clear();return paint()}const l=S.bsel||(S.lects[0]&&S.lects[0].id);if(c==='open'&&!l)return toast('Upload a lecture first.','err');S.picked.forEach(r=>cmd(c,r,{lecture:l}))},
+  ctl:async b=>{const c=b.dataset.c;if(c==='stop')return A.endLect(b);if(!staff()&&(c==='next'||c==='prev'))optNav(c==='next'?1:-1);cmd(c,staff()?(b.dataset.id||S.sel||S.lecRoom):S.sel)},
+  bulk:async b=>{const c=b.dataset.c;if(c==='clear-sel'){S.picked.clear();return paint()}const l=S.bsel||(S.lects[0]&&S.lects[0].id);if(c==='open'&&!l)return toast('Upload a lecture first.','err');if(c==='stop'){if(!await confirmBox('End lectures on selected rooms?','Each room PC closes the open file and removes it from that computer.','End lectures'))return;S.picked.forEach(r=>cmd('stop',r));toast('Ended on selected rooms','ok');return paint()}S.picked.forEach(r=>cmd(c,r,{lecture:l}))},
   delLect:async b=>{const l=S.lects.find(x=>x.id===b.dataset.id);if(!await confirmBox('Delete this lecture?',`"${l?l.title:''}" will be removed permanently.`,'Delete'))return;const d=await api('/api/lectures/'+b.dataset.id,{method:'DELETE'});if(d.ok){toast('Lecture deleted','ok');loadLects()}},
   delRoom:async b=>{if(!await confirmBox('Remove '+b.dataset.id+'?','Faculty will no longer be able to sign in on this PC, and any current sign-in ends.','Remove room'))return;const d=await api('/api/rooms/'+b.dataset.id,{method:'DELETE'});if(d.ok)toast('Room removed','ok')},
   editRoom:async b=>{const r=S.rooms.find(x=>x.id===b.dataset.id);const v=await ask({title:'Edit '+r.id,fields:[{name:'floor',label:'Floor',value:r.floor}],ok:'Save changes',submit:async v=>{const d=await fetch('/api/rooms/'+r.id,{method:'PUT',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify(v)}).then(x=>x.json());return d.error||null}});if(v)toast('Room updated','ok')},
@@ -952,6 +1235,21 @@ const A={
   refresh:async()=>{const d=await api('/api/sessions');if(Array.isArray(d))S.sess=d;if(S.tab==='sessions')paint()},
   logs:async()=>{const d=await api('/api/logs');if(Array.isArray(d))S.logs=d;if(S.tab==='logs')paint()},
   dlLog:async()=>{const r=await fetch('/api/logs?download=1',{headers:{authorization:'Bearer '+S.tok}});const a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download='audit-log.txt';a.click()},
+  dlHelp:()=>dlHelpExcel(),
+  ur:b=>{S.ur=b.dataset.k;paint()},
+  editUser:async b=>{
+    const u=S.users.find(x=>x.user===b.dataset.id);if(!u)return;
+    const self=S.me&&S.me.user===u.user;
+    const v=await ask({title:'Edit '+u.user,text:self?'You can update your display name here. Role changes for your own account are blocked.':'Username stays the same. Changing the role signs the person out so the new permissions apply.',fields:[
+      {name:'user',label:'Username',value:u.user,ro:true},
+      {name:'name',label:'Full name',value:u.name,max:60},
+      {name:'role',label:'Role',type:'select',value:u.role,options:[['teacher','Faculty'],['av','AV operator'],['admin','Administrator']]}
+    ],ok:'Save changes',submit:async v=>{
+      const d=await fetch('/api/users/'+encodeURIComponent(u.user),{method:'PUT',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify({name:v.name,role:v.role})}).then(x=>x.json());
+      return d.error||null;
+    }});
+    if(v){toast('Account updated','ok');await loadUsers();paint()}
+  },
   resetPw:async b=>{const v=await ask({title:'Reset password for '+b.dataset.id,text:'They will be signed out and must choose a new password at their next sign-in.',fields:[{name:'pass',label:'Temporary password (8+ characters)',type:'password',ac:'new-password'}],ok:'Reset password',submit:async v=>{const d=await fetch('/api/users/'+encodeURIComponent(b.dataset.id)+'/password',{method:'PUT',headers:{authorization:'Bearer '+S.tok,'content-type':'application/json'},body:JSON.stringify(v)}).then(x=>x.json());return d.error||null}});if(v){toast('Password reset','ok');loadUsers().then(paint)}},
   delUser:async b=>{if(!await confirmBox('Remove '+b.dataset.id+'?','The account is deleted and any current sign-in ends.','Remove account'))return;const d=await api('/api/users/'+encodeURIComponent(b.dataset.id),{method:'DELETE'});if(d.ok){toast('Account removed','ok');loadUsers().then(paint)}},
 };
@@ -981,17 +1279,24 @@ Object.assign(A,{
   rcVKey:b=>rcKey(b.dataset.k),
   rcCombo:b=>rcTap(RC_COMBOS[+b.dataset.i][1]),
   rcCmd:b=>cmd(b.dataset.c,S.rc.room),
-  rcEnd:async()=>{if(await confirmBox('End the lecture?','The lecture closes on the room PC. Remote control stays on.','End lecture'))cmd('stop',S.rc.room)},
+  rcEnd:async()=>{if(await confirmBox('End the lecture?','The lecture closes on the room PC and the file is removed from that computer. Remote control stays on.','End lecture')){cmd('stop',S.rc.room);toast('Lecture ended — file closed on the room PC.','ok')}},
   rcPresent:()=>{const l=S.fsel||(S.lects[0]&&S.lects[0].id);if(!l)return toast('Upload a lecture first.','err');S.starting=Date.now();cmd('open',S.rc.room,{lecture:l,full:true})},
   xfOpen:b=>xfOpen(b.dataset.id),xfClose:()=>xfClose(),
   xfOpenFile:b=>{const x=S.xf,f=x&&x.files&&x.files[+b.dataset.i];if(f)cmd('xopen',x.room,{folder:x.folder,name:f.name})},
 });
 document.addEventListener('change',async e=>{
-  const t=e.target;if(!t||t.id!=='logoin'||!t.files||!t.files[0])return;
-  const f=t.files[0];t.value='';
-  if(!/^image\/(png|jpeg|webp)$/.test(f.type)||f.size>2*1024*1024)return toast('Choose a PNG, JPG or WebP picture of at most 2 MB.','err');
-  const d=await api('/api/settings/logo',{method:'PUT',headers:{'content-type':f.type},body:f});
-  if(d.ok){await loadBrand();toast('Logo saved','ok');render()}
+  const t=e.target;if(!t||!t.files||!t.files[0])return;
+  if(t.id==='logoin'){
+    const f=t.files[0];t.value='';
+    if(!/^image\/(png|jpeg|webp)$/.test(f.type)||f.size>2*1024*1024)return toast('Choose a PNG, JPG or WebP picture of at most 2 MB.','err');
+    const d=await api('/api/settings/logo',{method:'PUT',headers:{'content-type':f.type},body:f});
+    if(d.ok){await loadBrand();toast('Logo saved','ok');render()}
+  }else if(t.id==='bgin'){
+    const f=t.files[0];t.value='';
+    if(!/^image\/(png|jpeg|webp)$/.test(f.type)||f.size>6*1024*1024)return toast('Choose a PNG, JPG or WebP picture of at most 6 MB.','err');
+    const d=await api('/api/settings/loginbg',{method:'PUT',headers:{'content-type':f.type},body:f});
+    if(d.ok){await loadBrand();toast('Sign-in picture saved','ok');render()}
+  }
 });
 document.addEventListener('change',e=>{
   const t=e.target;
@@ -1009,17 +1314,23 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('change',e=>{
   const t=e.target;
-  if(t.id==='upf'){uploadFiles([...t.files],canPresentNow());t.value=''}
+  if(t.id==='upf'){uploadFiles([...t.files],canPresentNow()||canStaffPresent());t.value=''}
   if(t.dataset.c==='gotosel'){const r=S.rooms[0];if(r){optTo(+t.value,r.id);cmd('goto',null,{n:+t.value})}t.blur();return}
   if(t.dataset.c==='fsel')S.fsel=t.value;if(t.dataset.c==='lsel')S.lsel=t.value;if(t.dataset.c==='bsel')S.bsel=t.value;
+  if(t.dataset.c==='lecRoom'){S.lecRoom=t.value;if(t.value)S.sel=t.value;paint()}
 });
-document.addEventListener('input',e=>{if(e.target.dataset.c==='lq'){S.lq=e.target.value;const el=e.target,p=el.selectionStart;paint();const n=$('lq');n.focus();n.setSelectionRange(p,p)}});
+document.addEventListener('input',e=>{
+  const c=e.target.dataset.c;if(c!=='lq'&&c!=='uq'&&c!=='lqL')return;
+  if(c==='lq')S.lq=e.target.value;else if(c==='uq')S.uq=e.target.value;else S.lqL=e.target.value;
+  const p=e.target.selectionStart;paint();const n=$(c);if(n){n.focus();try{n.setSelectionRange(p,p)}catch{}}
+});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.c==='draft'){e.preventDefault();const b=$('cb'+e.target.dataset.id);b&&b.click()}});
 document.addEventListener('submit',e=>{const n=e.target.dataset.submit;if(n&&SUBMIT[n]){e.preventDefault();SUBMIT[n](e.target)}});
 ['dragover','dragenter'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#drop');if(d){e.preventDefault();d.classList.add('over')}}));
-['dragleave','drop'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#drop');if(d){d.classList.remove('over');if(ev==='drop'){e.preventDefault();uploadFiles([...e.dataTransfer.files],canPresentNow())}}}));
+['dragleave','drop'].forEach(ev=>document.addEventListener(ev,e=>{const d=e.target.closest&&e.target.closest('#drop');if(d){d.classList.remove('over');if(ev==='drop'){e.preventDefault();uploadFiles([...e.dataTransfer.files],canPresentNow()||canStaffPresent())}}}));
 document.addEventListener('keydown',e=>{
   if(S.rc)return;
+  if(e.key==='Escape'&&S.navOpen){e.preventDefault();closeNav();return}
   if(!S.tok||!S.me||e.target.closest('input,select,textarea,.modal')||e.ctrlKey||e.metaKey||e.altKey)return;
   const k=e.key;
   if(!staff()){if(k==='Escape'&&S.fs){exitFs();return}if(k==='f'||k==='F'){e.preventDefault();S.fs?exitFs():enterFs();return}}
@@ -1034,6 +1345,7 @@ document.addEventListener('keydown',e=>{
   else if(k==='b'||k==='B'){cmd('blank',staff()?S.sel:null)}
 });
 setInterval(()=>{if(S.tok&&staff()&&S.tab==='sessions')A.refresh()},10000);
+setInterval(()=>{if(!S.tok||staff())return;const r=S.rooms[0];if(r&&r.session&&(!r.owner||r.owner.user===S.me.user)&&($('live')||$('rc')))paint()},15000);
 start();
 </script>
 </body>

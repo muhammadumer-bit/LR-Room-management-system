@@ -363,8 +363,8 @@
  },
  {
   "user": "faizan.saleem@niu.edu.pk",
-  "pass": "scrypt$336625e68f4dcbfc69775020a804294d$dee0f4bd43d146c0b710b854c77d1f0292fee4664aa36e5fb8b704f2b1cb1503",
-  "role": "admin",
+  "pass": "scrypt$ed94c68b2aa4cf7ff50e1db7efa40629$4c1775fcf0cdf01ce71c85250989b2bed3a803745454ba07cbb2433be8dceeb6",
+  "role": "teacher",
   "name": "Muhammad Faizan Saleem"
  }
 ]
